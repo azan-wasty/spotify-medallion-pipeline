@@ -1,0 +1,58 @@
+# ==============================================================================
+# Spotify Medallion Pipeline - Git Ignore Policy
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. PII SECURITY RULE: RAW UNCOLLECTED/UNSANITIZED SPOTIFY EXPORTS (CRITICAL)
+# Raw exports contain user IP addresses (`ip_addr`) and raw PII. NEVER COMMIT!
+# ------------------------------------------------------------------------------
+dav data/
+dav_data/
+raw_exports/
+Streaming_History_Audio_*.json
+Streaming_History_Video_*.json
+ReadMeFirst_ExtendedStreamingHistory.pdf
+my_spotify_data.zip
+*.zip
+
+# ------------------------------------------------------------------------------
+# 2. SPOTIFY API & OAUTH CREDENTIALS
+# ------------------------------------------------------------------------------
+.env
+*.env
+client_secret*.json
+spotify_tokens.json
+.spotify_cache/
+
+# ------------------------------------------------------------------------------
+# 3. PYTHON & ENVIRONMENT ARTIFACTS
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# ------------------------------------------------------------------------------
+# 4. LARGE GENERATED BULK DATA & LANDING RUN PARTITIONS
+# (Keep directory structure READMEs and metadata notes tracked)
+# ------------------------------------------------------------------------------
+output/raw/dt=*
+!output/raw/README.md
+!output/dims/README.md
+!output/PII_NOTES.md
+
+# ------------------------------------------------------------------------------
+# 5. IDE & OS SYSTEM FILES
+# ------------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+*.log
