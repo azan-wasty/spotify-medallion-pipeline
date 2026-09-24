@@ -157,7 +157,9 @@ DEVICE_TYPES = ["mobile", "desktop", "web_player", "smart_speaker"]
 # Regenerate this file any time more real personas are analyzed (see
 # AGENTS.md "Data Sources" section for the extraction process).
 # ---------------------------------------------------------------------------
-REAL_CATALOG_PATH = "real_catalog_extract.json"
+REAL_CATALOG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "real_catalog_extract.json")
+if not os.path.exists(REAL_CATALOG_PATH):
+    REAL_CATALOG_PATH = "real_catalog_extract.json"
 
 
 def load_real_catalog_override():
