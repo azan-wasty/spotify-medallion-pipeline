@@ -22,6 +22,7 @@ my_spotify_data.zip
 *.env
 client_secret*.json
 spotify_tokens.json
+.spotify_tokens*.json
 .spotify_cache/
 
 # ------------------------------------------------------------------------------
