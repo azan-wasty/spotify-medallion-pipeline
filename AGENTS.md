@@ -61,7 +61,16 @@ Analyzed from real Extended Streaming History exports, pseudonymized, and used t
 
 ### 1. Synthetic data (primary — `generate_data_v2.py`)
 - A catalog dimension with deterministic pseudo audio-features (danceability, energy, valence, tempo) standing in for Spotify's now-blocked audio-feature fields, now spanning Western genres plus the real-persona-derived clusters above.
-- `PERSONAS`: named synthetic users calibrated to real personas' actual listening taste (genres, intensity) as their exports get analyzed — see table above. Additional generic filler users (`user_synth_NNN`) round out the population for volume.
+- `PERSONAS`: named synthetic users calibrated to real personas' actual listening taste (genres, intensity, skip rate) as their exports get analyzed — see table above. Additional generic filler users (`user_synth_NNN`) round out the population for volume, each with its own drawn `skip_rate` and `repeat_ratio`.
+- **Repeat vs. discovery model** (all three modes): each user-day is ~70% **replays** of tracks from that user's own last `HISTORY_WINDOW_DAYS` (60) of plays and ~30% **discoveries** of tracks they haven't played in that window.
+  - The ratio is per user (`repeat_ratio`, filler users spread around 0.70, so the population has loyalists and explorers) plus day-to-day noise, clamped to 0.40-0.95.
+  - Replays are recency-weighted (14-day half-life) and play-count-weighted; skipped plays count 0.2, so skipped tracks rarely come back.
+  - Discoveries come 70% from the persona's favorite genres, 20% from adjacent genres (`GENRE_NEIGHBORS`), 10% from the top-200 catalog tracks by popularity. When those pools are worn out (niche genres have only a few hundred catalog tracks), a discovery falls back to any unheard catalog track.
+  - Skips depend on it: replays are skipped at 0.75x the user's `skip_rate`, discoveries at 1.6x, which averages back to `skip_rate`.
+  - History is read from the landing partitions, so real rows (`real` / `real_api`) count as history: while a real persona's real rows are in the window, their synthetic incrementals replay those actual tracks and follow the real device mix.
+  - Each day has its own RNG seed (`RANDOM_SEED` + date) and synthetic event IDs are deterministic (`evt_syn_` + hash of user, date, index). Re-generating a day on unchanged history gives a byte-identical file, so its checksum doesn't change (idempotent-rerun demo); a backfill after history changed re-delivers the same `event_id`s with new content, which Silver's MERGE updates.
+  - Verified on a 450-day run: per-persona replay share 0.70 (p5-p95 ≈ 0.58-0.82), skip rates within 0.01 of target, heavy personas' top-10 tracks ≈ 9-10% of a month's plays.
+  - Known limit: with ~83% of the catalog labelled `pop` by the genre-inference fallback, niche personas exhaust their genre pools: only ~50% of `user_real_03`'s and ~43% of `user_real_02`'s plays are in their favorite genres (`user_real_01`, whose favorites include `pop`, is at ~90%). Better genre classification in `catalog_utils.py` grows those pools and fixes this.
 - Three run modes:
   - `python3 generate_data_v2.py full` — bulk-generates historical day-partitions (default 450 days back from today).
   - `python3 generate_data_v2.py incremental [--date YYYY-MM-DD]` — generates exactly one day's partition; this is the job meant to be re-run daily/periodically.
@@ -729,6 +738,7 @@ The course's hands-on chapters use Microsoft Fabric. The concepts carry over one
 - [x] 3 of ~6-7 real personas analyzed and derived into `PERSONAS` (indie-alt/hip-hop/pop, Bollywood/Punjabi/Sufi, J-pop/J-rock clusters)
 - [x] Catalog replaced with exhaustive real-data extraction & auto-cataloging framework (`catalog_utils.py`, 11,608 distinct tracks covering 100% of real plays across Azan, Izyan, and Saaif)
 - [x] Merge-safety bug fixed in `generate_data_v2.py` — script run order no longer risks destroying real data
+- [x] Generator's per-day seeding fixed (every `incremental` day used to be an identical copy) and replaced by the repeat vs. discovery model
 - [x] Demo sample generated and verified (genre fidelity ~70-72% match to persona's favorite cluster)
 - [x] Additional business questions brainstormed for Phase 2/3 scope (see Gold G3 section C)
 - [x] Architecture aligned with course material (Delta Lake Ch. 1, Medallion Ch. 3) — this document
