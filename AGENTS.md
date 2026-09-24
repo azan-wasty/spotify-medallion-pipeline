@@ -57,7 +57,7 @@ Analyzed from real Extended Streaming History exports, pseudonymized, and used t
 
 **3-4 more real personas expected.** Repeat the same analysis pass per new export (top artists by play count/ms_played, skip rate, active-day intensity, device mix, `conn_country`) and check whether their genre cluster is genuinely new (as with the two clusters below) or overlaps with existing personas.
 
-**Catalog clusters added to support real personas** (previously catalog was Western-genre-only): `indie-alt` (for user_real_01's Joji/The Neighbourhood/Chase Atlantic taste), `bollywood`/`punjabi`/`sufi-pop`/`qawwali`/`pakistani-pop`/`indie-pop-desi` (for user_real_02), `jpop`/`jrock`/`jmetal` (for user_real_03). Add a new cluster whenever a new persona's real genre isn't yet represented.
+**Catalog clusters added to support real personas** (previously catalog was Western-genre-only): `indie-alt` (for user_real_01's Joji/The Neighbourhood/Chase Atlantic taste), `bollywood`/`punjabi`/`sufi-pop`/`qawwali`/`pakistani-pop`/`indie-pop-desi` (for user_real_02), `jpop`/`jrock`/`jmetal` (for user_real_03). `rnb`, `soundtrack` and `kpop` were added when the real catalog was classified. Add a new cluster whenever a new persona's real genre isn't yet represented: add the genre and its artists to `scripts/artist_genres.json` and give it an entry in `GENRE_NEIGHBORS` in `generate_data_v2.py`.
 
 ### 1. Synthetic data (primary — `generate_data_v2.py`)
 - A catalog dimension with deterministic pseudo audio-features (danceability, energy, valence, tempo) standing in for Spotify's now-blocked audio-feature fields, now spanning Western genres plus the real-persona-derived clusters above.
@@ -69,8 +69,10 @@ Analyzed from real Extended Streaming History exports, pseudonymized, and used t
   - Skips depend on it: replays are skipped at 0.75x the user's `skip_rate`, discoveries at 1.6x, which averages back to `skip_rate`.
   - History is read from the landing partitions, so real rows (`real` / `real_api`) count as history: while a real persona's real rows are in the window, their synthetic incrementals replay those actual tracks and follow the real device mix.
   - Each day has its own RNG seed (`RANDOM_SEED` + date) and synthetic event IDs are deterministic (`evt_syn_` + hash of user, date, index). Re-generating a day on unchanged history gives a byte-identical file, so its checksum doesn't change (idempotent-rerun demo); a backfill after history changed re-delivers the same `event_id`s with new content, which Silver's MERGE updates.
-  - Verified on a 450-day run: per-persona replay share 0.70 (p5-p95 ≈ 0.58-0.82), skip rates within 0.01 of target, heavy personas' top-10 tracks ≈ 9-10% of a month's plays.
-  - Known limit: with ~83% of the catalog labelled `pop` by the genre-inference fallback, niche personas exhaust their genre pools: only ~50% of `user_real_03`'s and ~43% of `user_real_02`'s plays are in their favorite genres (`user_real_01`, whose favorites include `pop`, is at ~90%). Better genre classification in `catalog_utils.py` grows those pools and fixes this.
+  - One track's replay weight is capped at 10% of the user's total (`REPLAY_MAX_TRACK_SHARE`). It only binds for light listeners (~1 play/day), whose small pool would otherwise lock onto one song.
+  - `unclassified` tracks are never a favorite genre; they only appear through chart and long-tail discovery.
+  - Verified on a 450-day run: per-persona replay share 0.70 (p5-p95 ≈ 0.58-0.82), skip rates within 0.01 of target, heavy personas' top-10 tracks ≈ 9-11% of a month's plays. Share of plays in the persona's favorite genres: `user_real_01` 0.74, `user_real_02` 0.51, `user_real_03` 0.77.
+  - Known limit: `user_real_02`'s favorite genres cover only ~785 catalog tracks, so ~half their plays land in adjacent genres (mostly `hip-hop` via `punjabi`) or the long tail. Adding their other real genres (e.g. `pakistani-pop`, `indie-pop-desi`) to their `favorite_genres`, if that matches their export, and classifying more Desi artists both help.
 - Three run modes:
   - `python3 generate_data_v2.py full` — bulk-generates historical day-partitions (default 450 days back from today).
   - `python3 generate_data_v2.py incremental [--date YYYY-MM-DD]` — generates exactly one day's partition; this is the job meant to be re-run daily/periodically.
@@ -91,13 +93,18 @@ Instead of a small hand-picked track list or partial subset, the catalog is **ex
 - Extracted **all 11,608 distinct tracks** played across all analyzed real users' exports (`user_real_01` Azan, `user_real_02` Izyan, `user_real_03` Saaif).
 - **100% Track Coverage**: Guarantees zero "Unknown Track" or "Unknown Artist" records when building Spotify Wrapped summaries for real users.
 - **Auto-Cataloging Framework (`catalog_utils.py`)**: Automatic pre-ingestion hook integrated into both `fetch_recently_played.py` (live API pulls) and `sanitize_real_data.py` (export processing). When new tracks land via live pulls or exports, `register_new_tracks()` automatically captures their titles, artists, and albums, infers genres, generates deterministic audio features & popularity, and updates `real_catalog_extract.json` and `output/dims/catalog.json` on the fly.
+- **Genre classification** (`catalog_utils.infer_genre`), in order:
+  1. `scripts/artist_genres.json`, a curated genre → artists map matched exactly on the artist name (case and spacing ignored). It is the single source of truth; nothing else hard-codes genres. It covers the top ~520 artists (~85% of plays), and only artists whose genre is certain are listed.
+  2. Japanese script (kana/kanji) in the artist, track or album name → `jpop`.
+  3. Otherwise `unclassified`. Never a guessed default: the old substring matching labelled 83% of tracks `pop`, and matched "Eve" inside "Steve Lacy" and "Ado" inside "Madonna".
+- After editing `artist_genres.json`, run `python3 scripts/build_full_catalog.py --reclassify`. It relabels `real_catalog_extract.json` and `output/dims/catalog.json` without the raw exports, prints the genre mix, and lists the top unclassified artists by plays (the next ones to add). As of this run, ~21% of plays are `unclassified`, led by artists we couldn't classify with confidence (e.g. Muhammad Samie, Suzonn): the team should fill these in from their own knowledge of the music.
 - Real Spotify URIs are used directly as `track_id`. `release_year` is honestly left `null` since exports don't include it.
 - `popularity` is rescaled from real play counts (30-100 range).
 - `generate_data_v2.py`'s `load_real_catalog_override()` and `build_full_catalog.py` automatically synchronize `output/dims/catalog.json` with `real_catalog_extract.json`.
 
 ### Recommended build order (once more real users' data is collected)
 Thanks to a merge-safety fix (see Landing Zone notes below), scripts no longer have a strict destructive-overwrite ordering requirement — but this is still the logical sequence:
-1. Refresh `real_catalog_extract.json` across all real users' exports combined (expand `ARTIST_GENRE_MAP` for new artists).
+1. Refresh `real_catalog_extract.json` across all real users' exports combined (`python3 scripts/build_full_catalog.py`), then add the top unclassified artists it reports to `scripts/artist_genres.json` and run it again with `--reclassify`.
 2. Update `PERSONAS` in `generate_data_v2.py` with each new real user's derived genre/intensity/skip profile.
 3. `python3 generate_data_v2.py full` — lay down the synthetic historical base using the refreshed catalog/personas.
 4. `python3 sanitize_real_data.py --input-dir ... --user-id user_real_0N` — once per real person, merges their real events on top.
@@ -513,7 +520,7 @@ WHEN NOT MATCHED THEN                                                    -- bran
   ```sql
   JOIN gold.dim_user u ON e.user_id = u.user_id AND e.played_at >= u.valid_from AND e.played_at < u.valid_to
   ```
-- **Early-arriving facts**: a play whose `track_id` isn't in `dim_track` yet (real long-tail tracks, new tracks from the live API). Before the fact load, insert a placeholder **inferred member** (`is_inferred = true`, genre `'Unknown'`, names from the event if it carries them). When a later catalog refresh contains the track, the Type-1 update fills it in and sets `is_inferred = false`. The surrogate key doesn't change, so facts stay linked.
+- **Early-arriving facts**: a play whose `track_id` isn't in `dim_track` yet (real long-tail tracks, new tracks from the live API). Before the fact load, insert a placeholder **inferred member** (`is_inferred = true`, genre `'unclassified'` like any catalog track the genre map doesn't cover, names from the event if it carries them). When a later catalog refresh contains the track, the Type-1 update fills it in and sets `is_inferred = false`. The surrogate key doesn't change, so facts stay linked.
 - **Incremental via CDF**: read only what changed in Silver since the last processed version (kept in `ops.pipeline_state`), then MERGE into the fact on `event_id`. Deletes in Silver become deletes in the fact.
   ```python
   changes = (spark.read.format("delta")
@@ -565,7 +572,7 @@ One row per session: `user_id`, `session_id`, `session_start`, `session_end`, `t
 - Visual: bar chart of user counts per propensity tier, split by current subscription status — the "High engagement, still Free" bar is the actionable business insight.
 
 **3. "Which genres/artists are gaining or losing traction over time, to guide content curation or licensing decisions?"**
-- Table: `gold.content_performance_trends` — genre/artist share of total listening minutes, computed monthly, with month-over-month delta (from `fact_listening` joined to `dim_track`, `dim_date`). Plays on inferred (unclassified) tracks are reported as genre `'Unclassified'` rather than dropped, so shares add up to 100%.
+- Table: `gold.content_performance_trends` — genre/artist share of total listening minutes, computed monthly, with month-over-month delta (from `fact_listening` joined to `dim_track`, `dim_date`). Plays on `unclassified` tracks (artists not yet in `artist_genres.json`, plus inferred members) are reported as their own `'Unclassified'` group rather than dropped, so shares add up to 100%; its share over time also shows classification coverage improving.
 - Business use: informs which genres/artists deserve playlist placement, editorial curation, or licensing investment.
 - Visual: line chart of genre share of total listening over time, highlighting fastest-rising and fastest-declining genres.
 

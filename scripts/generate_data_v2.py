@@ -71,6 +71,8 @@ RANDOM_SEED = 42                 # combined with the date, so every day gets its
 HISTORY_WINDOW_DAYS = 60         # how far back the repeat pool looks
 RECENCY_HALF_LIFE_DAYS = 14      # a play 14 days ago counts half as much as yesterday's
 SKIPPED_PLAY_WEIGHT = 0.2        # a track the user skipped is rarely replayed
+REPLAY_MAX_TRACK_SHARE = 0.10    # cap on one track's share of the replay weight; only binds for
+                                 # light listeners, whose small pool otherwise locks onto one song
 REPEAT_RATIO_MEAN = 0.70         # population share of plays that are replays
 REPEAT_RATIO_USER_STD = 0.08     # spread between users (loyalists vs. explorers)
 REPEAT_RATIO_DAY_STD = 0.07      # day-to-day wobble around a user's own ratio
@@ -181,10 +183,13 @@ DEVICE_TYPES = ["mobile", "desktop", "web_player", "smart_speaker"]
 
 # Genres a listener of the key genre plausibly drifts into ("adjacent" discovery).
 GENRE_NEIGHBORS = {
-    "pop": ["indie-alt", "hip-hop", "synthpop", "edm"],
+    "pop": ["indie-alt", "hip-hop", "rnb", "synthpop", "edm"],
     "rock": ["indie-alt"],
     "indie-alt": ["rock", "pop", "synthpop", "indie-pop-desi"],
-    "hip-hop": ["pop", "punjabi"],
+    "hip-hop": ["pop", "rnb", "punjabi"],
+    "rnb": ["pop", "hip-hop"],
+    "kpop": ["pop", "jpop"],
+    "soundtrack": ["classical", "electronic"],
     "synthpop": ["electronic", "pop", "indie-alt"],
     "electronic": ["edm", "synthpop"],
     "edm": ["electronic", "pop"],
@@ -198,7 +203,7 @@ GENRE_NEIGHBORS = {
     "qawwali": ["sufi-pop"],
     "pakistani-pop": ["indie-pop-desi", "bollywood", "sufi-pop"],
     "indie-pop-desi": ["pakistani-pop", "indie-alt", "bollywood"],
-    "jpop": ["jrock"],
+    "jpop": ["jrock", "kpop", "soundtrack"],
     "jrock": ["jpop", "jmetal", "rock"],
     "jmetal": ["jrock", "rock"],
 }
@@ -401,7 +406,8 @@ def generate_day_events(day: datetime, users, catalog, tracks_by_id, discovery_p
         n_repeat = round(n_events * repeat_ratio) if replayable else 0  # no history yet -> all discovery
         plays = []
         if n_repeat:
-            replays = rng.choices(replayable, weights=[weights[t] for t in replayable], k=n_repeat)
+            cap = REPLAY_MAX_TRACK_SHARE * sum(weights[t] for t in replayable)
+            replays = rng.choices(replayable, weights=[min(weights[t], cap) for t in replayable], k=n_repeat)
             plays = [(tracks_by_id[t], True) for t in replays]
         plays += [(pick_discovery(rng, discovery_pools[user_id], weights, catalog), False)
                   for _ in range(n_events - n_repeat)]
@@ -546,7 +552,8 @@ def main():
     args = parser.parse_args()
 
     catalog = build_catalog()
-    real_genres = sorted(set(t["genre"] for t in catalog))
+    # "unclassified" is catalog_utils' label for artists not yet in artist_genres.json, not a taste
+    real_genres = sorted(set(t["genre"] for t in catalog) - {"unclassified"})
     users = build_users(real_genres)
     write_dims(catalog, users)
     write_pii_notes()
