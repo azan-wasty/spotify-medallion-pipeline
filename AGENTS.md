@@ -77,14 +77,14 @@ Analyzed from real Extended Streaming History exports, pseudonymized, and used t
 - Real and synthetic events for the same date land in the same partition file (the script merges rather than overwrites).
 - Note: exports do not include a `username` field (contrary to some older documentation) — one less PII field to strip than originally assumed. The field is `ip_addr`, not `ip_addr_decrypted`.
 
-### 3. Real catalog extraction (replaces the hand-picked catalog — `real_catalog_extract.json`)
-Instead of a small hand-picked track list, the catalog is now **extracted from actual real listening data**:
-- Pulled the top 200 tracks by real play count across all analyzed real users' exports, keeping only tracks whose artist could be confidently genre-classified (`ARTIST_GENRE_MAP`, currently ~100 artists spanning Western/South Asian/Japanese clusters).
-- These 200 tracks cover **90,265 of ~197,735 total real plays analyzed so far (46%)** — the rest is a long tail of ~3,800 mostly one-off artists, deliberately excluded rather than genre-guessed. (Consequence for the pipeline: real events referencing long-tail tracks have no catalog row. Silver flags them and Gold handles them as early-arriving facts; see those sections.)
-- Real Spotify URIs are used directly as `track_id` (not synthetic `trk_XXXX` placeholders). `release_year` is honestly left `null` since exports don't include it.
-- `popularity` is rescaled from real play counts (30-100 range), not randomly assigned.
-- `generate_data_v2.py`'s `load_real_catalog_override()` automatically uses `real_catalog_extract.json` if present in the working directory, falling back to the small hand-picked `CATALOG_SEED` only if that file is missing.
-- **Regenerate this file whenever new real personas are added** — re-run the same extraction/classification pass (top tracks by play count from confidently-classified artists) across *all* real users combined, expanding `ARTIST_GENRE_MAP` for any new artists that appear.
+### 3. Real catalog extraction & auto-cataloging framework (`real_catalog_extract.json` & `catalog_utils.py`)
+Instead of a small hand-picked track list or partial subset, the catalog is **exhaustively extracted from actual real listening data and dynamically auto-cataloged**:
+- Extracted **all 11,608 distinct tracks** played across all analyzed real users' exports (`user_real_01` Azan, `user_real_02` Izyan, `user_real_03` Saaif).
+- **100% Track Coverage**: Guarantees zero "Unknown Track" or "Unknown Artist" records when building Spotify Wrapped summaries for real users.
+- **Auto-Cataloging Framework (`catalog_utils.py`)**: Automatic pre-ingestion hook integrated into both `fetch_recently_played.py` (live API pulls) and `sanitize_real_data.py` (export processing). When new tracks land via live pulls or exports, `register_new_tracks()` automatically captures their titles, artists, and albums, infers genres, generates deterministic audio features & popularity, and updates `real_catalog_extract.json` and `output/dims/catalog.json` on the fly.
+- Real Spotify URIs are used directly as `track_id`. `release_year` is honestly left `null` since exports don't include it.
+- `popularity` is rescaled from real play counts (30-100 range).
+- `generate_data_v2.py`'s `load_real_catalog_override()` and `build_full_catalog.py` automatically synchronize `output/dims/catalog.json` with `real_catalog_extract.json`.
 
 ### Recommended build order (once more real users' data is collected)
 Thanks to a merge-safety fix (see Landing Zone notes below), scripts no longer have a strict destructive-overwrite ordering requirement — but this is still the logical sequence:
@@ -727,7 +727,7 @@ The course's hands-on chapters use Microsoft Fabric. The concepts carry over one
 - [x] TA feedback incorporated (partitioned incremental strategy + explicit PII docs)
 - [x] Live API puller (`fetch_recently_played.py`) built for OAuth-based real incremental data
 - [x] 3 of ~6-7 real personas analyzed and derived into `PERSONAS` (indie-alt/hip-hop/pop, Bollywood/Punjabi/Sufi, J-pop/J-rock clusters)
-- [x] Catalog replaced with real-data extraction (`real_catalog_extract.json`, 200 tracks, 46% of analyzed real plays covered)
+- [x] Catalog replaced with exhaustive real-data extraction & auto-cataloging framework (`catalog_utils.py`, 11,608 distinct tracks covering 100% of real plays across Azan, Izyan, and Saaif)
 - [x] Merge-safety bug fixed in `generate_data_v2.py` — script run order no longer risks destroying real data
 - [x] Demo sample generated and verified (genre fidelity ~70-72% match to persona's favorite cluster)
 - [x] Additional business questions brainstormed for Phase 2/3 scope (see Gold G3 section C)
