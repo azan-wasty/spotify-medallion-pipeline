@@ -229,14 +229,33 @@ def fetch_recently_played_api(access_token, limit=50):
 
 
 def transform_api_item(item, user_id):
-    """Transform API recently-played item to standard medallion schema."""
+    """Transform API recently-played item to standard medallion schema.
+
+    Note on unavailable fields:
+      - ms_played: the /recently-played endpoint does not return how much was
+        actually listened to — only track duration_ms. Setting ms_played=None
+        (null in JSON) is honest; do NOT use duration_ms as a proxy because it
+        inflates completion % and suppresses skip signals in downstream metrics.
+      - skipped: the endpoint has no skip signal. null means unknown, not False.
+      - device_type: available only if the play context carries a device object;
+        otherwise null.  Do NOT default to "mobile".
+    """
     played_at = item.get("played_at")
     track = item.get("track", {})
     track_uri = track.get("uri") or f"spotify:track:{track.get('id')}"
-    duration_ms = track.get("duration_ms", 0)
 
     if not played_at or not track_uri:
         return None
+
+    # Derive device type from context if present; the API returns it as a
+    # context object type ("artist", "album", "playlist") — not a device label.
+    # The play context is not the same as a device; leave null unless a future
+    # endpoint revision surfaces real device information.
+    context = item.get("context") or {}
+    context_type = context.get("type")  # e.g. "playlist", "album", None
+    # Map what we actually know about the playback context to device_type vocab.
+    # Currently the endpoint gives no reliable device signal, so stay null.
+    device_type = None  # unknown — do not fabricate
 
     h = hashlib.sha256(f"{user_id}_{played_at}_{track_uri}".encode("utf-8")).hexdigest()[:12]
     event_id = f"evt_api_{h}"
@@ -246,11 +265,12 @@ def transform_api_item(item, user_id):
         "user_id": user_id,
         "track_id": track_uri,
         "played_at": played_at,
-        "ms_played": duration_ms,
-        "skipped": False,
-        "device_type": "mobile",
+        "ms_played": None,      # not provided by /recently-played; null = unknown
+        "skipped": None,        # not provided by /recently-played; null = unknown
+        "device_type": device_type,  # null until a real device signal is available
         "source": "real_api"
     }
+
 
 
 def write_or_merge_partition(day_str, new_events, output_dir):
@@ -264,8 +284,14 @@ def write_or_merge_partition(day_str, new_events, output_dir):
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 existing_events = json.load(f)
-        except Exception:
-            existing_events = []
+        except Exception as exc:
+            # Fail loudly rather than silently treating an unreadable file as
+            # empty: overwriting it would destroy any real rows already merged in.
+            raise IOError(
+                f"Cannot read existing partition {file_path} \u2014 refusing to "
+                f"overwrite to avoid data loss. Fix or remove the file first. "
+                f"Original error: {exc}"
+            ) from exc
 
     existing_keys = {
         (e.get("user_id"), e.get("played_at"), e.get("track_id"))

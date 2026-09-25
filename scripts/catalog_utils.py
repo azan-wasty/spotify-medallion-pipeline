@@ -111,8 +111,16 @@ def register_new_tracks(new_track_list):
     """
     Given a list of track dicts:
       [{ "track_id": ..., "track_name": ..., "artist": ..., "album": ..., "ms_played": ... }]
-    Registers any new tracks into real_catalog_extract.json and output/dims/catalog.json.
+    Registers any *new* tracks into real_catalog_extract.json and output/dims/catalog.json.
     Returns the number of new tracks added.
+
+    For tracks that are already in the catalog this function only refreshes
+    max_ms (the duration watermark used to derive duration_sec) — it does NOT
+    increment the play count.  Incrementing plays for existing tracks would
+    inflate popularity every time sanitize_real_data.py or fetch_recently_played.py
+    is re-run, which is the "duplicate-play bug".  Play counts for existing
+    tracks are managed exclusively by build_full_catalog.py, which reads the
+    raw export files directly.
     """
     if not new_track_list:
         return 0
@@ -125,10 +133,10 @@ def register_new_tracks(new_track_list):
         if not track_id:
             continue
 
-        ms_played = int(t.get("ms_played", 0))
+        ms_played = int(t.get("ms_played") or 0)
 
         if track_id in extract_map:
-            extract_map[track_id]["plays"] = extract_map[track_id].get("plays", 0) + 1
+            # Only refresh the max duration watermark; do NOT touch plays.
             if ms_played > extract_map[track_id].get("max_ms", 0):
                 extract_map[track_id]["max_ms"] = ms_played
         else:
@@ -150,3 +158,4 @@ def register_new_tracks(new_track_list):
 
     write_catalog_files(extract_map.values())
     return added_count
+

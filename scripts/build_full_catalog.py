@@ -2,8 +2,9 @@
 Script: build_full_catalog.py
 ==============================
 Purpose:
-    Extracts ALL distinct music tracks across all real user exports (azan, izyan, saaif),
-    maps/infers genres, builds an exhaustive real catalog, and updates:
+    Extracts ALL distinct music tracks across all real user exports
+    (user_real_01, user_real_02, user_real_03), maps/infers genres,
+    builds an exhaustive real catalog, and updates:
       - scripts/real_catalog_extract.json
       - output/dims/catalog.json
 
@@ -24,10 +25,13 @@ from collections import Counter
 
 from catalog_utils import ROOT_DIR, UNCLASSIFIED, infer_genre, load_catalog_extract, write_catalog_files
 
+# Each entry is the raw-export folder for one real user.
+# Folder names must match what was agreed locally — do NOT put
+# real names here; use the pseudonymized folder names instead.
 DATA_DIRS = [
-    os.path.join(ROOT_DIR, "dav data", "azan"),
-    os.path.join(ROOT_DIR, "dav data", "izyan"),
-    os.path.join(ROOT_DIR, "dav data", "saaif")
+    os.path.join(ROOT_DIR, "dav data", "user_real_01"),
+    os.path.join(ROOT_DIR, "dav data", "user_real_02"),
+    os.path.join(ROOT_DIR, "dav data", "user_real_03")
 ]
 
 

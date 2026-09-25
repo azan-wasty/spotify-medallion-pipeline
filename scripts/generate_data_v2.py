@@ -768,8 +768,17 @@ def read_partition(day):
     path = partition_path(day)
     if not os.path.exists(path):
         return []
-    with open(path, encoding="utf-8") as f:
-        return json.load(f)
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as exc:
+        # Fail loudly: silently returning [] would cause write_partition to see
+        # no real rows, strip them out, and permanently destroy them.
+        raise IOError(
+            f"Cannot read landing partition {path} \u2014 refusing to continue "
+            f"to avoid data loss. Fix or remove the file first. "
+            f"Original error: {exc}"
+        ) from exc
 
 
 def write_partition(day: datetime, events):

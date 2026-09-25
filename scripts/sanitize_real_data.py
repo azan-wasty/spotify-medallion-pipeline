@@ -12,7 +12,7 @@ PII Compliance Rules:
     3. Skips non-music items (e.g., podcasts/audiobooks) unless explicitly flagged.
 
 Usage:
-    python3 scripts/sanitize_real_data.py --input-dir "./dav data/azan" --user-id user_real_01 --output-dir output/raw
+    python3 scripts/sanitize_real_data.py --input-dir "./dav data/user_real_01" --user-id user_real_01 --output-dir output/raw
 """
 
 import argparse
@@ -24,17 +24,49 @@ from datetime import datetime
 
 
 def map_platform_to_device_type(platform_str):
+    """Map Spotify's `platform` field to a controlled device_type vocabulary.
+
+    Controlled vocab (mirrors 00_config): mobile | desktop | web_player | smart_speaker
+
+    Order matters: more-specific patterns are checked first.
+    - web/browser is checked before OS keywords so "Windows / Chrome" → web_player,
+      not desktop.
+    - PlayStation, Xbox, Nintendo Switch → desktop (closest fit; no game_console tier).
+    - Chromecast, Cast, Echo, Alexa, HomePod → smart_speaker.
+    - Unknown platform → mobile (safest default for Export data, which is often
+      mobile-dominant; explicitly documented so callers know the assumption).
+    """
     if not platform_str:
         return "mobile"
     p = str(platform_str).lower()
+
+    # Game consoles — check before generic OS keywords (PlayStation contains no
+    # OS keyword, but Xbox and Switch don't either).
+    if any(k in p for k in ["playstation", "xbox", "nintendo", "switch"]):
+        return "desktop"
+
+    # Browser / web player — check before OS keywords so "windows / web player"
+    # or "chrome" maps here, not to "desktop".
+    if any(k in p for k in ["web player", "webplayer", "web_player", "browser",
+                              "chrome", "firefox", "safari", "edge", "opera"]):
+        return "web_player"
+
+    # Native desktop apps
     if any(k in p for k in ["windows", "mac", "linux", "osx", "desktop"]):
         return "desktop"
-    elif any(k in p for k in ["android", "ios", "iphone", "ipad", "mobile"]):
+
+    # Mobile apps
+    if any(k in p for k in ["android", "ios", "iphone", "ipad", "mobile"]):
         return "mobile"
-    elif "web" in p:
-        return "web_player"
-    else:
+
+    # Smart speakers and cast devices
+    if any(k in p for k in ["chromecast", "cast", "echo", "alexa",
+                              "homepod", "smart_speaker", "speaker", "tv"]):
         return "smart_speaker"
+
+    # Truly unknown — default to mobile (most common real-user device)
+    return "mobile"
+
 
 
 def transform_record(item, user_id, idx):
@@ -79,8 +111,14 @@ def write_or_merge_partition(day_str, new_events, output_dir):
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 existing_events = json.load(f)
-        except Exception:
-            existing_events = []
+        except Exception as exc:
+            # Fail loudly rather than silently treating an unreadable file as
+            # empty: overwriting it would destroy any real rows already merged in.
+            raise IOError(
+                f"Cannot read existing partition {file_path} — refusing to "
+                f"overwrite to avoid data loss. Fix or remove the file first. "
+                f"Original error: {exc}"
+            ) from exc
 
     # Create key set for deduplication
     existing_keys = {
