@@ -121,7 +121,7 @@
     "track_name": "The Night Begins to Shine",
     "artist": "B.E.R.",
     "album": "The Night Begins to Shine",
-    "genre": "unclassified",
+    "genre": "rock",
     "plays": 337,
     "max_ms": 210515
   },
@@ -202,7 +202,7 @@
     "track_name": "double take",
     "artist": "Dhruv",
     "album": "rapunzel",
-    "genre": "unclassified",
+    "genre": "pop",
     "plays": 297,
     "max_ms": 292810
   },
@@ -409,7 +409,7 @@
     "track_name": "Waqt Ki Baatein",
     "artist": "Dream Note",
     "album": "Waqt Ki Baatein",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 247,
     "max_ms": 243310
   },
@@ -733,7 +733,7 @@
     "track_name": "Sun Lo Na (Raw)",
     "artist": "Suzonn",
     "album": "Sun Lo Na (Raw)",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 217,
     "max_ms": 174466
   },
@@ -877,7 +877,7 @@
     "track_name": "Farq hai",
     "artist": "Suzonn",
     "album": "Farq hai",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 199,
     "max_ms": 184090
   },
@@ -1111,7 +1111,7 @@
     "track_name": "Young Girl A",
     "artist": "Siinamota",
     "album": "Alive",
-    "genre": "unclassified",
+    "genre": "jpop",
     "plays": 187,
     "max_ms": 555891
   },
@@ -1165,7 +1165,7 @@
     "track_name": "Aankhon Se Batana",
     "artist": "Dikshant",
     "album": "Aankhon Se Batana",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 183,
     "max_ms": 221271
   },
@@ -1201,7 +1201,7 @@
     "track_name": "vendetta!",
     "artist": "MUPP",
     "album": "vendetta!",
-    "genre": "unclassified",
+    "genre": "hip-hop",
     "plays": 180,
     "max_ms": 116789
   },
@@ -1300,7 +1300,7 @@
     "track_name": "osmanthus",
     "artist": "whaledontsleep",
     "album": "Nerenaiyoruni ka-tenwoakete",
-    "genre": "unclassified",
+    "genre": "jpop",
     "plays": 175,
     "max_ms": 140487
   },
@@ -1561,7 +1561,7 @@
     "track_name": "To the Girl With Red Converse",
     "artist": "Jackie Xan",
     "album": "To the Girl With Red Converse",
-    "genre": "unclassified",
+    "genre": "hip-hop",
     "plays": 164,
     "max_ms": 143844
   },
@@ -1615,7 +1615,7 @@
     "track_name": "I don't see nobody but you",
     "artist": "Yusei",
     "album": "I don't see nobody but you",
-    "genre": "unclassified",
+    "genre": "indie-alt",
     "plays": 161,
     "max_ms": 271669
   },
@@ -1678,7 +1678,7 @@
     "track_name": "Natsu Koi Hanabi",
     "artist": "CHANO",
     "album": "Sugar",
-    "genre": "unclassified",
+    "genre": "jpop",
     "plays": 159,
     "max_ms": 278253
   },
@@ -1750,7 +1750,7 @@
     "track_name": "Ghost In A Flower (From \"A Whisker Away\")",
     "artist": "Akano",
     "album": "Ghost In A Flower (From \"A Whisker Away\")",
-    "genre": "unclassified",
+    "genre": "jpop",
     "plays": 156,
     "max_ms": 240774
   },
@@ -1948,7 +1948,7 @@
     "track_name": "Kamado Tanjirou no Uta (From \"Demon Slayer: Kimetsu no Yaiba\")",
     "artist": "Akano",
     "album": "Kamado Tanjirou no Uta (From \"Demon Slayer: Kimetsu no Yaiba\")",
-    "genre": "unclassified",
+    "genre": "jpop",
     "plays": 150,
     "max_ms": 230848
   },
@@ -1957,7 +1957,7 @@
     "track_name": "To the Girl With Red Converse",
     "artist": "Jackie Xan",
     "album": "To the Girl With Red Converse",
-    "genre": "unclassified",
+    "genre": "hip-hop",
     "plays": 150,
     "max_ms": 143851
   },
@@ -2488,7 +2488,7 @@
     "track_name": "Abu Turab Ali",
     "artist": "Muhammad Samie",
     "album": "Abu Turab Ali",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 137,
     "max_ms": 1870971
   },
@@ -2929,7 +2929,7 @@
     "track_name": "Ze Rehmat",
     "artist": "Muhammad Samie",
     "album": "Ze Rehmat",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 128,
     "max_ms": 1377065
   },
@@ -2938,7 +2938,7 @@
     "track_name": "Banaam E Haider",
     "artist": "Muhammad Samie",
     "album": "Banaam E Haider",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 128,
     "max_ms": 234408
   },
@@ -3244,7 +3244,7 @@
     "track_name": "Bekhud",
     "artist": "Muhammad Samie",
     "album": "Bekhud",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 121,
     "max_ms": 927475
   },
@@ -3523,7 +3523,7 @@
     "track_name": "Raaz-e-Fitna",
     "artist": "Asfar Hussain",
     "album": "Raaz-e-Fitna",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 116,
     "max_ms": 315810
   },
@@ -3892,7 +3892,7 @@
     "track_name": "Tu Hi Bataa",
     "artist": "Suzonn",
     "album": "Tu Hi Bataa",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 110,
     "max_ms": 147130
   },
@@ -4036,7 +4036,7 @@
     "track_name": "Mehram",
     "artist": "Asfar Hussain",
     "album": "Mehram",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 108,
     "max_ms": 352620
   },
@@ -4081,7 +4081,7 @@
     "track_name": "Andaz E Karam",
     "artist": "HAVI",
     "album": "Andaz E Karam",
-    "genre": "unclassified",
+    "genre": "sufi-pop",
     "plays": 107,
     "max_ms": 575207
   },
@@ -4189,7 +4189,7 @@
     "track_name": "Berry",
     "artist": "CHANO",
     "album": "Berry",
-    "genre": "unclassified",
+    "genre": "jpop",
     "plays": 106,
     "max_ms": 207522
   },
@@ -4252,7 +4252,7 @@
     "track_name": "Trouble",
     "artist": "dopuu",
     "album": "Trouble",
-    "genre": "unclassified",
+    "genre": "pop",
     "plays": 105,
     "max_ms": 146745
   },
@@ -4576,7 +4576,7 @@
     "track_name": "Maikada",
     "artist": "Muhammad Samie",
     "album": "Maikada",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 100,
     "max_ms": 391317
   },
@@ -4972,7 +4972,7 @@
     "track_name": "Ultra Instinct Mastered",
     "artist": "Friedrich Habetler",
     "album": "Ultra Instinct Mastered",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 95,
     "max_ms": 146018
   },
@@ -5008,7 +5008,7 @@
     "track_name": "Awari",
     "artist": "Adnan Dhool",
     "album": "Ek Villain",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 95,
     "max_ms": 320757
   },
@@ -5197,7 +5197,7 @@
     "track_name": "Akhiyan Udeek Diyan",
     "artist": "Asfar Hussain",
     "album": "Nescafe Basement Season 2",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 93,
     "max_ms": 597159
   },
@@ -5269,7 +5269,7 @@
     "track_name": "Woh Purana Pyar (Raw)",
     "artist": "Suzonn",
     "album": "Woh Purana Pyar (Raw)",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 92,
     "max_ms": 224842
   },
@@ -5278,7 +5278,7 @@
     "track_name": "Reit Ka Ghar",
     "artist": "Suzonn",
     "album": "Reit Ka Ghar",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 92,
     "max_ms": 185157
   },
@@ -5287,7 +5287,7 @@
     "track_name": "Pareshaan",
     "artist": "Suzonn",
     "album": "Pareshaan",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 92,
     "max_ms": 244800
   },
@@ -5305,7 +5305,7 @@
     "track_name": "O Sahib - From \"Abdullahpur Ka Devdas\"",
     "artist": "Adnan Dhool",
     "album": "O Sahib",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 92,
     "max_ms": 337776
   },
@@ -5629,7 +5629,7 @@
     "track_name": "Maikada 2",
     "artist": "Muhammad Samie",
     "album": "Maikada 2",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 89,
     "max_ms": 550632
   },
@@ -5818,7 +5818,7 @@
     "track_name": "KAR KAR MINTAAN",
     "artist": "Ahsan Javed",
     "album": "KAR KAR MINTAAN",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 87,
     "max_ms": 166364
   },
@@ -5926,7 +5926,7 @@
     "track_name": "Pardes Katenda",
     "artist": "Adnan Dhool",
     "album": "Pardes Katenda",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 86,
     "max_ms": 167922
   },
@@ -5935,7 +5935,7 @@
     "track_name": "Ali Hi Haq Tha - Banaam-e-Haider 3",
     "artist": "Muhammad Samie",
     "album": "Ali Hi Haq Tha",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 86,
     "max_ms": 1084681
   },
@@ -5998,7 +5998,7 @@
     "track_name": "Aao Na",
     "artist": "Suzonn",
     "album": "Aao Na",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 85,
     "max_ms": 199371
   },
@@ -6313,7 +6313,7 @@
     "track_name": "Iraday",
     "artist": "danish roomi",
     "album": "Iraday",
-    "genre": "unclassified",
+    "genre": "rnb",
     "plays": 82,
     "max_ms": 214544
   },
@@ -6421,7 +6421,7 @@
     "track_name": "Aur Nahi",
     "artist": "danish roomi",
     "album": "Aur Nahi",
-    "genre": "unclassified",
+    "genre": "rnb",
     "plays": 81,
     "max_ms": 361996
   },
@@ -6439,7 +6439,7 @@
     "track_name": "Maikada 3 (Bus Ik Nigah)",
     "artist": "Muhammad Samie",
     "album": "Maikada 3 (Bus Ik Nigah)",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 81,
     "max_ms": 834002
   },
@@ -7339,7 +7339,7 @@
     "track_name": "american wedding (Hotel California)",
     "artist": "dopuu",
     "album": "american wedding (Hotel California)",
-    "genre": "unclassified",
+    "genre": "pop",
     "plays": 74,
     "max_ms": 505237
   },
@@ -7834,7 +7834,7 @@
     "track_name": "Banaam E Haider",
     "artist": "Muhammad Samie",
     "album": "Banaam E Haider",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 71,
     "max_ms": 599263
   },
@@ -7969,7 +7969,7 @@
     "track_name": "Rung",
     "artist": "HAVI",
     "album": "Rung",
-    "genre": "unclassified",
+    "genre": "sufi-pop",
     "plays": 70,
     "max_ms": 576377
   },
@@ -8536,7 +8536,7 @@
     "track_name": "Kamado Tanjirou no Uta (From \"Demon Slayer: Kimetsu no Yaiba\") [Full Version]",
     "artist": "Akano",
     "album": "Kamado Tanjirou no Uta (From \"Demon Slayer: Kimetsu no Yaiba\") [Full Version]",
-    "genre": "unclassified",
+    "genre": "jpop",
     "plays": 66,
     "max_ms": 328548
   },
@@ -9094,7 +9094,7 @@
     "track_name": "To the Girl With Red Converse",
     "artist": "Jackie Xan",
     "album": "To the Girl With Red Converse",
-    "genre": "unclassified",
+    "genre": "hip-hop",
     "plays": 63,
     "max_ms": 148034
   },
@@ -9382,7 +9382,7 @@
     "track_name": "Sleeping town",
     "artist": "whaledontsleep",
     "album": "Nerenaiyoruni ka-tenwoakete",
-    "genre": "unclassified",
+    "genre": "jpop",
     "plays": 62,
     "max_ms": 197067
   },
@@ -9724,7 +9724,7 @@
     "track_name": "SARGOSHI",
     "artist": "Ahsan Javed",
     "album": "SARGOSHI",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 60,
     "max_ms": 169637
   },
@@ -9904,7 +9904,7 @@
     "track_name": "Maikada 3 (Bus Ik Nigah)",
     "artist": "Muhammad Samie",
     "album": "Maikada 3 (Bus Ik Nigah)",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 59,
     "max_ms": 1612822
   },
@@ -9931,7 +9931,7 @@
     "track_name": "Ho Ja Mast Malang Tu (From \"Malang - Unleash The Madness\")",
     "artist": "Adnan Dhool",
     "album": "Ho Ja Mast Malang Tu (From \"Malang - Unleash The Madness\")",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 59,
     "max_ms": 536687
   },
@@ -10759,7 +10759,7 @@
     "track_name": "Tera Aastan",
     "artist": "Muhammad Samie",
     "album": "Tera Aastan",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 55,
     "max_ms": 455680
   },
@@ -11290,7 +11290,7 @@
     "track_name": "Maikada",
     "artist": "Muhammad Samie",
     "album": "Maikada",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 52,
     "max_ms": 391317
   },
@@ -11308,7 +11308,7 @@
     "track_name": "Maikada 2",
     "artist": "Muhammad Samie",
     "album": "Maikada 2",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 52,
     "max_ms": 550861
   },
@@ -11542,7 +11542,7 @@
     "track_name": "Tell Me Pretty Lies",
     "artist": "Yusei",
     "album": "Tell Me Pretty Lies",
-    "genre": "unclassified",
+    "genre": "indie-alt",
     "plays": 51,
     "max_ms": 463880
   },
@@ -12226,7 +12226,7 @@
     "track_name": "Mustafa Haq-Numa",
     "artist": "Muhammad Samie",
     "album": "Mustafa Haq-Numa",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 48,
     "max_ms": 1627024
   },
@@ -13036,7 +13036,7 @@
     "track_name": "get you the moon",
     "artist": "Yusei",
     "album": "get you the moon",
-    "genre": "unclassified",
+    "genre": "indie-alt",
     "plays": 45,
     "max_ms": 244758
   },
@@ -13747,7 +13747,7 @@
     "track_name": "Mixed Nuts (From \"SPY x FAMILY\")",
     "artist": "Akano",
     "album": "Mixed Nuts (From \"SPY x FAMILY\")",
-    "genre": "unclassified",
+    "genre": "jpop",
     "plays": 43,
     "max_ms": 98500
   },
@@ -14035,7 +14035,7 @@
     "track_name": "Nami Danam",
     "artist": "Muhammad Samie",
     "album": "Nami Danam",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 42,
     "max_ms": 455364
   },
@@ -14134,7 +14134,7 @@
     "track_name": "Sun Lo Na (Raw)",
     "artist": "Suzonn",
     "album": "Sun Lo Na (Raw)",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 41,
     "max_ms": 174466
   },
@@ -14791,7 +14791,7 @@
     "track_name": "Na Milay",
     "artist": "HAVI",
     "album": "Na Milay",
-    "genre": "unclassified",
+    "genre": "sufi-pop",
     "plays": 39,
     "max_ms": 292693
   },
@@ -14800,7 +14800,7 @@
     "track_name": "Tera Aastan",
     "artist": "Muhammad Samie",
     "album": "Tera Aastan",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 39,
     "max_ms": 455679
   },
@@ -15223,7 +15223,7 @@
     "track_name": "Vegeta's Super Saiyan Theme",
     "artist": "Friedrich Habetler",
     "album": "Vegeta's Super Saiyan Theme",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 37,
     "max_ms": 206549
   },
@@ -15637,7 +15637,7 @@
     "track_name": "Tapion's Theme",
     "artist": "Friedrich Habetler",
     "album": "Tapion's Theme",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 35,
     "max_ms": 173810
   },
@@ -16204,7 +16204,7 @@
     "track_name": "Vegeta Royal Blue Theme",
     "artist": "Friedrich Habetler",
     "album": "Vegeta Royal Blue Theme",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 33,
     "max_ms": 207245
   },
@@ -16582,7 +16582,7 @@
     "track_name": "Moon",
     "artist": "HAVI",
     "album": "Moon",
-    "genre": "unclassified",
+    "genre": "sufi-pop",
     "plays": 32,
     "max_ms": 210285
   },
@@ -16897,7 +16897,7 @@
     "track_name": "american wedding (Hotel California)",
     "artist": "dopuu",
     "album": "american wedding (Hotel California)",
-    "genre": "unclassified",
+    "genre": "pop",
     "plays": 31,
     "max_ms": 273000
   },
@@ -17914,7 +17914,7 @@
     "track_name": "Peelay pattay",
     "artist": "Ahsan Javed",
     "album": "Peelay pattay",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 27,
     "max_ms": 288246
   },
@@ -17977,7 +17977,7 @@
     "track_name": "Trouble",
     "artist": "HAVI",
     "album": "Trouble",
-    "genre": "unclassified",
+    "genre": "sufi-pop",
     "plays": 27,
     "max_ms": 152000
   },
@@ -19165,7 +19165,7 @@
     "track_name": "SSJ 3 Theme",
     "artist": "Friedrich Habetler",
     "album": "SSJ 3 Theme",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 22,
     "max_ms": 165521
   },
@@ -19210,7 +19210,7 @@
     "track_name": "Heartbreak Hotel",
     "artist": "Yusei",
     "album": "Heartbreak Hotel",
-    "genre": "unclassified",
+    "genre": "indie-alt",
     "plays": 22,
     "max_ms": 367191
   },
@@ -19363,7 +19363,7 @@
     "track_name": "Tau Kia Huwa",
     "artist": "Asfar Hussain",
     "album": "Basement Season 1",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 22,
     "max_ms": 583305
   },
@@ -19813,7 +19813,7 @@
     "track_name": "Rihaee",
     "artist": "Suzonn",
     "album": "Rihaee",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 20,
     "max_ms": 182482
   },
@@ -22594,7 +22594,7 @@
     "track_name": "Vegeta Royal Blue Theme",
     "artist": "Friedrich Habetler",
     "album": "Vegeta Royal Blue Theme",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 13,
     "max_ms": 151421
   },
@@ -26032,7 +26032,7 @@
     "track_name": "Tu Jo Paas",
     "artist": "Suzonn",
     "album": "Tu Jo Paas",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 9,
     "max_ms": 212571
   },
@@ -26509,7 +26509,7 @@
     "track_name": "Das ve yaar",
     "artist": "Ahsan Javed",
     "album": "Das ve yaar",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 9,
     "max_ms": 118681
   },
@@ -27787,7 +27787,7 @@
     "track_name": "JHALEYA BANDEYA",
     "artist": "Ahsan Javed",
     "album": "JHALEYA BANDEYA",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 8,
     "max_ms": 139441
   },
@@ -28372,7 +28372,7 @@
     "track_name": "Tapion's Theme",
     "artist": "Friedrich Habetler",
     "album": "Tapion's Theme",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 7,
     "max_ms": 178935
   },
@@ -28534,7 +28534,7 @@
     "track_name": "Sun Lo Na",
     "artist": "Suzonn",
     "album": "Sun Lo Na",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 7,
     "max_ms": 164173
   },
@@ -28561,7 +28561,7 @@
     "track_name": "Zaroori Nahi",
     "artist": "Dream Note",
     "album": "Dhun",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 7,
     "max_ms": 139826
   },
@@ -29569,7 +29569,7 @@
     "track_name": "Iraday (feat. JANI)",
     "artist": "danish roomi",
     "album": "Iraday (feat. JANI)",
-    "genre": "unclassified",
+    "genre": "rnb",
     "plays": 7,
     "max_ms": 214544
   },
@@ -29605,7 +29605,7 @@
     "track_name": "Dil Mom Ka Dia",
     "artist": "Adnan Dhool",
     "album": "Dil Mom Ka Dia",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 7,
     "max_ms": 161170
   },
@@ -30352,7 +30352,7 @@
     "track_name": "Adhure Hum",
     "artist": "Suzonn",
     "album": "Adhure Hum",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 6,
     "max_ms": 212688
   },
@@ -30523,7 +30523,7 @@
     "track_name": "Tere Ishq Mein",
     "artist": "Asfar Hussain",
     "album": "Nescafe Basement Season 2",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 6,
     "max_ms": 376685
   },
@@ -30640,7 +30640,7 @@
     "track_name": "airplane thoughts",
     "artist": "Dhruv",
     "album": "rapunzel",
-    "genre": "unclassified",
+    "genre": "pop",
     "plays": 6,
     "max_ms": 210411
   },
@@ -30649,7 +30649,7 @@
     "track_name": "vulnerable",
     "artist": "Dhruv",
     "album": "rapunzel",
-    "genre": "unclassified",
+    "genre": "pop",
     "plays": 6,
     "max_ms": 9963
   },
@@ -31360,7 +31360,7 @@
     "track_name": "Nahin Milta",
     "artist": "Asfar Hussain",
     "album": "Nahin Milta",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 6,
     "max_ms": 233523
   },
@@ -31387,7 +31387,7 @@
     "track_name": "Pardes - Slow Version",
     "artist": "Adnan Dhool",
     "album": "Pardes",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 6,
     "max_ms": 206400
   },
@@ -32809,7 +32809,7 @@
     "track_name": "The Night Begin to Shine",
     "artist": "B.E.R.",
     "album": "The Night Begin to Shine",
-    "genre": "unclassified",
+    "genre": "rock",
     "plays": 5,
     "max_ms": 210570
   },
@@ -33664,7 +33664,7 @@
     "track_name": "Working on Myself",
     "artist": "Jackie Xan",
     "album": "Working on Myself",
-    "genre": "unclassified",
+    "genre": "hip-hop",
     "plays": 5,
     "max_ms": 12363
   },
@@ -33970,7 +33970,7 @@
     "track_name": "Tur Gaye Ne",
     "artist": "Ahsan Javed",
     "album": "Tur Gaye Ne",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 5,
     "max_ms": 140000
   },
@@ -34447,7 +34447,7 @@
     "track_name": "Love Trial",
     "artist": "CHANO",
     "album": "Berry",
-    "genre": "unclassified",
+    "genre": "jpop",
     "plays": 5,
     "max_ms": 73924
   },
@@ -35599,7 +35599,7 @@
     "track_name": "Gohans Anger Theme",
     "artist": "Friedrich Habetler",
     "album": "Gohans Anger Theme",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 4,
     "max_ms": 248908
   },
@@ -38083,7 +38083,7 @@
     "track_name": "Maar Udari - Pardes 2.0",
     "artist": "Adnan Dhool",
     "album": "Maar Udari",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 4,
     "max_ms": 199335
   },
@@ -40567,7 +40567,7 @@
     "track_name": "Blue Vegito Theme",
     "artist": "Friedrich Habetler",
     "album": "Blue Vegito Theme",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 3,
     "max_ms": 157372
   },
@@ -40576,7 +40576,7 @@
     "track_name": "Jirens Theme",
     "artist": "Friedrich Habetler",
     "album": "Jirens Theme",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 3,
     "max_ms": 267150
   },
@@ -42781,7 +42781,7 @@
     "track_name": "I Don't Sleep",
     "artist": "Jackie Xan",
     "album": "I Don't Sleep",
-    "genre": "unclassified",
+    "genre": "hip-hop",
     "plays": 3,
     "max_ms": 3203
   },
@@ -44032,7 +44032,7 @@
     "track_name": "Kad Lo Jaan",
     "artist": "Adnan Dhool",
     "album": "Kad Lo Jaan",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 3,
     "max_ms": 197140
   },
@@ -44167,7 +44167,7 @@
     "track_name": "Adawat (Original Motion Picture Soundtrack)",
     "artist": "Adnan Dhool",
     "album": "Adawat (Original Motion Picture Soundtrack)",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 3,
     "max_ms": 264938
   },
@@ -44185,7 +44185,7 @@
     "track_name": "Yaar Chadh Gaya (Original Score)",
     "artist": "Adnan Dhool",
     "album": "London Nahi Jaunga (Original Score)",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 3,
     "max_ms": 221124
   },
@@ -46642,7 +46642,7 @@
     "track_name": "Ultra Instinct Mastered",
     "artist": "Friedrich Habetler",
     "album": "Ultra Instinct Mastered",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 2,
     "max_ms": 142135
   },
@@ -48136,7 +48136,7 @@
     "track_name": "Garou's Theme",
     "artist": "Friedrich Habetler",
     "album": "Garou's Theme",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 2,
     "max_ms": 17450
   },
@@ -48451,7 +48451,7 @@
     "track_name": "Ultimate Battle Guitar Ver.",
     "artist": "Friedrich Habetler",
     "album": "Ultimate Battle Guitar Ver.",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 2,
     "max_ms": 243395
   },
@@ -48469,7 +48469,7 @@
     "track_name": "Power to Resist",
     "artist": "Friedrich Habetler",
     "album": "Power to Resist",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 2,
     "max_ms": 198215
   },
@@ -48478,7 +48478,7 @@
     "track_name": "The Birth of Merged Zamasu",
     "artist": "Friedrich Habetler",
     "album": "The Birth of Merged Zamasu",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 2,
     "max_ms": 2389
   },
@@ -48496,7 +48496,7 @@
     "track_name": "A Fierce Battle Against a Foe",
     "artist": "Friedrich Habetler",
     "album": "A Fierce Battle Against a Foe",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 2,
     "max_ms": 236425
   },
@@ -49585,7 +49585,7 @@
     "track_name": "Kahaani",
     "artist": "Dream Note",
     "album": "Kahaani",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 2,
     "max_ms": 1653
   },
@@ -50431,7 +50431,7 @@
     "track_name": "moonlight",
     "artist": "Dhruv",
     "album": "rapunzel",
-    "genre": "unclassified",
+    "genre": "pop",
     "plays": 2,
     "max_ms": 159130
   },
@@ -52393,7 +52393,7 @@
     "track_name": "what's wrong with me?",
     "artist": "Dhruv",
     "album": "rapunzel",
-    "genre": "unclassified",
+    "genre": "pop",
     "plays": 2,
     "max_ms": 703
   },
@@ -54697,7 +54697,7 @@
     "track_name": "BEH K KUAAN TE",
     "artist": "Ahsan Javed",
     "album": "BEH K KUAAN TE",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 2,
     "max_ms": 188852
   },
@@ -54715,7 +54715,7 @@
     "track_name": "Hik Kursi",
     "artist": "Adnan Dhool",
     "album": "Hik Kursi",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 2,
     "max_ms": 174285
   },
@@ -65245,7 +65245,7 @@
     "track_name": "Mastered Ultra Instinct",
     "artist": "Friedrich Habetler",
     "album": "Mastered Ultra Instinct",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 1,
     "max_ms": 322435
   },
@@ -65254,7 +65254,7 @@
     "track_name": "Piccolo's Theme",
     "artist": "Friedrich Habetler",
     "album": "Piccolo's Theme",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 1,
     "max_ms": 3655
   },
@@ -65263,7 +65263,7 @@
     "track_name": "Ultimate Battle English Ver.",
     "artist": "Friedrich Habetler",
     "album": "Ultimate Battle English Ver.",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 1,
     "max_ms": 61435
   },
@@ -65281,7 +65281,7 @@
     "track_name": "Jirens Tremendous Power",
     "artist": "Friedrich Habetler",
     "album": "Jirens Tremendous Power",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 1,
     "max_ms": 134481
   },
@@ -65317,7 +65317,7 @@
     "track_name": "Coordinated Attack",
     "artist": "Friedrich Habetler",
     "album": "Coordinated Attack",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 1,
     "max_ms": 168002
   },
@@ -65335,7 +65335,7 @@
     "track_name": "Goku Black Theme",
     "artist": "Friedrich Habetler",
     "album": "Goku Black Theme",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 1,
     "max_ms": 162232
   },
@@ -65353,7 +65353,7 @@
     "track_name": "Hikari No Will Power",
     "artist": "Friedrich Habetler",
     "album": "Hikari No Will Power",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 1,
     "max_ms": 213759
   },
@@ -65362,7 +65362,7 @@
     "track_name": "Broly Vs. Gogeta - Cover Ver.",
     "artist": "Friedrich Habetler",
     "album": "Broly Vs. Gogeta",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 1,
     "max_ms": 45104
   },
@@ -65425,7 +65425,7 @@
     "track_name": "Heroic Battle",
     "artist": "Friedrich Habetler",
     "album": "Heroic Battle",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 1,
     "max_ms": 16140
   },
@@ -65434,7 +65434,7 @@
     "track_name": "Cha-La-Head-Cha-La",
     "artist": "Friedrich Habetler",
     "album": "Cha-La-Head-Cha-La",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 1,
     "max_ms": 186236
   },
@@ -69475,7 +69475,7 @@
     "track_name": "Blur",
     "artist": "Dhruv",
     "album": "Blur",
-    "genre": "unclassified",
+    "genre": "pop",
     "plays": 1,
     "max_ms": 2537
   },
@@ -70744,7 +70744,7 @@
     "track_name": "Woh Purana Pyar",
     "artist": "Suzonn",
     "album": "Woh Purana Pyar",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 1,
     "max_ms": 1160
   },
@@ -70798,7 +70798,7 @@
     "track_name": "Humse Khafa",
     "artist": "Suzonn",
     "album": "Humse Khafa",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 1,
     "max_ms": 930
   },
@@ -70807,7 +70807,7 @@
     "track_name": "Tere Janey Ke Baad",
     "artist": "Dream Note",
     "album": "Tere Janey Ke Baad",
-    "genre": "unclassified",
+    "genre": "indie-pop-desi",
     "plays": 1,
     "max_ms": 5075
   },
@@ -70870,7 +70870,7 @@
     "track_name": "Ultimate Battle",
     "artist": "Friedrich Habetler",
     "album": "Ultimate Battle",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 1,
     "max_ms": 6630
   },
@@ -72787,7 +72787,7 @@
     "track_name": "grateful",
     "artist": "Dhruv",
     "album": "rapunzel",
-    "genre": "unclassified",
+    "genre": "pop",
     "plays": 1,
     "max_ms": 983
   },
@@ -78673,7 +78673,7 @@
     "track_name": "Kono Yubi Tomare (From \"Kakegurui: Season 2\")",
     "artist": "Akano",
     "album": "Kono Yubi Tomare (From \"Kakegurui: Season 2\")",
-    "genre": "unclassified",
+    "genre": "jpop",
     "plays": 1,
     "max_ms": 3008
   },
@@ -80329,7 +80329,7 @@
     "track_name": "Giorno's Theme",
     "artist": "Friedrich Habetler",
     "album": "Giorno's Theme",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 1,
     "max_ms": 29593
   },
@@ -80338,7 +80338,7 @@
     "track_name": "Giorno's Theme - Giorno Approved",
     "artist": "Friedrich Habetler",
     "album": "Giorno's Theme",
-    "genre": "unclassified",
+    "genre": "soundtrack",
     "plays": 1,
     "max_ms": 13137
   },
@@ -81976,7 +81976,7 @@
     "track_name": "Mil hi lou",
     "artist": "danish roomi",
     "album": "Mil hi lou",
-    "genre": "unclassified",
+    "genre": "rnb",
     "plays": 1,
     "max_ms": 14480
   },
@@ -82003,7 +82003,7 @@
     "track_name": "Always into you",
     "artist": "danish roomi",
     "album": "Always into you",
-    "genre": "unclassified",
+    "genre": "rnb",
     "plays": 1,
     "max_ms": 111783
   },
@@ -82588,7 +82588,7 @@
     "track_name": "Pardes Katenda",
     "artist": "Adnan Dhool",
     "album": "Pardes Katenda",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 1,
     "max_ms": 183
   },
@@ -83677,7 +83677,7 @@
     "track_name": "Sajna",
     "artist": "danish roomi",
     "album": "Sajna",
-    "genre": "unclassified",
+    "genre": "rnb",
     "plays": 1,
     "max_ms": 81883
   },
@@ -84397,7 +84397,7 @@
     "track_name": "Chalo Choro",
     "artist": "Adnan Dhool",
     "album": "Chalo Choro",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 1,
     "max_ms": 8180
   },
@@ -86584,7 +86584,7 @@
     "track_name": "Durood",
     "artist": "Muhammad Samie",
     "album": "Durood",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 1,
     "max_ms": 91853
   },
@@ -86620,7 +86620,7 @@
     "track_name": "Banaam E Aaqa (S.A.W.W)",
     "artist": "Muhammad Samie",
     "album": "Banaam E Aaqa (S.A.W.W)",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 1,
     "max_ms": 303599
   },
@@ -86665,7 +86665,7 @@
     "track_name": "Khaki",
     "artist": "Muhammad Samie",
     "album": "Khaki",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 1,
     "max_ms": 510620
   },
@@ -87088,7 +87088,7 @@
     "track_name": "Banaam E Haider 2",
     "artist": "Muhammad Samie",
     "album": "Banaam E Haider 2",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 1,
     "max_ms": 15999
   },
@@ -87421,7 +87421,7 @@
     "track_name": "Haq Nama",
     "artist": "Muhammad Samie",
     "album": "Haq Nama",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 1,
     "max_ms": 55172
   },
@@ -87430,7 +87430,7 @@
     "track_name": "Aah Ko Chahiye - Aashiqui Sabr-Talab",
     "artist": "Muhammad Samie",
     "album": "Aah Ko Chahiye",
-    "genre": "unclassified",
+    "genre": "qawwali",
     "plays": 1,
     "max_ms": 31778
   },
@@ -89941,7 +89941,7 @@
     "track_name": "Na Kar Bandeya",
     "artist": "Ahsan Javed",
     "album": "Na Kar Bandeya",
-    "genre": "unclassified",
+    "genre": "pakistani-pop",
     "plays": 1,
     "max_ms": 3172
   },
@@ -92668,7 +92668,7 @@
     "track_name": "Kiritorisen",
     "artist": "CHANO",
     "album": "Sugar",
-    "genre": "unclassified",
+    "genre": "jpop",
     "plays": 1,
     "max_ms": 233426
   },
@@ -93091,7 +93091,7 @@
     "track_name": "Sunflower",
     "artist": "CHANO",
     "album": "Sugar",
-    "genre": "unclassified",
+    "genre": "jpop",
     "plays": 1,
     "max_ms": 220146
   },
@@ -93127,7 +93127,7 @@
     "track_name": "Promenade",
     "artist": "CHANO",
     "album": "Sugar",
-    "genre": "unclassified",
+    "genre": "jpop",
     "plays": 1,
     "max_ms": 280253
   },
@@ -93163,7 +93163,7 @@
     "track_name": "Taisho Romantic",
     "artist": "CHANO",
     "album": "Mint",
-    "genre": "unclassified",
+    "genre": "jpop",
     "plays": 1,
     "max_ms": 275801
   },
@@ -93991,7 +93991,7 @@
     "track_name": "Kawaki wo Ameku (From \"Domestic na Kanojo\")",
     "artist": "Akano",
     "album": "Kawaki wo Ameku (From \"Domestic na Kanojo\")",
-    "genre": "unclassified",
+    "genre": "jpop",
     "plays": 1,
     "max_ms": 34496
   },
