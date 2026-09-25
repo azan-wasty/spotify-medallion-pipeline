@@ -53,7 +53,7 @@ Analyzed from real Extended Streaming History exports, pseudonymized, and used t
 
 **Key calibration finding**: real listeners average 57-68 events per *active* day — far higher than the original placeholder personas' 6-10 assumption. `PERSONAS` intensity values were set to 40-45 (a deliberate slight scale-down for demo legibility) rather than the literal real average; bump toward the real figures for the actual Phase 2 full-load run if a more faithful volume is wanted.
 
-**Filler population uses a bell curve, not a flat range**: `EXTRA_RANDOM_USERS`' intensity is drawn from a truncated normal (`INTENSITY_MEAN=15`, `INTENSITY_STD=15`, floored at 1) rather than the old flat `randint(3,9)`. This puts the three real personas (40-45) at roughly **1.7-2.0 standard deviations above the filler population's mean** — i.e., they're realistically rare, very-heavy listeners relative to a normal population, not just "one option among many similar users."
+**Filler population comes from behavioural clusters, not one bell curve**: see [Users and clusters](#users-and-clusters) below. The three real personas (40-45 events/active day) sit in the heavy clusters, while ~half the population is casual (median ~5.5), so they're realistically heavy relative to the population.
 
 **3-4 more real personas expected.** Repeat the same analysis pass per new export (top artists by play count/ms_played, skip rate, active-day intensity, device mix, `conn_country`) and check whether their genre cluster is genuinely new (as with the two clusters below) or overlaps with existing personas.
 
@@ -61,7 +61,23 @@ Analyzed from real Extended Streaming History exports, pseudonymized, and used t
 
 ### 1. Synthetic data (primary — `generate_data_v2.py`)
 - A catalog dimension with deterministic pseudo audio-features (danceability, energy, valence, tempo) standing in for Spotify's now-blocked audio-feature fields, now spanning Western genres plus the real-persona-derived clusters above.
-- `PERSONAS`: named synthetic users calibrated to real personas' actual listening taste (genres, intensity, skip rate) as their exports get analyzed — see table above. Additional generic filler users (`user_synth_NNN`) round out the population for volume, each with its own drawn `skip_rate` and `repeat_ratio`.
+- `PERSONAS`: named synthetic users calibrated to real personas' actual listening taste (genres, intensity, skip rate, device mix) as their exports get analyzed — see table above. Filler users (`user_synth_NNN`) make up the rest of the population.
+- <a id="users-and-clusters"></a>**Users and clusters** (feeds `gold.subscription_propensity_segments`):
+  - `TOTAL_USERS = 50`; `NUM_FILLER = TOTAL_USERS - len(PERSONAS)`, so adding a persona never shrinks the population. Never hardcode the filler count.
+  - Every user is in one of three clusters: `power_free` (heavy, multi-device mobile + desktop/web, low skip, explorer, free), `casual_free` (light, mostly mobile-only, high skip, repeats a lot, free), `power_premium` (heavy, broad genres, multi-device incl. smart speaker, low skip, premium, ~7% free exceptions).
+  - Fillers are split 15% / 55% / 30% (`CLUSTERS[...]["weight"]`), using largest-remainder counts shuffled over users, so ~47 users can't drift far from the target mix.
+  - Traits are drawn from per-cluster distributions: lognormal intensity, Beta skip/repeat/active-day rates, Dirichlet device mix, 1-6 related favourite genres. No clamping, so there are no pile-ups at the bounds.
+  - One latent engagement factor correlates a user's traits within a cluster (`TRAIT_CORRELATION`). Each trait has a 15% chance of coming from another cluster (`CLUSTER_PURITY`), so segments are tendencies with in-between users, not three clean blobs.
+  - **Personas and fillers share one code path** (`build_user`): every trait is sampled, then anything pinned in the `PERSONAS` entry (cluster, real-export calibration) overrides it. Fillers pin only their `user_id`. Current pins: `user_real_01`/`02` → `power_premium`, `user_real_03` → `power_free`.
+  - `engagement_score = W1_VOLUME*volume_norm + W2_DEVICE_DIVERSITY*device_diversity + W3_COMPLETION*(1 - skip_rate) + W4_DISCOVERY*discovery_rate` (weights 0.4/0.2/0.2/0.2 at the top of the file; `discovery_rate = 1 - repeat_ratio`; volume is log-scaled then min-max normalised; device diversity is normalised entropy). Free users at or above `HIGH_PROPENSITY_THRESHOLD` (0.55) get `propensity_flag = "High Conversion Propensity"`.
+  - Each run prints the cluster mix (persona vs filler, premium count, flagged count).
+  - `output/validation/user_segments.json` holds each user's planted cluster, traits, score and flag: the answer key for testing the Gold mart. It is never ingested. `dims/users.json` holds only `user_id`, `country`, `timezone`, `is_premium`, so Gold must recover the segments from behaviour.
+- **When people listen** (feeds `gold.peak_usage_patterns`):
+  - Curves are defined in local time (`daily_curve`, `device_affinity`). Weekdays are bimodal around the commutes (~8 AM, ~5-7 PM); weekends peak later (from ~10-11 AM) and stay high until ~1 AM, with ~17.5% more plays per day (`WEEKEND_VOLUME_FACTOR`).
+  - Devices follow habits: desktop/web player on weekday working hours with a sharp drop after 6 PM and little weekend use; smart speaker at breakfast and dinner with a higher weekend baseline; mobile dominates 10 PM-2 AM and weekend daytime.
+  - Each user has a timezone from their country (US users spread over ET/CT/MT/PT by population). DST rules are hand-coded to stay stdlib-only. `played_at` is stored in **UTC with a `Z` suffix**, like the real exports, and the `dt=` partition is the UTC date.
+  - Each user also has a chance of listening on any given day (`active_day_prob`) and lognormal day-to-day volume noise, both keyed on their local date.
+- `--seed N` (any mode, default 42) seeds the population and every day's events: same seed, byte-identical output.
 - **Repeat vs. discovery model** (all three modes): each user-day is ~70% **replays** of tracks from that user's own last `HISTORY_WINDOW_DAYS` (60) of plays and ~30% **discoveries** of tracks they haven't played in that window.
   - The ratio is per user (`repeat_ratio`, filler users spread around 0.70, so the population has loyalists and explorers) plus day-to-day noise, clamped to 0.40-0.95.
   - Replays are recency-weighted (14-day half-life) and play-count-weighted; skipped plays count 0.2, so skipped tracks rarely come back.
@@ -71,7 +87,11 @@ Analyzed from real Extended Streaming History exports, pseudonymized, and used t
   - Each day has its own RNG seed (`RANDOM_SEED` + date) and synthetic event IDs are deterministic (`evt_syn_` + hash of user, date, index). Re-generating a day on unchanged history gives a byte-identical file, so its checksum doesn't change (idempotent-rerun demo); a backfill after history changed re-delivers the same `event_id`s with new content, which Silver's MERGE updates.
   - One track's replay weight is capped at 10% of the user's total (`REPLAY_MAX_TRACK_SHARE`). It only binds for light listeners (~1 play/day), whose small pool would otherwise lock onto one song.
   - `unclassified` tracks are never a favorite genre; they only appear through chart and long-tail discovery.
-  - Verified on a 450-day run: per-persona replay share 0.70 (p5-p95 ≈ 0.58-0.82), skip rates within 0.01 of target, heavy personas' top-10 tracks ≈ 9-11% of a month's plays. Share of plays in the persona's favorite genres: `user_real_01` 0.74, `user_real_02` 0.51, `user_real_03` 0.77.
+  - Verified on a 450-day run (repeat/discovery model, before the cluster rework): per-persona replay share 0.70 (p5-p95 ≈ 0.58-0.82), skip rates within 0.01 of target, heavy personas' top-10 tracks ≈ 9-11% of a month's plays. Share of plays in the persona's favorite genres: `user_real_01` 0.74, `user_real_02` 0.51, `user_real_03` 0.77.
+  - Verified after the cluster/time-of-day rework (450 days, 50 users, ~433k events, ~45 s, ~124 MB):
+    - Weekend uplift +18.3%. Desktop: 74% of weekday plays in 9-17, 11% of its plays at weekends. Mobile: 92% of weekday 10 PM-2 AM plays. UTC peak hours shift by country.
+    - Persona skip rates within 0.01 of pinned values.
+    - From events alone, observed skip rate correlates 0.97 with planted, and 60-day novelty correlates 1.00 with planted `1 - repeat_ratio`. A simple observed-events score recovers 8 of 9 flagged free users.
   - Known limit: `user_real_02`'s favorite genres cover only ~785 catalog tracks, so ~half their plays land in adjacent genres (mostly `hip-hop` via `punjabi`) or the long tail. Adding their other real genres (e.g. `pakistani-pop`, `indie-pop-desi`) to their `favorite_genres`, if that matches their export, and classifying more Desi artists both help.
 - Three run modes:
   - `python3 generate_data_v2.py full` — bulk-generates historical day-partitions (default 450 days back from today).
@@ -563,11 +583,16 @@ One row per session: `user_id`, `session_id`, `session_start`, `session_end`, `t
 
 **1. "When do users listen most, and how should infrastructure/capacity planning respond?"**
 - Table: `gold.peak_usage_patterns` — play count and listening minutes by `hour_of_day`, `day_of_week`, `device_category`, `country` (from `gold.fact_listening` joined to `dim_time`, `dim_date`, `dim_device`).
+- Note: `played_at` is UTC. UTC hours are what capacity planning needs (servers run on UTC). For the behavioural heatmap, convert to local time with the user's `timezone` from `dim_user` first; otherwise each country's pattern is shifted by its offset.
 - Business use: informs server auto-scaling schedules, maintenance-window timing, and CDN/caching decisions around predictable peak windows.
 - Visual: heatmap of listening volume across hour-of-day (x-axis) × day-of-week (y-axis).
 
 **2. "Which free-tier users show premium-level engagement, and should be targeted for upgrade offers?"**
 - Table: `gold.subscription_propensity_segments` — one row per user: `total_listening_minutes`, `session_frequency`, `genre_diversity`, `skip_rate`, `device_diversity`, `discovery_rate`, current `is_premium` status (from `dim_user` where `is_current`), and a derived `engagement_score` (weighted combination of the above).
+- Notes for building it:
+  - Mirror the generator's `W1`-`W4` weights and `HIGH_PROPENSITY_THRESHOLD` in `00_config`.
+  - Compute `discovery_rate` as the share of a user's plays whose track they hadn't played in the previous 60 days. "Share of a month's artists never heard before" inverts the signal: heavy listeners run out of never-heard artists, so casual users look like explorers.
+  - Check the result against `output/validation/user_segments.json` (planted clusters and flags).
 - Business use: segments free users into propensity tiers (High/Medium/Low) so upgrade-offer campaigns target genuinely engaged listeners rather than blasting the whole free-tier base.
 - Visual: bar chart of user counts per propensity tier, split by current subscription status — the "High engagement, still Free" bar is the actionable business insight.
 
