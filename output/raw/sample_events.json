@@ -1,1982 +1,2022 @@
 [
   {
-    "event_id": "evt_1789603201",
+    "event_id": "evt_syn_02117182a37b5c64",
     "user_id": "user_real_01",
-    "track_id": "spotify:track:50I7FNN2rl2rWiNwGxS146",
-    "played_at": "2026-09-17T20:20:03",
-    "ms_played": 32713,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603202",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:4k6Uh1HXdhtusDW5y8Gbvy",
-    "played_at": "2026-09-17T20:04:23",
-    "ms_played": 173734,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603203",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:0YJ9FWWHn9EfnN0lHwbzvV",
-    "played_at": "2026-09-17T10:08:10",
-    "ms_played": 297412,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603204",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:0jFcsBBLjOPmZfQWf4nGsO",
-    "played_at": "2026-09-17T17:11:45",
-    "ms_played": 260879,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603205",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:7FIWs0pqAYbP91WWM0vlTQ",
-    "played_at": "2026-09-17T20:24:19",
-    "ms_played": 166387,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603206",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:5uEYRdEIh9Bo4fpjDd4Na9",
-    "played_at": "2026-09-17T00:44:36",
-    "ms_played": 80154,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603207",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:00WLowvlN5cjkYpQV6pjo4",
-    "played_at": "2026-09-17T21:39:14",
-    "ms_played": 147064,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603208",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:15HNdxGKNCIO9pgaY4n7FU",
-    "played_at": "2026-09-17T11:04:15",
-    "ms_played": 186366,
-    "skipped": true,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603209",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:5TTGoX70AFrTvuEtqHK37S",
-    "played_at": "2026-09-17T20:42:40",
-    "ms_played": 323355,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603210",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:3eekarcy7kvN4yt5ZFzltW",
-    "played_at": "2026-09-17T08:44:04",
-    "ms_played": 83758,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603211",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:285pBltuF7vW8TeWk8hdRR",
-    "played_at": "2026-09-17T12:46:26",
-    "ms_played": 239539,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603212",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:2xLMifQCjDGFmkHkpNLD9h",
-    "played_at": "2026-09-17T11:24:06",
-    "ms_played": 267454,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603213",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:285pBltuF7vW8TeWk8hdRR",
-    "played_at": "2026-09-17T19:02:18",
-    "ms_played": 41098,
-    "skipped": true,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603214",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:2LGdO5MtFdyphi2EihANZG",
-    "played_at": "2026-09-17T11:56:24",
-    "ms_played": 73986,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603215",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:5TTGoX70AFrTvuEtqHK37S",
-    "played_at": "2026-09-17T11:39:57",
-    "ms_played": 235337,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603216",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:5Qv2Nby1xTr9pQyjkrc94J",
-    "played_at": "2026-09-17T07:56:27",
-    "ms_played": 64930,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603217",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:6dBUzqjtbnIa1TwYbyw5CM",
-    "played_at": "2026-09-17T12:35:46",
-    "ms_played": 200461,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603218",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:2x8evxqUlF0eRabbW2JBJd",
-    "played_at": "2026-09-17T08:03:25",
-    "ms_played": 117024,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603219",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:52ooD6LHuXFubM6d1CDD93",
-    "played_at": "2026-09-17T00:05:18",
-    "ms_played": 161559,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603220",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:2QUlMbvD9bL8wHqfsoqoet",
-    "played_at": "2026-09-17T08:40:18",
-    "ms_played": 329447,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603221",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:1OA144pXkdPDAdp8nm14Pk",
-    "played_at": "2026-09-17T19:30:31",
-    "ms_played": 224929,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603222",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:7zwn1eykZtZ5LODrf7c0tS",
-    "played_at": "2026-09-17T12:23:56",
-    "ms_played": 141794,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603223",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:3eekarcy7kvN4yt5ZFzltW",
-    "played_at": "2026-09-17T13:16:14",
-    "ms_played": 161103,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603224",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:0z1o5L7HJx562xZSATcIpY",
-    "played_at": "2026-09-17T18:05:42",
-    "ms_played": 118073,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603225",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:42VsgItocQwOQC3XWZ8JNA",
-    "played_at": "2026-09-17T08:03:53",
-    "ms_played": 91975,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603226",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:5i4Xt174hZezdWdH84RlcX",
-    "played_at": "2026-09-17T20:30:36",
-    "ms_played": 539643,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603227",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:75g0xZlJmJiNJbe5sp9xQK",
-    "played_at": "2026-09-17T21:45:02",
-    "ms_played": 119394,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603228",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:2BcMwX1MPV6ZHP4tUT9uq6",
-    "played_at": "2026-09-17T13:10:13",
-    "ms_played": 207623,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603229",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:5odlY52u43F5BjByhxg7wg",
-    "played_at": "2026-09-17T23:27:12",
-    "ms_played": 296310,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603230",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:0baNzeUcPQnQSagpe8T0mD",
-    "played_at": "2026-09-17T10:46:58",
-    "ms_played": 105366,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603231",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:75g0xZlJmJiNJbe5sp9xQK",
-    "played_at": "2026-09-17T16:54:17",
-    "ms_played": 122489,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603232",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:5YaMZfnTGCk6Ze3AxEcoaY",
-    "played_at": "2026-09-17T16:50:26",
-    "ms_played": 42250,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603233",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:7FIWs0pqAYbP91WWM0vlTQ",
-    "played_at": "2026-09-17T16:06:59",
-    "ms_played": 51554,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603234",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:6ltapJZzCCg2amhhwjpReI",
-    "played_at": "2026-09-17T21:56:26",
-    "ms_played": 99995,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603235",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:4gh0ZnHzaTMT1sDga7Ek0N",
-    "played_at": "2026-09-17T04:17:25",
-    "ms_played": 99652,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603236",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:70LcF31zb1H0PyJoS1Sx1r",
-    "played_at": "2026-09-17T18:03:47",
-    "ms_played": 132390,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603237",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:6gBFPUFcJLzWGx4lenP6h2",
-    "played_at": "2026-09-17T11:50:19",
-    "ms_played": 101919,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603238",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:5i4Xt174hZezdWdH84RlcX",
-    "played_at": "2026-09-17T06:55:14",
-    "ms_played": 158536,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603239",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:4zfsk7inEPq0PawGyU6oHi",
-    "played_at": "2026-09-17T09:26:38",
-    "ms_played": 139045,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603240",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:67nepsnrcZkowTxMWigSbb",
-    "played_at": "2026-09-17T12:31:48",
-    "ms_played": 144900,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603241",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:2IcEwMMxfUGQnsCamkOQFk",
-    "played_at": "2026-09-17T19:04:19",
-    "ms_played": 152886,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603242",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:0yc6Gst2xkRu0eMLeRMGCX",
-    "played_at": "2026-09-17T21:01:11",
-    "ms_played": 91330,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603243",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:4FAUrZ8wdf8mV202FcEgn6",
-    "played_at": "2026-09-17T03:03:58",
-    "ms_played": 144653,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603244",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:67nepsnrcZkowTxMWigSbb",
-    "played_at": "2026-09-17T14:25:40",
-    "ms_played": 229914,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603245",
-    "user_id": "user_real_01",
-    "track_id": "spotify:track:2fuYa3Lx06QQJAm0MjztKr",
-    "played_at": "2026-09-17T17:11:55",
-    "ms_played": 167125,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603246",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:5VrLz2NUTLbPzgjuVOjxUx",
-    "played_at": "2026-09-17T19:44:05",
-    "ms_played": 131031,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603247",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:4Tkb7zsDmsawB7S5TpKQV1",
-    "played_at": "2026-09-17T19:13:54",
-    "ms_played": 101782,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603248",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:5VrLz2NUTLbPzgjuVOjxUx",
-    "played_at": "2026-09-17T17:32:01",
-    "ms_played": 295568,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603249",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:29m79w9xPMH4YCD6r8JSmV",
-    "played_at": "2026-09-17T17:38:51",
-    "ms_played": 32067,
-    "skipped": true,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603250",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:5VrLz2NUTLbPzgjuVOjxUx",
-    "played_at": "2026-09-17T18:45:41",
-    "ms_played": 128279,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603251",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:6Ed1q0X8oSKSm4IIhiQbYg",
-    "played_at": "2026-09-17T09:29:19",
-    "ms_played": 188660,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603252",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:29m79w9xPMH4YCD6r8JSmV",
-    "played_at": "2026-09-17T15:42:53",
-    "ms_played": 176148,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603253",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:29m79w9xPMH4YCD6r8JSmV",
-    "played_at": "2026-09-17T14:21:17",
-    "ms_played": 141679,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603254",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:4Tkb7zsDmsawB7S5TpKQV1",
-    "played_at": "2026-09-17T22:41:19",
-    "ms_played": 93341,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603255",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:4dtP86vkhzwNXCFpCtizce",
-    "played_at": "2026-09-17T12:20:43",
-    "ms_played": 118333,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603256",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:5VrLz2NUTLbPzgjuVOjxUx",
-    "played_at": "2026-09-17T09:26:25",
-    "ms_played": 160331,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603257",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:4Tkb7zsDmsawB7S5TpKQV1",
-    "played_at": "2026-09-17T20:21:46",
-    "ms_played": 227665,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603258",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:3vooOYHU0Fi3ViCG7Ozh0Y",
-    "played_at": "2026-09-17T11:19:54",
-    "ms_played": 115145,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603259",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:5VrLz2NUTLbPzgjuVOjxUx",
-    "played_at": "2026-09-17T07:16:46",
-    "ms_played": 279588,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603260",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:5VrLz2NUTLbPzgjuVOjxUx",
-    "played_at": "2026-09-17T17:14:22",
-    "ms_played": 113502,
-    "skipped": true,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603261",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:5VrLz2NUTLbPzgjuVOjxUx",
-    "played_at": "2026-09-17T12:37:18",
-    "ms_played": 181761,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603262",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:4Tkb7zsDmsawB7S5TpKQV1",
-    "played_at": "2026-09-17T16:39:04",
-    "ms_played": 165967,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603263",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:4Tkb7zsDmsawB7S5TpKQV1",
-    "played_at": "2026-09-17T12:19:26",
-    "ms_played": 58981,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603264",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:29m79w9xPMH4YCD6r8JSmV",
-    "played_at": "2026-09-17T11:36:57",
-    "ms_played": 187808,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603265",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:4Tkb7zsDmsawB7S5TpKQV1",
-    "played_at": "2026-09-17T08:05:31",
-    "ms_played": 130253,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603266",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:29m79w9xPMH4YCD6r8JSmV",
-    "played_at": "2026-09-17T00:17:13",
-    "ms_played": 162590,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603267",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:29m79w9xPMH4YCD6r8JSmV",
-    "played_at": "2026-09-17T14:48:49",
-    "ms_played": 45866,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603268",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:5VrLz2NUTLbPzgjuVOjxUx",
-    "played_at": "2026-09-17T13:30:24",
-    "ms_played": 51425,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603269",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:2QUlMbvD9bL8wHqfsoqoet",
-    "played_at": "2026-09-17T21:48:53",
-    "ms_played": 202063,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603270",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:4Tkb7zsDmsawB7S5TpKQV1",
-    "played_at": "2026-09-17T18:14:44",
-    "ms_played": 269526,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603271",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:5VrLz2NUTLbPzgjuVOjxUx",
-    "played_at": "2026-09-17T14:19:10",
-    "ms_played": 68634,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603272",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:5VrLz2NUTLbPzgjuVOjxUx",
-    "played_at": "2026-09-17T13:33:38",
-    "ms_played": 198896,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603273",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:5SWnsxjhdcEDc7LJjq9UHk",
-    "played_at": "2026-09-17T11:57:31",
-    "ms_played": 89251,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603274",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:5VrLz2NUTLbPzgjuVOjxUx",
-    "played_at": "2026-09-17T02:14:46",
-    "ms_played": 329707,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603275",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:42VsgItocQwOQC3XWZ8JNA",
-    "played_at": "2026-09-17T15:07:23",
-    "ms_played": 144853,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603276",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:4Tkb7zsDmsawB7S5TpKQV1",
-    "played_at": "2026-09-17T09:34:39",
-    "ms_played": 57580,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603277",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:4Tkb7zsDmsawB7S5TpKQV1",
-    "played_at": "2026-09-17T20:03:44",
-    "ms_played": 74774,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603278",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:4Tkb7zsDmsawB7S5TpKQV1",
-    "played_at": "2026-09-17T09:44:09",
-    "ms_played": 97725,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603279",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:4Tkb7zsDmsawB7S5TpKQV1",
-    "played_at": "2026-09-17T06:33:17",
-    "ms_played": 204492,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603280",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:29m79w9xPMH4YCD6r8JSmV",
-    "played_at": "2026-09-17T15:39:07",
-    "ms_played": 79621,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603281",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:4Tkb7zsDmsawB7S5TpKQV1",
-    "played_at": "2026-09-17T08:16:53",
-    "ms_played": 178996,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603282",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:5VrLz2NUTLbPzgjuVOjxUx",
-    "played_at": "2026-09-17T10:02:35",
-    "ms_played": 191015,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603283",
-    "user_id": "user_real_02",
-    "track_id": "spotify:track:5VrLz2NUTLbPzgjuVOjxUx",
-    "played_at": "2026-09-17T11:00:00",
-    "ms_played": 240776,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603284",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:79VbmRfERiaRZeQFdZjXiT",
-    "played_at": "2026-09-17T19:04:46",
-    "ms_played": 149947,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603285",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:2vOAHp8PBBFYqvQUWSoITY",
-    "played_at": "2026-09-17T23:18:16",
-    "ms_played": 115462,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603286",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:5FVd6KXrgO9B3JPmC8OPst",
-    "played_at": "2026-09-17T20:23:51",
-    "ms_played": 197268,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603287",
-    "user_id": "user_real_03",
     "track_id": "spotify:track:74tLlkN3rgVzRqQJgPfink",
-    "played_at": "2026-09-17T20:56:02",
-    "ms_played": 61231,
+    "played_at": "2026-09-16T00:40:46Z",
+    "ms_played": 75090,
     "skipped": true,
-    "device_type": "desktop"
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603288",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:04TshWXkhV1qkqHzf31Hn6",
-    "played_at": "2026-09-17T11:57:28",
-    "ms_played": 273158,
+    "event_id": "evt_syn_27edc3214dcecd19",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:0pOZYYEJawmTAPtkzYKSa2",
+    "played_at": "2026-09-16T01:57:44Z",
+    "ms_played": 29236,
+    "skipped": true,
+    "device_type": "smart_speaker",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_d9db638e48ec4b30",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:0Fs9cdPDhptWEDJmiCbkEW",
+    "played_at": "2026-09-16T02:04:28Z",
+    "ms_played": 233892,
     "skipped": false,
-    "device_type": "web_player"
+    "device_type": "smart_speaker",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603289",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:2PWTZV5znjLtZC5T1EVJvL",
-    "played_at": "2026-09-17T12:21:11",
-    "ms_played": 29610,
+    "event_id": "evt_syn_97aafd8dda9303ca",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:5r30gHLxvhp60XMc5TIIMh",
+    "played_at": "2026-09-16T02:18:41Z",
+    "ms_played": 18017,
     "skipped": true,
-    "device_type": "smart_speaker"
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603290",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:6MZyrnqwsLnrWY5Gk0AyXg",
-    "played_at": "2026-09-17T20:44:54",
-    "ms_played": 102397,
+    "event_id": "evt_syn_8e020cc3be795b5b",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:5f1joOtoMeyppIcJGZQvqJ",
+    "played_at": "2026-09-16T02:20:25Z",
+    "ms_played": 181479,
     "skipped": false,
-    "device_type": "smart_speaker"
+    "device_type": "smart_speaker",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603291",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:04TshWXkhV1qkqHzf31Hn6",
-    "played_at": "2026-09-17T06:44:46",
-    "ms_played": 56757,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603292",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:5Lngv5YucvD034BkzQdyDN",
-    "played_at": "2026-09-17T19:43:28",
-    "ms_played": 79362,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603293",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:2D2wqBe0q1Xwe0zoVhJtKI",
-    "played_at": "2026-09-17T03:43:56",
-    "ms_played": 218277,
+    "event_id": "evt_syn_0f328fe454e87da5",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:3NwmvlTYDZPRBGDMGgJH8K",
+    "played_at": "2026-09-16T02:25:21Z",
+    "ms_played": 56375,
     "skipped": false,
-    "device_type": "desktop"
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603294",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:278JqkBGkjDovOYAwE8TW7",
-    "played_at": "2026-09-17T06:26:28",
-    "ms_played": 61449,
+    "event_id": "evt_syn_f92ab92bc23e407f",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:1yyuBR0CjS6M9ZsdK6UFmU",
+    "played_at": "2026-09-16T03:46:54Z",
+    "ms_played": 44175,
     "skipped": true,
-    "device_type": "web_player"
+    "device_type": "smart_speaker",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603295",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:2lXu7SNGIKHJ8EV2EetYFa",
-    "played_at": "2026-09-17T18:43:33",
-    "ms_played": 220659,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603296",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:3vooOYHU0Fi3ViCG7Ozh0Y",
-    "played_at": "2026-09-17T20:33:33",
-    "ms_played": 287387,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603297",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:6z1TvLTR0oOsWSJfDrERmj",
-    "played_at": "2026-09-17T14:42:43",
-    "ms_played": 168236,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603298",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:3khEEPRyBeOUabbmOPJzAG",
-    "played_at": "2026-09-17T21:39:03",
-    "ms_played": 31819,
+    "event_id": "evt_syn_ae95bc7da7ac0704",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:4rM66iPZNDZlq4V6g3GLz6",
+    "played_at": "2026-09-16T04:51:31Z",
+    "ms_played": 17725,
     "skipped": true,
-    "device_type": "desktop"
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603299",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:3sgJTMHqDwxfsBIMqvkXKE",
-    "played_at": "2026-09-17T20:55:10",
-    "ms_played": 59604,
+    "event_id": "evt_syn_8bb10c0267a5eeb8",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:72jbDTw1piOOj770jWNeaG",
+    "played_at": "2026-09-16T05:13:36Z",
+    "ms_played": 46376,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_48bd0510dd208fd0",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:2ASygm7048ssav4ekbehPS",
+    "played_at": "2026-09-16T05:30:51Z",
+    "ms_played": 245371,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_d476d349c0eebe76",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:4rf7Mjit1TCiNaDgdn6peQ",
+    "played_at": "2026-09-16T06:15:20Z",
+    "ms_played": 153043,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_3b0b03119df9b1f8",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:5NF5TV9zGZ9QLKLf7Oq05T",
+    "played_at": "2026-09-16T06:17:20Z",
+    "ms_played": 115753,
+    "skipped": false,
+    "device_type": "web_player",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_38c6488e30da03de",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:429NtPmr12aypzFH3FkN9l",
+    "played_at": "2026-09-16T06:51:16Z",
+    "ms_played": 53412,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_28f434b60b5982c1",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:1zCQXSnLkfXq3TzMLr6pWf",
+    "played_at": "2026-09-16T08:27:39Z",
+    "ms_played": 58833,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_1bfcc7f5a4a97c36",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:0pqnGHJpmpxLKifKRmU6WP",
+    "played_at": "2026-09-16T09:12:00Z",
+    "ms_played": 63232,
     "skipped": true,
-    "device_type": "smart_speaker"
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603300",
+    "event_id": "evt_syn_534700038092994d",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:72Qo3U5apeuv91j9BEqJBM",
+    "played_at": "2026-09-16T11:01:23Z",
+    "ms_played": 154279,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_974cb908af5d0b0a",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:3Ofmpyhv5UAQ70mENzB277",
+    "played_at": "2026-09-16T11:07:17Z",
+    "ms_played": 86228,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_235b4f2445b08244",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:2kulOHR2XY6YDZCWXb38hn",
+    "played_at": "2026-09-16T11:44:35Z",
+    "ms_played": 16410,
+    "skipped": true,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_4a9a202cb7b5e668",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:2ZzZ2qwZBWlDKs420hhloc",
+    "played_at": "2026-09-16T11:47:09Z",
+    "ms_played": 302770,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_a73451291976fc62",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:08IpSc933CfDFYKqzpmBNI",
+    "played_at": "2026-09-16T12:00:43Z",
+    "ms_played": 131270,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_588a9dc2c02bb801",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:3F5CgOj3wFlRv51JsHbxhe",
+    "played_at": "2026-09-16T12:08:53Z",
+    "ms_played": 214425,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_7b5669ce91ad50e0",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:0TlcczkVTGpinpkGJpT81L",
+    "played_at": "2026-09-16T12:13:25Z",
+    "ms_played": 6233,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_f789f95338b163ec",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:27XMmSWSOXJ7eVb40tH93T",
+    "played_at": "2026-09-16T12:22:43Z",
+    "ms_played": 40422,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_c24206aee2e616cc",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:5XhMgAWzou6EjDmQtoyoZE",
+    "played_at": "2026-09-16T12:27:40Z",
+    "ms_played": 64183,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_511e3c382d399c5c",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:0pqnGHJpmpxLKifKRmU6WP",
+    "played_at": "2026-09-16T12:34:28Z",
+    "ms_played": 104220,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_73d9b41a4526c04b",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:0pqnGHJpmpxLKifKRmU6WP",
+    "played_at": "2026-09-16T12:39:57Z",
+    "ms_played": 256127,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_d2a3c4e06159a8de",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:4rf7Mjit1TCiNaDgdn6peQ",
+    "played_at": "2026-09-16T12:50:17Z",
+    "ms_played": 185406,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_587b425ce70ba317",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:0pqnGHJpmpxLKifKRmU6WP",
+    "played_at": "2026-09-16T12:52:50Z",
+    "ms_played": 253699,
+    "skipped": false,
+    "device_type": "web_player",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_0cf5d65c84076f3b",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:4rf7Mjit1TCiNaDgdn6peQ",
+    "played_at": "2026-09-16T13:02:05Z",
+    "ms_played": 182800,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_76190f252a5cfe7a",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:429NtPmr12aypzFH3FkN9l",
+    "played_at": "2026-09-16T13:09:10Z",
+    "ms_played": 11280,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_327066f8153a325e",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:4rf7Mjit1TCiNaDgdn6peQ",
+    "played_at": "2026-09-16T13:09:39Z",
+    "ms_played": 183782,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_b186e3c6b6bd74b5",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:4W4fNrZYkobj539TOWsLO2",
+    "played_at": "2026-09-16T13:16:10Z",
+    "ms_played": 15002,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_bd24d283b89074b7",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:30UW0xBybuBbW5g2nsokO4",
+    "played_at": "2026-09-16T13:32:16Z",
+    "ms_played": 34100,
+    "skipped": true,
+    "device_type": "smart_speaker",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_42f4c8632c0e2f59",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:3Ofmpyhv5UAQ70mENzB277",
+    "played_at": "2026-09-16T13:49:01Z",
+    "ms_played": 90189,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_8171d51f14b1f9fc",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:4rf7Mjit1TCiNaDgdn6peQ",
+    "played_at": "2026-09-16T13:49:43Z",
+    "ms_played": 33602,
+    "skipped": true,
+    "device_type": "smart_speaker",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_82f7b3f4e9e2577f",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:74tLlkN3rgVzRqQJgPfink",
+    "played_at": "2026-09-16T13:50:30Z",
+    "ms_played": 299677,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_3caf90bcd917d4f2",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:6G9YlbU3ByPJQvOFDRdwyM",
+    "played_at": "2026-09-16T14:08:59Z",
+    "ms_played": 167119,
+    "skipped": false,
+    "device_type": "smart_speaker",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_4bdd70a9eb53a2f0",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:3Ofmpyhv5UAQ70mENzB277",
+    "played_at": "2026-09-16T14:17:28Z",
+    "ms_played": 125138,
+    "skipped": false,
+    "device_type": "smart_speaker",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_2b33acaeb8ebd10e",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:4rf7Mjit1TCiNaDgdn6peQ",
+    "played_at": "2026-09-16T15:11:43Z",
+    "ms_played": 61133,
+    "skipped": true,
+    "device_type": "smart_speaker",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_2f0a45ee83f03477",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:72Qo3U5apeuv91j9BEqJBM",
+    "played_at": "2026-09-16T15:54:32Z",
+    "ms_played": 25096,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_9e0cecd0442a964f",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:086myS9r57YsLbJpU0TgK9",
+    "played_at": "2026-09-16T16:09:15Z",
+    "ms_played": 66676,
+    "skipped": true,
+    "device_type": "smart_speaker",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_fb979734ae59d0c1",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:3aAmQOxRPeKDL0HMWFA5qn",
+    "played_at": "2026-09-16T16:28:09Z",
+    "ms_played": 129199,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_230eca0bd97b0850",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:1zCQXSnLkfXq3TzMLr6pWf",
+    "played_at": "2026-09-16T17:46:13Z",
+    "ms_played": 39800,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_bcdec318ba30d067",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:2Grb4G6t9VIqo6moKUloom",
+    "played_at": "2026-09-16T17:56:06Z",
+    "ms_played": 17552,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_3b49dd96188cd7d4",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:3g7ngtg7xK3N9nKwAjDfH3",
+    "played_at": "2026-09-16T18:21:33Z",
+    "ms_played": 242502,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_31aa05cfcfba074e",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:1zCQXSnLkfXq3TzMLr6pWf",
+    "played_at": "2026-09-16T18:34:59Z",
+    "ms_played": 22557,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_2d70df654f049e15",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:0EF1EE8zusg3Y869e56JFd",
+    "played_at": "2026-09-16T18:50:18Z",
+    "ms_played": 43326,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_83a57d8e19c850c4",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:5f1joOtoMeyppIcJGZQvqJ",
+    "played_at": "2026-09-16T19:13:10Z",
+    "ms_played": 191275,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_cc177bbf431d0de0",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:3D0pmiK3zyF9PudyJ8mkor",
+    "played_at": "2026-09-16T19:59:53Z",
+    "ms_played": 65631,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_1d93713c77c19837",
+    "user_id": "user_real_01",
+    "track_id": "spotify:track:391XNlmxsozl612WJqkno5",
+    "played_at": "2026-09-16T23:04:56Z",
+    "ms_played": 220104,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_4550b0bc27fe2234",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:2XSgHmj2RMD0DMDLwl6sip",
+    "played_at": "2026-09-16T00:38:50Z",
+    "ms_played": 26986,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_45c747405cb313b1",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:4NmaQ9kju9ZvOqiW8KNAdu",
+    "played_at": "2026-09-16T02:12:22Z",
+    "ms_played": 23273,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_00161a207b8c0837",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:3t3wsY5IdLVzB9WidegJSU",
+    "played_at": "2026-09-16T02:43:54Z",
+    "ms_played": 152615,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_e04d12395506e7cd",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:6KIkrp68jrGlTmTuHQ0rPH",
+    "played_at": "2026-09-16T02:51:45Z",
+    "ms_played": 47672,
+    "skipped": false,
+    "device_type": "smart_speaker",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_a15eec76023da667",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:6KIkrp68jrGlTmTuHQ0rPH",
+    "played_at": "2026-09-16T03:05:20Z",
+    "ms_played": 39144,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_d820723f73164575",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:0JP9xo3adEtGSdUEISiszL",
+    "played_at": "2026-09-16T03:27:11Z",
+    "ms_played": 144123,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_92c757846e607722",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:7a77VY7mjvK6EiaBeOosmk",
+    "played_at": "2026-09-16T03:28:24Z",
+    "ms_played": 37819,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_9d94ae0c003c838c",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:5RZ6X1PYDOpF4pEWcNXE0Y",
+    "played_at": "2026-09-16T03:54:25Z",
+    "ms_played": 2217,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_a6a34c56b24b094a",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:6KIkrp68jrGlTmTuHQ0rPH",
+    "played_at": "2026-09-16T04:45:27Z",
+    "ms_played": 53915,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_809fbdba3a5597b7",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:7yOzoawWk3TebR5EZW4xRO",
+    "played_at": "2026-09-16T05:01:19Z",
+    "ms_played": 51697,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_a8b3d05354f1f187",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:30IOhjcKbULQUt66nYkUvW",
+    "played_at": "2026-09-16T05:01:59Z",
+    "ms_played": 39054,
+    "skipped": false,
+    "device_type": "web_player",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_a9cae43f599ad236",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:0JP9xo3adEtGSdUEISiszL",
+    "played_at": "2026-09-16T05:06:36Z",
+    "ms_played": 37256,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_ef823f7461154002",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:0mXZmz0ucfbaxJZMiSSjQr",
+    "played_at": "2026-09-16T05:10:13Z",
+    "ms_played": 26925,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_f257585696795be9",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:2grfkkXylZwnQRKeidJpwg",
+    "played_at": "2026-09-16T05:38:56Z",
+    "ms_played": 3771,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_ff9feb1c74c2380c",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:0c8eAkUFDMCgJB53lplqJv",
+    "played_at": "2026-09-16T05:56:05Z",
+    "ms_played": 191007,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_2cffaa1d48f68ac4",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:7nWoPYqwLrNZW0fqGElYn5",
+    "played_at": "2026-09-16T07:30:07Z",
+    "ms_played": 28646,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_c9e8cbfeeb064d04",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:1CvX80n0LXBYDtCvoN6yTk",
+    "played_at": "2026-09-16T08:21:11Z",
+    "ms_played": 298749,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_bfb24c406c5187e2",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:0c8eAkUFDMCgJB53lplqJv",
+    "played_at": "2026-09-16T08:47:51Z",
+    "ms_played": 205559,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_1dd4408299abbd7f",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:41u67CIjlDhiArNYezURRa",
+    "played_at": "2026-09-16T11:16:08Z",
+    "ms_played": 160657,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_ea8afcf8531302c4",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:0c8eAkUFDMCgJB53lplqJv",
+    "played_at": "2026-09-16T11:38:57Z",
+    "ms_played": 159903,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_87ba9c98a125e6ac",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:7nWoPYqwLrNZW0fqGElYn5",
+    "played_at": "2026-09-16T12:36:52Z",
+    "ms_played": 54624,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_d7d3b96345240e56",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:3SHopOL3KEJ8PFl3vJdfmF",
+    "played_at": "2026-09-16T13:32:24Z",
+    "ms_played": 5787,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_c6043db36b1dea35",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:2PRLuCoUGWfUpbBo7yWuJd",
+    "played_at": "2026-09-16T14:32:06Z",
+    "ms_played": 184018,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_415addef6669af12",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:3t3wsY5IdLVzB9WidegJSU",
+    "played_at": "2026-09-16T16:37:52Z",
+    "ms_played": 227535,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_d9f18700a745431b",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:3t3wsY5IdLVzB9WidegJSU",
+    "played_at": "2026-09-16T16:55:50Z",
+    "ms_played": 166935,
+    "skipped": false,
+    "device_type": "smart_speaker",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_6eaa1b37caccec61",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:6KIkrp68jrGlTmTuHQ0rPH",
+    "played_at": "2026-09-16T18:07:25Z",
+    "ms_played": 15689,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_d7e7d3dd9a908e10",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:5iacz50wp5ncLjr8w9ZZ5T",
+    "played_at": "2026-09-16T18:37:46Z",
+    "ms_played": 5619,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_06fc0949532a8d82",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:287Mqg1vkN6uZAE8ybSarG",
+    "played_at": "2026-09-16T18:56:13Z",
+    "ms_played": 58054,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_160f383a5bf59c28",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:5xRci5qoXzzJgR6ZwzXO2J",
+    "played_at": "2026-09-16T19:47:03Z",
+    "ms_played": 246638,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_1f5e7f704c514fad",
+    "user_id": "user_real_02",
+    "track_id": "spotify:track:7tXd4sxM1v18eV71iz7B6e",
+    "played_at": "2026-09-16T20:04:50Z",
+    "ms_played": 103934,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_3727d1932a839cb7",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:3YPHUW9oe3fzJjqSnkPWru",
+    "played_at": "2026-09-16T00:43:03Z",
+    "ms_played": 158451,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_59e0ef8d21802e13",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:158yesdiRpS69QL018yhAx",
+    "played_at": "2026-09-16T01:11:48Z",
+    "ms_played": 134439,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_4c0022f65da544b1",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:12dYN0rS95O37qxZh3pOLV",
+    "played_at": "2026-09-16T02:09:51Z",
+    "ms_played": 208205,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_3e6e32c2f0a7e852",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:5m21ZR5lO6U0tp9KENxuCc",
+    "played_at": "2026-09-16T03:18:11Z",
+    "ms_played": 31529,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_d665bc243ba55bd0",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:2b4RuETuKEqkhd3lc3hlwX",
+    "played_at": "2026-09-16T03:55:41Z",
+    "ms_played": 245323,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_0601efc3e3705fef",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:28Op7JgLwPm1Iea1j6xJnr",
+    "played_at": "2026-09-16T04:00:09Z",
+    "ms_played": 193703,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_6ec0eb3d682b5811",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:0D3SbqZeDEeUFNp7MO1YCc",
+    "played_at": "2026-09-16T04:59:22Z",
+    "ms_played": 184159,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_47a0b97808215edc",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:6Pp9B4YA19e5hnN48zLaLk",
+    "played_at": "2026-09-16T05:21:27Z",
+    "ms_played": 151932,
+    "skipped": false,
+    "device_type": "web_player",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_168a8e1189fa1cc7",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:6hIlhl0dHbyhncChSURr7h",
+    "played_at": "2026-09-16T05:50:49Z",
+    "ms_played": 57611,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_f9ceba9090a6947f",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:6hIlhl0dHbyhncChSURr7h",
+    "played_at": "2026-09-16T06:24:55Z",
+    "ms_played": 12058,
+    "skipped": true,
+    "device_type": "web_player",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_26a2ab81e1662132",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:172fMG26G2OoEzzg0wn26r",
+    "played_at": "2026-09-16T06:28:30Z",
+    "ms_played": 271843,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_d7748ab7ac2b7c59",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:72uSoNIf7eScfGZFQjNHrR",
+    "played_at": "2026-09-16T07:00:11Z",
+    "ms_played": 185472,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_c208040b2bfbe737",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:0iniTNHwqBiP4UDE1dgUpD",
+    "played_at": "2026-09-16T07:02:01Z",
+    "ms_played": 247704,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_896371c81c34838b",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:3qmWgsPE0Q6HMor9TpmXbs",
+    "played_at": "2026-09-16T07:41:25Z",
+    "ms_played": 230931,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_8af6b771233e15b8",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:5w65rfJaQDOQ0iAhOuQqiv",
+    "played_at": "2026-09-16T07:42:37Z",
+    "ms_played": 195781,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_ef216d6d042d55f3",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:5YprRjY9QHBQmCnp74Cg8d",
+    "played_at": "2026-09-16T08:08:43Z",
+    "ms_played": 253164,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_352a7ccb88495418",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:6Pp9B4YA19e5hnN48zLaLk",
+    "played_at": "2026-09-16T08:17:25Z",
+    "ms_played": 143336,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_efd965ba45759762",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:4GQGBIMzmoTTgID8lILwof",
+    "played_at": "2026-09-16T08:24:06Z",
+    "ms_played": 152605,
+    "skipped": false,
+    "device_type": "web_player",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_b40ff6f73d59a29b",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:46mVcLRZJ5PRJ3CsoRXDTY",
+    "played_at": "2026-09-16T09:04:54Z",
+    "ms_played": 43439,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_cd2bdabb2d3cfec5",
     "user_id": "user_real_03",
     "track_id": "spotify:track:1FAq98nRubbF3H245G0UU9",
-    "played_at": "2026-09-17T22:03:32",
-    "ms_played": 122487,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603301",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:2vjY3jGKElvqXoaGNEuYef",
-    "played_at": "2026-09-17T06:28:51",
-    "ms_played": 130601,
+    "played_at": "2026-09-16T09:10:00Z",
+    "ms_played": 280100,
     "skipped": false,
-    "device_type": "mobile"
+    "device_type": "web_player",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603302",
+    "event_id": "evt_syn_b4ab3a00976753e3",
     "user_id": "user_real_03",
-    "track_id": "spotify:track:2xGjfbXZnI8uQDhukoQURQ",
-    "played_at": "2026-09-17T10:31:47",
-    "ms_played": 225717,
+    "track_id": "spotify:track:004M0MDrhdCH8Lp7rnHS4s",
+    "played_at": "2026-09-16T09:56:06Z",
+    "ms_played": 147769,
     "skipped": false,
-    "device_type": "mobile"
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603303",
+    "event_id": "evt_syn_b20fcebf17f14c2e",
     "user_id": "user_real_03",
-    "track_id": "spotify:track:1FXrYwvWwjmbw8cqFC1OWz",
-    "played_at": "2026-09-17T16:00:52",
-    "ms_played": 62269,
-    "skipped": true,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603304",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:7jEwBMtA7gM43NxiuvfF3h",
-    "played_at": "2026-09-17T08:42:29",
-    "ms_played": 251901,
+    "track_id": "spotify:track:6DyZR5AePalnv39OzWgPUr",
+    "played_at": "2026-09-16T10:06:47Z",
+    "ms_played": 209400,
     "skipped": false,
-    "device_type": "web_player"
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603305",
+    "event_id": "evt_syn_77df3b3d6986a9c5",
     "user_id": "user_real_03",
-    "track_id": "spotify:track:70LcF31zb1H0PyJoS1Sx1r",
-    "played_at": "2026-09-17T20:21:35",
-    "ms_played": 191750,
+    "track_id": "spotify:track:2JNl3zf7dLaK3ceN12RTOW",
+    "played_at": "2026-09-16T10:14:58Z",
+    "ms_played": 241054,
     "skipped": false,
-    "device_type": "smart_speaker"
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603306",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:72cGBEqu7RitIOoACXYjfR",
-    "played_at": "2026-09-17T18:07:06",
-    "ms_played": 181356,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603307",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:3khEEPRyBeOUabbmOPJzAG",
-    "played_at": "2026-09-17T20:51:18",
-    "ms_played": 122491,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603308",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:3fCO1n6l7yekcNRDRkoJJ4",
-    "played_at": "2026-09-17T21:31:08",
-    "ms_played": 347062,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603309",
+    "event_id": "evt_syn_ec17d888355c7338",
     "user_id": "user_real_03",
     "track_id": "spotify:track:51oc6MEsXTpnPn6GOw5VuP",
-    "played_at": "2026-09-17T08:59:54",
-    "ms_played": 113247,
+    "played_at": "2026-09-16T11:16:16Z",
+    "ms_played": 145462,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_fbfe3b7b21ebf98c",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:3tiIqf0bAHPmGyHAEaMVND",
+    "played_at": "2026-09-16T13:23:37Z",
+    "ms_played": 8144,
     "skipped": true,
-    "device_type": "smart_speaker"
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603310",
+    "event_id": "evt_syn_0b14e89eca0cb64a",
     "user_id": "user_real_03",
-    "track_id": "spotify:track:0var06tEoXUqS76RScrCCP",
-    "played_at": "2026-09-17T18:06:48",
-    "ms_played": 95436,
+    "track_id": "spotify:track:5mOOwyOGev9frlXm5NDEQy",
+    "played_at": "2026-09-16T13:32:12Z",
+    "ms_played": 216900,
     "skipped": false,
-    "device_type": "mobile"
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603311",
+    "event_id": "evt_syn_7258e3c32698da34",
     "user_id": "user_real_03",
-    "track_id": "spotify:track:5ptl2PXkiSth54HCuGO7vN",
-    "played_at": "2026-09-17T13:37:32",
-    "ms_played": 63730,
+    "track_id": "spotify:track:5vswHbOuXtukiFMu4PLInk",
+    "played_at": "2026-09-16T15:12:24Z",
+    "ms_played": 15034,
     "skipped": true,
-    "device_type": "smart_speaker"
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603312",
+    "event_id": "evt_syn_877bda5c7b88e855",
     "user_id": "user_real_03",
-    "track_id": "spotify:track:0JnOpiUieuk9SdRv7Fkw2P",
-    "played_at": "2026-09-17T16:27:53",
-    "ms_played": 142417,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603313",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:5U1WdUzVEMC8afmZELiPnk",
-    "played_at": "2026-09-17T18:08:06",
-    "ms_played": 105444,
+    "track_id": "spotify:track:3zriGDrUvCWdY40Gd1xZGf",
+    "played_at": "2026-09-16T15:34:02Z",
+    "ms_played": 71831,
     "skipped": true,
-    "device_type": "web_player"
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603314",
+    "event_id": "evt_syn_70dcc3c8bd590acd",
     "user_id": "user_real_03",
-    "track_id": "spotify:track:22sQUmLhT8umlEhQzDrzfJ",
-    "played_at": "2026-09-17T13:38:58",
-    "ms_played": 141818,
+    "track_id": "spotify:track:3OJtZTdhAXJgyKbcTlsgvA",
+    "played_at": "2026-09-16T16:21:33Z",
+    "ms_played": 217087,
     "skipped": false,
-    "device_type": "desktop"
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603315",
+    "event_id": "evt_syn_5058453d81c367a9",
     "user_id": "user_real_03",
-    "track_id": "spotify:track:6ltapJZzCCg2amhhwjpReI",
-    "played_at": "2026-09-17T22:28:51",
-    "ms_played": 70318,
+    "track_id": "spotify:track:2lsdPe3YYjLCfcXFglNKN9",
+    "played_at": "2026-09-16T16:25:20Z",
+    "ms_played": 184737,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
+  },
+  {
+    "event_id": "evt_syn_02e613c0b683be8d",
+    "user_id": "user_real_03",
+    "track_id": "spotify:track:7KAGkb0zAYC4lYDOa9fAug",
+    "played_at": "2026-09-16T17:00:05Z",
+    "ms_played": 11136,
     "skipped": true,
-    "device_type": "smart_speaker"
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603316",
+    "event_id": "evt_syn_a340df467eaac8ec",
     "user_id": "user_real_03",
-    "track_id": "spotify:track:2VIK6jaaKghS4QPHr6sAkv",
-    "played_at": "2026-09-17T10:44:35",
-    "ms_played": 224808,
+    "track_id": "spotify:track:2x9mxZswDySC1QOFFH09q7",
+    "played_at": "2026-09-16T18:07:54Z",
+    "ms_played": 54890,
     "skipped": false,
-    "device_type": "desktop"
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603317",
+    "event_id": "evt_syn_873059a6b84fb405",
     "user_id": "user_real_03",
-    "track_id": "spotify:track:0jFcsBBLjOPmZfQWf4nGsO",
-    "played_at": "2026-09-17T18:58:43",
-    "ms_played": 70422,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603318",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:1AfFUID69eG8hOkkc3asNM",
-    "played_at": "2026-09-17T18:48:22",
-    "ms_played": 175822,
+    "track_id": "spotify:track:3TpWeFMHrpYrW0habpw0Rt",
+    "played_at": "2026-09-16T21:48:08Z",
+    "ms_played": 58349,
     "skipped": false,
-    "device_type": "smart_speaker"
+    "device_type": "mobile",
+    "source": "synthetic_persona_matched"
   },
   {
-    "event_id": "evt_1789603319",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:37bNBNB332HXbSy6079cws",
-    "played_at": "2026-09-17T10:54:27",
-    "ms_played": 175782,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603320",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:1NC6YtHbDdREN4pZB2GzPl",
-    "played_at": "2026-09-17T05:03:12",
-    "ms_played": 95363,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603321",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:2vOAHp8PBBFYqvQUWSoITY",
-    "played_at": "2026-09-17T09:53:03",
-    "ms_played": 156245,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603322",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:6NB6XWwi4IfX6w2u6Pk5gG",
-    "played_at": "2026-09-17T03:52:28",
-    "ms_played": 67812,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603323",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:7jEwBMtA7gM43NxiuvfF3h",
-    "played_at": "2026-09-17T12:32:50",
-    "ms_played": 217582,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603324",
-    "user_id": "user_real_03",
-    "track_id": "spotify:track:0JnOpiUieuk9SdRv7Fkw2P",
-    "played_at": "2026-09-17T21:24:26",
-    "ms_played": 211903,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603325",
-    "user_id": "user_synth_000",
-    "track_id": "spotify:track:5odlY52u43F5BjByhxg7wg",
-    "played_at": "2026-09-17T01:16:12",
-    "ms_played": 201210,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603326",
-    "user_id": "user_synth_000",
-    "track_id": "spotify:track:7nF9c1EmRF3BNAtKDCwUAK",
-    "played_at": "2026-09-17T18:41:23",
-    "ms_played": 191625,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603327",
+    "event_id": "evt_syn_a0bdb6a833e14efa",
     "user_id": "user_synth_001",
-    "track_id": "spotify:track:3GVkPk8mqxz0itaAriG1L7",
-    "played_at": "2026-09-17T23:04:11",
-    "ms_played": 163609,
+    "track_id": "spotify:track:1p6AnftoxhGTuei5RnsvIy",
+    "played_at": "2026-09-16T01:42:30Z",
+    "ms_played": 167613,
     "skipped": false,
-    "device_type": "mobile"
+    "device_type": "mobile",
+    "source": "synthetic"
   },
   {
-    "event_id": "evt_1789603328",
+    "event_id": "evt_syn_d901352bf165084b",
     "user_id": "user_synth_001",
-    "track_id": "spotify:track:5YaMZfnTGCk6Ze3AxEcoaY",
-    "played_at": "2026-09-17T09:16:08",
-    "ms_played": 49327,
-    "skipped": true,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603329",
-    "user_id": "user_synth_001",
-    "track_id": "spotify:track:3DK6m7It6Pw857FcQftMds",
-    "played_at": "2026-09-17T18:09:02",
-    "ms_played": 153795,
-    "skipped": true,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603330",
-    "user_id": "user_synth_001",
-    "track_id": "spotify:track:0JP9xo3adEtGSdUEISiszL",
-    "played_at": "2026-09-17T14:36:35",
-    "ms_played": 107686,
-    "skipped": true,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603331",
-    "user_id": "user_synth_001",
-    "track_id": "spotify:track:3GVkPk8mqxz0itaAriG1L7",
-    "played_at": "2026-09-17T15:50:32",
-    "ms_played": 48243,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603332",
-    "user_id": "user_synth_001",
-    "track_id": "spotify:track:00Blm7zeNqgYLPtW6zg8cj",
-    "played_at": "2026-09-17T21:42:21",
-    "ms_played": 196721,
-    "skipped": true,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603333",
-    "user_id": "user_synth_001",
-    "track_id": "spotify:track:7rbECVPkY5UODxoOUVKZnA",
-    "played_at": "2026-09-17T14:35:52",
-    "ms_played": 191803,
+    "track_id": "spotify:track:44R4TTbnXAh9B2BGNK5AV5",
+    "played_at": "2026-09-16T02:37:15Z",
+    "ms_played": 349145,
     "skipped": false,
-    "device_type": "mobile"
+    "device_type": "mobile",
+    "source": "synthetic"
   },
   {
-    "event_id": "evt_1789603334",
-    "user_id": "user_synth_002",
-    "track_id": "spotify:track:0baNzeUcPQnQSagpe8T0mD",
-    "played_at": "2026-09-17T13:57:41",
-    "ms_played": 84627,
+    "event_id": "evt_syn_bbb995ac99e46c1c",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:47emsK4Cj4dMqctYq18U03",
+    "played_at": "2026-09-16T05:23:55Z",
+    "ms_played": 49115,
     "skipped": false,
-    "device_type": "desktop"
+    "device_type": "mobile",
+    "source": "synthetic"
   },
   {
-    "event_id": "evt_1789603335",
+    "event_id": "evt_syn_b6c7b55c58c41e13",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:6rY5FAWxCdAGllYEOZMbjW",
+    "played_at": "2026-09-16T06:16:42Z",
+    "ms_played": 165369,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_bc31439b0eb1fde0",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:4eDvNetDVAsDpPtiIdQ2vq",
+    "played_at": "2026-09-16T06:20:05Z",
+    "ms_played": 133340,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_ac92d99bdeca4e28",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:2Xbl3OpKdxFqBxAYqAkAlv",
+    "played_at": "2026-09-16T06:32:28Z",
+    "ms_played": 18271,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_10aa0918c1668528",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:0GDp0GGFAeStUDZKFEQjLL",
+    "played_at": "2026-09-16T06:36:27Z",
+    "ms_played": 13352,
+    "skipped": true,
+    "device_type": "smart_speaker",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_dd6625f7a2839141",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:1ghqDkglrXPcxgRobBmLVW",
+    "played_at": "2026-09-16T06:50:53Z",
+    "ms_played": 45204,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_fbb05d9e93c81ad7",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:4eDvNetDVAsDpPtiIdQ2vq",
+    "played_at": "2026-09-16T07:06:40Z",
+    "ms_played": 114480,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_7957bdba1b5d8a1e",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:1v3DDLv3xuBsCRlrdwUh81",
+    "played_at": "2026-09-16T07:27:17Z",
+    "ms_played": 56374,
+    "skipped": false,
+    "device_type": "smart_speaker",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_413258f405937ae7",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:1EgUbvx2wT5brSxYWaVuMq",
+    "played_at": "2026-09-16T07:50:21Z",
+    "ms_played": 172633,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_85fe474ffda645a1",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:4Qm7r3ImER8S2Ori1gLMAf",
+    "played_at": "2026-09-16T08:14:44Z",
+    "ms_played": 519410,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_432cbe6d7fe44370",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:6i9997Q9R4M7RuqQEHq3ed",
+    "played_at": "2026-09-16T08:28:52Z",
+    "ms_played": 21167,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_242e862e7675046a",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:7lF53yuRy58ViTdciG36c9",
+    "played_at": "2026-09-16T09:47:57Z",
+    "ms_played": 58503,
+    "skipped": false,
+    "device_type": "web_player",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_df76c0b58a306266",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:3vjs2MDHoF9xhylNg6Y9un",
+    "played_at": "2026-09-16T11:18:37Z",
+    "ms_played": 43903,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_cfae05a9814623eb",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:0Qi0g5KMdASeSxiOfMZLp8",
+    "played_at": "2026-09-16T11:23:17Z",
+    "ms_played": 37606,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_e73a23b91a2736f0",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:3qrdLVOClRU4yPkcXZ7c5u",
+    "played_at": "2026-09-16T12:10:29Z",
+    "ms_played": 111500,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_d5a49210e927e43d",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:2mHngbc9wHeVuJr59VCV2h",
+    "played_at": "2026-09-16T12:47:54Z",
+    "ms_played": 39894,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_240ca580aba6efc6",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:5cCKdYNQtM3TC8PXQljxyA",
+    "played_at": "2026-09-16T14:00:13Z",
+    "ms_played": 41045,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_280a4f2b0565eadc",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:5RAZtbW6hkkVG4cMGPO6f2",
+    "played_at": "2026-09-16T14:05:26Z",
+    "ms_played": 153756,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_821b793ff8ad7394",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:4WNrx9GTx4RvdnxR6qVysR",
+    "played_at": "2026-09-16T14:25:17Z",
+    "ms_played": 194575,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_b57696df30829156",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:5Xx24kRMaPG9j98rVArS7V",
+    "played_at": "2026-09-16T15:36:14Z",
+    "ms_played": 174046,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_8462269865da234c",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:5GTKYA7UTjPFNmIjaQ0wQ7",
+    "played_at": "2026-09-16T15:44:07Z",
+    "ms_played": 52776,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_7e56df3315a55b4f",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:2jd5iMydFwVq0NkBdcioWY",
+    "played_at": "2026-09-16T15:47:06Z",
+    "ms_played": 123936,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_a3986e02209636e1",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:4dCWlNirQcPRaLHMCJGeJT",
+    "played_at": "2026-09-16T15:50:46Z",
+    "ms_played": 214003,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_b2ec8e5659274a03",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:1SDzEed9leGGDVJIv2GPUE",
+    "played_at": "2026-09-16T16:03:04Z",
+    "ms_played": 71729,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_9fdf94b2de8f5b7c",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:2Gubzfz7MsXsZvXaiyKzfP",
+    "played_at": "2026-09-16T16:08:17Z",
+    "ms_played": 160683,
+    "skipped": false,
+    "device_type": "smart_speaker",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_617a3acf2b34011f",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:7eNSk0grNnO7MqjLZzs6MM",
+    "played_at": "2026-09-16T16:17:50Z",
+    "ms_played": 263338,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_af9d02ddc8af9bff",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:7uc2ht10gl6l5pqVTp6EmR",
+    "played_at": "2026-09-16T16:34:02Z",
+    "ms_played": 207294,
+    "skipped": false,
+    "device_type": "web_player",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_b683125a312363cc",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:0cUdmruT6kjxa5KpteSdwc",
+    "played_at": "2026-09-16T16:52:56Z",
+    "ms_played": 578563,
+    "skipped": false,
+    "device_type": "web_player",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_0331d09d72b8919a",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:7bn5nXdatftk0CHSrd7NHQ",
+    "played_at": "2026-09-16T17:16:19Z",
+    "ms_played": 82298,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_e56958bed8088f6c",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:6qrAMiRBKTLsoQnww2PXOg",
+    "played_at": "2026-09-16T17:18:53Z",
+    "ms_played": 46115,
+    "skipped": false,
+    "device_type": "smart_speaker",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_f5595ac55a24e6b2",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:7GwYAo3v1ugRhUNe9T70Vk",
+    "played_at": "2026-09-16T17:23:38Z",
+    "ms_played": 213140,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_a1a5c8ba45f265a4",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:3SAga35lAPYdjj3qyfEsCF",
+    "played_at": "2026-09-16T17:52:14Z",
+    "ms_played": 197975,
+    "skipped": false,
+    "device_type": "smart_speaker",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_aeffcce2ec44ee02",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:1ayReVWAIdg2aoA5SHjJzd",
+    "played_at": "2026-09-16T18:03:40Z",
+    "ms_played": 156738,
+    "skipped": false,
+    "device_type": "smart_speaker",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_6aadfb3c117ea6cf",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:25ftdkpJMoyZXiJcueBzRP",
+    "played_at": "2026-09-16T19:45:08Z",
+    "ms_played": 164113,
+    "skipped": false,
+    "device_type": "smart_speaker",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_d590d457e3a5e03d",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:2a834KnEujzAKxO6OxPw6n",
+    "played_at": "2026-09-16T20:21:35Z",
+    "ms_played": 60932,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_70da66e377734d34",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:5yG9yavD95JHV87lCTs8Hw",
+    "played_at": "2026-09-16T21:01:19Z",
+    "ms_played": 592619,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_9eaae066279af469",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:6OCeQsPR1qE6E0QCMRpyT7",
+    "played_at": "2026-09-16T21:06:21Z",
+    "ms_played": 206964,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_84f74d4cafeb9e34",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:7FcsJqxAP30HttYdwrR0GB",
+    "played_at": "2026-09-16T21:41:37Z",
+    "ms_played": 64808,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_53311220f757722b",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:6G8znyaHLps1vGp87rLqaC",
+    "played_at": "2026-09-16T22:18:46Z",
+    "ms_played": 140992,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_83de7f78cc0a36dd",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:1XJRKuLhRu6ukSZir9ZZmC",
+    "played_at": "2026-09-16T22:27:58Z",
+    "ms_played": 51406,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_375d748cf48e2874",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:3M0lSi5WW79CXQamgSBIjx",
+    "played_at": "2026-09-16T22:50:12Z",
+    "ms_played": 528368,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_9ab9295969fe32b1",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:4l9YKebWc0WGhcNbtJFeRe",
+    "played_at": "2026-09-16T23:08:54Z",
+    "ms_played": 136004,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_ef48c79a02520d6c",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:4LAS8j4UMbzX0hnZVUJDZ0",
+    "played_at": "2026-09-16T23:09:01Z",
+    "ms_played": 210584,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_6e9bf827c18a2007",
+    "user_id": "user_synth_001",
+    "track_id": "spotify:track:3F4ceZ5AjuZf7LeXnEZ7Rt",
+    "played_at": "2026-09-16T23:31:55Z",
+    "ms_played": 59386,
+    "skipped": false,
+    "device_type": "smart_speaker",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_55db6f372cba4165",
     "user_id": "user_synth_003",
-    "track_id": "spotify:track:2VyaGJJI8dOiv36F8vHZIL",
-    "played_at": "2026-09-17T21:24:16",
-    "ms_played": 255255,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603336",
-    "user_id": "user_synth_003",
-    "track_id": "spotify:track:2KhrPRV0V1FS2l4eQMJUWt",
-    "played_at": "2026-09-17T20:23:32",
-    "ms_played": 243059,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603337",
-    "user_id": "user_synth_003",
-    "track_id": "spotify:track:7uDUb37h7Xdhza1eWMkoJv",
-    "played_at": "2026-09-17T21:12:20",
-    "ms_played": 265825,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603338",
-    "user_id": "user_synth_003",
-    "track_id": "spotify:track:1xK59OXxi2TAAAbmZK0kBL",
-    "played_at": "2026-09-17T15:00:40",
-    "ms_played": 81232,
+    "track_id": "spotify:track:3pbN3SGJott0Rgb5aE5kqc",
+    "played_at": "2026-09-16T00:21:12Z",
+    "ms_played": 26930,
     "skipped": true,
-    "device_type": "desktop"
+    "device_type": "mobile",
+    "source": "synthetic"
   },
   {
-    "event_id": "evt_1789603339",
+    "event_id": "evt_syn_e9c7dc824feadf5d",
     "user_id": "user_synth_003",
-    "track_id": "spotify:track:2KhrPRV0V1FS2l4eQMJUWt",
-    "played_at": "2026-09-17T20:13:34",
-    "ms_played": 249495,
-    "skipped": false,
-    "device_type": "smart_speaker"
+    "track_id": "spotify:track:5WIrn6GZedzLn5jqxbygL2",
+    "played_at": "2026-09-16T00:54:04Z",
+    "ms_played": 7242,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic"
   },
   {
-    "event_id": "evt_1789603340",
+    "event_id": "evt_syn_f99e1193d9edf3da",
     "user_id": "user_synth_003",
-    "track_id": "spotify:track:0pxPNTroZcxXA0w6IDgMQJ",
-    "played_at": "2026-09-17T19:09:01",
-    "ms_played": 204249,
+    "track_id": "spotify:track:4qG3Um3jXlQnaQV1yVo3it",
+    "played_at": "2026-09-16T01:39:30Z",
+    "ms_played": 172952,
     "skipped": false,
-    "device_type": "web_player"
+    "device_type": "mobile",
+    "source": "synthetic"
   },
   {
-    "event_id": "evt_1789603341",
+    "event_id": "evt_syn_520cbfd29c553446",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:21LkHnuxPxVrOZ5gCaG7aM",
+    "played_at": "2026-09-16T01:40:38Z",
+    "ms_played": 141363,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_30294f1853071ed5",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:1oUqhAuvIEG8T9W8Mk2OVp",
+    "played_at": "2026-09-16T01:45:01Z",
+    "ms_played": 199782,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_469fe0bff35d6ebc",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:60uVumQU74E83X5dbLHKhN",
+    "played_at": "2026-09-16T02:27:50Z",
+    "ms_played": 103227,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_49ed472fa083b6ed",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:4LDtvN4eYQdm1fpyMw0cCu",
+    "played_at": "2026-09-16T02:45:19Z",
+    "ms_played": 176033,
+    "skipped": false,
+    "device_type": "web_player",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_4ff52559e3e1f35c",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:6Xs35Xgawpp7Hzc7qtOKMz",
+    "played_at": "2026-09-16T03:57:50Z",
+    "ms_played": 37641,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_6b91fc8bd813622c",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:7jHxMddr8mtxqdlyw1cN7l",
+    "played_at": "2026-09-16T04:19:08Z",
+    "ms_played": 48029,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_0f5cd6c20fe97002",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:7FwWRSAlhfyhbvybdfDUCe",
+    "played_at": "2026-09-16T07:19:28Z",
+    "ms_played": 122223,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_3f96ca2d96584afb",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:21jGcNKet2qwijlDFuPiPb",
+    "played_at": "2026-09-16T09:28:20Z",
+    "ms_played": 137780,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_b451ac9a2d1dd30b",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:7nzsY8vlnKdvGOEE0rjAXZ",
+    "played_at": "2026-09-16T09:38:53Z",
+    "ms_played": 132216,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_b520e864d4284417",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:2hybPIpFIDRa8XEY5D4VE2",
+    "played_at": "2026-09-16T10:02:13Z",
+    "ms_played": 19861,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_b841c8edea0a64e0",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:4W00YDJIzSGVnhUZ0UX3Z3",
+    "played_at": "2026-09-16T10:29:41Z",
+    "ms_played": 55505,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_fcd39ec6a933ac4b",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:2SGQfFNHvxXMsGrEkYWAuZ",
+    "played_at": "2026-09-16T11:21:08Z",
+    "ms_played": 16401,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_a1653d4e61b7b26f",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:2tPNj9sUt3FbjEUqBzZazv",
+    "played_at": "2026-09-16T11:24:31Z",
+    "ms_played": 111827,
+    "skipped": true,
+    "device_type": "desktop",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_48603925356d389e",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:0I4cfb7ATp8pC2w6OKk8al",
+    "played_at": "2026-09-16T11:41:16Z",
+    "ms_played": 103531,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_781e6063dbb1e863",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:0jYfN0oxUjdYmAifDBORz9",
+    "played_at": "2026-09-16T12:03:06Z",
+    "ms_played": 50544,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_9c4e60ae815c84da",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:4WuOWVnAqvEQxgSRrspBgt",
+    "played_at": "2026-09-16T12:31:53Z",
+    "ms_played": 125838,
+    "skipped": false,
+    "device_type": "web_player",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_01c8477c32514bee",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:75iJMOH4oBobiRiBJVdw2m",
+    "played_at": "2026-09-16T13:19:52Z",
+    "ms_played": 20539,
+    "skipped": true,
+    "device_type": "desktop",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_d2a043a6424d9d7f",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:6a2zEUxFLQplmD9FgDD6gE",
+    "played_at": "2026-09-16T14:37:17Z",
+    "ms_played": 46590,
+    "skipped": false,
+    "device_type": "web_player",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_c494e9e7cc9661c9",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:4IU5Xs7AXe1e17wLdQJ8Fq",
+    "played_at": "2026-09-16T14:41:29Z",
+    "ms_played": 55577,
+    "skipped": false,
+    "device_type": "web_player",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_198d7be7dc2df91e",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:5Tbpp3OLLClPJF8t1DmrFD",
+    "played_at": "2026-09-16T15:21:19Z",
+    "ms_played": 36284,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_228f6d0042786a5c",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:3eX2JOSwcPjVEe2zbVZ2GH",
+    "played_at": "2026-09-16T15:36:41Z",
+    "ms_played": 195318,
+    "skipped": false,
+    "device_type": "web_player",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_8a4b9ffdfa0219a0",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:4qG3Um3jXlQnaQV1yVo3it",
+    "played_at": "2026-09-16T15:41:12Z",
+    "ms_played": 190590,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_e93a682c12935c8c",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:21jGcNKet2qwijlDFuPiPb",
+    "played_at": "2026-09-16T16:38:38Z",
+    "ms_played": 87130,
+    "skipped": true,
+    "device_type": "desktop",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_826a69c31d5481ee",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:1fZvvlfjgoqjz7HQKEfzyp",
+    "played_at": "2026-09-16T16:50:10Z",
+    "ms_played": 169398,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_78b49fb0ccb8c748",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:0bMbDctzMmTyK2j74j3nF3",
+    "played_at": "2026-09-16T18:35:40Z",
+    "ms_played": 48518,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_2f62577d1b3c21e8",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:4mPj0yS1rKiwARgr3H0dtP",
+    "played_at": "2026-09-16T18:44:45Z",
+    "ms_played": 4657,
+    "skipped": true,
+    "device_type": "web_player",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_cadd98e9874a4e55",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:0ZKdHwEFb8uQCzn7Du4Vzb",
+    "played_at": "2026-09-16T19:04:47Z",
+    "ms_played": 54801,
+    "skipped": false,
+    "device_type": "web_player",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_4a9e4f470aa8ab45",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:5G9CRx8UPvVfZe1L8gXKT0",
+    "played_at": "2026-09-16T19:48:50Z",
+    "ms_played": 58124,
+    "skipped": false,
+    "device_type": "web_player",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_5a1f523edefb6219",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:5Ohxk2dO5COHF1krpoPigN",
+    "played_at": "2026-09-16T20:15:11Z",
+    "ms_played": 210387,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_de8cdf62efa79ef1",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:1caFLbPWWm4drp8E3KduOu",
+    "played_at": "2026-09-16T20:55:59Z",
+    "ms_played": 92418,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_20e3ac7b8ae5fa1b",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:7c8X4u2anjubzJgoD7Tx2J",
+    "played_at": "2026-09-16T21:06:40Z",
+    "ms_played": 42483,
+    "skipped": false,
+    "device_type": "desktop",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_95dd36066a5937da",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:5XeFesFbtLpXzIVDNQP22n",
+    "played_at": "2026-09-16T21:11:00Z",
+    "ms_played": 33760,
+    "skipped": true,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_394c2da01c83cd06",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:7u5GPX30gFJOMQcojV94em",
+    "played_at": "2026-09-16T21:34:37Z",
+    "ms_played": 178447,
+    "skipped": false,
+    "device_type": "web_player",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_9fbab45ded1550c1",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:4hfIVhq0F0zFUcrbecsYmo",
+    "played_at": "2026-09-16T21:48:56Z",
+    "ms_played": 81623,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_ac5bcd377c119398",
+    "user_id": "user_synth_003",
+    "track_id": "spotify:track:6QeYSvYqYUsfBzsApbjDHO",
+    "played_at": "2026-09-16T23:11:47Z",
+    "ms_played": 138257,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
+  },
+  {
+    "event_id": "evt_syn_c8922ce0140ae924",
     "user_id": "user_synth_004",
-    "track_id": "spotify:track:0s76ExpXyMGVBlKLUr683e",
-    "played_at": "2026-09-17T06:50:16",
-    "ms_played": 138610,
+    "track_id": "spotify:track:3hRV0jL3vUpRrcy398teAU",
+    "played_at": "2026-09-16T09:47:35Z",
+    "ms_played": 165540,
     "skipped": false,
-    "device_type": "desktop"
+    "device_type": "desktop",
+    "source": "synthetic"
   },
   {
-    "event_id": "evt_1789603342",
+    "event_id": "evt_syn_5b9087cffb83c7da",
     "user_id": "user_synth_004",
-    "track_id": "spotify:track:5w65rfJaQDOQ0iAhOuQqiv",
-    "played_at": "2026-09-17T12:40:25",
-    "ms_played": 126409,
+    "track_id": "spotify:track:6PnluwP0fjGnpIBsqTdUTq",
+    "played_at": "2026-09-16T12:06:22Z",
+    "ms_played": 42986,
     "skipped": false,
-    "device_type": "mobile"
+    "device_type": "mobile",
+    "source": "synthetic"
   },
   {
-    "event_id": "evt_1789603343",
-    "user_id": "user_synth_004",
-    "track_id": "spotify:track:2Hh3ETdQKrmSI3QS0hme7g",
-    "played_at": "2026-09-17T15:41:46",
-    "ms_played": 137146,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603344",
+    "event_id": "evt_syn_881aad4465ce60a8",
     "user_id": "user_synth_004",
     "track_id": "spotify:track:2LGdO5MtFdyphi2EihANZG",
-    "played_at": "2026-09-17T11:32:06",
-    "ms_played": 102261,
-    "skipped": true,
-    "device_type": "web_player"
+    "played_at": "2026-09-16T12:43:56Z",
+    "ms_played": 213193,
+    "skipped": false,
+    "device_type": "mobile",
+    "source": "synthetic"
   },
   {
-    "event_id": "evt_1789603345",
+    "event_id": "evt_syn_7362d78d94c37d02",
     "user_id": "user_synth_004",
-    "track_id": "spotify:track:4gh0ZnHzaTMT1sDga7Ek0N",
-    "played_at": "2026-09-17T19:28:24",
-    "ms_played": 177819,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603346",
-    "user_id": "user_synth_006",
-    "track_id": "spotify:track:5thGRKzxnhbB9nE9tE8MNy",
-    "played_at": "2026-09-17T19:54:34",
-    "ms_played": 112204,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603347",
-    "user_id": "user_synth_006",
-    "track_id": "spotify:track:3KLHSYHSmny4sJo2finqy9",
-    "played_at": "2026-09-17T17:00:35",
-    "ms_played": 230536,
+    "track_id": "spotify:track:6WfSQrAPYNLFQICqMhsfhB",
+    "played_at": "2026-09-16T14:49:44Z",
+    "ms_played": 52563,
     "skipped": false,
-    "device_type": "desktop"
+    "device_type": "mobile",
+    "source": "synthetic"
   },
   {
-    "event_id": "evt_1789603348",
-    "user_id": "user_synth_006",
-    "track_id": "spotify:track:2lXu7SNGIKHJ8EV2EetYFa",
-    "played_at": "2026-09-17T16:25:34",
-    "ms_played": 169234,
+    "event_id": "evt_syn_6b2771771f4cb969",
+    "user_id": "user_synth_004",
+    "track_id": "spotify:track:0phzfJn8NeT1LkbqfV2peI",
+    "played_at": "2026-09-16T14:59:10Z",
+    "ms_played": 115705,
     "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603349",
-    "user_id": "user_synth_006",
-    "track_id": "spotify:track:37bNBNB332HXbSy6079cws",
-    "played_at": "2026-09-17T19:46:22",
-    "ms_played": 69295,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603350",
-    "user_id": "user_synth_006",
-    "track_id": "spotify:track:04TshWXkhV1qkqHzf31Hn6",
-    "played_at": "2026-09-17T17:16:12",
-    "ms_played": 70269,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603351",
-    "user_id": "user_synth_006",
-    "track_id": "spotify:track:7mDTvYD2ieE4Q28XFziMfJ",
-    "played_at": "2026-09-17T14:35:04",
-    "ms_played": 102043,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603352",
-    "user_id": "user_synth_006",
-    "track_id": "spotify:track:1NC6YtHbDdREN4pZB2GzPl",
-    "played_at": "2026-09-17T18:31:21",
-    "ms_played": 114752,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603353",
-    "user_id": "user_synth_006",
-    "track_id": "spotify:track:7nF9c1EmRF3BNAtKDCwUAK",
-    "played_at": "2026-09-17T06:12:20",
-    "ms_played": 136241,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603354",
-    "user_id": "user_synth_006",
-    "track_id": "spotify:track:51oc6MEsXTpnPn6GOw5VuP",
-    "played_at": "2026-09-17T18:09:36",
-    "ms_played": 147848,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603355",
-    "user_id": "user_synth_007",
-    "track_id": "spotify:track:7j8aPlwDS6ip8LQXbGjLfx",
-    "played_at": "2026-09-17T18:41:27",
-    "ms_played": 67020,
-    "skipped": true,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603356",
-    "user_id": "user_synth_007",
-    "track_id": "spotify:track:4WNrx9GTx4RvdnxR6qVysR",
-    "played_at": "2026-09-17T21:29:28",
-    "ms_played": 117372,
-    "skipped": true,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603357",
-    "user_id": "user_synth_007",
-    "track_id": "spotify:track:0cUdmruT6kjxa5KpteSdwc",
-    "played_at": "2026-09-17T07:38:05",
-    "ms_played": 519314,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603358",
-    "user_id": "user_synth_007",
-    "track_id": "spotify:track:1FXrYwvWwjmbw8cqFC1OWz",
-    "played_at": "2026-09-17T09:56:40",
-    "ms_played": 58908,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603359",
-    "user_id": "user_synth_008",
-    "track_id": "spotify:track:7m9OqQk4RVRkw9JJdeAw96",
-    "played_at": "2026-09-17T17:52:37",
-    "ms_played": 78332,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603360",
-    "user_id": "user_synth_008",
-    "track_id": "spotify:track:1oAwsWBovWRIp7qLMGPIet",
-    "played_at": "2026-09-17T09:57:34",
-    "ms_played": 159873,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603361",
-    "user_id": "user_synth_008",
-    "track_id": "spotify:track:04TshWXkhV1qkqHzf31Hn6",
-    "played_at": "2026-09-17T21:37:46",
-    "ms_played": 249519,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603362",
-    "user_id": "user_synth_010",
-    "track_id": "spotify:track:6ltapJZzCCg2amhhwjpReI",
-    "played_at": "2026-09-17T01:15:54",
-    "ms_played": 258829,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603363",
-    "user_id": "user_synth_010",
-    "track_id": "spotify:track:0X2bh8NVQ8svDQIn2AdCbW",
-    "played_at": "2026-09-17T13:11:36",
-    "ms_played": 318482,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603364",
-    "user_id": "user_synth_010",
-    "track_id": "spotify:track:0yuAWlxq59xT3agQ965OxE",
-    "played_at": "2026-09-17T21:02:14",
-    "ms_played": 171409,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603365",
-    "user_id": "user_synth_010",
-    "track_id": "spotify:track:144pIQC3mpmUkZXMt8fIwb",
-    "played_at": "2026-09-17T08:42:13",
-    "ms_played": 180601,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603366",
-    "user_id": "user_synth_010",
-    "track_id": "spotify:track:6NB6XWwi4IfX6w2u6Pk5gG",
-    "played_at": "2026-09-17T13:02:02",
-    "ms_played": 281281,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603367",
-    "user_id": "user_synth_010",
-    "track_id": "spotify:track:1sIIlVrnPhrvmTrHtzM7tV",
-    "played_at": "2026-09-17T15:53:17",
-    "ms_played": 264769,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603368",
-    "user_id": "user_synth_010",
-    "track_id": "spotify:track:5BpPWEmDkYN7LK8RJvl7ED",
-    "played_at": "2026-09-17T07:41:24",
-    "ms_played": 112823,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603369",
-    "user_id": "user_synth_010",
-    "track_id": "spotify:track:72SWjMbGcAXZQEMbWcWEDI",
-    "played_at": "2026-09-17T22:14:33",
-    "ms_played": 140075,
-    "skipped": true,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603370",
-    "user_id": "user_synth_011",
-    "track_id": "spotify:track:1dyTcli07c77mtQK3ahUZR",
-    "played_at": "2026-09-17T21:28:10",
-    "ms_played": 81190,
-    "skipped": true,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603371",
-    "user_id": "user_synth_011",
-    "track_id": "spotify:track:1FXrYwvWwjmbw8cqFC1OWz",
-    "played_at": "2026-09-17T07:38:45",
-    "ms_played": 231368,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603372",
-    "user_id": "user_synth_011",
-    "track_id": "spotify:track:0wt9RjddODlWDetpuaXfRK",
-    "played_at": "2026-09-17T18:30:43",
-    "ms_played": 147602,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603373",
-    "user_id": "user_synth_011",
-    "track_id": "spotify:track:6A8NfypDHuwiLWbo4a1yca",
-    "played_at": "2026-09-17T20:01:15",
-    "ms_played": 42374,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603374",
-    "user_id": "user_synth_011",
-    "track_id": "spotify:track:1FAq98nRubbF3H245G0UU9",
-    "played_at": "2026-09-17T04:36:09",
-    "ms_played": 71306,
-    "skipped": true,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603375",
-    "user_id": "user_synth_012",
-    "track_id": "spotify:track:1AfFUID69eG8hOkkc3asNM",
-    "played_at": "2026-09-17T22:38:36",
-    "ms_played": 193754,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603376",
-    "user_id": "user_synth_012",
-    "track_id": "spotify:track:0LmI2mmiVIwVs9D8q2rjRM",
-    "played_at": "2026-09-17T13:30:55",
-    "ms_played": 177894,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603377",
-    "user_id": "user_synth_012",
-    "track_id": "spotify:track:4dtP86vkhzwNXCFpCtizce",
-    "played_at": "2026-09-17T07:37:52",
-    "ms_played": 353041,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603378",
-    "user_id": "user_synth_012",
-    "track_id": "spotify:track:4dtP86vkhzwNXCFpCtizce",
-    "played_at": "2026-09-17T11:29:38",
-    "ms_played": 286882,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603379",
-    "user_id": "user_synth_012",
-    "track_id": "spotify:track:5FVd6KXrgO9B3JPmC8OPst",
-    "played_at": "2026-09-17T06:12:33",
-    "ms_played": 239537,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603380",
-    "user_id": "user_synth_012",
-    "track_id": "spotify:track:2VyaGJJI8dOiv36F8vHZIL",
-    "played_at": "2026-09-17T06:30:57",
-    "ms_played": 281792,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603381",
-    "user_id": "user_synth_012",
-    "track_id": "spotify:track:1FAq98nRubbF3H245G0UU9",
-    "played_at": "2026-09-17T14:07:05",
-    "ms_played": 202125,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603382",
-    "user_id": "user_synth_012",
-    "track_id": "spotify:track:1pLb194SlwaLUEQiTzPng4",
-    "played_at": "2026-09-17T20:57:49",
-    "ms_played": 178786,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603383",
-    "user_id": "user_synth_013",
-    "track_id": "spotify:track:1xK59OXxi2TAAAbmZK0kBL",
-    "played_at": "2026-09-17T13:51:30",
-    "ms_played": 324343,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603384",
-    "user_id": "user_synth_013",
-    "track_id": "spotify:track:3DK6m7It6Pw857FcQftMds",
-    "played_at": "2026-09-17T06:08:16",
-    "ms_played": 304452,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603385",
-    "user_id": "user_synth_013",
-    "track_id": "spotify:track:2xql0pid3EUwW38AsywxhV",
-    "played_at": "2026-09-17T10:56:34",
-    "ms_played": 121353,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603386",
-    "user_id": "user_synth_013",
-    "track_id": "spotify:track:39Yp9wwQiSRIDOvrVg7mbk",
-    "played_at": "2026-09-17T16:07:33",
-    "ms_played": 26695,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603387",
-    "user_id": "user_synth_014",
-    "track_id": "spotify:track:2mlNgAeIBnL78ZriXgrRHz",
-    "played_at": "2026-09-17T12:06:09",
-    "ms_played": 119333,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603388",
-    "user_id": "user_synth_014",
-    "track_id": "spotify:track:2VyaGJJI8dOiv36F8vHZIL",
-    "played_at": "2026-09-17T13:23:39",
-    "ms_played": 160990,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603389",
-    "user_id": "user_synth_014",
-    "track_id": "spotify:track:4gh0ZnHzaTMT1sDga7Ek0N",
-    "played_at": "2026-09-17T16:35:30",
-    "ms_played": 110499,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603390",
-    "user_id": "user_synth_014",
-    "track_id": "spotify:track:0LtOwyZoSNZKJWHqjzADpW",
-    "played_at": "2026-09-17T16:49:45",
-    "ms_played": 102566,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603391",
-    "user_id": "user_synth_015",
-    "track_id": "spotify:track:2xGjfbXZnI8uQDhukoQURQ",
-    "played_at": "2026-09-17T19:10:06",
-    "ms_played": 106332,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603392",
-    "user_id": "user_synth_015",
-    "track_id": "spotify:track:7mDTvYD2ieE4Q28XFziMfJ",
-    "played_at": "2026-09-17T17:43:45",
-    "ms_played": 49920,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603393",
-    "user_id": "user_synth_015",
-    "track_id": "spotify:track:0BxE4FqsDD1Ot4YuBXwAPp",
-    "played_at": "2026-09-17T19:52:09",
-    "ms_played": 146544,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603394",
-    "user_id": "user_synth_015",
-    "track_id": "spotify:track:00WLowvlN5cjkYpQV6pjo4",
-    "played_at": "2026-09-17T08:05:38",
-    "ms_played": 38603,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603395",
-    "user_id": "user_synth_015",
-    "track_id": "spotify:track:72uSoNIf7eScfGZFQjNHrR",
-    "played_at": "2026-09-17T17:33:18",
-    "ms_played": 179657,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603396",
-    "user_id": "user_synth_015",
-    "track_id": "spotify:track:00Blm7zeNqgYLPtW6zg8cj",
-    "played_at": "2026-09-17T17:28:00",
-    "ms_played": 146581,
-    "skipped": true,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603397",
-    "user_id": "user_synth_015",
-    "track_id": "spotify:track:3vooOYHU0Fi3ViCG7Ozh0Y",
-    "played_at": "2026-09-17T17:33:44",
-    "ms_played": 135645,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603398",
-    "user_id": "user_synth_016",
-    "track_id": "spotify:track:0RJKHViNh3oKK2EymwNwEL",
-    "played_at": "2026-09-17T09:00:10",
-    "ms_played": 54387,
-    "skipped": true,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603399",
-    "user_id": "user_synth_016",
-    "track_id": "spotify:track:5U1WdUzVEMC8afmZELiPnk",
-    "played_at": "2026-09-17T18:25:37",
-    "ms_played": 70458,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603400",
-    "user_id": "user_synth_016",
-    "track_id": "spotify:track:0s76ExpXyMGVBlKLUr683e",
-    "played_at": "2026-09-17T21:35:18",
-    "ms_played": 170322,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603401",
-    "user_id": "user_synth_016",
-    "track_id": "spotify:track:5n7Sp2uHvRWbKYU1KIqaNA",
-    "played_at": "2026-09-17T08:12:29",
-    "ms_played": 204975,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603402",
-    "user_id": "user_synth_016",
-    "track_id": "spotify:track:6WK8ycPHFr3HtjKnKcyFdl",
-    "played_at": "2026-09-17T15:35:04",
-    "ms_played": 133447,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603403",
-    "user_id": "user_synth_017",
-    "track_id": "spotify:track:6ltapJZzCCg2amhhwjpReI",
-    "played_at": "2026-09-17T20:36:16",
-    "ms_played": 197596,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603404",
-    "user_id": "user_synth_017",
-    "track_id": "spotify:track:4WNrx9GTx4RvdnxR6qVysR",
-    "played_at": "2026-09-17T19:49:29",
-    "ms_played": 188173,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603405",
-    "user_id": "user_synth_017",
-    "track_id": "spotify:track:10nyNJ6zNy2YVYLrcwLccB",
-    "played_at": "2026-09-17T06:40:50",
-    "ms_played": 227870,
-    "skipped": false,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603406",
-    "user_id": "user_synth_017",
-    "track_id": "spotify:track:4gh0ZnHzaTMT1sDga7Ek0N",
-    "played_at": "2026-09-17T22:33:34",
-    "ms_played": 57924,
-    "skipped": true,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603407",
-    "user_id": "user_synth_017",
-    "track_id": "spotify:track:7nzsY8vlnKdvGOEE0rjAXZ",
-    "played_at": "2026-09-17T12:47:52",
-    "ms_played": 91223,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603408",
-    "user_id": "user_synth_017",
-    "track_id": "spotify:track:5Qv2Nby1xTr9pQyjkrc94J",
-    "played_at": "2026-09-17T08:36:17",
-    "ms_played": 69928,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603409",
-    "user_id": "user_synth_017",
-    "track_id": "spotify:track:70LcF31zb1H0PyJoS1Sx1r",
-    "played_at": "2026-09-17T08:15:55",
-    "ms_played": 89767,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603410",
-    "user_id": "user_synth_018",
-    "track_id": "spotify:track:2PWTZV5znjLtZC5T1EVJvL",
-    "played_at": "2026-09-17T20:22:09",
-    "ms_played": 97451,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603411",
-    "user_id": "user_synth_018",
-    "track_id": "spotify:track:4ly9rdCe3PvcYZdAN72T3b",
-    "played_at": "2026-09-17T22:31:39",
-    "ms_played": 38440,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603412",
-    "user_id": "user_synth_018",
-    "track_id": "spotify:track:0OdztoASgKBBNcAgtErk0X",
-    "played_at": "2026-09-17T17:31:57",
-    "ms_played": 210349,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603413",
-    "user_id": "user_synth_018",
-    "track_id": "spotify:track:7LPGJhkRDEW6KopWhD8DbX",
-    "played_at": "2026-09-17T09:14:48",
-    "ms_played": 143397,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603414",
-    "user_id": "user_synth_018",
-    "track_id": "spotify:track:2TnfUjv4rwqskSHCj4NY7b",
-    "played_at": "2026-09-17T14:34:02",
-    "ms_played": 224493,
-    "skipped": false,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603415",
-    "user_id": "user_synth_019",
-    "track_id": "spotify:track:61KYsWS25JXUO4fGb1138X",
-    "played_at": "2026-09-17T18:29:20",
-    "ms_played": 152316,
-    "skipped": false,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603416",
-    "user_id": "user_synth_019",
-    "track_id": "spotify:track:5BpPWEmDkYN7LK8RJvl7ED",
-    "played_at": "2026-09-17T16:20:23",
-    "ms_played": 164361,
-    "skipped": false,
-    "device_type": "web_player"
-  },
-  {
-    "event_id": "evt_1789603417",
-    "user_id": "user_synth_019",
-    "track_id": "spotify:track:6WK8ycPHFr3HtjKnKcyFdl",
-    "played_at": "2026-09-17T08:30:39",
-    "ms_played": 102016,
-    "skipped": true,
-    "device_type": "desktop"
-  },
-  {
-    "event_id": "evt_1789603418",
-    "user_id": "user_synth_019",
-    "track_id": "spotify:track:51oc6MEsXTpnPn6GOw5VuP",
-    "played_at": "2026-09-17T13:48:23",
-    "ms_played": 107714,
-    "skipped": true,
-    "device_type": "smart_speaker"
-  },
-  {
-    "event_id": "evt_1789603419",
-    "user_id": "user_synth_019",
-    "track_id": "spotify:track:5U1WdUzVEMC8afmZELiPnk",
-    "played_at": "2026-09-17T16:36:43",
-    "ms_played": 75741,
-    "skipped": true,
-    "device_type": "mobile"
-  },
-  {
-    "event_id": "evt_1789603420",
-    "user_id": "user_synth_019",
-    "track_id": "spotify:track:3IznIgmXtrUaoPWpQTy5jB",
-    "played_at": "2026-09-17T16:54:24",
-    "ms_played": 53197,
-    "skipped": true,
-    "device_type": "desktop"
+    "device_type": "smart_speaker",
+    "source": "synthetic"
   }
 ]

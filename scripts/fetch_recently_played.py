@@ -25,6 +25,7 @@ import time
 import urllib.parse
 import urllib.request
 import webbrowser
+from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
@@ -228,6 +229,17 @@ def fetch_recently_played_api(access_token, limit=50):
         sys.exit(1)
 
 
+def normalize_utc_timestamp(ts):
+    """'2026-09-17T20:20:03.123Z' -> '2026-09-17T20:20:03Z'.
+
+    The API adds milliseconds; the exports and the generator use whole seconds
+    in UTC. played_at is part of the dedup key and the event_id, so the same
+    play from an export and an API pull only matches if the format does.
+    """
+    parsed = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+    return parsed.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
 def transform_api_item(item, user_id):
     """Transform API recently-played item to standard medallion schema.
 
@@ -240,21 +252,15 @@ def transform_api_item(item, user_id):
       - device_type: available only if the play context carries a device object;
         otherwise null.  Do NOT default to "mobile".
     """
-    played_at = item.get("played_at")
     track = item.get("track", {})
     track_uri = track.get("uri") or f"spotify:track:{track.get('id')}"
 
-    if not played_at or not track_uri:
+    if not item.get("played_at") or not track_uri:
         return None
+    played_at = normalize_utc_timestamp(item["played_at"])
 
-    # Derive device type from context if present; the API returns it as a
-    # context object type ("artist", "album", "playlist") — not a device label.
-    # The play context is not the same as a device; leave null unless a future
-    # endpoint revision surfaces real device information.
-    context = item.get("context") or {}
-    context_type = context.get("type")  # e.g. "playlist", "album", None
-    # Map what we actually know about the playback context to device_type vocab.
-    # Currently the endpoint gives no reliable device signal, so stay null.
+    # The item's `context` is what was playing (playlist/album/artist), not the
+    # device, so the endpoint gives no device signal: stay null.
     device_type = None  # unknown — do not fabricate
 
     h = hashlib.sha256(f"{user_id}_{played_at}_{track_uri}".encode("utf-8")).hexdigest()[:12]
