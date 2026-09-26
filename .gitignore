@@ -45,7 +45,6 @@ ENV/
 output/raw/dt=*
 !output/raw/README.md
 !output/dims/README.md
-!output/PII_NOTES.md
 
 # ------------------------------------------------------------------------------
 # 5. IDE & OS SYSTEM FILES
