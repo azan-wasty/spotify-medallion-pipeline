@@ -3,7 +3,7 @@ Script: build_full_catalog.py
 ==============================
 Purpose:
     Extracts ALL distinct music tracks across all real user exports
-    (user_real_01, user_real_02, user_real_03), maps/infers genres,
+    (user_real_01, user_real_02, user_real_03, user_real_04), maps/infers genres,
     builds an exhaustive real catalog, and updates:
       - scripts/real_catalog_extract.json
       - output/dims/catalog.json
@@ -31,7 +31,8 @@ from catalog_utils import ROOT_DIR, UNCLASSIFIED, infer_genre, load_catalog_extr
 DATA_DIRS = [
     os.path.join(ROOT_DIR, "dav data", "user_real_01"),
     os.path.join(ROOT_DIR, "dav data", "user_real_02"),
-    os.path.join(ROOT_DIR, "dav data", "user_real_03")
+    os.path.join(ROOT_DIR, "dav data", "user_real_03"),
+    os.path.join(ROOT_DIR, "dav data", "user_real_04"),
 ]
 
 

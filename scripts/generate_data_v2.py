@@ -25,8 +25,8 @@ Changes from v1 (per TA feedback on Phase 1 proposal):
      named persona to a real person's actual identity, DO NOT put their
      real name/email in this file — use a pseudonym like "user_real_01"
      and keep the real-name mapping only in your own private notes, never
-     committed to the repo. See PII_NOTES.md (generated alongside output)
-     for the full sanitization write-up.
+     committed to the repo. See docs/PII_NOTES.md for the full
+     sanitization write-up.
   4. REPEAT vs. DISCOVERY: each user-day is ~70% replays of tracks from the
      user's own recent history (recency-weighted, read from the landing
      partitions, so real rows count too) and ~30% discovery (persona genres,
@@ -173,21 +173,27 @@ HIGH_PROPENSITY_THRESHOLD = 0.55  # free users at or above this are flagged "Hig
 # NAMED PERSONAS — real-export calibration pinned on top of their cluster.
 # Keep names as pseudonyms (user_real_01 etc.), not real names. Any trait
 # left out is sampled from the cluster like a filler's. skip_rate, intensity
-# and genres come from the export analysis; repeat_ratio is a placeholder
-# until derived from the exports (share of plays whose track was already
-# played in the previous 60 days); device_mix follows the export notes in
-# AGENTS.md (PlayStation has no synthetic device type, so it counts as desktop).
+# and genres come from the export analysis; repeat_ratio is derived from the
+# exports (share of plays whose track was already played in the previous 60
+# days, measured via a last-seen-within-window scan over each persona's full
+# sorted play history); device_mix follows the export notes in AGENTS.md
+# (PlayStation has no synthetic device type, so it counts as desktop).
 # ---------------------------------------------------------------------------
 PERSONAS = [
     {"user_id": "user_real_01", "cluster": "power_premium", "favorite_genres": ["rock", "hip-hop", "pop", "indie-alt"],
-     "country": "PK", "intensity": 45, "is_premium": True, "skip_rate": 0.379, "repeat_ratio": 0.70,
+     "country": "PK", "intensity": 45, "is_premium": True, "skip_rate": 0.379, "repeat_ratio": 0.91,
      "device_mix": {"desktop": 0.50, "mobile": 0.30, "web_player": 0.10, "smart_speaker": 0.10}},
     {"user_id": "user_real_02", "cluster": "power_premium", "favorite_genres": ["bollywood", "punjabi", "sufi-pop", "qawwali"],
-     "country": "PK", "intensity": 40, "is_premium": True, "skip_rate": 0.423, "repeat_ratio": 0.70,
+     "country": "PK", "intensity": 40, "is_premium": True, "skip_rate": 0.423, "repeat_ratio": 0.90,
      "device_mix": {"mobile": 0.80, "desktop": 0.08, "web_player": 0.05, "smart_speaker": 0.07}},
     {"user_id": "user_real_03", "cluster": "power_free", "favorite_genres": ["jpop", "jrock", "jmetal"],
-     "country": "PK", "intensity": 40, "is_premium": False, "skip_rate": 0.179, "repeat_ratio": 0.70,
+     "country": "PK", "intensity": 40, "is_premium": False, "skip_rate": 0.179, "repeat_ratio": 0.92,
      "device_mix": {"mobile": 0.50, "desktop": 0.35, "web_player": 0.15}},
+    # --- 4th persona (added from real export analysis; TODO confirm is_premium — ---
+    # --- not derivable from listening history alone, defaulted to Free here)    ---
+    {"user_id": "user_real_04", "cluster": "power_free", "favorite_genres": ["pakistani-pop", "indie-pop-desi", "bollywood", "hip-hop"],
+     "country": "PK", "intensity": 33, "is_premium": True, "skip_rate": 0.554, "repeat_ratio": 0.80,
+     "device_mix": {"mobile": 0.78, "desktop": 0.22}},
 ]
 PERSONA_IDS = {p["user_id"] for p in PERSONAS}
 NUM_FILLER = TOTAL_USERS - len(PERSONAS)  # derived, so adding a persona never shrinks the population
@@ -865,30 +871,6 @@ def run_backfill(catalog, users, seed, start_str, end_str):
     print(f"Backfill: regenerated {len(days)} daily partitions ({summary}) from {start_str} to {end_str}")
 
 
-def write_pii_notes():
-    notes = """# PII Sanitization Notes
-
-## Columns containing PII (real-user data only — synthetic data has none)
-- `user_id` (when mapped to a real person) -> pseudonymized as user_real_0X, real identity kept only in private local notes, never committed.
-- `ip_addr_decrypted` (from Extended Streaming History export) -> DROPPED entirely before Silver layer.
-- `username` (from export) -> DROPPED before Silver layer; replaced by the pseudonymized user_id.
-- `conn_country` -> retained (coarse geography, not directly identifying) but reviewed case-by-case.
-- Exact `played_at` timestamps -> retained (needed for time-series analysis) but not combined with any other direct identifier once username/IP are dropped.
-
-## Sanitization strategy
-1. Bronze layer: raw data landed as-is (including real export fields) in a
-   restricted/local-only location, never pushed to the public GitHub repo.
-2. Silver layer transformation drops `ip_addr_decrypted`, `username`,
-   `user_agent_decrypted`, and hashes `user_id` (SHA-256, truncated) before
-   any data is persisted to shared/versioned storage.
-3. Only pseudonymized, IP-free data ever reaches Gold or the BI dashboard.
-4. Synthetic data requires no sanitization (no PII by construction) but
-   flows through the same Silver transformation code path for consistency.
-"""
-    with open("output/PII_NOTES.md", "w") as f:
-        f.write(notes)
-
-
 def main():
     parser = argparse.ArgumentParser(description="Generate time-partitioned synthetic Spotify-style listening data.")
     common = argparse.ArgumentParser(add_help=False)
@@ -914,7 +896,6 @@ def main():
     users = build_users(genre_sizes, args.seed)
     write_dims(catalog, users)
     write_validation(users)
-    write_pii_notes()
 
     if args.mode == "full":
         run_full(catalog, users, args.seed)
