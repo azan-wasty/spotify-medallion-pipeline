@@ -1,0 +1,302 @@
+[
+  {
+    "user_id": "user_real_01",
+    "country": "PK",
+    "timezone": "Asia/Karachi",
+    "is_premium": true
+  },
+  {
+    "user_id": "user_real_02",
+    "country": "PK",
+    "timezone": "Asia/Karachi",
+    "is_premium": true
+  },
+  {
+    "user_id": "user_real_03",
+    "country": "PK",
+    "timezone": "Asia/Karachi",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_real_04",
+    "country": "PK",
+    "timezone": "Asia/Karachi",
+    "is_premium": true
+  },
+  {
+    "user_id": "user_synth_000",
+    "country": "DE",
+    "timezone": "Europe/Berlin",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_001",
+    "country": "GB",
+    "timezone": "Europe/London",
+    "is_premium": true
+  },
+  {
+    "user_id": "user_synth_002",
+    "country": "IN",
+    "timezone": "Asia/Kolkata",
+    "is_premium": true
+  },
+  {
+    "user_id": "user_synth_003",
+    "country": "BR",
+    "timezone": "America/Sao_Paulo",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_004",
+    "country": "PK",
+    "timezone": "Asia/Karachi",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_005",
+    "country": "BR",
+    "timezone": "America/Sao_Paulo",
+    "is_premium": true
+  },
+  {
+    "user_id": "user_synth_006",
+    "country": "PK",
+    "timezone": "Asia/Karachi",
+    "is_premium": true
+  },
+  {
+    "user_id": "user_synth_007",
+    "country": "IN",
+    "timezone": "Asia/Kolkata",
+    "is_premium": true
+  },
+  {
+    "user_id": "user_synth_008",
+    "country": "PK",
+    "timezone": "Asia/Karachi",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_009",
+    "country": "GB",
+    "timezone": "Europe/London",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_010",
+    "country": "GB",
+    "timezone": "Europe/London",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_011",
+    "country": "IN",
+    "timezone": "Asia/Kolkata",
+    "is_premium": true
+  },
+  {
+    "user_id": "user_synth_012",
+    "country": "GB",
+    "timezone": "Europe/London",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_013",
+    "country": "GB",
+    "timezone": "Europe/London",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_014",
+    "country": "PK",
+    "timezone": "Asia/Karachi",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_015",
+    "country": "BR",
+    "timezone": "America/Sao_Paulo",
+    "is_premium": true
+  },
+  {
+    "user_id": "user_synth_016",
+    "country": "GB",
+    "timezone": "Europe/London",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_017",
+    "country": "BR",
+    "timezone": "America/Sao_Paulo",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_018",
+    "country": "US",
+    "timezone": "America/New_York",
+    "is_premium": true
+  },
+  {
+    "user_id": "user_synth_019",
+    "country": "GB",
+    "timezone": "Europe/London",
+    "is_premium": true
+  },
+  {
+    "user_id": "user_synth_020",
+    "country": "US",
+    "timezone": "America/New_York",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_021",
+    "country": "BR",
+    "timezone": "America/Sao_Paulo",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_022",
+    "country": "US",
+    "timezone": "America/New_York",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_023",
+    "country": "BR",
+    "timezone": "America/Sao_Paulo",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_024",
+    "country": "US",
+    "timezone": "America/New_York",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_025",
+    "country": "DE",
+    "timezone": "Europe/Berlin",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_026",
+    "country": "DE",
+    "timezone": "Europe/Berlin",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_027",
+    "country": "GB",
+    "timezone": "Europe/London",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_028",
+    "country": "DE",
+    "timezone": "Europe/Berlin",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_029",
+    "country": "DE",
+    "timezone": "Europe/Berlin",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_030",
+    "country": "US",
+    "timezone": "America/Los_Angeles",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_031",
+    "country": "US",
+    "timezone": "America/Denver",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_032",
+    "country": "PK",
+    "timezone": "Asia/Karachi",
+    "is_premium": true
+  },
+  {
+    "user_id": "user_synth_033",
+    "country": "BR",
+    "timezone": "America/Sao_Paulo",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_034",
+    "country": "IN",
+    "timezone": "Asia/Kolkata",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_035",
+    "country": "GB",
+    "timezone": "Europe/London",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_036",
+    "country": "US",
+    "timezone": "America/Los_Angeles",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_037",
+    "country": "GB",
+    "timezone": "Europe/London",
+    "is_premium": true
+  },
+  {
+    "user_id": "user_synth_038",
+    "country": "GB",
+    "timezone": "Europe/London",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_039",
+    "country": "IN",
+    "timezone": "Asia/Kolkata",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_040",
+    "country": "DE",
+    "timezone": "Europe/Berlin",
+    "is_premium": true
+  },
+  {
+    "user_id": "user_synth_041",
+    "country": "BR",
+    "timezone": "America/Sao_Paulo",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_042",
+    "country": "GB",
+    "timezone": "Europe/London",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_043",
+    "country": "IN",
+    "timezone": "Asia/Kolkata",
+    "is_premium": false
+  },
+  {
+    "user_id": "user_synth_044",
+    "country": "IN",
+    "timezone": "Asia/Kolkata",
+    "is_premium": true
+  },
+  {
+    "user_id": "user_synth_045",
+    "country": "IN",
+    "timezone": "Asia/Kolkata",
+    "is_premium": false
+  }
+]

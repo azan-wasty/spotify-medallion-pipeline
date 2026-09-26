@@ -1,0 +1,1321 @@
+[
+  {
+    "is_persona": true,
+    "user_id": "user_real_01",
+    "cluster": "power_premium",
+    "country": "PK",
+    "is_premium": true,
+    "intensity": 45,
+    "active_day_prob": 0.851,
+    "skip_rate": 0.379,
+    "repeat_ratio": 0.91,
+    "favorite_genres": [
+      "rock",
+      "hip-hop",
+      "pop",
+      "indie-alt"
+    ],
+    "device_mix": {
+      "desktop": 0.5,
+      "mobile": 0.3,
+      "web_player": 0.1,
+      "smart_speaker": 0.1
+    },
+    "timezone": "Asia/Karachi",
+    "volume_norm": 0.91,
+    "device_diversity": 0.843,
+    "discovery_rate": 0.09,
+    "engagement_score": 0.675,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": true,
+    "user_id": "user_real_02",
+    "cluster": "power_premium",
+    "country": "PK",
+    "is_premium": true,
+    "intensity": 40,
+    "active_day_prob": 0.868,
+    "skip_rate": 0.423,
+    "repeat_ratio": 0.9,
+    "favorite_genres": [
+      "bollywood",
+      "punjabi",
+      "sufi-pop",
+      "qawwali"
+    ],
+    "device_mix": {
+      "mobile": 0.8,
+      "desktop": 0.08,
+      "web_player": 0.05,
+      "smart_speaker": 0.07
+    },
+    "timezone": "Asia/Karachi",
+    "volume_norm": 0.882,
+    "device_diversity": 0.517,
+    "discovery_rate": 0.1,
+    "engagement_score": 0.592,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": true,
+    "user_id": "user_real_03",
+    "cluster": "power_free",
+    "country": "PK",
+    "is_premium": false,
+    "intensity": 40,
+    "active_day_prob": 0.907,
+    "skip_rate": 0.179,
+    "repeat_ratio": 0.92,
+    "favorite_genres": [
+      "jpop",
+      "jrock",
+      "jmetal"
+    ],
+    "device_mix": {
+      "mobile": 0.5,
+      "desktop": 0.35,
+      "web_player": 0.15
+    },
+    "timezone": "Asia/Karachi",
+    "volume_norm": 0.895,
+    "device_diversity": 0.72,
+    "discovery_rate": 0.08,
+    "engagement_score": 0.682,
+    "propensity_flag": "High Conversion Propensity"
+  },
+  {
+    "is_persona": true,
+    "user_id": "user_real_04",
+    "cluster": "power_free",
+    "country": "PK",
+    "is_premium": true,
+    "intensity": 33,
+    "active_day_prob": 0.899,
+    "skip_rate": 0.554,
+    "repeat_ratio": 0.8,
+    "favorite_genres": [
+      "pakistani-pop",
+      "indie-pop-desi",
+      "bollywood",
+      "hip-hop"
+    ],
+    "device_mix": {
+      "mobile": 0.78,
+      "desktop": 0.22
+    },
+    "timezone": "Asia/Karachi",
+    "volume_norm": 0.837,
+    "device_diversity": 0.38,
+    "discovery_rate": 0.2,
+    "engagement_score": 0.54,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_000",
+    "cluster": "casual_free",
+    "country": "DE",
+    "is_premium": false,
+    "intensity": 8.8,
+    "active_day_prob": 0.43,
+    "skip_rate": 0.142,
+    "repeat_ratio": 0.864,
+    "favorite_genres": [
+      "pakistani-pop"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "Europe/Berlin",
+    "volume_norm": 0.283,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.136,
+    "engagement_score": 0.312,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_001",
+    "cluster": "power_premium",
+    "country": "GB",
+    "is_premium": true,
+    "intensity": 52.0,
+    "active_day_prob": 0.923,
+    "skip_rate": 0.186,
+    "repeat_ratio": 0.579,
+    "favorite_genres": [
+      "nasheed",
+      "pakistani-pop",
+      "indie-pop-desi",
+      "electronic"
+    ],
+    "device_mix": {
+      "mobile": 0.449,
+      "smart_speaker": 0.258,
+      "desktop": 0.219,
+      "web_player": 0.074
+    },
+    "timezone": "Europe/London",
+    "volume_norm": 0.976,
+    "device_diversity": 0.89,
+    "discovery_rate": 0.421,
+    "engagement_score": 0.815,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_002",
+    "cluster": "power_premium",
+    "country": "IN",
+    "is_premium": true,
+    "intensity": 39.6,
+    "active_day_prob": 0.889,
+    "skip_rate": 0.206,
+    "repeat_ratio": 0.572,
+    "favorite_genres": [
+      "soundtrack",
+      "electronic"
+    ],
+    "device_mix": {
+      "mobile": 0.134,
+      "smart_speaker": 0.379,
+      "desktop": 0.364,
+      "web_player": 0.122
+    },
+    "timezone": "Asia/Kolkata",
+    "volume_norm": 0.886,
+    "device_diversity": 0.91,
+    "discovery_rate": 0.428,
+    "engagement_score": 0.781,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_003",
+    "cluster": "power_free",
+    "country": "BR",
+    "is_premium": false,
+    "intensity": 45.2,
+    "active_day_prob": 0.915,
+    "skip_rate": 0.197,
+    "repeat_ratio": 0.579,
+    "favorite_genres": [
+      "indie-alt",
+      "pop",
+      "hip-hop",
+      "electronic"
+    ],
+    "device_mix": {
+      "mobile": 0.245,
+      "desktop": 0.499,
+      "web_player": 0.23,
+      "smart_speaker": 0.027
+    },
+    "timezone": "America/Sao_Paulo",
+    "volume_norm": 0.933,
+    "device_diversity": 0.813,
+    "discovery_rate": 0.421,
+    "engagement_score": 0.781,
+    "propensity_flag": "High Conversion Propensity"
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_004",
+    "cluster": "casual_free",
+    "country": "PK",
+    "is_premium": false,
+    "intensity": 5.8,
+    "active_day_prob": 0.855,
+    "skip_rate": 0.141,
+    "repeat_ratio": 0.873,
+    "favorite_genres": [
+      "indie-alt"
+    ],
+    "device_mix": {
+      "mobile": 0.291,
+      "smart_speaker": 0.268,
+      "desktop": 0.401,
+      "web_player": 0.04
+    },
+    "timezone": "Asia/Karachi",
+    "volume_norm": 0.349,
+    "device_diversity": 0.871,
+    "discovery_rate": 0.127,
+    "engagement_score": 0.511,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_005",
+    "cluster": "power_premium",
+    "country": "BR",
+    "is_premium": true,
+    "intensity": 32.6,
+    "active_day_prob": 0.918,
+    "skip_rate": 0.256,
+    "repeat_ratio": 0.627,
+    "favorite_genres": [
+      "pop",
+      "rnb",
+      "bollywood",
+      "sufi-pop"
+    ],
+    "device_mix": {
+      "mobile": 0.259,
+      "smart_speaker": 0.275,
+      "desktop": 0.211,
+      "web_player": 0.255
+    },
+    "timezone": "America/Sao_Paulo",
+    "volume_norm": 0.839,
+    "device_diversity": 0.997,
+    "discovery_rate": 0.373,
+    "engagement_score": 0.758,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_006",
+    "cluster": "power_premium",
+    "country": "PK",
+    "is_premium": true,
+    "intensity": 42.1,
+    "active_day_prob": 0.834,
+    "skip_rate": 0.243,
+    "repeat_ratio": 0.595,
+    "favorite_genres": [
+      "indie-alt",
+      "pop",
+      "pakistani-pop",
+      "hip-hop"
+    ],
+    "device_mix": {
+      "mobile": 0.288,
+      "smart_speaker": 0.453,
+      "desktop": 0.238,
+      "web_player": 0.021
+    },
+    "timezone": "Asia/Karachi",
+    "volume_norm": 0.885,
+    "device_diversity": 0.822,
+    "discovery_rate": 0.405,
+    "engagement_score": 0.751,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_007",
+    "cluster": "power_premium",
+    "country": "IN",
+    "is_premium": true,
+    "intensity": 37.3,
+    "active_day_prob": 0.985,
+    "skip_rate": 0.151,
+    "repeat_ratio": 0.625,
+    "favorite_genres": [
+      "rock",
+      "jrock",
+      "jpop",
+      "soundtrack"
+    ],
+    "device_mix": {
+      "mobile": 0.397,
+      "smart_speaker": 0.204,
+      "desktop": 0.333,
+      "web_player": 0.066
+    },
+    "timezone": "Asia/Kolkata",
+    "volume_norm": 0.898,
+    "device_diversity": 0.892,
+    "discovery_rate": 0.375,
+    "engagement_score": 0.782,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_008",
+    "cluster": "power_free",
+    "country": "PK",
+    "is_premium": false,
+    "intensity": 56.2,
+    "active_day_prob": 0.928,
+    "skip_rate": 0.434,
+    "repeat_ratio": 0.546,
+    "favorite_genres": [
+      "jrock",
+      "jpop",
+      "rock"
+    ],
+    "device_mix": {
+      "mobile": 0.267,
+      "desktop": 0.516,
+      "web_player": 0.121,
+      "smart_speaker": 0.095
+    },
+    "timezone": "Asia/Karachi",
+    "volume_norm": 1.0,
+    "device_diversity": 0.846,
+    "discovery_rate": 0.454,
+    "engagement_score": 0.773,
+    "propensity_flag": "High Conversion Propensity"
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_009",
+    "cluster": "casual_free",
+    "country": "GB",
+    "is_premium": false,
+    "intensity": 5.2,
+    "active_day_prob": 0.365,
+    "skip_rate": 0.411,
+    "repeat_ratio": 0.618,
+    "favorite_genres": [
+      "edm",
+      "jpop"
+    ],
+    "device_mix": {
+      "mobile": 0.947,
+      "web_player": 0.053
+    },
+    "timezone": "Europe/London",
+    "volume_norm": 0.133,
+    "device_diversity": 0.15,
+    "discovery_rate": 0.382,
+    "engagement_score": 0.277,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_010",
+    "cluster": "power_free",
+    "country": "GB",
+    "is_premium": false,
+    "intensity": 57.9,
+    "active_day_prob": 0.697,
+    "skip_rate": 0.271,
+    "repeat_ratio": 0.652,
+    "favorite_genres": [
+      "pop",
+      "hip-hop",
+      "bollywood",
+      "jpop"
+    ],
+    "device_mix": {
+      "mobile": 0.441,
+      "desktop": 0.346,
+      "web_player": 0.213
+    },
+    "timezone": "Europe/London",
+    "volume_norm": 0.926,
+    "device_diversity": 0.763,
+    "discovery_rate": 0.348,
+    "engagement_score": 0.738,
+    "propensity_flag": "High Conversion Propensity"
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_011",
+    "cluster": "power_premium",
+    "country": "IN",
+    "is_premium": true,
+    "intensity": 36.7,
+    "active_day_prob": 0.872,
+    "skip_rate": 0.332,
+    "repeat_ratio": 0.86,
+    "favorite_genres": [
+      "indie-alt",
+      "rock",
+      "pop",
+      "hip-hop",
+      "indie-pop-desi",
+      "pakistani-pop"
+    ],
+    "device_mix": {
+      "mobile": 0.217,
+      "smart_speaker": 0.473,
+      "desktop": 0.094,
+      "web_player": 0.216
+    },
+    "timezone": "Asia/Kolkata",
+    "volume_norm": 0.859,
+    "device_diversity": 0.894,
+    "discovery_rate": 0.14,
+    "engagement_score": 0.684,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_012",
+    "cluster": "casual_free",
+    "country": "GB",
+    "is_premium": false,
+    "intensity": 3.9,
+    "active_day_prob": 0.522,
+    "skip_rate": 0.175,
+    "repeat_ratio": 0.551,
+    "favorite_genres": [
+      "pop",
+      "jpop"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "Europe/London",
+    "volume_norm": 0.147,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.449,
+    "engagement_score": 0.314,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_013",
+    "cluster": "casual_free",
+    "country": "GB",
+    "is_premium": false,
+    "intensity": 3.7,
+    "active_day_prob": 0.288,
+    "skip_rate": 0.704,
+    "repeat_ratio": 0.686,
+    "favorite_genres": [
+      "pop"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "Europe/London",
+    "volume_norm": 0.03,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.314,
+    "engagement_score": 0.134,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_014",
+    "cluster": "power_free",
+    "country": "PK",
+    "is_premium": false,
+    "intensity": 28.9,
+    "active_day_prob": 0.722,
+    "skip_rate": 0.16,
+    "repeat_ratio": 0.669,
+    "favorite_genres": [
+      "hip-hop",
+      "punjabi"
+    ],
+    "device_mix": {
+      "mobile": 0.201,
+      "desktop": 0.534,
+      "web_player": 0.265
+    },
+    "timezone": "Asia/Karachi",
+    "volume_norm": 0.736,
+    "device_diversity": 0.728,
+    "discovery_rate": 0.331,
+    "engagement_score": 0.674,
+    "propensity_flag": "High Conversion Propensity"
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_015",
+    "cluster": "power_premium",
+    "country": "BR",
+    "is_premium": true,
+    "intensity": 26.7,
+    "active_day_prob": 0.808,
+    "skip_rate": 0.245,
+    "repeat_ratio": 0.617,
+    "favorite_genres": [
+      "pakistani-pop",
+      "pop",
+      "indie-pop-desi",
+      "indie-alt",
+      "rnb"
+    ],
+    "device_mix": {
+      "mobile": 0.643,
+      "smart_speaker": 0.298,
+      "desktop": 0.055
+    },
+    "timezone": "America/Sao_Paulo",
+    "volume_norm": 0.746,
+    "device_diversity": 0.58,
+    "discovery_rate": 0.383,
+    "engagement_score": 0.642,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_016",
+    "cluster": "casual_free",
+    "country": "GB",
+    "is_premium": false,
+    "intensity": 38.3,
+    "active_day_prob": 0.645,
+    "skip_rate": 0.232,
+    "repeat_ratio": 0.574,
+    "favorite_genres": [
+      "rnb"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "Europe/London",
+    "volume_norm": 0.784,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.426,
+    "engagement_score": 0.552,
+    "propensity_flag": "High Conversion Propensity"
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_017",
+    "cluster": "casual_free",
+    "country": "BR",
+    "is_premium": false,
+    "intensity": 5.0,
+    "active_day_prob": 0.825,
+    "skip_rate": 0.544,
+    "repeat_ratio": 0.896,
+    "favorite_genres": [
+      "electronic"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "America/Sao_Paulo",
+    "volume_norm": 0.304,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.104,
+    "engagement_score": 0.234,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_018",
+    "cluster": "power_premium",
+    "country": "US",
+    "is_premium": true,
+    "intensity": 28.3,
+    "active_day_prob": 0.824,
+    "skip_rate": 0.338,
+    "repeat_ratio": 0.71,
+    "favorite_genres": [
+      "kpop",
+      "jpop",
+      "jrock",
+      "soundtrack",
+      "pop"
+    ],
+    "device_mix": {
+      "mobile": 0.666,
+      "smart_speaker": 0.097,
+      "desktop": 0.064,
+      "web_player": 0.174
+    },
+    "timezone": "America/New_York",
+    "volume_norm": 0.768,
+    "device_diversity": 0.705,
+    "discovery_rate": 0.29,
+    "engagement_score": 0.639,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_019",
+    "cluster": "power_premium",
+    "country": "GB",
+    "is_premium": true,
+    "intensity": 27.6,
+    "active_day_prob": 0.91,
+    "skip_rate": 0.126,
+    "repeat_ratio": 0.734,
+    "favorite_genres": [
+      "jrock",
+      "soundtrack",
+      "indie-pop-desi",
+      "rock",
+      "bollywood",
+      "hip-hop"
+    ],
+    "device_mix": {
+      "mobile": 0.452,
+      "smart_speaker": 0.16,
+      "desktop": 0.359,
+      "web_player": 0.029
+    },
+    "timezone": "Europe/London",
+    "volume_norm": 0.789,
+    "device_diversity": 0.81,
+    "discovery_rate": 0.266,
+    "engagement_score": 0.706,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_020",
+    "cluster": "casual_free",
+    "country": "US",
+    "is_premium": false,
+    "intensity": 4.4,
+    "active_day_prob": 0.777,
+    "skip_rate": 0.371,
+    "repeat_ratio": 0.859,
+    "favorite_genres": [
+      "indie-alt"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "America/New_York",
+    "volume_norm": 0.26,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.141,
+    "engagement_score": 0.258,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_021",
+    "cluster": "casual_free",
+    "country": "BR",
+    "is_premium": false,
+    "intensity": 4.6,
+    "active_day_prob": 0.477,
+    "skip_rate": 0.283,
+    "repeat_ratio": 0.839,
+    "favorite_genres": [
+      "jazz",
+      "jrock",
+      "jpop",
+      "soundtrack",
+      "rock",
+      "pop"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "America/Sao_Paulo",
+    "volume_norm": 0.162,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.161,
+    "engagement_score": 0.24,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_022",
+    "cluster": "casual_free",
+    "country": "US",
+    "is_premium": false,
+    "intensity": 6.4,
+    "active_day_prob": 0.731,
+    "skip_rate": 0.549,
+    "repeat_ratio": 0.689,
+    "favorite_genres": [
+      "rock",
+      "indie-alt"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "America/New_York",
+    "volume_norm": 0.335,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.311,
+    "engagement_score": 0.286,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_023",
+    "cluster": "power_free",
+    "country": "BR",
+    "is_premium": false,
+    "intensity": 5.5,
+    "active_day_prob": 0.781,
+    "skip_rate": 0.22,
+    "repeat_ratio": 0.676,
+    "favorite_genres": [
+      "edm",
+      "electronic"
+    ],
+    "device_mix": {
+      "mobile": 0.357,
+      "desktop": 0.284,
+      "web_player": 0.359
+    },
+    "timezone": "America/Sao_Paulo",
+    "volume_norm": 0.314,
+    "device_diversity": 0.788,
+    "discovery_rate": 0.324,
+    "engagement_score": 0.504,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_024",
+    "cluster": "casual_free",
+    "country": "US",
+    "is_premium": false,
+    "intensity": 2.9,
+    "active_day_prob": 0.879,
+    "skip_rate": 0.659,
+    "repeat_ratio": 0.917,
+    "favorite_genres": [
+      "indie-pop-desi"
+    ],
+    "device_mix": {
+      "mobile": 0.334,
+      "desktop": 0.293,
+      "web_player": 0.37
+    },
+    "timezone": "America/New_York",
+    "volume_norm": 0.194,
+    "device_diversity": 0.789,
+    "discovery_rate": 0.083,
+    "engagement_score": 0.32,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_025",
+    "cluster": "casual_free",
+    "country": "DE",
+    "is_premium": false,
+    "intensity": 7.0,
+    "active_day_prob": 0.502,
+    "skip_rate": 0.604,
+    "repeat_ratio": 0.858,
+    "favorite_genres": [
+      "rock",
+      "indie-alt"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "Europe/Berlin",
+    "volume_norm": 0.266,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.142,
+    "engagement_score": 0.214,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_026",
+    "cluster": "power_premium",
+    "country": "DE",
+    "is_premium": false,
+    "intensity": 24.4,
+    "active_day_prob": 0.943,
+    "skip_rate": 0.23,
+    "repeat_ratio": 0.591,
+    "favorite_genres": [
+      "pop",
+      "hip-hop",
+      "indie-alt",
+      "edm"
+    ],
+    "device_mix": {
+      "mobile": 0.528,
+      "smart_speaker": 0.193,
+      "desktop": 0.243,
+      "web_player": 0.036
+    },
+    "timezone": "Europe/Berlin",
+    "volume_norm": 0.764,
+    "device_diversity": 0.807,
+    "discovery_rate": 0.409,
+    "engagement_score": 0.703,
+    "propensity_flag": "High Conversion Propensity"
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_027",
+    "cluster": "casual_free",
+    "country": "GB",
+    "is_premium": false,
+    "intensity": 34.3,
+    "active_day_prob": 0.306,
+    "skip_rate": 0.518,
+    "repeat_ratio": 0.701,
+    "favorite_genres": [
+      "rock",
+      "indie-alt"
+    ],
+    "device_mix": {
+      "mobile": 0.872,
+      "web_player": 0.128
+    },
+    "timezone": "Europe/London",
+    "volume_norm": 0.545,
+    "device_diversity": 0.276,
+    "discovery_rate": 0.299,
+    "engagement_score": 0.429,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_028",
+    "cluster": "casual_free",
+    "country": "DE",
+    "is_premium": false,
+    "intensity": 4.9,
+    "active_day_prob": 0.349,
+    "skip_rate": 0.554,
+    "repeat_ratio": 0.924,
+    "favorite_genres": [
+      "bollywood",
+      "indie-pop-desi"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "Europe/Berlin",
+    "volume_norm": 0.113,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.076,
+    "engagement_score": 0.15,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_029",
+    "cluster": "casual_free",
+    "country": "DE",
+    "is_premium": false,
+    "intensity": 39.3,
+    "active_day_prob": 0.579,
+    "skip_rate": 0.341,
+    "repeat_ratio": 0.884,
+    "favorite_genres": [
+      "hip-hop",
+      "pop"
+    ],
+    "device_mix": {
+      "mobile": 0.972,
+      "web_player": 0.028
+    },
+    "timezone": "Europe/Berlin",
+    "volume_norm": 0.761,
+    "device_diversity": 0.092,
+    "discovery_rate": 0.116,
+    "engagement_score": 0.478,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_030",
+    "cluster": "casual_free",
+    "country": "US",
+    "is_premium": false,
+    "intensity": 6.7,
+    "active_day_prob": 0.257,
+    "skip_rate": 0.459,
+    "repeat_ratio": 0.874,
+    "favorite_genres": [
+      "electronic",
+      "synthpop"
+    ],
+    "device_mix": {
+      "mobile": 0.442,
+      "smart_speaker": 0.016,
+      "desktop": 0.424,
+      "web_player": 0.118
+    },
+    "timezone": "America/Los_Angeles",
+    "volume_norm": 0.114,
+    "device_diversity": 0.752,
+    "discovery_rate": 0.126,
+    "engagement_score": 0.329,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_031",
+    "cluster": "casual_free",
+    "country": "US",
+    "is_premium": false,
+    "intensity": 5.2,
+    "active_day_prob": 0.167,
+    "skip_rate": 0.471,
+    "repeat_ratio": 0.868,
+    "favorite_genres": [
+      "jpop",
+      "jrock"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "America/Denver",
+    "volume_norm": 0.0,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.132,
+    "engagement_score": 0.132,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_032",
+    "cluster": "power_premium",
+    "country": "PK",
+    "is_premium": true,
+    "intensity": 26.6,
+    "active_day_prob": 0.835,
+    "skip_rate": 0.365,
+    "repeat_ratio": 0.772,
+    "favorite_genres": [
+      "qawwali",
+      "sufi-pop",
+      "pakistani-pop",
+      "edm",
+      "pop",
+      "electronic"
+    ],
+    "device_mix": {
+      "mobile": 0.613,
+      "smart_speaker": 0.029,
+      "desktop": 0.295,
+      "web_player": 0.063
+    },
+    "timezone": "Asia/Karachi",
+    "volume_norm": 0.754,
+    "device_diversity": 0.676,
+    "discovery_rate": 0.228,
+    "engagement_score": 0.609,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_033",
+    "cluster": "casual_free",
+    "country": "BR",
+    "is_premium": false,
+    "intensity": 30.2,
+    "active_day_prob": 0.59,
+    "skip_rate": 0.142,
+    "repeat_ratio": 0.926,
+    "favorite_genres": [
+      "indie-pop-desi",
+      "pakistani-pop"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "America/Sao_Paulo",
+    "volume_norm": 0.692,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.074,
+    "engagement_score": 0.463,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_034",
+    "cluster": "casual_free",
+    "country": "IN",
+    "is_premium": false,
+    "intensity": 10.4,
+    "active_day_prob": 0.519,
+    "skip_rate": 0.37,
+    "repeat_ratio": 0.888,
+    "favorite_genres": [
+      "electronic"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "Asia/Kolkata",
+    "volume_norm": 0.37,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.112,
+    "engagement_score": 0.296,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_035",
+    "cluster": "casual_free",
+    "country": "GB",
+    "is_premium": false,
+    "intensity": 12.8,
+    "active_day_prob": 0.394,
+    "skip_rate": 0.611,
+    "repeat_ratio": 0.631,
+    "favorite_genres": [
+      "jpop"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "Europe/London",
+    "volume_norm": 0.353,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.369,
+    "engagement_score": 0.293,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_036",
+    "cluster": "casual_free",
+    "country": "US",
+    "is_premium": false,
+    "intensity": 9.6,
+    "active_day_prob": 0.458,
+    "skip_rate": 0.378,
+    "repeat_ratio": 0.841,
+    "favorite_genres": [
+      "soundtrack",
+      "rock"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "America/Los_Angeles",
+    "volume_norm": 0.319,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.159,
+    "engagement_score": 0.284,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_037",
+    "cluster": "power_premium",
+    "country": "GB",
+    "is_premium": true,
+    "intensity": 37.3,
+    "active_day_prob": 0.477,
+    "skip_rate": 0.027,
+    "repeat_ratio": 0.613,
+    "favorite_genres": [
+      "hip-hop"
+    ],
+    "device_mix": {
+      "mobile": 0.581,
+      "smart_speaker": 0.085,
+      "desktop": 0.248,
+      "web_player": 0.086
+    },
+    "timezone": "Europe/London",
+    "volume_norm": 0.691,
+    "device_diversity": 0.78,
+    "discovery_rate": 0.387,
+    "engagement_score": 0.704,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_038",
+    "cluster": "casual_free",
+    "country": "GB",
+    "is_premium": false,
+    "intensity": 11.4,
+    "active_day_prob": 0.605,
+    "skip_rate": 0.682,
+    "repeat_ratio": 0.916,
+    "favorite_genres": [
+      "electronic",
+      "edm"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "Europe/London",
+    "volume_norm": 0.433,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.084,
+    "engagement_score": 0.254,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_039",
+    "cluster": "power_free",
+    "country": "IN",
+    "is_premium": false,
+    "intensity": 32.7,
+    "active_day_prob": 0.869,
+    "skip_rate": 0.204,
+    "repeat_ratio": 0.674,
+    "favorite_genres": [
+      "jpop",
+      "pakistani-pop"
+    ],
+    "device_mix": {
+      "mobile": 0.402,
+      "desktop": 0.335,
+      "web_player": 0.26
+    },
+    "timezone": "Asia/Kolkata",
+    "volume_norm": 0.824,
+    "device_diversity": 0.781,
+    "discovery_rate": 0.326,
+    "engagement_score": 0.71,
+    "propensity_flag": "High Conversion Propensity"
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_040",
+    "cluster": "power_premium",
+    "country": "DE",
+    "is_premium": true,
+    "intensity": 5.4,
+    "active_day_prob": 0.932,
+    "skip_rate": 0.2,
+    "repeat_ratio": 0.526,
+    "favorite_genres": [
+      "jpop",
+      "kpop",
+      "pop",
+      "indie-alt"
+    ],
+    "device_mix": {
+      "mobile": 0.51,
+      "smart_speaker": 0.339,
+      "desktop": 0.094,
+      "web_player": 0.057
+    },
+    "timezone": "Europe/Berlin",
+    "volume_norm": 0.353,
+    "device_diversity": 0.79,
+    "discovery_rate": 0.474,
+    "engagement_score": 0.554,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_041",
+    "cluster": "power_free",
+    "country": "BR",
+    "is_premium": false,
+    "intensity": 26.3,
+    "active_day_prob": 0.842,
+    "skip_rate": 0.187,
+    "repeat_ratio": 0.519,
+    "favorite_genres": [
+      "rock",
+      "indie-alt",
+      "indie-pop-desi",
+      "pakistani-pop"
+    ],
+    "device_mix": {
+      "mobile": 0.384,
+      "desktop": 0.175,
+      "web_player": 0.414,
+      "smart_speaker": 0.028
+    },
+    "timezone": "America/Sao_Paulo",
+    "volume_norm": 0.753,
+    "device_diversity": 0.821,
+    "discovery_rate": 0.481,
+    "engagement_score": 0.724,
+    "propensity_flag": "High Conversion Propensity"
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_042",
+    "cluster": "casual_free",
+    "country": "GB",
+    "is_premium": false,
+    "intensity": 9.2,
+    "active_day_prob": 0.473,
+    "skip_rate": 0.482,
+    "repeat_ratio": 0.854,
+    "favorite_genres": [
+      "electronic",
+      "jpop"
+    ],
+    "device_mix": {
+      "mobile": 0.76,
+      "web_player": 0.24
+    },
+    "timezone": "Europe/London",
+    "volume_norm": 0.317,
+    "device_diversity": 0.398,
+    "discovery_rate": 0.146,
+    "engagement_score": 0.339,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_043",
+    "cluster": "casual_free",
+    "country": "IN",
+    "is_premium": false,
+    "intensity": 6.7,
+    "active_day_prob": 0.731,
+    "skip_rate": 0.146,
+    "repeat_ratio": 0.849,
+    "favorite_genres": [
+      "indie-alt",
+      "indie-pop-desi"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "Asia/Kolkata",
+    "volume_norm": 0.346,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.151,
+    "engagement_score": 0.339,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_044",
+    "cluster": "power_premium",
+    "country": "IN",
+    "is_premium": true,
+    "intensity": 23.0,
+    "active_day_prob": 0.977,
+    "skip_rate": 0.142,
+    "repeat_ratio": 0.647,
+    "favorite_genres": [
+      "edm",
+      "nasheed",
+      "pop",
+      "rnb",
+      "jpop"
+    ],
+    "device_mix": {
+      "mobile": 0.253,
+      "desktop": 0.523,
+      "web_player": 0.224
+    },
+    "timezone": "Asia/Kolkata",
+    "volume_norm": 0.757,
+    "device_diversity": 0.737,
+    "discovery_rate": 0.353,
+    "engagement_score": 0.692,
+    "propensity_flag": null
+  },
+  {
+    "is_persona": false,
+    "user_id": "user_synth_045",
+    "cluster": "casual_free",
+    "country": "IN",
+    "is_premium": false,
+    "intensity": 6.1,
+    "active_day_prob": 0.691,
+    "skip_rate": 0.065,
+    "repeat_ratio": 0.868,
+    "favorite_genres": [
+      "jazz",
+      "bhangra"
+    ],
+    "device_mix": {
+      "mobile": 1.0
+    },
+    "timezone": "Asia/Kolkata",
+    "volume_norm": 0.309,
+    "device_diversity": -0.0,
+    "discovery_rate": 0.132,
+    "engagement_score": 0.337,
+    "propensity_flag": null
+  }
+]
