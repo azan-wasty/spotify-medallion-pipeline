@@ -40,6 +40,13 @@ Changes from v1 (per TA feedback on Phase 1 proposal):
      curves with device-by-hour habits, shifted to UTC by the user's
      timezone. Planted traits and engagement scores go to
      output/validation/user_segments.json for testing the Gold marts.
+  6. REAL-DATA SAFEGUARD: users listed in REAL_INCREMENTAL_USERS have their
+     day-to-day partitions populated from the real Spotify API
+     (fetch_recently_played.py), not this generator. "incremental" and
+     "backfill" modes skip event generation for these users entirely, so a
+     synthetic row is never fabricated alongside or instead of their real
+     one on the same day. "full" mode still generates their historical
+     baseline for the period before real ingestion started.
 
 Usage
 -----
@@ -191,12 +198,19 @@ PERSONAS = [
      "device_mix": {"mobile": 0.50, "desktop": 0.35, "web_player": 0.15}},
     # --- 4th persona (added from real export analysis; TODO confirm is_premium — ---
     # --- not derivable from listening history alone, defaulted to Free here)    ---
-    {"user_id": "user_real_04", "cluster": "power_free", "favorite_genres": ["pakistani-pop", "indie-pop-desi", "bollywood", "hip-hop"],
+    {"user_id": "user_real_04", "cluster": "power_premium", "favorite_genres": ["pakistani-pop", "indie-pop-desi", "bollywood", "hip-hop"],
      "country": "PK", "intensity": 33, "is_premium": True, "skip_rate": 0.554, "repeat_ratio": 0.80,
      "device_mix": {"mobile": 0.78, "desktop": 0.22}},
 ]
 PERSONA_IDS = {p["user_id"] for p in PERSONAS}
 NUM_FILLER = TOTAL_USERS - len(PERSONAS)  # derived, so adding a persona never shrinks the population
+
+# Users whose day-to-day partitions are populated by real Spotify API data
+# (fetch_recently_played.py), not this generator. Excluded from "incremental"
+# and "backfill" so a synthetic row is never fabricated alongside or instead
+# of their real one on the same day. "full" mode still generates their
+# historical baseline for the period before real ingestion started.
+REAL_INCREMENTAL_USERS = {"user_real_01"}
 
 # ---------------------------------------------------------------------------
 # Catalog seed: (track, artist, genre, release_year) — real names/facts only
@@ -720,13 +734,23 @@ def device_table(user, time_model):
             for day_type in ("weekday", "weekend") for h in range(24)}
 
 
-def generate_day_events(day: datetime, users, ctx):
-    """One UTC day of events for every user. Returns (events, number of replays)."""
+def generate_day_events(day: datetime, users, ctx, skip_ids=frozenset()):
+    """One UTC day of events for every user. Returns (events, number of replays).
+
+    Users in `skip_ids` already have a real (or real_api) row for this exact
+    day — found in the day's existing partition before generation — so they
+    are skipped entirely rather than getting a full synthetic day stacked on
+    top of real data. This check runs in every mode, including "full": it's
+    what lets full mode still backfill a persona's pre-real-ingestion history
+    without double-booking any day real data already covers.
+    """
     rng = random.Random(f"{ctx.seed}:{day:%Y-%m-%d}")
     today = day.date()
     events, n_replays = [], 0
     for user in users:
         user_id = user["user_id"]
+        if user_id in skip_ids:
+            continue
         rates, slots = hourly_rates(user, day, ctx)
         expected = sum(rates)
         n_events = int(expected) + (rng.random() < expected - int(expected))
@@ -766,6 +790,61 @@ def generate_day_events(day: datetime, users, ctx):
     return events, n_replays
 
 
+def write_partition(day: datetime, events, existing=None):
+    path = partition_path(day)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    # Keep any existing real events (source == "real"/"real_api") untouched;
+    # replace only this script's own prior synthetic rows for this day so
+    # re-running full/backfill doesn't destroy real data merged in earlier.
+    if existing is None:
+        existing = read_partition(day)
+    existing_real = [e for e in existing if e.get("source") in ("real", "real_api")]
+    merged = existing_real + events
+
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(merged, f, indent=2)
+    return merged
+
+
+def generate_days(days, catalog, users, seed, exclude_ids=frozenset()):
+    """Generate and write each day in order; each written day becomes history for
+    the next. `exclude_ids` (used by incremental/backfill) drops users entirely
+    for the whole run — for a user whose real API feed is expected to land
+    later that day, this stops synthetic from filling the gap even before the
+    real row exists. On top of that, every day independently checks which
+    users already have a real/real_api row in that day's *existing* partition
+    (read once, reused for both the skip check and the real-row merge below)
+    and skips generating for them too — this is what protects "full" mode,
+    which never passes exclude_ids, from double-booking a day a persona's
+    real export already covers."""
+    tracks_by_genre = defaultdict(list)
+    for t in catalog:
+        tracks_by_genre[t["genre"]].append(t)
+    chart = sorted(catalog, key=lambda t: t["popularity"], reverse=True)[:CHART_SIZE]
+    time_model = build_time_model()
+    ctx = SimpleNamespace(
+        seed=seed,
+        catalog=catalog,
+        tracks_by_id={t["track_id"]: t for t in catalog},
+        discovery_pools={u["user_id"]: build_discovery_pools(u, tracks_by_genre, chart) for u in users},
+        device_tables={u["user_id"]: device_table(u, time_model) for u in users},
+        time=time_model,
+        history=ListeningHistory(),
+        day_factors={},
+    )
+    active_users = [u for u in users if u["user_id"] not in exclude_ids]
+    total = replays = 0
+    for day in days:
+        ctx.history.advance_to(day.date())
+        existing = read_partition(day)
+        real_today = {e["user_id"] for e in existing if e.get("source") in ("real", "real_api")}
+        events, n_replays = generate_day_events(day, active_users, ctx, skip_ids=real_today)
+        ctx.history.add_day(day.date(), write_partition(day, events, existing=existing))
+        total += len(events)
+        replays += n_replays
+    return f"{total} events, {replays / max(total, 1):.0%} replays"
+
+
 def partition_path(day):
     return os.path.join(OUTPUT_DIR, f"dt={day:%Y-%m-%d}", "events.json")
 
@@ -787,18 +866,7 @@ def read_partition(day):
         ) from exc
 
 
-def write_partition(day: datetime, events):
-    path = partition_path(day)
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    # Keep any existing real events (source == "real"/"real_api") untouched;
-    # replace only this script's own prior synthetic rows for this day so
-    # re-running full/backfill doesn't destroy real data merged in earlier.
-    existing_real = [e for e in read_partition(day) if e.get("source") in ("real", "real_api")]
-    merged = existing_real + events
 
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(merged, f, indent=2)
-    return merged
 
 
 def write_dims(catalog, users):
@@ -821,31 +889,6 @@ def write_validation(users):
         json.dump(rows, f, indent=2)
 
 
-def generate_days(days, catalog, users, seed):
-    """Generate and write each day in order; each written day becomes history for the next."""
-    tracks_by_genre = defaultdict(list)
-    for t in catalog:
-        tracks_by_genre[t["genre"]].append(t)
-    chart = sorted(catalog, key=lambda t: t["popularity"], reverse=True)[:CHART_SIZE]
-    time_model = build_time_model()
-    ctx = SimpleNamespace(
-        seed=seed,
-        catalog=catalog,
-        tracks_by_id={t["track_id"]: t for t in catalog},
-        discovery_pools={u["user_id"]: build_discovery_pools(u, tracks_by_genre, chart) for u in users},
-        device_tables={u["user_id"]: device_table(u, time_model) for u in users},
-        time=time_model,
-        history=ListeningHistory(),
-        day_factors={},
-    )
-    total = replays = 0
-    for day in days:
-        ctx.history.advance_to(day.date())
-        events, n_replays = generate_day_events(day, users, ctx)
-        ctx.history.add_day(day.date(), write_partition(day, events))
-        total += len(events)
-        replays += n_replays
-    return f"{total} events, {replays / max(total, 1):.0%} replays"
 
 
 def date_range(start, end):
@@ -861,13 +904,13 @@ def run_full(catalog, users, seed):
 
 def run_incremental(catalog, users, seed, date_str=None):
     day = datetime.strptime(date_str, "%Y-%m-%d") if date_str else datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
-    summary = generate_days([day], catalog, users, seed)
+    summary = generate_days([day], catalog, users, seed, exclude_ids=REAL_INCREMENTAL_USERS)
     print(f"Incremental load: wrote {summary} to {partition_path(day)}")
 
 
 def run_backfill(catalog, users, seed, start_str, end_str):
     days = date_range(datetime.strptime(start_str, "%Y-%m-%d"), datetime.strptime(end_str, "%Y-%m-%d"))
-    summary = generate_days(days, catalog, users, seed)
+    summary = generate_days(days, catalog, users, seed, exclude_ids=REAL_INCREMENTAL_USERS)
     print(f"Backfill: regenerated {len(days)} daily partitions ({summary}) from {start_str} to {end_str}")
 
 

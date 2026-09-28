@@ -69672,7 +69672,7 @@
     "artist": "Joji",
     "genre": "pop",
     "release_year": null,
-    "duration_sec": 149,
+    "duration_sec": 166,
     "popularity": 31,
     "danceability": 0.929,
     "energy": 0.947,
@@ -198924,5 +198924,31 @@
     "energy": 0.46,
     "valence": 0.331,
     "tempo_bpm": 91.0
+  },
+  {
+    "track_id": "spotify:track:4fQVQKIiidREPI0MhFEuDn",
+    "track_name": "My Moon My Man",
+    "artist": "Feist",
+    "genre": "unclassified",
+    "release_year": null,
+    "duration_sec": 228,
+    "popularity": 30,
+    "danceability": 0.935,
+    "energy": 0.274,
+    "valence": 0.81,
+    "tempo_bpm": 87.9
+  },
+  {
+    "track_id": "spotify:track:2PLOCIYlFr8XxNsz0Lgs4l",
+    "track_name": "Ballad of a Badman",
+    "artist": "Tory Lanez",
+    "genre": "hip-hop",
+    "release_year": null,
+    "duration_sec": 255,
+    "popularity": 30,
+    "danceability": 0.734,
+    "energy": 0.213,
+    "valence": 0.86,
+    "tempo_bpm": 75.5
   }
 ]

@@ -87,11 +87,11 @@
   {
     "is_persona": true,
     "user_id": "user_real_04",
-    "cluster": "power_free",
+    "cluster": "power_premium",
     "country": "PK",
     "is_premium": true,
     "intensity": 33,
-    "active_day_prob": 0.899,
+    "active_day_prob": 0.929,
     "skip_rate": 0.554,
     "repeat_ratio": 0.8,
     "favorite_genres": [
@@ -105,10 +105,10 @@
       "desktop": 0.22
     },
     "timezone": "Asia/Karachi",
-    "volume_norm": 0.837,
+    "volume_norm": 0.846,
     "device_diversity": 0.38,
     "discovery_rate": 0.2,
-    "engagement_score": 0.54,
+    "engagement_score": 0.544,
     "propensity_flag": null
   },
   {
