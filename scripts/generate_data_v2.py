@@ -140,7 +140,7 @@ COUNTRIES = ["US", "GB", "PK", "IN", "DE", "BR"]
 #   mobile_only_prob chance the user only uses the phone app
 #   device_alpha     Dirichlet concentration per device (bigger = larger, steadier share)
 # ---------------------------------------------------------------------------
-TOTAL_USERS = 50
+TOTAL_USERS = 50   # 5 real personas + 45 synthetic fillers
 CLUSTERS = {
     "power_free": {
         "weight": 0.15, "premium_prob": 0.0,
@@ -201,6 +201,9 @@ PERSONAS = [
     {"user_id": "user_real_04", "cluster": "power_premium", "favorite_genres": ["pakistani-pop", "indie-pop-desi", "bollywood", "hip-hop"],
      "country": "PK", "intensity": 33, "is_premium": True, "skip_rate": 0.554, "repeat_ratio": 0.80,
      "device_mix": {"mobile": 0.78, "desktop": 0.22}},
+    {"user_id": "user_real_05", "cluster": "power_premium", "favorite_genres": ["hip-hop", "kpop", "jpop", "indie-alt", "pakistani-pop"],
+     "country": "PK", "intensity": 28, "is_premium": True, "skip_rate": 0.098, "repeat_ratio": 0.77,
+     "device_mix": {"mobile": 0.85, "desktop": 0.15}},
 ]
 PERSONA_IDS = {p["user_id"] for p in PERSONAS}
 NUM_FILLER = TOTAL_USERS - len(PERSONAS)  # derived, so adding a persona never shrinks the population
@@ -507,11 +510,26 @@ def _beta(rng, mean, concentration, z, direction):
     return rng.betavariate(m * concentration, (1 - m) * concentration)
 
 
-def sample_favorite_genres(rng, n, genre_sizes):
+# Genres that are strongly regional to South Asia (PK/IN) and should appear
+# at only trace probability for listeners from other countries.
+_DESI_GENRES = frozenset({
+    "bollywood", "punjabi", "sufi-pop", "qawwali",
+    "pakistani-pop", "indie-pop-desi", "nasheed", "bhangra",
+})
+_DESI_GENRE_WEIGHT_NON_PK = 0.0   # 0 weight so Desi/Pakistani genres are never picked by non-PK fillers
+
+
+def sample_favorite_genres(rng, n, genre_sizes, country="US"):
     """Tastes cluster: the first favourite is likelier to be a big genre, and each
-    extra one is usually a neighbouring genre, occasionally a leap elsewhere."""
+    extra one is usually a neighbouring genre, occasionally a leap elsewhere.
+    Desi/Pakistani genres get zero weight for non-PK users so they
+    never appear in non-PK filler profiles."""
     genres = sorted(genre_sizes)
-    weight = {g: math.sqrt(genre_sizes[g]) for g in genres}
+    is_pk = country == "PK"
+    weight = {
+        g: (math.sqrt(genre_sizes[g]) if (is_pk or g not in _DESI_GENRES) else _DESI_GENRE_WEIGHT_NON_PK)
+        for g in genres
+    }
     chosen = []
     while len(chosen) < min(n, len(genres)):
         neighbours = sorted({nb for g in chosen for nb in GENRE_NEIGHBORS.get(g, []) if nb in weight and nb not in chosen})
@@ -562,16 +580,17 @@ def build_user(spec, cluster_name, genre_sizes, seed):
     z = rng.gauss(0, 1)
     median, log_sd = trait_cluster()["intensity"]
     own = math.sqrt(1 - TRAIT_CORRELATION ** 2) * rng.gauss(0, 1)
+    user_country = spec.get("country") or rng.choice(COUNTRIES)
     sampled = {
         "user_id": spec["user_id"],
         "cluster": cluster_name,
-        "country": rng.choice(COUNTRIES),
+        "country": user_country,
         "is_premium": rng.random() < CLUSTERS[cluster_name]["premium_prob"],
         "intensity": round(median * math.exp(log_sd * (TRAIT_CORRELATION * z + own)), 1),
         "active_day_prob": round(_beta(rng, *trait_cluster()["active_day_prob"], z, +1), 3),
         "skip_rate": round(_beta(rng, *trait_cluster()["skip_rate"], z, -1), 3),
         "repeat_ratio": round(_beta(rng, *trait_cluster()["repeat_ratio"], z, -1), 3),
-        "favorite_genres": sample_favorite_genres(rng, rng.randint(*trait_cluster()["n_genres"]), genre_sizes),
+        "favorite_genres": sample_favorite_genres(rng, rng.randint(*trait_cluster()["n_genres"]), genre_sizes, user_country),
         "device_mix": sample_device_mix(rng, trait_cluster()),
     }
     user = {**sampled, **spec}
@@ -663,15 +682,19 @@ def build_discovery_pools(user, tracks_by_genre, chart):
     """(weight, tracks) pools for one user's discovery plays; empty pools are dropped."""
     favorites = user["favorite_genres"]
     adjacent = sorted({n for g in favorites for n in GENRE_NEIGHBORS.get(g, [])} - set(favorites))
+    is_pk = user.get("country") == "PK"
+    if not is_pk:
+        adjacent = [g for g in adjacent if g not in _DESI_GENRES]
+    filtered_chart = chart if is_pk else [t for t in chart if t.get("genre") not in _DESI_GENRES]
     by_kind = {
         "favorite": [t for g in favorites for t in tracks_by_genre.get(g, [])],
         "adjacent": [t for g in adjacent for t in tracks_by_genre.get(g, [])],
-        "chart": chart,
+        "chart": filtered_chart,
     }
     return [(weight, by_kind[kind]) for kind, weight in DISCOVERY_MIX if by_kind[kind]]
 
 
-def pick_discovery(rng, pools, heard, catalog):
+def pick_discovery(rng, pools, heard, catalog, is_pk=True):
     """A track the user hasn't played in the window, from their discovery pools if possible."""
     weights = [w for w, _ in pools]
     for _ in range(DISCOVERY_RETRIES):
@@ -684,6 +707,8 @@ def pick_discovery(rng, pools, heard, catalog):
     for _ in range(DISCOVERY_RETRIES):
         track = rng.choice(catalog)
         if track["track_id"] not in heard:
+            if not is_pk and track.get("genre") in _DESI_GENRES:
+                continue
             break
     return track
 
@@ -766,7 +791,8 @@ def generate_day_events(day: datetime, users, ctx, skip_ids=frozenset()):
             cap = REPLAY_MAX_TRACK_SHARE * sum(weights[t] for t in replayable)
             replays = rng.choices(replayable, weights=[min(weights[t], cap) for t in replayable], k=n_repeat)
             plays = [(ctx.tracks_by_id[t], True) for t in replays]
-        plays += [(pick_discovery(rng, ctx.discovery_pools[user_id], weights, ctx.catalog), False)
+        is_pk = user.get("country") == "PK"
+        plays += [(pick_discovery(rng, ctx.discovery_pools[user_id], weights, ctx.catalog, is_pk=is_pk), False)
                   for _ in range(n_events - n_repeat)]
         rng.shuffle(plays)
         n_replays += n_repeat
