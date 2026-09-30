@@ -3,7 +3,7 @@ Script: build_full_catalog.py
 ==============================
 Purpose:
     Extracts ALL distinct music tracks across all real user exports
-    (user_real_01, user_real_02, user_real_03, user_real_04), maps/infers genres,
+    (user_real_01, user_real_02, user_real_03, user_real_04, user_real_05), maps/infers genres,
     builds an exhaustive real catalog, and updates:
       - scripts/real_catalog_extract.json
       - output/dims/catalog.json
@@ -33,10 +33,13 @@ DATA_DIRS = [
     os.path.join(ROOT_DIR, "dav data", "user_real_02"),
     os.path.join(ROOT_DIR, "dav data", "user_real_03"),
     os.path.join(ROOT_DIR, "dav data", "user_real_04"),
+    os.path.join(ROOT_DIR, "dav data", "user_real_05"),
 ]
 
 
 def build_full_catalog():
+    from spotify_resolver import SpotifyResolver
+    resolver = SpotifyResolver()
     track_stats = {}
 
     for data_dir in DATA_DIRS:
@@ -45,6 +48,16 @@ def build_full_catalog():
             continue
 
         files = glob.glob(os.path.join(data_dir, "Streaming_History_Audio_*.json"))
+        is_simple_format = False
+        if not files:
+            files = glob.glob(os.path.join(data_dir, "StreamingHistory_music_*.json"))
+            if files:
+                is_simple_format = True
+        if not files:
+            files = glob.glob(os.path.join(data_dir, "StreamingHistory*.json"))
+            if files:
+                is_simple_format = True
+
         print(f"Found {len(files)} files in {os.path.basename(data_dir)}")
 
         for fpath in files:
@@ -56,18 +69,28 @@ def build_full_catalog():
                     continue
 
             for item in data:
-                # Filter non-music
-                if item.get("episode_name") is not None or item.get("audiobook_title") is not None:
-                    continue
-                track_uri = item.get("spotify_track_uri")
-                track_name = item.get("master_metadata_track_name")
-                artist = item.get("master_metadata_album_artist_name")
-                album = item.get("master_metadata_album_album_name")
-
-                if not track_uri or not track_name or not artist:
-                    continue
-
-                ms_played = int(item.get("ms_played", 0))
+                if is_simple_format:
+                    art = (item.get("artistName") or "").strip()
+                    trk = (item.get("trackName") or "").strip()
+                    if not art or not trk:
+                        continue
+                    res = resolver.resolve_track(art, trk)
+                    track_uri = res["track_id"]
+                    track_name = res.get("track_name") or trk
+                    artist = res.get("artist") or art
+                    album = res.get("album") or "Single"
+                    ms_played = int(item.get("msPlayed", 0))
+                else:
+                    # Filter non-music
+                    if item.get("episode_name") is not None or item.get("audiobook_title") is not None:
+                        continue
+                    track_uri = item.get("spotify_track_uri")
+                    track_name = item.get("master_metadata_track_name")
+                    artist = item.get("master_metadata_album_artist_name")
+                    album = item.get("master_metadata_album_album_name")
+                    if not track_uri or not track_name or not artist:
+                        continue
+                    ms_played = int(item.get("ms_played", 0))
 
                 if track_uri not in track_stats:
                     track_stats[track_uri] = {

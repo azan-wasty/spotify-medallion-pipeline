@@ -8,11 +8,11 @@ Purpose:
 
 PII Compliance Rules:
     1. Strips `ip_addr` and `ip_addr_decrypted` before any file is written to output.
-    2. Replaces real personal identities with pseudonyms (e.g., `user_real_01`).
+    2. Replaces real personal identities with pseudonyms (e.g., `user_real_01` through `user_real_05`).
     3. Skips non-music items (e.g., podcasts/audiobooks) unless explicitly flagged.
 
 Usage:
-    python3 scripts/sanitize_real_data.py --input-dir "./dav data/user_real_01" --user-id user_real_01 --output-dir output/raw
+    python3 scripts/sanitize_real_data.py --input-dir "./dav data/user_real_05" --user-id user_real_05 --output-dir output/raw
 """
 
 import argparse
@@ -101,6 +101,53 @@ def transform_record(item, user_id, idx):
     }
 
 
+def transform_record_simple(item, user_id, idx, resolver, minute_counts):
+    art = (item.get("artistName") or "").strip()
+    trk = (item.get("trackName") or "").strip()
+    end_time = item.get("endTime")
+    if not art or not trk or not end_time:
+        return None, None
+
+    res = resolver.resolve_track(art, trk)
+    track_id = res["track_id"]
+    track_name = res.get("track_name") or trk
+    artist_name = res.get("artist") or art
+    album_name = res.get("album") or "Single"
+
+    # Avoid duplicate timestamps within the same minute: offset seconds by count
+    sec_offset = minute_counts.get(end_time, 0)
+    minute_counts[end_time] = sec_offset + 1
+    sec = min(59, sec_offset)
+    played_at = f"{end_time[:10]}T{end_time[11:16]}:{sec:02d}Z"
+
+    ms_played = int(item.get("msPlayed", 0))
+    skipped = bool(ms_played < 30000)
+    device_type = map_platform_to_device_type(item.get("platform"))
+
+    h = hashlib.sha256(f"{user_id}_{played_at}_{track_id}_{idx}".encode("utf-8")).hexdigest()[:12]
+    event_id = f"evt_real_{h}"
+
+    evt = {
+        "event_id": event_id,
+        "user_id": user_id,
+        "track_id": track_id,
+        "played_at": played_at,
+        "ms_played": ms_played,
+        "skipped": skipped,
+        "device_type": device_type,
+        "source": "real"
+    }
+
+    raw_track = {
+        "track_id": track_id,
+        "track_name": track_name,
+        "artist": artist_name,
+        "album": album_name,
+        "ms_played": ms_played
+    }
+    return evt, raw_track
+
+
 def write_or_merge_partition(day_str, new_events, output_dir):
     partition_dir = os.path.join(output_dir, f"dt={day_str}")
     os.makedirs(partition_dir, exist_ok=True)
@@ -142,17 +189,33 @@ def write_or_merge_partition(day_str, new_events, output_dir):
 
 def process_directory(input_dir, user_id, output_dir):
     pattern = os.path.join(input_dir, "Streaming_History_Audio_*.json")
-    files = glob.glob(pattern)
+    files = sorted(glob.glob(pattern))
+    is_simple_format = False
+
+    if not files:
+        files = sorted(glob.glob(os.path.join(input_dir, "StreamingHistory_music_*.json")))
+        if files:
+            is_simple_format = True
+    if not files:
+        files = sorted(glob.glob(os.path.join(input_dir, "StreamingHistory*.json")))
+        if files:
+            is_simple_format = True
     if not files:
         # Fallback to checking files directly in directory
         files = [os.path.join(input_dir, f) for f in os.listdir(input_dir) if f.startswith("Streaming_History_Audio_") and f.endswith(".json")]
 
     if not files:
-        print(f"No Streaming_History_Audio_*.json files found in {input_dir}")
+        print(f"No streaming history files found in {input_dir}")
         return
 
-    print(f"Found {len(files)} export files for user {user_id} in {input_dir}")
+    print(f"Found {len(files)} export files for user {user_id} in {input_dir} (simple format: {is_simple_format})")
 
+    resolver = None
+    if is_simple_format:
+        from spotify_resolver import SpotifyResolver
+        resolver = SpotifyResolver()
+
+    minute_counts = {}
     events_by_day = {}
     total_processed = 0
     skipped_non_music = 0
@@ -168,18 +231,25 @@ def process_directory(input_dir, user_id, output_dir):
 
         raw_tracks = []
         for idx, item in enumerate(data):
-            evt = transform_record(item, user_id, idx)
-            if evt is None:
-                skipped_non_music += 1
-                continue
+            if is_simple_format:
+                evt, r_trk = transform_record_simple(item, user_id, idx, resolver, minute_counts)
+                if evt is None:
+                    skipped_non_music += 1
+                    continue
+                raw_tracks.append(r_trk)
+            else:
+                evt = transform_record(item, user_id, idx)
+                if evt is None:
+                    skipped_non_music += 1
+                    continue
 
-            raw_tracks.append({
-                "track_id": item.get("spotify_track_uri"),
-                "track_name": item.get("master_metadata_track_name"),
-                "artist": item.get("master_metadata_album_artist_name"),
-                "album": item.get("master_metadata_album_album_name"),
-                "ms_played": item.get("ms_played", 0)
-            })
+                raw_tracks.append({
+                    "track_id": item.get("spotify_track_uri"),
+                    "track_name": item.get("master_metadata_track_name"),
+                    "artist": item.get("master_metadata_album_artist_name"),
+                    "album": item.get("master_metadata_album_album_name"),
+                    "ms_played": item.get("ms_played", 0)
+                })
 
             day_str = evt["played_at"][:10]
             if day_str not in events_by_day:
@@ -194,7 +264,10 @@ def process_directory(input_dir, user_id, output_dir):
                 if new_cat_count > 0:
                     print(f"  -> Auto-cataloged {new_cat_count} new track(s) from {os.path.basename(file_path)}")
             except Exception as e:
-                pass
+                print(f"  -> Auto-catalog error: {e}")
+
+    if resolver:
+        resolver.save_cache()
 
     total_added = 0
     for day_str, evts in sorted(events_by_day.items()):
