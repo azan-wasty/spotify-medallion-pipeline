@@ -511,23 +511,25 @@ def _beta(rng, mean, concentration, z, direction):
 
 
 # Genres that are strongly regional to South Asia (PK/IN) and should appear
-# at only trace probability for listeners from other countries.
+# at zero probability for listeners from other regions. Bollywood is Indian music;
+# Punjabi, sufi-pop and qawwali are shared across the subcontinent — so both PK
+# and IN users can pick them. Non-South-Asian fillers get zero weight.
 _DESI_GENRES = frozenset({
     "bollywood", "punjabi", "sufi-pop", "qawwali",
     "pakistani-pop", "indie-pop-desi", "nasheed", "bhangra",
 })
-_DESI_GENRE_WEIGHT_NON_PK = 0.0   # 0 weight so Desi/Pakistani genres are never picked by non-PK fillers
+_DESI_GENRE_WEIGHT_NON_SA = 0.0   # 0 weight: Desi genres never picked outside PK/IN
 
 
 def sample_favorite_genres(rng, n, genre_sizes, country="US"):
     """Tastes cluster: the first favourite is likelier to be a big genre, and each
     extra one is usually a neighbouring genre, occasionally a leap elsewhere.
-    Desi/Pakistani genres get zero weight for non-PK users so they
-    never appear in non-PK filler profiles."""
+    Desi/South-Asian genres get zero weight for non-PK/IN users so they
+    never appear in non-South-Asian filler profiles."""
     genres = sorted(genre_sizes)
-    is_pk = country == "PK"
+    is_south_asian = country in ("PK", "IN")
     weight = {
-        g: (math.sqrt(genre_sizes[g]) if (is_pk or g not in _DESI_GENRES) else _DESI_GENRE_WEIGHT_NON_PK)
+        g: (math.sqrt(genre_sizes[g]) if (is_south_asian or g not in _DESI_GENRES) else _DESI_GENRE_WEIGHT_NON_SA)
         for g in genres
     }
     chosen = []
@@ -682,10 +684,10 @@ def build_discovery_pools(user, tracks_by_genre, chart):
     """(weight, tracks) pools for one user's discovery plays; empty pools are dropped."""
     favorites = user["favorite_genres"]
     adjacent = sorted({n for g in favorites for n in GENRE_NEIGHBORS.get(g, [])} - set(favorites))
-    is_pk = user.get("country") == "PK"
-    if not is_pk:
+    is_south_asian = user.get("country") in ("PK", "IN")
+    if not is_south_asian:
         adjacent = [g for g in adjacent if g not in _DESI_GENRES]
-    filtered_chart = chart if is_pk else [t for t in chart if t.get("genre") not in _DESI_GENRES]
+    filtered_chart = chart if is_south_asian else [t for t in chart if t.get("genre") not in _DESI_GENRES]
     by_kind = {
         "favorite": [t for g in favorites for t in tracks_by_genre.get(g, [])],
         "adjacent": [t for g in adjacent for t in tracks_by_genre.get(g, [])],
@@ -694,7 +696,7 @@ def build_discovery_pools(user, tracks_by_genre, chart):
     return [(weight, by_kind[kind]) for kind, weight in DISCOVERY_MIX if by_kind[kind]]
 
 
-def pick_discovery(rng, pools, heard, catalog, is_pk=True):
+def pick_discovery(rng, pools, heard, catalog, is_south_asian=True):
     """A track the user hasn't played in the window, from their discovery pools if possible."""
     weights = [w for w, _ in pools]
     for _ in range(DISCOVERY_RETRIES):
@@ -707,7 +709,7 @@ def pick_discovery(rng, pools, heard, catalog, is_pk=True):
     for _ in range(DISCOVERY_RETRIES):
         track = rng.choice(catalog)
         if track["track_id"] not in heard:
-            if not is_pk and track.get("genre") in _DESI_GENRES:
+            if not is_south_asian and track.get("genre") in _DESI_GENRES:
                 continue
             break
     return track
@@ -791,8 +793,8 @@ def generate_day_events(day: datetime, users, ctx, skip_ids=frozenset()):
             cap = REPLAY_MAX_TRACK_SHARE * sum(weights[t] for t in replayable)
             replays = rng.choices(replayable, weights=[min(weights[t], cap) for t in replayable], k=n_repeat)
             plays = [(ctx.tracks_by_id[t], True) for t in replays]
-        is_pk = user.get("country") == "PK"
-        plays += [(pick_discovery(rng, ctx.discovery_pools[user_id], weights, ctx.catalog, is_pk=is_pk), False)
+        is_south_asian = user.get("country") in ("PK", "IN")
+        plays += [(pick_discovery(rng, ctx.discovery_pools[user_id], weights, ctx.catalog, is_south_asian=is_south_asian), False)
                   for _ in range(n_events - n_repeat)]
         rng.shuffle(plays)
         n_replays += n_repeat

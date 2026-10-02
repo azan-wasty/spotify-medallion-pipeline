@@ -245,15 +245,19 @@ def transform_api_item(item, user_id):
 
     Note on unavailable fields:
       - ms_played: the /recently-played endpoint does not return how much was
-        actually listened to — only track duration_ms. Setting ms_played=None
-        (null in JSON) is honest; do NOT use duration_ms as a proxy because it
-        inflates completion % and suppresses skip signals in downstream metrics.
+        actually listened to, only track duration_ms. Project decision: record
+        the full track duration as ms_played (i.e. assume a complete play) and
+        tag the row with ms_played_source = "duration_ms_estimate" so the
+        estimate stays distinguishable from real export values. Consequence:
+        every real_api play looks 100% complete, so exclude real_api rows from
+        completion-rate / skip metrics downstream.
       - skipped: the endpoint has no skip signal. null means unknown, not False.
       - device_type: available only if the play context carries a device object;
         otherwise null.  Do NOT default to "mobile".
     """
     track = item.get("track", {})
     track_uri = track.get("uri") or f"spotify:track:{track.get('id')}"
+    duration_ms = track.get("duration_ms")  # may be missing/0 for local files
 
     if not item.get("played_at") or not track_uri:
         return None
@@ -271,7 +275,8 @@ def transform_api_item(item, user_id):
         "user_id": user_id,
         "track_id": track_uri,
         "played_at": played_at,
-        "ms_played": None,      # not provided by /recently-played; null = unknown
+        "ms_played": duration_ms or None,   # estimate: assumes a full play (see docstring)
+        "ms_played_source": "duration_ms_estimate" if duration_ms else None,
         "skipped": None,        # not provided by /recently-played; null = unknown
         "device_type": device_type,  # null until a real device signal is available
         "source": "real_api"
@@ -398,4 +403,3 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
     process_live_api_fetch(args.user_id, login=args.login, env_path=args.env_file, output_dir=args.output_dir)
-
