@@ -68973,7 +68973,7 @@
     "album": "Hard To Imagine The Neighbourhood Ever Changing",
     "genre": "rock",
     "plays": 2,
-    "max_ms": 1532
+    "max_ms": 209600
   },
   {
     "track_id": "spotify:track:0vsW1vAlNYiy9Y5briGT8Y",
@@ -98302,7 +98302,7 @@
     "track_name": "Lumi\u00e8re",
     "artist": "Lorien Testard",
     "album": "Clair Obscur: Expedition 33 (Original Soundtrack)",
-    "genre": "unclassified",
+    "genre": "french_pop",
     "plays": 1,
     "max_ms": 1797
   },
@@ -98599,9 +98599,9 @@
     "track_name": "Alicia",
     "artist": "Lorien Testard",
     "album": "Clair Obscur: Expedition 33 (Original Soundtrack)",
-    "genre": "unclassified",
+    "genre": "french_pop",
     "plays": 1,
-    "max_ms": 908
+    "max_ms": 170000
   },
   {
     "track_id": "spotify:track:7bpx69zMjG7KJvOdfjCeRz",
@@ -148291,5 +148291,68 @@
     "genre": "unclassified",
     "plays": 1,
     "max_ms": 6036
+  },
+  {
+    "track_id": "spotify:track:0NmrMSONPz6A9t1EKqasic",
+    "track_name": "Until Next Life",
+    "artist": "Lorien Testard",
+    "album": "Clair Obscur: Expedition 33 (Original Soundtrack)",
+    "genre": "french_pop",
+    "plays": 1,
+    "max_ms": 153000
+  },
+  {
+    "track_id": "spotify:track:7teZMQzK4LUB5IJnSDVOLA",
+    "track_name": "Paintress",
+    "artist": "Lorien Testard",
+    "album": "Clair Obscur: Expedition 33 (Original Soundtrack)",
+    "genre": "french_pop",
+    "plays": 1,
+    "max_ms": 530000
+  },
+  {
+    "track_id": "spotify:track:7i9SYJPGXAVnQphV8X1dDN",
+    "track_name": "Alicia (Reveal Trailer)",
+    "artist": "Lorien Testard",
+    "album": "Clair Obscur: Expedition 33 - Nos vies en Lumi\u00e8re (Original Soundtrack) [Bonus Edition]",
+    "genre": "french_pop",
+    "plays": 1,
+    "max_ms": 146013
+  },
+  {
+    "track_id": "spotify:track:1GO2HzBSJGPelxaqXIHEYh",
+    "track_name": "Une vie \u00e0 peindre",
+    "artist": "Lorien Testard",
+    "album": "Clair Obscur: Expedition 33 (Original Soundtrack)",
+    "genre": "french_pop",
+    "plays": 1,
+    "max_ms": 660000
+  },
+  {
+    "track_id": "spotify:track:7g5CS0qywhOe3bzxYFuh2f",
+    "track_name": "Aline",
+    "artist": "Lorien Testard",
+    "album": "Clair Obscur: Expedition 33 (Original Soundtrack)",
+    "genre": "french_pop",
+    "plays": 1,
+    "max_ms": 155000
+  },
+  {
+    "track_id": "spotify:track:4QEXM9na0mWIIt5Hwbsges",
+    "track_name": "Une vie \u00e0 t'aimer",
+    "artist": "Lorien Testard",
+    "album": "Clair Obscur: Expedition 33 (Original Soundtrack)",
+    "genre": "french_pop",
+    "plays": 1,
+    "max_ms": 660000
+  },
+  {
+    "track_id": "spotify:track:5Lmm7qSfBqeFqLMi0zlhCJ",
+    "track_name": "We Lost",
+    "artist": "Lorien Testard",
+    "album": "Clair Obscur: Expedition 33 (Original Soundtrack)",
+    "genre": "french_pop",
+    "plays": 1,
+    "max_ms": 513000
   }
 ]
