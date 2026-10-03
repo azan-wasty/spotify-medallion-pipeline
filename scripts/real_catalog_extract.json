@@ -29184,7 +29184,7 @@
     "album": "Euphories",
     "genre": "indie-alt",
     "plays": 12,
-    "max_ms": 122450
+    "max_ms": 217586
   },
   {
     "track_id": "spotify:track:6Q06JnZvvGpivyuLdD404e",
@@ -99510,7 +99510,7 @@
     "album": "Deslocado",
     "genre": "unclassified",
     "plays": 1,
-    "max_ms": 908
+    "max_ms": 179996
   },
   {
     "track_id": "spotify:track:5Jh7Gc5aF6leolD64pNRD5",
@@ -148354,5 +148354,23 @@
     "genre": "french_pop",
     "plays": 1,
     "max_ms": 513000
+  },
+  {
+    "track_id": "spotify:track:57tEyIK2gXNOVRrNqTR68L",
+    "track_name": "We are Expedition 33 (Reveal Trailer)",
+    "artist": "Lorien Testard",
+    "album": "Clair Obscur: Expedition 33 - Nos vies en Lumi\u00e8re (Original Soundtrack) [Bonus Edition]",
+    "genre": "french_pop",
+    "plays": 1,
+    "max_ms": 133000
+  },
+  {
+    "track_id": "spotify:track:64rgVfb69zqKMVPjPdA4tT",
+    "track_name": "Une vie \u00e0 peindre",
+    "artist": "Lorien Testard",
+    "album": "Clair Obscur: Expedition 33 (Original Soundtrack) Reveal Edition",
+    "genre": "french_pop",
+    "plays": 1,
+    "max_ms": 660000
   }
 ]

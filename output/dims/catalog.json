@@ -42151,7 +42151,7 @@
     "artist": "Videoclub",
     "genre": "indie-alt",
     "release_year": null,
-    "duration_sec": 122,
+    "duration_sec": 218,
     "popularity": 32,
     "danceability": 0.617,
     "energy": 0.384,
@@ -143733,7 +143733,7 @@
     "artist": "NAPA",
     "genre": "unclassified",
     "release_year": null,
-    "duration_sec": 60,
+    "duration_sec": 180,
     "popularity": 30,
     "danceability": 0.277,
     "energy": 0.775,
@@ -214290,5 +214290,31 @@
     "energy": 0.536,
     "valence": 0.25,
     "tempo_bpm": 120.1
+  },
+  {
+    "track_id": "spotify:track:57tEyIK2gXNOVRrNqTR68L",
+    "track_name": "We are Expedition 33 (Reveal Trailer)",
+    "artist": "Lorien Testard",
+    "genre": "french_pop",
+    "release_year": null,
+    "duration_sec": 133,
+    "popularity": 30,
+    "danceability": 0.521,
+    "energy": 0.386,
+    "valence": 0.316,
+    "tempo_bpm": 161.9
+  },
+  {
+    "track_id": "spotify:track:64rgVfb69zqKMVPjPdA4tT",
+    "track_name": "Une vie \u00e0 peindre",
+    "artist": "Lorien Testard",
+    "genre": "french_pop",
+    "release_year": null,
+    "duration_sec": 600,
+    "popularity": 30,
+    "danceability": 0.838,
+    "energy": 0.261,
+    "valence": 0.932,
+    "tempo_bpm": 154.0
   }
 ]

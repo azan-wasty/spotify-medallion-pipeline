@@ -711,12 +711,12 @@
     "skip_rate": 0.283,
     "repeat_ratio": 0.839,
     "favorite_genres": [
+      "jazz",
       "jpop",
-      "kpop",
       "jrock",
-      "pop",
       "rock",
-      "hip-hop"
+      "kpop",
+      "pop"
     ],
     "device_mix": {
       "mobile": 1.0
