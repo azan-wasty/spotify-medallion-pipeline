@@ -13,6 +13,7 @@ Streaming_History_Audio_*.json
 Streaming_History_Video_*.json
 ReadMeFirst_ExtendedStreamingHistory.pdf
 my_spotify_data.zip
+export_extended_history.py
 *.zip
 
 # ------------------------------------------------------------------------------

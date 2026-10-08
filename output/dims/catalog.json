@@ -97518,7 +97518,7 @@
     "artist": "Arctic Monkeys",
     "genre": "rock",
     "release_year": null,
-    "duration_sec": 60,
+    "duration_sec": 234,
     "popularity": 30,
     "danceability": 0.89,
     "energy": 0.273,
@@ -214316,5 +214316,31 @@
     "energy": 0.261,
     "valence": 0.932,
     "tempo_bpm": 154.0
+  },
+  {
+    "track_id": "spotify:track:52N4QxCMChlWjDIfSGDZkT",
+    "track_name": "Alicia (Music Box)",
+    "artist": "Lorien Testard",
+    "genre": "french_pop",
+    "release_year": null,
+    "duration_sec": 72,
+    "popularity": 30,
+    "danceability": 0.562,
+    "energy": 0.206,
+    "valence": 0.122,
+    "tempo_bpm": 103.1
+  },
+  {
+    "track_id": "spotify:track:5SOhBEiM2D6jRJ3JBjPH9Z",
+    "track_name": "Simon, The Divergent Star",
+    "artist": "Lorien Testard",
+    "genre": "french_pop",
+    "release_year": null,
+    "duration_sec": 273,
+    "popularity": 30,
+    "danceability": 0.381,
+    "energy": 0.765,
+    "valence": 0.243,
+    "tempo_bpm": 96.8
   }
 ]

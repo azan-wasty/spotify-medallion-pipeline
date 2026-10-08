@@ -67515,7 +67515,7 @@
     "album": "Leave Before The Lights Come On",
     "genre": "rock",
     "plays": 2,
-    "max_ms": 4293
+    "max_ms": 233946
   },
   {
     "track_id": "spotify:track:7jeOETwLUP84mPQzxlD5nh",
@@ -148372,5 +148372,23 @@
     "genre": "french_pop",
     "plays": 1,
     "max_ms": 660000
+  },
+  {
+    "track_id": "spotify:track:52N4QxCMChlWjDIfSGDZkT",
+    "track_name": "Alicia (Music Box)",
+    "artist": "Lorien Testard",
+    "album": "Clair Obscur: Expedition 33 (Original Soundtrack)",
+    "genre": "french_pop",
+    "plays": 1,
+    "max_ms": 72000
+  },
+  {
+    "track_id": "spotify:track:5SOhBEiM2D6jRJ3JBjPH9Z",
+    "track_name": "Simon, The Divergent Star",
+    "artist": "Lorien Testard",
+    "album": "Clair Obscur: Expedition 33 - Nos vies en Lumi\u00e8re (Original Soundtrack) [Bonus Edition]",
+    "genre": "french_pop",
+    "plays": 1,
+    "max_ms": 273000
   }
 ]
