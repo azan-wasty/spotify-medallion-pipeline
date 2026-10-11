@@ -511,14 +511,17 @@ def report_updated_partitions(real_info, synth_info, synth_kept=frozenset()):
         print("\nNo partitions changed.")
     else:
         print(f"\nPartitions updated ({len(updated)}):")
-        print(f"  {'partition':<14} {'status':<8} {'real_api':>9} {'persona_matched':>16} {'rows in file':>13}")
+        print(f"  {'partition':<14} {'status':<8} {'real_user_events':>16} {'rows in file':>13}")
         for day_str in updated:
             real, synth = real_info.get(day_str), synth_info.get(day_str)
-            created = real["created"] if real else synth["created"]
+            created = bool((real and real["created"]) or (synth and synth["created"]))
             total = synth["total"] if synth else real["total"]
-            persona = str(synth["generated"]) if synth else ("kept" if day_str in synth_kept else "-")
+            real_count = real["added"] if real else 0
+            synth_count = synth["generated"] if synth else 0
+            user_events = real_count + synth_count
+            count_str = f"+{user_events}" if user_events > 0 else str(user_events)
             print(f"  dt={day_str:<11} {'NEW' if created else 'UPDATED':<8} "
-                  f"{('+%d' % real['added']) if real else '-':>9} {persona:>16} {total:>13}")
+                  f"{count_str:>16} {total:>13}")
         print("  files: output/raw/dt=<partition>/events.json \u2014 re-upload these folders to the Volume.")
     if unchanged:
         print("  unchanged: " + ", ".join(f"dt={d}" for d in unchanged))
