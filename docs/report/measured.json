@@ -141,9 +141,10 @@
   },
 
   "pending": {
-    "daily_incremental_run": "not yet run — land one new dt file, run bronze..gold, record per-step + total sec",
-    "idempotent_rerun": "not yet run — rerun unchanged, expect SKIPPED_UNCHANGED everywhere with 0 rows mutated",
-    "tests_and_demos": "tests/run_all_tests + demos G1-G7 not yet run",
-    "users_v2_json": "second delivery pending — required for SCD2 history evidence"
+    "status": "left unrun by team decision 2026-10-23 — one-liner instructions in docs/report/evidence/README.md",
+    "daily_incremental_run": "not run. Generate: python3 scripts/generate_data_v2.py incremental --date <new-day>, upload output/raw/dt=<new-day>/ to landing raw/, run steps 10->33 per notebook. Note: future-dated rows are quarantined by Silver INVALID_PLAYED_AT until the wall clock passes them.",
+    "idempotent_rerun": "not run (Bronze checksum-skip already demonstrated in the full run: users + catalog logged SKIPPED_UNCHANGED). Rerun steps unchanged; expect 0 rows mutated at Silver/Gold.",
+    "tests_and_demos": "not run. Run tests/01,02,03 test notebooks directly (run_all_tests uses dbutils.notebook.run, which times out on serverless), then 90_demos.",
+    "users_v2_json": "staged, not delivered: dims/users_v2.json (3 flips: user_real_03 + user_synth_003 free->premium, user_synth_007 premium->free) sits in the landing dims/ alongside users_v1.json; users.json currently holds v1. To demo SCD2: copy users_v2.json over users.json, run 10_bronze_ingest -> 20_silver_dims -> 30_gold_dims, then DESCRIBE HISTORY gold.dim_user."
   }
 }
