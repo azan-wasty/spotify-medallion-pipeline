@@ -1,0 +1,9 @@
+PRICING — actual SKU used by this workspace (system.billing.usage + list_prices, 2026-10-23)
+
+PREMIUM_ALL_PURPOSE_SERVERLESS_COMPUTE_US_EAST_OHIO: 0.10 DBU x $0.750000000000000000 = $0.0737
+PREMIUM_DATABRICKS_STORAGE_US_EAST_OHIO: 0.00 DBU x $0.023000000000000000 = $0.0001
+
+Cloud: AWS, region us-east-2 (Ohio). Compute: Serverless interactive.
+DISCREPANCY NOTE: the report requested Azure Databricks pricing, but this workspace runs on AWS.
+Recorded the AWS rate from system.billing.list_prices (authoritative for actual billing).
+Public reference (AWS pricing page): https://www.databricks.com/pricing — checked 2026-10-23.

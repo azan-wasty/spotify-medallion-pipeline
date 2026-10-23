@@ -1,0 +1,40 @@
+FULL RUN LOG — 2026-10-23 (fresh full load + backfill 2026-10-20..23)
+33 logged steps, total logged duration 304 s
+
+batch_08 RAW_TO_BRONZE    workspace.bronze.events                       SUCCESS          r=1065 i=1065 u=0 13.5s SCHEMA_DRIFT additive columns: ['ms_played_source']
+batch_08 RAW_TO_BRONZE    workspace.bronze.events                       SUCCESS          r=1051 i=1051 u=0 11.0s SCHEMA_DRIFT additive columns: ['ms_played_source']
+batch_08 RAW_TO_BRONZE    workspace.bronze.events                       SUCCESS          r=1158 i=1158 u=0 8.9s SCHEMA_DRIFT additive columns: ['ms_played_source']
+batch_08 RAW_TO_BRONZE    workspace.bronze.events                       SUCCESS          r=1157 i=1157 u=0 8.6s SCHEMA_DRIFT additive columns: ['ms_played_source']
+batch_08 RAW_TO_BRONZE    workspace.bronze.users                        SKIPPED_UNCHANGED r=0 i=0 u=0 6.6s 
+batch_08 RAW_TO_BRONZE    workspace.bronze.catalog                      SKIPPED_UNCHANGED r=0 i=0 u=0 5.4s 
+batch_61 BRONZE_TO_SILVER workspace.silver.users                        SUCCESS          r=50 i=0 u=0 11.8s 
+batch_61 BRONZE_TO_SILVER workspace.silver.tracks                       SUCCESS          r=16484 i=0 u=0 9.3s 
+batch_c2 BRONZE_TO_SILVER workspace.silver.events                       SUCCESS          r=36748 i=3593 u=32781 37.8s 
+batch_7e SILVER_TO_GOLD   gold.dim_date                                 SUCCESS          r=734 i=734 u=0 4.7s 
+batch_7e SILVER_TO_GOLD   gold.dim_time                                 SUCCESS          r=24 i=24 u=0 2.5s 
+batch_7e SILVER_TO_GOLD   gold.dim_device                               SUCCESS          r=6 i=6 u=0 6.2s 
+batch_7e SILVER_TO_GOLD   gold.dim_track                                SUCCESS          r=16484 i=16493 u=0 9.1s 
+batch_7e SILVER_TO_GOLD   gold.dim_user                                 SUCCESS          r=50 i=1 u=0 9.6s 
+batch_03 SILVER_TO_GOLD   gold.fact_listening                           SUCCESS          r=411511 i=411511 u=0 41.5s 
+batch_3f SILVER_TO_GOLD   gold.ml_user_track_interactions               SUCCESS          r=84481 i=84481 u=0 4.2s 
+batch_3f SILVER_TO_GOLD   gold.ml_track_features                        SUCCESS          r=13428 i=13428 u=0 4.3s 
+batch_3f SILVER_TO_GOLD   gold.ml_user_sessions                         SUCCESS          r=35627 i=35627 u=0 4.2s 
+batch_3d SILVER_TO_GOLD   gold.peak_usage_patterns                      FAILURE          r=0 i=0 u=0 0.6s [MISSING_AGGREGATION] The non-aggregating expression "date_key" is based on columns which 
+batch_3d SILVER_TO_GOLD   gold.peak_usage_patterns                      SUCCESS          r=4919 i=4919 u=0 5.9s 
+batch_3d SILVER_TO_GOLD   gold.peak_usage_patterns                      SUCCESS          r=4919 i=4919 u=0 6.3s 
+batch_3d SILVER_TO_GOLD   gold.subscription_propensity_segments         SUCCESS          r=50 i=50 u=0 14.8s 
+batch_3d SILVER_TO_GOLD   gold.content_performance_trends               SUCCESS          r=23988 i=23988 u=0 8.6s 
+batch_3d SILVER_TO_GOLD   gold.wrapped_user_year                        SUCCESS          r=100 i=100 u=0 16.9s 
+batch_3d SILVER_TO_GOLD   gold.user_activity_daily                      FAILURE          r=0 i=0 u=0 0.3s [UNRESOLVED_ROUTINE] Cannot resolve routine `DIVIDE` on search path [`system`.`session`, `
+batch_3d SILVER_TO_GOLD   gold.user_activity_daily                      SUCCESS          r=33118 i=33118 u=0 6.2s 
+batch_3d SILVER_TO_GOLD   gold.user_cohort_retention                    SUCCESS          r=13 i=13 u=0 7.0s 
+batch_3d SILVER_TO_GOLD   gold.user_activity_daily                      SUCCESS          r=33118 i=33118 u=0 6.8s 
+batch_3d SILVER_TO_GOLD   gold.skip_by_genre_artist                     FAILURE          r=0 i=0 u=0 0.3s [UNRESOLVED_ROUTINE] Cannot resolve routine `DIVIDE` on search path [`system`.`session`, `
+batch_3d SILVER_TO_GOLD   gold.skip_by_genre_artist                     SUCCESS          r=23753 i=23753 u=0 4.6s 
+batch_3d SILVER_TO_GOLD   gold.audit_pipeline_runs                      SUCCESS          r=40 i=40 u=0 3.9s 
+batch_3d SILVER_TO_GOLD   gold.audit_quality_summary                    SUCCESS          r=1 i=1 u=0 5.9s 
+batch_3d SILVER_TO_GOLD   gold.audit_freshness                          SUCCESS          r=7 i=7 u=0 17.2s 
+
+Note: 3 FAILURE rows are pre-retry planning errors (peak_usage, user_activity_daily,
+skip_by_genre_artist) that all succeeded on immediate rerun; durations exclude the 01_setup DDL step,
+which does not log to ops.pipeline_execution_logs.

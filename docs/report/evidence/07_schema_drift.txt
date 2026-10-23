@@ -1,0 +1,11 @@
+SCHEMA DRIFT — additive column rescue (Bronze auto-rescue)
+
+Bronze backfill of dt=2026-10-20..23 logged SCHEMA_DRIFT on all 4 event files:
+  additive column ['ms_played_source'] — new column appeared in landing JSON;
+  Bronze rescued it instead of failing (schema evolution, additive only).
+Evolution visible in DESCRIBE HISTORY bronze.events and in audit_pipeline_runs:
+
+  2026-10-03 RAW_TO_BRONZE workspace.bronze.events drift_events=7
+  2026-10-11 RAW_TO_BRONZE workspace.bronze.events drift_events=3
+  2026-10-20 RAW_TO_BRONZE workspace.bronze.events drift_events=18
+  2026-10-23 RAW_TO_BRONZE workspace.bronze.events drift_events=4

@@ -1,0 +1,396 @@
+EXPLAIN FORMATTED — gold.subscription_propensity_segments (propensity/discovery query)
+Captured: 2026-10-23 | Compute: Serverless (Photon), workspace catalog
+
+== Physical Plan ==
+AdaptiveSparkPlan (72)
++- == Initial Plan ==
+   PhotonResultStage (71)
+   +- PhotonColumnarToRow (70)
+      +- PhotonWindow (69)
+         +- PhotonShuffleExchangeSource (68)
+            +- PhotonShuffleMapStage (67)
+               +- PhotonShuffleExchangeSink (66)
+                  +- PhotonProject (65)
+                     +- PhotonBroadcastHashJoin LeftOuter (64)
+                        :- PhotonProject (42)
+                        :  +- PhotonBroadcastHashJoin LeftOuter (41)
+                        :     :- PhotonGroupingAgg (25)
+                        :     :  +- PhotonShuffleExchangeSource (24)
+                        :     :     +- PhotonShuffleMapStage (23)
+                        :     :        +- PhotonShuffleExchangeSink (22)
+                        :     :           +- PhotonGroupingAgg (21)
+                        :     :              +- PhotonGroupingAgg (20)
+                        :     :                 +- PhotonShuffleExchangeSource (19)
+                        :     :                    +- PhotonShuffleMapStage (18)
+                        :     :                       +- PhotonShuffleExchangeSink (17)
+                        :     :                          +- PhotonGroupingAgg (16)
+                        :     :                             +- PhotonExpand (15)
+                        :     :                                +- PhotonProject (14)
+                        :     :                                   +- PhotonBroadcastHashJoin Inner (13)
+                        :     :                                      :- PhotonProject (7)
+                        :     :                                      :  +- PhotonBroadcastHashJoin Inner (6)
+                        :     :                                      :     :- PhotonScan parquet workspace.gold.fact_listening (1)
+                        :     :                                      :     +- PhotonShuffleExchangeSource (5)
+                        :     :                                      :        +- PhotonShuffleMapStage (4)
+                        :     :                                      :           +- PhotonShuffleExchangeSink (3)
+                        :     :                                      :              +- PhotonScan parquet workspace.gold.dim_track (2)
+                        :     :                                      +- PhotonShuffleExchangeSource (12)
+                        :     :                                         +- PhotonShuffleMapStage (11)
+                        :     :                                            +- PhotonShuffleExchangeSink (10)
+                        :     :                                               +- PhotonProject (9)
+                        :     :                                                  +- PhotonScan parquet workspace.gold.dim_user (8)
+                        :     +- PhotonShuffleExchangeSource (40)
+                        :        +- PhotonShuffleMapStage (39)
+                        :           +- PhotonShuffleExchangeSink (38)
+                        :              +- PhotonGroupingAgg (37)
+                        :                 +- PhotonShuffleExchangeSource (36)
+                        :                    +- PhotonShuffleMapStage (35)
+                        :                       +- PhotonShuffleExchangeSink (34)
+                        :                          +- PhotonGroupingAgg (33)
+                        :                             +- PhotonWindow (32)
+                        :                                +- PhotonSort (31)
+                        :                                   +- PhotonShuffleExchangeSource (30)
+                        :                                      +- PhotonShuffleMapStage (29)
+                        :                                         +- PhotonShuffleExchangeSink (28)
+                        :                                            +- PhotonProject (27)
+                        :                                               +- PhotonScan parquet workspace.silver.events (26)
+                        +- PhotonShuffleExchangeSource (63)
+                           +- PhotonShuffleMapStage (62)
+                              +- PhotonShuffleExchangeSink (61)
+                                 +- PhotonProject (60)
+                                    +- PhotonWindow (59)
+                                       +- PhotonShuffleExchangeSource (58)
+                                          +- PhotonShuffleMapStage (57)
+                                             +- PhotonShuffleExchangeSink (56)
+                                                +- PhotonGroupingAgg (55)
+                                                   +- PhotonShuffleExchangeSource (54)
+                                                      +- PhotonShuffleMapStage (53)
+                                                         +- PhotonShuffleExchangeSink (52)
+                                                            +- PhotonGroupingAgg (51)
+                                                               +- PhotonProject (50)
+                                                                  +- PhotonBroadcastHashJoin Inner (49)
+                                                                     :- PhotonScan parquet workspace.gold.fact_listening (43)
+                                                                     +- PhotonShuffleExchangeSource (48)
+                                                                        +- PhotonShuffleMapStage (47)
+                                                                           +- PhotonShuffleExchangeSink (46)
+                                                                              +- PhotonProject (45)
+                                                                                 +- PhotonScan parquet workspace.gold.dim_user (44)
+
+
+(1) PhotonScan parquet workspace.gold.fact_listening
+Output [7]: [user_sk#115708L, track_sk#115709L, device_sk#115710L, session_id#115713, minutes_played#115717, play_count#115718, is_skipped#115719]
+Location: PreparedDeltaFileIndex [s3://dbstorage-prod-pxipd/uc/6d914a28-1f61-4bb1-8c91-a69c3b43569d/9f161914-5e07-4268-8d97-fc5f0575dcc6/__unitystorage/catalogs/7a349fbd-1504-4e6c-a5bf-a6982273588e/tables/cdfb0704-44f0-47ac-be92-7dbf8292f963]
+OptionalDataFilters: [hashedrelationcontains(track_sk#115709L), hashedrelationcontains(user_sk#115708L)]
+ReadSchema: struct<user_sk:bigint,track_sk:bigint,device_sk:bigint,session_id:string,minutes_played:double,play_count:int,is_skipped:int>
+
+(2) PhotonScan parquet workspace.gold.dim_track
+Output [2]: [track_sk#115776L, genre#115780]
+Location: PreparedDeltaFileIndex [s3://dbstorage-prod-pxipd/uc/6d914a28-1f61-4bb1-8c91-a69c3b43569d/9f161914-5e07-4268-8d97-fc5f0575dcc6/__unitystorage/catalogs/7a349fbd-1504-4e6c-a5bf-a6982273588e/tables/9947ffd7-33d5-407c-a36e-ef481766a309]
+ReadSchema: struct<track_sk:bigint,genre:string>
+
+(3) PhotonShuffleExchangeSink
+Input [2]: [track_sk#115776L, genre#115780]
+Arguments: SinglePartition
+
+(4) PhotonShuffleMapStage
+Input [2]: [track_sk#115776L, genre#115780]
+Arguments: EXECUTOR_BROADCAST, [id=#113448]
+
+(5) PhotonShuffleExchangeSource
+Input [2]: [track_sk#115776L, genre#115780]
+Arguments: false
+
+(6) PhotonBroadcastHashJoin
+Left keys [1]: [track_sk#115709L]
+Right keys [1]: [track_sk#115776L]
+Join type: Inner
+Join condition: None
+
+(7) PhotonProject
+Input [9]: [user_sk#115708L, track_sk#115709L, device_sk#115710L, session_id#115713, minutes_played#115717, play_count#115718, is_skipped#115719, track_sk#115776L, genre#115780]
+Arguments: [user_sk#115708L, device_sk#115710L, session_id#115713, minutes_played#115717, play_count#115718, is_skipped#115719, genre#115780]
+
+(8) PhotonScan parquet workspace.gold.dim_user
+Output [5]: [user_sk#115725L, user_id#115726, country#115728, is_premium#115730, is_current#115733]
+DictionaryFilters: [is_current#115733]
+Location: PreparedDeltaFileIndex [s3://dbstorage-prod-pxipd/uc/6d914a28-1f61-4bb1-8c91-a69c3b43569d/9f161914-5e07-4268-8d97-fc5f0575dcc6/__unitystorage/catalogs/7a349fbd-1504-4e6c-a5bf-a6982273588e/tables/523bce91-b4be-4a1f-9571-2dc3bfe015c2]
+ReadSchema: struct<user_sk:bigint,user_id:string,country:string,is_premium:boolean,is_current:boolean>
+RequiredDataFilters: [is_current#115733]
+
+(9) PhotonProject
+Input [5]: [user_sk#115725L, user_id#115726, country#115728, is_premium#115730, is_current#115733]
+Arguments: [user_sk#115725L, user_id#115726, country#115728, is_premium#115730]
+
+(10) PhotonShuffleExchangeSink
+Input [4]: [user_sk#115725L, user_id#115726, country#115728, is_premium#115730]
+Arguments: SinglePartition
+
+(11) PhotonShuffleMapStage
+Input [4]: [user_sk#115725L, user_id#115726, country#115728, is_premium#115730]
+Arguments: EXECUTOR_BROADCAST, [id=#113463]
+
+(12) PhotonShuffleExchangeSource
+Input [4]: [user_sk#115725L, user_id#115726, country#115728, is_premium#115730]
+Arguments: false
+
+(13) PhotonBroadcastHashJoin
+Left keys [1]: [user_sk#115708L]
+Right keys [1]: [user_sk#115725L]
+Join type: Inner
+Join condition: None
+
+(14) PhotonProject
+Input [11]: [user_sk#115708L, device_sk#115710L, session_id#115713, minutes_played#115717, play_count#115718, is_skipped#115719, genre#115780, user_sk#115725L, user_id#115726, country#115728, is_premium#115730]
+Arguments: [user_sk#115708L, device_sk#115710L, session_id#115713, minutes_played#115717, play_count#115718, is_skipped#115719, user_id#115726, country#115728, is_premium#115730, genre#115780]
+
+(15) PhotonExpand
+Input [10]: [user_sk#115708L, device_sk#115710L, session_id#115713, minutes_played#115717, play_count#115718, is_skipped#115719, user_id#115726, country#115728, is_premium#115730, genre#115780]
+Arguments: [[user_sk#115708L, user_id#115726, is_premium#115730, country#115728, null, null, null, 0, minutes_played#115717, play_count#115718, is_skipped#115719], [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, genre#115780, null, null, 1, null, null, null], [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, null, device_sk#115710L, null, 2, null, null, null], [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, null, null, session_id#115713, 3, null, null, null]]
+
+(16) PhotonGroupingAgg
+Input [11]: [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, t.genre#115915, f.device_sk#115916L, f.session_id#115917, gid#115914, f.minutes_played#115918, f.play_count#115919, f.is_skipped#115920]
+Arguments: [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, t.genre#115915, f.device_sk#115916L, f.session_id#115917, gid#115914], [partial_sum(f.minutes_played#115918) AS sum#115946, partial_sum(f.play_count#115919) AS sum#115948L, partial_avg(f.is_skipped#115920) AS (sum#115951, count#115952L)], [sum#115945, sum#115947L, sum#115949, count#115950L], [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, t.genre#115915, f.device_sk#115916L, f.session_id#115917, gid#115914, sum#115946, sum#115948L, sum#115951, count#115952L], false
+
+(17) PhotonShuffleExchangeSink
+Input [12]: [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, t.genre#115915, f.device_sk#115916L, f.session_id#115917, gid#115914, sum#115946, sum#115948L, sum#115951, count#115952L]
+Arguments: hashpartitioning(user_sk#115708L, user_id#115726, is_premium#115730, country#115728, t.genre#115915, f.device_sk#115916L, f.session_id#115917, gid#115914, 130)
+
+(18) PhotonShuffleMapStage
+Input [12]: [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, t.genre#115915, f.device_sk#115916L, f.session_id#115917, gid#115914, sum#115946, sum#115948L, sum#115951, count#115952L]
+Arguments: ENSURE_REQUIREMENTS, [id=#113479]
+
+(19) PhotonShuffleExchangeSource
+Input [12]: [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, t.genre#115915, f.device_sk#115916L, f.session_id#115917, gid#115914, sum#115946, sum#115948L, sum#115951, count#115952L]
+Arguments: false
+
+(20) PhotonGroupingAgg
+Input [12]: [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, t.genre#115915, f.device_sk#115916L, f.session_id#115917, gid#115914, sum#115946, sum#115948L, sum#115951, count#115952L]
+Arguments: [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, t.genre#115915, f.device_sk#115916L, f.session_id#115917, gid#115914], [finalmerge_sum(merge sum#115946) AS sum(f.minutes_played)#115845, finalmerge_sum(merge sum#115948L) AS sum(f.play_count)#115846L, finalmerge_avg(merge sum#115951, count#115952L) AS avg(f.is_skipped)#115849], [sum(f.minutes_played)#115845, sum(f.play_count)#115846L, avg(f.is_skipped)#115849], [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, t.genre#115915, f.device_sk#115916L, f.session_id#115917, gid#115914, sum(f.minutes_played)#115845 AS sum(f.minutes_played)#115921, sum(f.play_count)#115846L AS sum(f.play_count)#115923L, avg(f.is_skipped)#115849 AS avg(f.is_skipped)#115925], true
+
+(21) PhotonGroupingAgg
+Input [11]: [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, t.genre#115915, f.device_sk#115916L, f.session_id#115917, gid#115914, sum(f.minutes_played)#115921, sum(f.play_count)#115923L, avg(f.is_skipped)#115925]
+Arguments: [user_sk#115708L, user_id#115726, is_premium#115730, country#115728], [partial_first(sum(f.minutes_played)#115921, true) AS (first#115929, valueSet#115930) FILTER (WHERE (gid#115914 = 0)), partial_first(sum(f.play_count)#115923L, true) AS (first#115933L, valueSet#115934) FILTER (WHERE (gid#115914 = 0)), partial_count(f.session_id#115917) AS count#115936L FILTER (WHERE (gid#115914 = 3)), partial_count(t.genre#115915) AS count#115938L FILTER (WHERE (gid#115914 = 1)), partial_first(avg(f.is_skipped)#115925, true) AS (first#115941, valueSet#115942) FILTER (WHERE (gid#115914 = 0)), partial_count(f.device_sk#115916L) AS count#115944L FILTER (WHERE (gid#115914 = 2))], [first#115927, valueSet#115928, first#115931L, valueSet#115932, count#115935L, count#115937L, first#115939, valueSet#115940, count#115943L], [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, first#115929, valueSet#115930, first#115933L, valueSet#115934, count#115936L, count#115938L, first#115941, valueSet#115942, count#115944L], false
+
+(22) PhotonShuffleExchangeSink
+Input [13]: [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, first#115929, valueSet#115930, first#115933L, valueSet#115934, count#115936L, count#115938L, first#115941, valueSet#115942, count#115944L]
+Arguments: hashpartitioning(user_sk#115708L, user_id#115726, is_premium#115730, country#115728, 130)
+
+(23) PhotonShuffleMapStage
+Input [13]: [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, first#115929, valueSet#115930, first#115933L, valueSet#115934, count#115936L, count#115938L, first#115941, valueSet#115942, count#115944L]
+Arguments: ENSURE_REQUIREMENTS, [id=#113487]
+
+(24) PhotonShuffleExchangeSource
+Input [13]: [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, first#115929, valueSet#115930, first#115933L, valueSet#115934, count#115936L, count#115938L, first#115941, valueSet#115942, count#115944L]
+Arguments: false
+
+(25) PhotonGroupingAgg
+Input [13]: [user_sk#115708L, user_id#115726, is_premium#115730, country#115728, first#115929, valueSet#115930, first#115933L, valueSet#115934, count#115936L, count#115938L, first#115941, valueSet#115942, count#115944L]
+Arguments: [user_sk#115708L, user_id#115726, is_premium#115730, country#115728], [finalmerge_first(merge first#115929, valueSet#115930) AS first(sum(f.minutes_played))#115922, finalmerge_first(merge first#115933L, valueSet#115934) AS first(sum(f.play_count))#115924L, finalmerge_count(merge count#115936L) AS count(f.session_id)#115847L, finalmerge_count(merge count#115938L) AS count(t.genre)#115848L, finalmerge_first(merge first#115941, valueSet#115942) AS first(avg(f.is_skipped))#115926, finalmerge_count(merge count#115944L) AS count(f.device_sk)#115850L], [first(sum(f.minutes_played))#115922, first(sum(f.play_count))#115924L, count(f.session_id)#115847L, count(t.genre)#115848L, first(avg(f.is_skipped))#115926, count(f.device_sk)#115850L], [user_id#115726, is_premium#115730, country#115728, first(sum(f.minutes_played))#115922 AS total_minutes#115656, first(sum(f.play_count))#115924L AS total_plays#115657L, count(f.session_id)#115847L AS session_count#115658L, count(t.genre)#115848L AS genre_diversity#115659L, first(avg(f.is_skipped))#115926 AS skip_rate#115660, count(f.device_sk)#115850L AS raw_device_count#115661L], true
+
+(26) PhotonScan parquet workspace.silver.events
+Output [5]: [user_id#115794, track_id#115795, played_at#115796, data_source#115800, _partition_dt#115810]
+DictionaryFilters: [NOT (data_source#115800 = real_api)]
+Location: PreparedDeltaFileIndex [s3://dbstorage-prod-pxipd/uc/6d914a28-1f61-4bb1-8c91-a69c3b43569d/9f161914-5e07-4268-8d97-fc5f0575dcc6/__unitystorage/catalogs/7a349fbd-1504-4e6c-a5bf-a6982273588e/tables/fe14d71e-eef5-49aa-92c9-556cb8e7abe4]
+ReadSchema: struct<user_id:string,track_id:string,played_at:timestamp,data_source:string>
+RequiredDataFilters: [NOT (data_source#115800 = real_api)]
+
+(27) PhotonProject
+Input [5]: [user_id#115794, track_id#115795, played_at#115796, data_source#115800, _partition_dt#115810]
+Arguments: [user_id#115794, track_id#115795, played_at#115796]
+
+(28) PhotonShuffleExchangeSink
+Input [3]: [user_id#115794, track_id#115795, played_at#115796]
+Arguments: hashpartitioning(user_id#115794, track_id#115795, 130)
+
+(29) PhotonShuffleMapStage
+Input [3]: [user_id#115794, track_id#115795, played_at#115796]
+Arguments: ENSURE_REQUIREMENTS, [id=#113497]
+
+(30) PhotonShuffleExchangeSource
+Input [3]: [user_id#115794, track_id#115795, played_at#115796]
+Arguments: false
+
+(31) PhotonSort
+Input [3]: [user_id#115794, track_id#115795, played_at#115796]
+Arguments: [user_id#115794 ASC NULLS FIRST, track_id#115795 ASC NULLS FIRST, played_at#115796 ASC NULLS FIRST]
+
+(32) PhotonWindow
+Input [3]: [user_id#115794, track_id#115795, played_at#115796]
+Arguments: [user_id#115794, played_at#115796, lag(played_at#115796, -1, null) windowspecdefinition(user_id#115794, track_id#115795, played_at#115796 ASC NULLS FIRST, specifiedwindowframe(RowFrame, -1, -1)) AS prev_played_at#115662]
+
+(33) PhotonGroupingAgg
+Input [3]: [user_id#115794, played_at#115796, prev_played_at#115662]
+Arguments: [user_id#115794], [partial_avg(UnscaledValue(CASE WHEN (isnull(prev_played_at#115662) OR (datediff(cast(played_at#115796 as date), cast(prev_played_at#115662 as date)) > 60)) THEN 1.0 ELSE 0.0 END)) AS (sum#115909, count#115910L)], [sum#115907, count#115908L], [user_id#115794, sum#115909, count#115910L], false
+
+(34) PhotonShuffleExchangeSink
+Input [3]: [user_id#115794, sum#115909, count#115910L]
+Arguments: hashpartitioning(user_id#115794, 130)
+
+(35) PhotonShuffleMapStage
+Input [3]: [user_id#115794, sum#115909, count#115910L]
+Arguments: ENSURE_REQUIREMENTS, [id=#113507]
+
+(36) PhotonShuffleExchangeSource
+Input [3]: [user_id#115794, sum#115909, count#115910L]
+Arguments: false
+
+(37) PhotonGroupingAgg
+Input [3]: [user_id#115794, sum#115909, count#115910L]
+Arguments: [user_id#115794], [finalmerge_avg(merge sum#115909, count#115910L) AS avg(unscaledvalue(CASE WHEN ((prev_played_at IS NULL) OR (datediff(played_at, prev_played_at) > 60)) THEN 1.0 ELSE 0.0 END))#115869], [avg(unscaledvalue(CASE WHEN ((prev_played_at IS NULL) OR (datediff(played_at, prev_played_at) > 60)) THEN 1.0 ELSE 0.0 END))#115869], [user_id#115794, cast((avg(unscaledvalue(CASE WHEN ((prev_played_at IS NULL) OR (datediff(played_at, prev_played_at) > 60)) THEN 1.0 ELSE 0.0 END))#115869 / 10.0) as decimal(6,5)) AS discovery_rate#115663], true
+
+(38) PhotonShuffleExchangeSink
+Input [2]: [user_id#115794, discovery_rate#115663]
+Arguments: SinglePartition
+
+(39) PhotonShuffleMapStage
+Input [2]: [user_id#115794, discovery_rate#115663]
+Arguments: EXECUTOR_BROADCAST, [id=#113514]
+
+(40) PhotonShuffleExchangeSource
+Input [2]: [user_id#115794, discovery_rate#115663]
+Arguments: false
+
+(41) PhotonBroadcastHashJoin
+Left keys [1]: [user_id#115726]
+Right keys [1]: [user_id#115794]
+Join type: LeftOuter
+Join condition: None
+
+(42) PhotonProject
+Input [11]: [user_id#115726, is_premium#115730, country#115728, total_minutes#115656, total_plays#115657L, session_count#115658L, genre_diversity#115659L, skip_rate#115660, raw_device_count#115661L, user_id#115794, discovery_rate#115663]
+Arguments: [user_id#115726, is_premium#115730, country#115728, total_minutes#115656, total_plays#115657L, session_count#115658L, genre_diversity#115659L, skip_rate#115660, raw_device_count#115661L, discovery_rate#115663]
+
+(43) PhotonScan parquet workspace.gold.fact_listening
+Output [2]: [user_sk#115814L, minutes_played#115823]
+Location: PreparedDeltaFileIndex [s3://dbstorage-prod-pxipd/uc/6d914a28-1f61-4bb1-8c91-a69c3b43569d/9f161914-5e07-4268-8d97-fc5f0575dcc6/__unitystorage/catalogs/7a349fbd-1504-4e6c-a5bf-a6982273588e/tables/cdfb0704-44f0-47ac-be92-7dbf8292f963]
+OptionalDataFilters: [hashedrelationcontains(user_sk#115814L)]
+ReadSchema: struct<user_sk:bigint,minutes_played:double>
+
+(44) PhotonScan parquet workspace.gold.dim_user
+Output [3]: [user_sk#115831L, user_id#115832, is_current#115839]
+DictionaryFilters: [is_current#115839]
+Location: PreparedDeltaFileIndex [s3://dbstorage-prod-pxipd/uc/6d914a28-1f61-4bb1-8c91-a69c3b43569d/9f161914-5e07-4268-8d97-fc5f0575dcc6/__unitystorage/catalogs/7a349fbd-1504-4e6c-a5bf-a6982273588e/tables/523bce91-b4be-4a1f-9571-2dc3bfe015c2]
+ReadSchema: struct<user_sk:bigint,user_id:string,is_current:boolean>
+RequiredDataFilters: [is_current#115839]
+
+(45) PhotonProject
+Input [3]: [user_sk#115831L, user_id#115832, is_current#115839]
+Arguments: [user_sk#115831L, user_id#115832]
+
+(46) PhotonShuffleExchangeSink
+Input [2]: [user_sk#115831L, user_id#115832]
+Arguments: SinglePartition
+
+(47) PhotonShuffleMapStage
+Input [2]: [user_sk#115831L, user_id#115832]
+Arguments: EXECUTOR_BROADCAST, [id=#113527]
+
+(48) PhotonShuffleExchangeSource
+Input [2]: [user_sk#115831L, user_id#115832]
+Arguments: false
+
+(49) PhotonBroadcastHashJoin
+Left keys [1]: [user_sk#115814L]
+Right keys [1]: [user_sk#115831L]
+Join type: Inner
+Join condition: None
+
+(50) PhotonProject
+Input [4]: [user_sk#115814L, minutes_played#115823, user_sk#115831L, user_id#115832]
+Arguments: [minutes_played#115823, user_id#115832]
+
+(51) PhotonGroupingAgg
+Input [2]: [minutes_played#115823, user_id#115832]
+Arguments: [user_id#115832], [partial_sum(minutes_played#115823) AS sum#115912], [sum#115911], [user_id#115832, sum#115912], false
+
+(52) PhotonShuffleExchangeSink
+Input [2]: [user_id#115832, sum#115912]
+Arguments: hashpartitioning(user_id#115832, 130)
+
+(53) PhotonShuffleMapStage
+Input [2]: [user_id#115832, sum#115912]
+Arguments: ENSURE_REQUIREMENTS, [id=#113539]
+
+(54) PhotonShuffleExchangeSource
+Input [2]: [user_id#115832, sum#115912]
+Arguments: false
+
+(55) PhotonGroupingAgg
+Input [2]: [user_id#115832, sum#115912]
+Arguments: [user_id#115832], [finalmerge_sum(merge sum#115912) AS sum(minutes_played)#115851], [sum(minutes_played)#115851], [user_id#115832, sum(minutes_played)#115851 AS total_minutes#115664, LOG(2.718281828459045, (sum(minutes_played)#115851 + 1.0)) AS _w1#115892], true
+
+(56) PhotonShuffleExchangeSink
+Input [3]: [user_id#115832, total_minutes#115664, _w1#115892]
+Arguments: SinglePartition
+
+(57) PhotonShuffleMapStage
+Input [3]: [user_id#115832, total_minutes#115664, _w1#115892]
+Arguments: ENSURE_REQUIREMENTS, [id=#113545]
+
+(58) PhotonShuffleExchangeSource
+Input [3]: [user_id#115832, total_minutes#115664, _w1#115892]
+Arguments: false
+
+(59) PhotonWindow
+Input [3]: [user_id#115832, total_minutes#115664, _w1#115892]
+Arguments: [user_id#115832, total_minutes#115664, min(_w1#115892) windowspecdefinition(specifiedwindowframe(RowFrame, unboundedpreceding$(), unboundedfollowing$())) AS mn#115665, max(_w1#115892) windowspecdefinition(specifiedwindowframe(RowFrame, unboundedpreceding$(), unboundedfollowing$())) AS mx#115666]
+
+(60) PhotonProject
+Input [4]: [user_id#115832, total_minutes#115664, mn#115665, mx#115666]
+Arguments: [user_id#115832, ((LOG(2.718281828459045, (total_minutes#115664 + 1.0)) - mn#115665) / if (((mx#115666 - mn#115665) = 0.0)) null else (mx#115666 - mn#115665)) AS volume_norm#115667]
+
+(61) PhotonShuffleExchangeSink
+Input [2]: [user_id#115832, volume_norm#115667]
+Arguments: SinglePartition
+
+(62) PhotonShuffleMapStage
+Input [2]: [user_id#115832, volume_norm#115667]
+Arguments: EXECUTOR_BROADCAST, [id=#113554]
+
+(63) PhotonShuffleExchangeSource
+Input [2]: [user_id#115832, volume_norm#115667]
+Arguments: false
+
+(64) PhotonBroadcastHashJoin
+Left keys [1]: [user_id#115726]
+Right keys [1]: [user_id#115832]
+Join type: LeftOuter
+Join condition: None
+
+(65) PhotonProject
+Input [12]: [user_id#115726, is_premium#115730, country#115728, total_minutes#115656, total_plays#115657L, session_count#115658L, genre_diversity#115659L, skip_rate#115660, raw_device_count#115661L, discovery_rate#115663, user_id#115832, volume_norm#115667]
+Arguments: [user_id#115726, is_premium#115730, country#115728, total_minutes#115656, total_plays#115657L, session_count#115658L, genre_diversity#115659L, skip_rate#115660, discovery_rate#115663, volume_norm#115667, raw_device_count#115661L]
+
+(66) PhotonShuffleExchangeSink
+Input [11]: [user_id#115726, is_premium#115730, country#115728, total_minutes#115656, total_plays#115657L, session_count#115658L, genre_diversity#115659L, skip_rate#115660, discovery_rate#115663, volume_norm#115667, raw_device_count#115661L]
+Arguments: SinglePartition
+
+(67) PhotonShuffleMapStage
+Input [11]: [user_id#115726, is_premium#115730, country#115728, total_minutes#115656, total_plays#115657L, session_count#115658L, genre_diversity#115659L, skip_rate#115660, discovery_rate#115663, volume_norm#115667, raw_device_count#115661L]
+Arguments: ENSURE_REQUIREMENTS, [id=#113561]
+
+(68) PhotonShuffleExchangeSource
+Input [11]: [user_id#115726, is_premium#115730, country#115728, total_minutes#115656, total_plays#115657L, session_count#115658L, genre_diversity#115659L, skip_rate#115660, discovery_rate#115663, volume_norm#115667, raw_device_count#115661L]
+Arguments: false
+
+(69) PhotonWindow
+Input [11]: [user_id#115726, is_premium#115730, country#115728, total_minutes#115656, total_plays#115657L, session_count#115658L, genre_diversity#115659L, skip_rate#115660, discovery_rate#115663, volume_norm#115667, raw_device_count#115661L]
+Arguments: [user_id#115726, is_premium#115730, country#115728, total_minutes#115656, total_plays#115657L, session_count#115658L, genre_diversity#115659L, coalesce(skip_rate#115660, 0.0) AS skip_rate#115652, coalesce(cast(discovery_rate#115663 as decimal(15,5)), 0.00000) AS discovery_rate#115653, coalesce(volume_norm#115667, 0.0) AS volume_norm#115654, ((((0.4 * coalesce(volume_norm#115667, 0.0)) + cast((0.20 * ((cast(raw_device_count#115661L as decimal(20,0)) * 1.0) / if ((max(raw_device_count#115661L) windowspecdefinition(specifiedwindowframe(RowFrame, unboundedpreceding$(), unboundedfollowing$())) = 0)) null else cast(max(raw_device_count#115661L) windowspecdefinition(specifiedwindowframe(RowFrame, unboundedpreceding$(), unboundedfollowing$())) as decimal(20,0)))) as double)) + (0.2 * (1.0 - coalesce(skip_rate#115660, 0.0)))) + cast((0.20 * coalesce(cast(discovery_rate#115663 as decimal(15,5)), 0.00000)) as double)) AS engagement_score#115655]
+
+(70) PhotonColumnarToRow
+Input [11]: [user_id#115726, is_premium#115730, country#115728, total_minutes#115656, total_plays#115657L, session_count#115658L, genre_diversity#115659L, skip_rate#115652, discovery_rate#115653, volume_norm#115654, engagement_score#115655]
+
+(71) PhotonResultStage
+Input [11]: [user_id#115726, is_premium#115730, country#115728, total_minutes#115656, total_plays#115657L, session_count#115658L, genre_diversity#115659L, skip_rate#115652, discovery_rate#115653, volume_norm#115654, engagement_score#115655]
+
+(72) AdaptiveSparkPlan
+Output [11]: [user_id#115726, is_premium#115730, country#115728, total_minutes#115656, total_plays#115657L, session_count#115658L, genre_diversity#115659L, skip_rate#115652, discovery_rate#115653, volume_norm#115654, engagement_score#115655]
+Arguments: isFinalPlan=false
+
+
+== Photon Explanation ==
+The query is fully supported by Photon.
+== Optimizer Statistics (table names per statistics state) ==
+  missing = 
+  partial = 
+  full    = dim_track, dim_user, dim_user, events, fact_listening, fact_listening

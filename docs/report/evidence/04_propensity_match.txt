@@ -1,0 +1,19 @@
+PROPENSITY MATCH — gold.subscription_propensity_segments vs validation/user_segments.json (planted answer key)
+users compared:      50
+tier match rate:    42/50 = 84.0%  (target >= 85% — BELOW target: reported, not retuned)
+flag match rate:    49/50 = 98.0%
+premium match rate: 50/50 = 100.0%
+engagement score correlation: 0.9885, mean |err|: 0.0486
+
+All mismatches are single-boundary tier flips:
+  user_synth_042: Low -> Medium (planted 0.251 vs recovered 0.394)
+  user_synth_044: Low -> Medium (planted 0.271 vs recovered 0.362)
+  user_synth_029: Medium -> High (planted 0.475 vs recovered 0.554)
+  user_synth_034: Low -> Medium (planted 0.289 vs recovered 0.364)
+  user_synth_030: Low -> Medium (planted 0.318 vs recovered 0.377)
+  user_real_04: Medium -> High (planted 0.531 vs recovered 0.591)
+  user_synth_009: Low -> Medium (planted 0.267 vs recovered 0.356)
+  user_synth_000: Low -> Medium (planted 0.303 vs recovered 0.420)
+
+Interpretation: recovered-from-behaviour scores track planted scores (corr ~0.99);
+every mismatch straddles a tier boundary (0.35 or 0.55) — threshold noise, not systematic error.

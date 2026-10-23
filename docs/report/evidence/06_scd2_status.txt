@@ -1,0 +1,8 @@
+SCD2 STATUS — gold.dim_user
+
+users with >1 version (premium flip): 0
+Current state: 50 users, all single-version. dim_user implements SCD2
+(valid_from/valid_to/is_current, user_sk = xxhash64(user_id || valid_from)), but no user has
+flipped is_premium yet — the users_v2.json second delivery (>=1 flipped user) has not been
+uploaded. To produce the 04_scd2 screenshot: deliver users_v2.json with a flipped user,
+rerun silver.users + 30_gold_dims, then DESCRIBE HISTORY gold.dim_user.

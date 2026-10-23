@@ -1,0 +1,7 @@
+QUARANTINE — data-quality rejections (2026-10-23 run)
+
+Bronze quarantine: 0 rows (no Bronze rule violations)
+Silver quarantine: INVALID_PLAYED_AT=1,847
+
+INVALID_PLAYED_AT rows are future-timestamped events (played_at > now);
+they are quarantined, not dropped, and are re-examined on later runs as time advances.

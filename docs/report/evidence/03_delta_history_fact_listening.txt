@@ -1,0 +1,10 @@
+DESCRIBE HISTORY — workspace.gold.fact_listening (time travel)
+
+v4  2026-10-23 17:49:53  OPTIMIZE       rows= files +/-
+v3  2026-10-23 17:49:49  OPTIMIZE       rows= files +/-
+v2  2026-10-23 17:35:42  MERGE          rows=411511 files +/-
+v1  2026-10-23 17:05:39  ADD CONSTRAINT rows= files +/-
+v0  2026-10-23 17:05:37  CREATE TABLE   rows= files +/-
+
+Version 2 (MERGE, 411,511 rows) is the queryable full-load state;
+later versions are the OPTIMIZE compaction commits.

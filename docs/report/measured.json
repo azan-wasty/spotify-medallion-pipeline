@@ -1,0 +1,149 @@
+{
+  "captured_at": "2026-10-23T18:00:00Z",
+  "run_scope": "fresh full load + backfill dt=2026-10-20..23 (per-notebook runs after serverless dbutils.notebook.run timeouts)",
+  "environment": {
+    "cloud": "AWS",
+    "region": "us-east-2 (Ohio)",
+    "compute": "Serverless interactive (Photon, Spark 4.2 / Spark Connect)",
+    "catalog": "workspace",
+    "pricing_note": "Report requested Azure Databricks pricing, but the workspace is on AWS — AWS rate recorded instead (see pricing section)."
+  },
+
+  "fresh_full_run": {
+    "logged_steps": 33,
+    "total_logged_duration_sec": 304.5,
+    "batch_ids": {
+      "bronze": "batch_083b09f0fc5e4fedb3c5753a0ccc6b6f",
+      "silver_users_tracks": "batch_61a9b4751da94ef681ded01cd02aa80f",
+      "silver_events": "batch_c255f89013ae408ea7488f73fde9cd68",
+      "gold_dims": "batch_7e54c0ae0b5147e0bdcc2c883fcfdac0",
+      "gold_fact": "batch_03cfb2110d174d948f805e56dca9e07d",
+      "gold_ml": "batch_3f4626b945b847888b281bb2c46bf4fb",
+      "gold_marts": "batch_3db2fa06e8cd4fe0bb1be4ee62e06946"
+    },
+    "layer_duration_sec": {
+      "raw_to_bronze": 53.9,
+      "bronze_to_silver": 58.9,
+      "silver_to_gold_dims": 32.1,
+      "silver_to_gold_fact": 41.5,
+      "silver_to_gold_ml": 12.7,
+      "silver_to_gold_marts": 105.4
+    },
+    "rows": {
+      "bronze_events_backfill_4_files": 4431,
+      "bronze_users_catalog": "SKIPPED_UNCHANGED (checksum idempotency)",
+      "silver_events_merge": {"read": 36748, "inserted": 3593, "updated": 32781},
+      "gold_dim_date": 734, "gold_dim_time": 24, "gold_dim_device": 6,
+      "gold_dim_track": 16493, "gold_dim_user": 50,
+      "gold_fact_listening": 411511,
+      "gold_ml_user_track_interactions": 84481,
+      "gold_ml_track_features": 13428,
+      "gold_ml_user_sessions": 35627,
+      "gold_peak_usage_patterns": 4919,
+      "gold_subscription_propensity_segments": 50,
+      "gold_content_performance_trends": 23988,
+      "gold_wrapped_user_year": 100,
+      "gold_user_activity_daily": 33118,
+      "gold_user_cohort_retention": 13,
+      "gold_skip_by_genre_artist": 23753,
+      "gold_audit_pipeline_runs": 40,
+      "gold_audit_quality_summary": 1,
+      "gold_audit_freshness": 7
+    },
+    "failures_retried_ok": "3 pre-retry planning errors (peak_usage_patterns MISSING_AGGREGATION; user_activity_daily + skip_by_genre_artist DIVIDE resolution) — all succeeded on immediate rerun with identical retry pattern",
+    "schema_drift": "Bronze rescued additive column ms_played_source on all 4 backfilled event files (SCHEMA_DRIFT annotated in ops.pipeline_execution_logs)"
+  },
+
+  "storage": {
+    "unit": "MB (sizeInBytes from DESCRIBE DETAIL), post-OPTIMIZE for gold fact/dim_user/dim_track",
+    "tables_mb": {
+      "bronze.events": 21.16, "bronze.users": 0.0, "bronze.catalog": 0.74, "bronze.events_quarantine": 0.0,
+      "silver.events": 36.86, "silver.users": 0.0, "silver.tracks": 1.15, "silver.events_quarantine": 0.07,
+      "gold.dim_date": 0.0, "gold.dim_time": 0.0, "gold.dim_device": 0.01, "gold.dim_track": 1.02,
+      "gold.dim_user": 0.01, "gold.fact_listening": 21.68,
+      "gold.ml_user_track_interactions": 2.17, "gold.ml_track_features": 0.46, "gold.ml_user_sessions": 1.59,
+      "gold.peak_usage_patterns": 0.05, "gold.subscription_propensity_segments": 0.01,
+      "gold.content_performance_trends": 0.49, "gold.wrapped_user_year": 0.02,
+      "gold.user_activity_daily": 0.3, "gold.user_cohort_retention": 0.0,
+      "gold.skip_by_genre_artist": 0.42, "gold.audit_pipeline_runs": 0.01,
+      "gold.audit_quality_summary": 0.0, "gold.audit_freshness": 0.0
+    },
+    "total_mb": 88.1,
+    "total_files": 1235
+  },
+
+  "optimize_evidence": {
+    "gold.fact_listening": {"files_before": 12, "mb_before": 22.58, "files_after": 1, "mb_after": 21.68, "cluster_by": ["date_key", "user_sk"]},
+    "gold.dim_user": {"files_before": 2, "files_after": 1, "cluster_by": ["user_id", "valid_from"]},
+    "gold.dim_track": {"files_before": 2, "mb_before": 1.03, "files_after": 1, "mb_after": 1.02, "cluster_by": ["genre", "artist_name"]},
+    "point_query": {
+      "query": "SELECT COUNT(*), SUM(minutes_played) FROM gold.fact_listening WHERE date_key=20261020 AND user_sk=<user_real_03>",
+      "before_sec_best_of_3": 0.791, "after_sec_best_of_3": 0.715,
+      "result_check": "35 plays / 100.1 min, identical before and after"
+    }
+  },
+
+  "delta_history_fact_listening": [
+    {"version": 0, "operation": "CREATE TABLE", "ts": "2026-10-23 17:05:37"},
+    {"version": 1, "operation": "ADD CONSTRAINT", "ts": "2026-10-23 17:05:39"},
+    {"version": 2, "operation": "MERGE", "rows_output": 411511, "ts": "2026-10-23 17:35:42"},
+    {"version": 3, "operation": "OPTIMIZE", "ts": "2026-10-23 17:49:49"},
+    {"version": 4, "operation": "OPTIMIZE", "ts": "2026-10-23 17:49:53"}
+  ],
+
+  "propensity_match": {
+    "source": "gold.subscription_propensity_segments vs validation/user_segments.json planted answer key",
+    "users_compared": 50,
+    "tier_match": {"matched": 42, "rate": 0.84, "target": 0.85, "status": "BELOW TARGET — reported, not retuned"},
+    "flag_match": {"matched": 49, "rate": 0.98},
+    "premium_match": {"matched": 50, "rate": 1.0},
+    "engagement_score_correlation": 0.9885,
+    "engagement_score_mean_abs_err": 0.0486,
+    "mismatch_pattern": "all 8 are single-boundary tier flips (6 Low/Medium near 0.35, 2 Medium/High near 0.55) — threshold noise, not systematic error"
+  },
+
+  "quarantine": {
+    "bronze_rows": 0,
+    "silver_rows": 1847,
+    "silver_rules": {"INVALID_PLAYED_AT": 1847},
+    "note": "future-timestamped events (played_at > now); quarantined not dropped"
+  },
+
+  "scd2": {
+    "users_with_multiple_versions": 0,
+    "note": "SCD2 implemented in gold.dim_user but no user has flipped is_premium — users_v2.json second delivery still pending"
+  },
+
+  "query_plans": {
+    "propensity_discovery": {
+      "broadcast_hash_join_nodes": 10,
+      "shuffle_exchange_nodes": 48,
+      "aqe_adaptive_plan": true,
+      "window_lag_sort": true,
+      "predicate_pushdown": "Photon scans do not print PushedFilters in FORMATTED EXPLAIN on this runtime; filters applied as join conditions inside Photon",
+      "evidence_file": "docs/report/evidence/explain_propensity_formatted.txt"
+    },
+    "fact_merge": {
+      "plan_shape": "MergeIntoCommandEdge only (4 nodes) — physical rewrite hidden inside Delta MERGE command on this runtime",
+      "bootstrap_merge_runtime_sec": 41.5,
+      "evidence_file": "docs/report/evidence/explain_fact_merge_formatted.txt"
+    }
+  },
+
+  "pricing": {
+    "source": "system.billing.usage joined to system.billing.list_prices (USD), usage_date=2026-10-23",
+    "sku": "PREMIUM_ALL_PURPOSE_SERVERLESS_COMPUTE_US_EAST_OHIO",
+    "usd_per_dbu": 0.75,
+    "storage_sku": "PREMIUM_DATABRICKS_STORAGE_US_EAST_OHIO",
+    "storage_usd_per_dbu": 0.023,
+    "public_reference": "https://www.databricks.com/pricing (AWS, Premium serverless) — checked 2026-10-23",
+    "discrepancy": "user asked for Azure pricing; actual cloud is AWS — AWS rate recorded"
+  },
+
+  "pending": {
+    "daily_incremental_run": "not yet run — land one new dt file, run bronze..gold, record per-step + total sec",
+    "idempotent_rerun": "not yet run — rerun unchanged, expect SKIPPED_UNCHANGED everywhere with 0 rows mutated",
+    "tests_and_demos": "tests/run_all_tests + demos G1-G7 not yet run",
+    "users_v2_json": "second delivery pending — required for SCD2 history evidence"
+  }
+}
