@@ -1,0 +1,60 @@
+erDiagram
+    dim_user      ||--o{ fact_listening : user_sk
+    dim_track     ||--o{ fact_listening : track_sk
+    dim_device    ||--o{ fact_listening : device_sk
+    dim_date      ||--o{ fact_listening : date_key
+    dim_time      ||--o{ fact_listening : hour_of_day
+    
+    fact_listening {
+        string event_id PK
+        bigint user_sk FK
+        bigint track_sk FK
+        bigint device_sk FK
+        int date_key FK
+        tinyint hour_of_day FK
+        string session_id
+        string data_source
+        string country
+        int ms_played
+        double minutes_played
+        int play_count
+        int is_skipped
+        double completion_rate
+        string row_hash
+    }
+    dim_user {
+        bigint user_sk PK
+        string user_id
+        string country
+        string timezone
+        boolean is_premium
+        timestamp valid_from
+        timestamp valid_to
+        boolean is_current
+    }
+    dim_track {
+        bigint track_sk PK
+        string track_id
+        string track_name
+        string artist_name
+        string genre
+        boolean is_inferred
+    }
+    dim_device {
+        bigint device_sk PK
+        string device_type
+        string device_category
+    }
+    dim_date {
+        int date_key PK
+        date date
+        int year
+        int month
+        string day_name
+        boolean is_weekend
+    }
+    dim_time {
+        tinyint hour_of_day PK
+        string hour_label
+        string day_part
+    }

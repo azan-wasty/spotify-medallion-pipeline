@@ -1,0 +1,97 @@
+flowchart TD
+    subgraph Sources["1. Data Sources"]
+        S1["Synthetic Generator<br/>(scripts/generate_data_v2.py)"]
+        S2["Sanitized Real Exports<br/>(scripts/sanitize_real_data.py)"]
+        S3["Live Spotify API<br/>(scripts/fetch_recently_played.py)"]
+    end
+
+    subgraph Landing["2. Landing Zone (Cloud Storage / Volumes)"]
+        L1["Raw Events Partitioned<br/>output/raw/dt=YYYY-MM-DD/events.json"]
+        L2["Dimension Snapshots<br/>output/dims/users.json, catalog.json"]
+        L3["Manifest & Checksums<br/>manifest.json (SHA-256)"]
+    end
+
+    subgraph Bronze["3. Bronze Layer (Raw Ingestion)"]
+        B1[("bronze.events<br/>(Append-only Delta)")]
+        BQ[("bronze.events_quarantine<br/>(Corrupt JSON records)")]
+        BD[("bronze.users_raw<br/>bronze.tracks_raw")]
+    end
+
+    subgraph Silver["4. Silver Layer (Cleaned & Conformed)"]
+        S_EVT[("silver.events<br/>(Deduplicated, Validated, CDF Enabled)")]
+        SQ[("silver.events_quarantine<br/>(DQ Rule Violations)")]
+        S_USR[("silver.users<br/>(SCD1 Current View)")]
+        S_TRK[("silver.tracks<br/>(Conformed Catalog)")]
+    end
+
+    subgraph Gold["5. Gold Layer (Star Schema & Analytical Marts)"]
+        subgraph StarSchema["Kimball Star Schema"]
+            F_LIST[("gold.fact_listening<br/>(Liquid Clustered: date_key, user_sk)")]
+            D_USR[("gold.dim_user (SCD2)")]
+            D_TRK[("gold.dim_track (Inferred)")]
+            D_DEV[("gold.dim_device")]
+            D_DAT[("gold.dim_date")]
+            D_TIM[("gold.dim_time")]
+        end
+        subgraph FeatureStore["ML Feature Store"]
+            ML_INT[("gold.ml_user_track_interactions")]
+            ML_TRK[("gold.ml_track_features")]
+            ML_SES[("gold.ml_user_sessions")]
+        end
+        subgraph BusinessMarts["Analytical Business Marts"]
+            M_PEAK[("gold.peak_usage_patterns (Q1)")]
+            M_PROP[("gold.subscription_propensity_segments (Q2)")]
+            M_CONT[("gold.content_performance_trends (Q3)")]
+            M_WRAP[("gold.wrapped_user_year (Wrapped)")]
+        end
+        subgraph AuditMarts["Lakehouse Observability"]
+            A_RUNS[("gold.audit_pipeline_runs")]
+            A_QUAL[("gold.audit_quality_summary")]
+            A_FRSH[("gold.audit_freshness")]
+        end
+    end
+
+    subgraph Serving["6. BI & Presentation Layer"]
+        BI1["Power BI Desktop (Import Mode / Direct Lake)"]
+        BI2["Mixtape Wrapped Storyboard (HTML/JS)"]
+    end
+
+    subgraph Observability["Operational Control Plane"]
+        OPS_LOG[("ops.pipeline_execution_logs")]
+        OPS_ST[("ops.pipeline_state (CDF Watermarks)")]
+    end
+
+    S1 --> L1
+    S2 --> L1
+    S3 --> L1
+    S1 --> L2
+    
+    L1 --> B1
+    L1 -.->|Corrupt| BQ
+    L2 --> BD
+    
+    B1 --> S_EVT
+    B1 -.->|Rule Failure| SQ
+    BD --> S_USR
+    BD --> S_TRK
+
+    S_EVT -->|Change Data Feed| F_LIST
+    S_USR --> D_USR
+    S_TRK --> D_TRK
+    
+    D_USR -.-> F_LIST
+    D_TRK -.-> F_LIST
+    D_DEV -.-> F_LIST
+    D_DAT -.-> F_LIST
+    D_TIM -.-> F_LIST
+
+    F_LIST --> FeatureStore
+    F_LIST --> BusinessMarts
+    OPS_LOG --> AuditMarts
+
+    Gold --> Serving
+    
+    Bronze -.->|Telemetry| OPS_LOG
+    Silver -.->|Telemetry| OPS_LOG
+    Gold -.->|Telemetry| OPS_LOG
+    S_EVT -.->|Version Watermark| OPS_ST

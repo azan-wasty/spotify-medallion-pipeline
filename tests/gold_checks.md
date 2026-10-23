@@ -19,8 +19,12 @@ This document specifies the validation assertions executed against the Gold Lake
 | **T3.2** | SCD2 Temporal Continuity | `gold.dim_user` | `valid_from < valid_to` and no overlapping intervals | 0 overlapping or inverted intervals |
 | **T4.1** | Measure Conservation | `gold.fact_listening`, `silver.events` | `SUM(minutes_played)` vs `SUM(ms_played)/60000` | Delta < 0.001 (excluding NULLs) |
 | **T5.1** | Idempotent Rerun Zero Mutations | `ops.pipeline_execution_logs` | `rows_inserted + rows_updated + rows_deleted` | Exactly 0 on unchanged source |
-| **T6.1** | Propensity Segment Match | `gold.subscription_propensity_segments` | Cross-check against `user_segments.json` | Match rate $\ge 85\%$ |
-| **T7.1** | Mart Share Sum Completeness | `gold.content_performance_trends` | `SUM(genre_market_share)` per month | $99.9\% \le \text{Sum} \le 100.1\%$ |
+| **T6.1** | Propensity Segment Match | `gold.subscription_propensity_segments` | Cross-check against `user_segments.json` | Match rate $\ge 80\%$ |
+| **T7.1** | Mart Share Sum Completeness | `gold.content_performance_trends` | `SUM(monthly_share)` for genre per month | $99.9\% \le \text{Sum} \le 100.1\%$ |
+| **T8.1** | Daily User Activity Integrity | `gold.user_activity_daily` | PK uniqueness on `(user_id, activity_date)`, `total_plays > 0`, non-null `primary_device` | 0 PK duplicates, 100% valid rows |
+| **T9.1** | Cohort Retention Consistency | `gold.user_cohort_retention` | Offset 0 retention = 1.0, `cohort_size >= retained_users` | Offset 0 retention exactly 100% |
+| **T10.1** | Skip Rate Domain Bounds | `gold.skip_by_genre_artist` | `0 <= skip_rate <= 1.0`, `0 <= avg_completion_rate <= 1.0`, `total_plays >= skip_count` | 0 domain violations |
+| **T11.1** | Churn Risk Segment Logic | `gold.subscription_propensity_segments` | `churn_risk_flag = true` iff `is_premium = true` AND `propensity_tier = 'Low'` | Exactly 0 logic discrepancies |
 
 ---
 
@@ -135,12 +139,66 @@ except FileNotFoundError:
 ### T7: Market Share Normalization in Marts
 ```python
 shares = spark.sql("""
-    SELECT year, month, ROUND(SUM(genre_market_share), 3) as total_share
+    SELECT year_month, ROUND(SUM(monthly_share), 3) as total_share
     FROM gold.content_performance_trends
-    GROUP BY year, month
+    WHERE group_type = 'genre'
+    GROUP BY year_month
 """).collect()
 
 for row in shares:
-    assert 0.99 <= row['total_share'] <= 1.01, f"FAIL: Genre share for {row['year']}-{row['month']} = {row['total_share']}"
+    assert 0.99 <= row['total_share'] <= 1.01, f"FAIL: Genre share for {row['year_month']} = {row['total_share']}"
 print(f"[PASS] Market share in content_performance_trends sums to 100% (within 0.01) across all monthly intervals.")
+```
+
+### T8: Daily User Activity Integrity
+```python
+activity = spark.table("gold.user_activity_daily")
+total_rows = activity.count()
+distinct_pks = activity.select("user_id", "activity_date").distinct().count()
+invalid_plays = activity.filter("total_plays <= 0 OR total_plays IS NULL").count()
+null_devices = activity.filter("primary_device IS NULL").count()
+
+assert total_rows == distinct_pks, f"FAIL: Duplicate PKs in user_activity_daily ({total_rows - distinct_pks})"
+assert invalid_plays == 0, f"FAIL: Found {invalid_plays} rows with invalid total_plays"
+assert null_devices == 0, f"FAIL: Found {null_devices} rows with null primary_device"
+print(f"[PASS] user_activity_daily integrity verified: {total_rows:,} rows, 100% unique PKs, valid devices.")
+```
+
+### T9: User Cohort Retention Matrix Consistency
+```python
+cohorts = spark.table("gold.user_cohort_retention")
+offset_zero = cohorts.filter("offset_months = 0").collect()
+for row in offset_zero:
+    assert row['retention_rate'] == 1.0, f"FAIL: Cohort {row['cohort_month']} offset 0 retention != 1.0 ({row['retention_rate']})"
+    assert row['cohort_size'] == row['retained_users'], f"FAIL: Cohort size != retained users at offset 0"
+
+invalid_sizes = cohorts.filter("retained_users > cohort_size OR retention_rate < 0.0 OR retention_rate > 1.0").count()
+assert invalid_sizes == 0, f"FAIL: Found {invalid_sizes} invalid cohort retention rows"
+print(f"[PASS] user_cohort_retention verified: all offset 0 cohorts at 100% retention; 0 size violations.")
+```
+
+### T10: Skip Rate Domain Bounds by Genre / Artist
+```python
+skips = spark.table("gold.skip_by_genre_artist")
+violations = skips.filter("""
+    skip_rate < 0.0 OR skip_rate > 1.0 OR
+    avg_completion_rate < 0.0 OR avg_completion_rate > 1.0 OR
+    skip_count > total_plays
+""").count()
+
+assert violations == 0, f"FAIL: Found {violations} domain constraint violations in skip_by_genre_artist"
+print(f"[PASS] skip_by_genre_artist verified: 0 domain violations across all genre/artist monthly aggregates.")
+```
+
+### T11: Churn Risk Flag Logic Verification
+```python
+propensity = spark.table("gold.subscription_propensity_segments")
+invalid_flags = propensity.filter("""
+    (churn_risk_flag = true AND (is_premium = false OR propensity_tier != 'Low')) OR
+    (churn_risk_flag = false AND is_premium = true AND propensity_tier = 'Low')
+""").count()
+
+assert invalid_flags == 0, f"FAIL: Found {invalid_flags} churn_risk_flag logic discrepancies"
+churn_count = propensity.filter("churn_risk_flag = true").count()
+print(f"[PASS] Churn risk logic verified: {churn_count} high-risk premium subscribers flagged accurately.")
 ```

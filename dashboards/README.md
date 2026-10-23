@@ -92,10 +92,18 @@ DIVIDE(
 Skip Rate = 
 AVERAGE('fact_listening'[is_skipped])
 
+// Play-weighted average of the mart's pre-computed 60-day discovery_rate.
+// subscription_propensity_segments.discovery_rate is the authoritative per-user
+// value (NOT EXISTS / LAG lookback); weighting by total_plays avoids inflating
+// light users who happen to listen exclusively to new tracks.
 Discovery Rate = 
 DIVIDE(
-    CALCULATE([Total Plays], 'fact_listening'[completion_rate] > 0.8),
-    [Total Plays],
+    SUMX(
+        'subscription_propensity_segments',
+        'subscription_propensity_segments'[discovery_rate]
+            * 'subscription_propensity_segments'[total_plays]
+    ),
+    SUM('subscription_propensity_segments'[total_plays]),
     0
 )
 
@@ -125,6 +133,71 @@ SUM('audit_quality_summary'[total_ingested_records])
 
 Lakehouse Quarantine Rate = 
 DIVIDE([Total Quarantined Records], [Total Ingested Records], 0)
+
+// 5. Revenue & Churn Risk Measures
+// Revenue at risk = estimated MRR from High-Propensity Free users who haven't
+// converted yet, valued at the standard $9.99/mo Premium price.
+Revenue At Risk (MRR) = 
+[High Propensity Free Listeners] * 9.99
+
+// Churn-risk users = premium subscribers whose engagement_score has dropped
+// below the Medium tier threshold in the current snapshot.
+Churn-Risk Users = 
+CALCULATE(
+    COUNTROWS('subscription_propensity_segments'),
+    'subscription_propensity_segments'[is_premium] = TRUE(),
+    'subscription_propensity_segments'[tier] = "Low"
+)
+
+// 6. Stickiness & Activity Measures
+// DAU = distinct users with at least one play on the selected date filter.
+DAU = 
+CALCULATE(
+    DISTINCTCOUNT('fact_listening'[user_sk]),
+    USERELATIONSHIP('dim_date'[date_key], 'fact_listening'[date_key])
+)
+
+// MAU = distinct users with at least one play within the current calendar month.
+MAU = 
+CALCULATE(
+    DISTINCTCOUNT('fact_listening'[user_sk]),
+    DATESINPERIOD('dim_date'[date], LASTDATE('dim_date'[date]), -30, DAY)
+)
+
+// Stickiness = DAU / MAU; industry benchmark is ~20 % for music streaming.
+Stickiness = 
+DIVIDE([DAU], [MAU], 0)
+
+// Peak-to-average ratio: ratio of the busiest hour's play count to the
+// hourly average — used for server capacity headroom planning.
+Peak-to-Average Ratio = 
+VAR _HourlyPlays = SUMMARIZE(
+    'fact_listening',
+    'dim_time'[hour_of_day],
+    "hp", SUM('fact_listening'[play_count])
+)
+VAR _Peak = MAXX(_HourlyPlays, [hp])
+VAR _Avg  = AVERAGEX(_HourlyPlays, [hp])
+RETURN DIVIDE(_Peak, _Avg, 0)
+
+// 7. Pipeline Operations Measures
+// Hours Since Last Load: time elapsed since the most recent successful Gold commit.
+Hours Since Last Load = 
+DIVIDE(
+    NOW() - MAX('audit_freshness'[latest_load_timestamp]),
+    1/24,
+    BLANK()
+)
+
+// Cost Per Run ($USD): converts the median Gold run duration to an estimated
+// Databricks Serverless cost using the configured DBU rate and cluster size.
+// Formula: (duration_p50_sec / 3600) * 1.5 DBU/hr * $0.15/DBU
+Cost Per Run ($) = 
+DIVIDE(
+    AVERAGE('audit_pipeline_runs'[duration_p50]) / 3600 * 1.5 * 0.15,
+    1,
+    0
+)
 ```
 
 ---

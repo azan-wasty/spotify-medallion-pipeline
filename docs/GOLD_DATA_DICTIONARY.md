@@ -321,11 +321,12 @@ $$\text{engagement\_score} = 0.40 \times \text{volume\_norm} + 0.20 \times \text
 | `distinct_devices`| `INT` | Number of unique device categories used. |
 | `device_diversity`| `DOUBLE` | Normalized device entropy score (0.0 to 1.0). |
 | `skip_rate` | `DOUBLE` | Ratio of skipped plays to total plays with skip info. |
-| `discovery_rate` | `DOUBLE` | Ratio of plays on tracks not played in prior 60 days. |
+| `discovery_rate` | `DOUBLE` | Ratio of plays on tracks not played in prior 60 days (60-day lookback, `real_api` rows excluded). |
 | `volume_norm` | `DOUBLE` | Log-transformed and min-max normalized play volume. |
 | `engagement_score`| `DOUBLE` | Weighted composite propensity score (0.0 to 1.0). |
 | `propensity_tier` | `STRING` | `High` ($\ge 0.55$), `Medium` ($\ge 0.35$), `Low` ($< 0.35$). |
 | `is_high_conversion_propensity`| `BOOLEAN` | `true` if `NOT is_premium AND engagement_score >= 0.55`. |
+| `churn_risk_flag` | `BOOLEAN` | `true` if `is_premium = true AND propensity_tier = 'Low'`; flags premium subscribers whose engagement score fell below the Low tier — earliest warning of churn. |
 | `load_timestamp` | `TIMESTAMP` | Mart build timestamp. |
 
 ### 6.3 `gold.content_performance_trends` (Business Q3: Market Trends)
@@ -376,15 +377,15 @@ Aggregates run metrics from `ops.pipeline_execution_logs` across pipeline layers
 | `run_date` | `DATE` | Execution date. |
 | `layer` | `STRING` | Pipeline layer (`BRONZE_TO_SILVER`, `SILVER_TO_GOLD`, etc.). |
 | `target_table` | `STRING` | Target Delta table name. |
-| `total_runs` | `INT` | Execution count. |
+| `run_count` | `INT` | Execution count. |
 | `success_count` | `INT` | Successful commit count. |
 | `failure_count` | `INT` | Failed execution count. |
-| `skipped_count` | `INT` | Runs where no new source changes were detected. |
-| `total_rows_inserted`| `BIGINT` | Cumulative records inserted. |
-| `total_rows_updated` | `BIGINT` | Cumulative records updated. |
-| `total_rows_deleted` | `BIGINT` | Cumulative records deleted. |
-| `avg_duration_sec` | `DOUBLE` | Mean execution duration in seconds. |
-| `max_duration_sec` | `DOUBLE` | Peak execution duration in seconds. |
+| `rows_read_sum` | `BIGINT` | Cumulative records read from source. |
+| `rows_out_sum` | `BIGINT` | Cumulative records inserted + updated. |
+| `duration_p50` | `DOUBLE` | Median execution duration in seconds. |
+| `duration_max` | `DOUBLE` | Peak execution duration in seconds. |
+| `error_message` | `STRING` | Most recent `error_message` for this table (NULL if all runs succeeded). Surfaces `SCHEMA_DRIFT` notes and exception text for failed runs. |
+| `schema_drift_event_count` | `INT` | Count of runs in this group where `error_message LIKE '%SCHEMA_DRIFT%'`, enabling trend analysis of structural changes arriving from upstream. |
 | `load_timestamp` | `TIMESTAMP` | Aggregation timestamp. |
 
 ### 7.2 `gold.audit_quality_summary`
@@ -402,7 +403,7 @@ Observability mart tracking data hygiene, schema enforcement, and quarantine rej
 | `load_timestamp` | `TIMESTAMP` | Aggregation timestamp. |
 
 ### 7.3 `gold.audit_freshness`
-Tracks high-water marks and freshness across every layer of the lakehouse.
+Tracks high-water marks, freshness, and catalog coverage across every layer of the lakehouse.
 
 | Column | Type | Description |
 |---|---|---|
@@ -411,4 +412,54 @@ Tracks high-water marks and freshness across every layer of the lakehouse.
 | `latest_partition_dt`| `DATE` | Maximum partition date present in table. |
 | `latest_load_timestamp`| `TIMESTAMP` | Most recent execution timestamp committed. |
 | `total_row_count` | `BIGINT` | Current active row count. |
+| `unclassified_track_share`| `DOUBLE` | *Catalog tables only (`silver.tracks`, `gold.dim_track`).* Share of rows with `genre = 'unclassified'`. Indicates how much of the catalog still needs `artist_genres.json` entries. NULL for non-catalog tables. |
+| `inferred_track_count` | `BIGINT` | *`gold.dim_track` only.* Count of `is_inferred = true` rows — tracks referenced by fact events but not yet in the catalog snapshot. NULL for other tables. |
 | `load_timestamp` | `TIMESTAMP` | Refresh timestamp. |
+
+---
+
+## 8. New Analytical Marts
+
+### 8.1 `gold.user_activity_daily`
+Daily per-user listening summary. Feeds cohort analysis, churn prediction, and DAU/MAU stickiness calculations. Grain: `(user_id, activity_date)`.
+
+| Column | Type | Description |
+|---|---|---|
+| `user_id` | `STRING` | Listener ID. |
+| `activity_date` | `DATE` | UTC calendar date (from `_partition_dt`). |
+| `is_premium` | `BOOLEAN` | Subscription status at this date (current-version join). |
+| `total_plays` | `BIGINT` | Play events on this date. |
+| `total_minutes` | `DOUBLE` | Listening minutes on this date. |
+| `distinct_tracks` | `INT` | Unique tracks played. |
+| `distinct_genres` | `INT` | Unique genres played. |
+| `skip_count` | `BIGINT` | Skipped plays on this date. |
+| `skip_rate` | `DOUBLE` | `skip_count / total_plays`. |
+| `primary_device` | `STRING` | Most-used device category on this date. |
+| `load_timestamp` | `TIMESTAMP` | Mart build timestamp. |
+
+### 8.2 `gold.user_cohort_retention`
+Monthly cohort retention matrix. For each cohort (first-listen month) and each subsequent offset month, records how many original users returned. Grain: `(cohort_month, offset_month_number)`.
+
+| Column | Type | Description |
+|---|---|---|
+| `cohort_month` | `INT` | `yyyyMM` of the user's first-ever play. |
+| `offset_months` | `INT` | Months since cohort entry (0 = signup month, 1 = M+1, …). |
+| `cohort_size` | `BIGINT` | Users who first played in `cohort_month`. |
+| `retained_users` | `BIGINT` | Users from that cohort still active in `cohort_month + offset_months`. |
+| `retention_rate` | `DOUBLE` | `retained_users / cohort_size`. |
+| `load_timestamp` | `TIMESTAMP` | Mart build timestamp. |
+
+### 8.3 `gold.skip_by_genre_artist`
+Skip-rate and completion breakdown by genre and artist. Grain: `(genre, artist_name, year_month)`.
+
+| Column | Type | Description |
+|---|---|---|
+| `genre` | `STRING` | Standardized genre label. |
+| `artist_name` | `STRING` | Primary artist name. |
+| `year_month` | `INT` | `yyyyMM` period. |
+| `total_plays` | `BIGINT` | Play events. |
+| `skip_count` | `BIGINT` | Skipped plays. |
+| `skip_rate` | `DOUBLE` | `skip_count / total_plays`. |
+| `avg_completion_rate`| `DOUBLE` | Mean `completion_rate` (excluding NULL `real_api` rows). |
+| `total_minutes` | `DOUBLE` | Listening minutes. |
+| `load_timestamp` | `TIMESTAMP` | Mart build timestamp. |

@@ -779,7 +779,7 @@ The course's hands-on chapters use Microsoft Fabric. The concepts carry over one
 - [ ] Up to 5 accounts onboarded to live API pulls (aiming for 5, not yet confirmed) — each needs its own `--login` run; personas without API access use `synthetic_persona_matched` incrementals instead
 - [ ] Producers write `_manifest.json` (row count + SHA-256) per touched partition
 - [ ] Generator writes dims as dated snapshots (`dims/snapshot_dt=.../`) instead of overwriting
-- [ ] Generator flips `is_premium` for a small % of users between snapshots (SCD2 and the propensity question need real changes to track)
+- [x] Generator / dimension snapshot flips `is_premium` for a small % of users between snapshots (`output/dims/users_v2.json` with 3 flips implemented and wired to Demo G3)
 - [x] Verify `users.json` includes the `user_real_0N` pseudonyms — it does: personas are written to `dims/users.json` with every run
 - [x] Verify whether `events.json` is JSON Lines or a single JSON array — it's a single JSON array (all three producers), so the Bronze reader uses `multiLine=true`
 - [ ] Switch producers to JSON Lines (one event per line: splittable reads, and appends don't rewrite the file); then drop `multiLine`

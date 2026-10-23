@@ -323,11 +323,11 @@ Write `docs/report/REPORT.md` and export to PDF. Capture evidence **while runnin
 - [x] `01_setup`: gold schema + DDL (comments, CHECKs, clustering), CDF on `silver.events`, `ops.pipeline_state`
 - [x] `30_gold_dims`: date, time, device, track (+ inferred), user (SCD2)
 - [x] `31_gold_fact`: bootstrap + CDF incremental, point-in-time `user_sk`, delete propagation, state update after commit
-- [x] `32_gold_ml`, `33_gold_marts` (3 business questions + Wrapped + 3 audit marts)
+- [x] `32_gold_ml`, `33_gold_marts` (3 business questions + Wrapped + 3 audit marts + daily activity + cohort retention + skip rate)
 - [x] `40_serving_export`: reconciliation, `OPTIMIZE` before/after evidence, stats, export (if needed)
 - [x] `run_pipeline` extended to Gold; logs show `SILVER_TO_GOLD` rows with rows + duration
-- [x] `docs/GOLD_DATA_DICTIONARY.md` with ER diagram
-- [x] Tests (section 9) all PASS; demos G1-G7 captured
-- [x] Power BI model (relationships, measures), 5 pages, `.pbix` committed without credentials, `dashboards/README.md` updated
-- [x] Report PDF: architecture diagram, decision log, DAG/Query Profile analysis, FinOps, evidence appendix
+- [x] `docs/GOLD_DATA_DICTIONARY.md` with ER diagram and complete column definitions
+- [ ] Tests (section 9) all PASS; demos G1-G7 captured (assertions authored in `tests/03_test_gold` and `tests/gold_checks.md`; live run capture in progress per `docs/report/evidence/CAPTURE.md`)
+- [ ] Power BI model (relationships, measures), 5 pages, `.pbix` committed without credentials (`dashboards/README.md` complete with DAX spec; `.pbix` export pending)
+- [ ] Report PDF: architecture diagram, decision log, DAG/Query Profile analysis, FinOps, evidence appendix (markdown & HTML skeleton complete with diagrams; PDF export pending measured telemetry)
 - [x] Final repo pass: README status line, `AGENTS.md` status checklist, no real names, no tokens

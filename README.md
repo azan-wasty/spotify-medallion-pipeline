@@ -337,6 +337,12 @@ Raw Spotify exports are never committed and never enter the lakehouse. Real peop
 - ✅ Audit logging (`ops.pipeline_execution_logs`, `ops.ingestion_log`)
 - ✅ Parameterized backfills via Databricks widgets
 
-**Phase 3** (due Oct 24, 2026): Gold layer (star schema, ML features, business marts), demo scenarios, Power BI dashboard — in progress.
+**Phase 3** (due Oct 24, 2026):
+- ✅ Gold Star Schema (`30_gold_dims`, `31_gold_fact`) — Kimball dimensional model, SCD Type 2 user dimension, inferred tracks, CDF incremental fact ingestion.
+- ✅ Gold ML Features (`32_gold_ml`) — interaction aggregates, track audio features, session features.
+- ✅ Gold Business & Observability Marts (`33_gold_marts`) — peak usage patterns, subscription propensity segments (with churn risk flag), content performance trends, Wrapped user summaries, user activity daily, cohort retention, skip rates, and pipeline/quality/freshness audit marts.
+- ✅ Lakehouse Optimizations (`40_serving_export`) — Liquid Clustering, `OPTIMIZE`, serving Parquet exports.
+- 🔄 Power BI / Tableau Dashboards — DAX measures specified in `dashboards/README.md`, report model build in progress.
+- 🔄 Evidence Capture & Final Report — Architecture & ER diagrams rendered, report skeleton complete, platform screenshot capture (`docs/report/evidence/CAPTURE.md`) in progress.
 
 The full design checklist is at the end of [AGENTS.md](AGENTS.md).

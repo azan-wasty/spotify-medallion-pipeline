@@ -16,6 +16,8 @@ Addressing recent Spotify developer API quota deprecations, the pipeline is powe
 
 ## 1. Lakehouse Architecture
 
+![End-to-End Lakehouse Architecture](figures/architecture_diagram.png)
+
 ```mermaid
 flowchart TD
     subgraph Sources["1. Data Sources"]
@@ -71,7 +73,7 @@ flowchart TD
     end
 
     subgraph Serving["6. BI & Presentation Layer"]
-        BI1["Power BI Desktop (Import Mode / Direct Lake)"]
+        BI1["Power BI Desktop (Import Mode VertiPaq / Curated Parquet Export)"]
         BI2["Mixtape Wrapped Storyboard (HTML/JS)"]
     end
 
@@ -128,6 +130,8 @@ flowchart TD
 ## 2. Dimensional Data Model (Star Schema)
 
 The Gold layer implements a conformed dimensional star schema anchored by `gold.fact_listening`:
+
+![Dimensional Star Schema ER Diagram](figures/er_diagram.png)
 
 ```mermaid
 erDiagram
@@ -210,7 +214,8 @@ erDiagram
 | **D4** | **Delta Change Data Feed (CDF) Fact Loading** | Full daily recomputation vs. incremental watermark on `load_timestamp`. | CDF captures exact row-level modifications (`insert`, `update_postimage`, `delete`). When backfilled partitions delete rows in Silver, CDF delivers `_change_type = 'delete'`, propagating deletions into `gold.fact_listening` seamlessly. | CDF requires table properties enabled from initialization. Addressed with bootstrap snapshot fallback when `last_version IS NULL`. |
 | **D5** | **Business Mart Refresh Strategy** | Incremental micro-merges vs. Materialized Views. | Analytical marts (`subscription_propensity_segments`, `wrapped_user_year`) compute multi-day window functions (60-day discovery rates, rolling entropy). Full overwrite (`mode('overwrite')` + `overwriteSchema`) is atomic, guarantees 100% idempotency, and executes in $< 15$ seconds on tens of thousands of users. | Not viable for multi-billion row tables. At enterprise scale, these transition to Incremental Materialized Views (Delta Live Tables). |
 | **D6** | **Zero-PII Compliance & Sanitization** | End-to-end data encryption with pseudonymization tokens. | Raw Spotify exports contain granular IP addresses (`ip_addr`). Dropping `ip_addr` and personal identifiers at the sanitization boundary eliminates GDPR risk entirely. Pseudonyms (`user_real_01`) ensure zero PII enters cloud storage. | Documented deviation from reversible encryption: irreversibly drops geographic precision at the city/IP level; country code is preserved. |
-| **D7** | **Serving Architecture (Import vs. Direct Lake)** | Live DirectQuery to SQL Warehouse. | Free / Community edition Databricks clusters do not provide persistent SQL Serverless endpoints. Exporting curated Gold Parquet/CSV files enables Power BI VertiPaq fast in-memory compression without incurring cloud compute costs during dashboard interaction. | Minor latency introduced by periodic export cadence; acceptable for analytical reporting. |
+| **D7** | **Serving Architecture (Curated Parquet Export & Power BI Import)** | Live DirectQuery to SQL Warehouse. | Free / Community edition Databricks clusters do not provide persistent SQL Serverless endpoints. Exporting curated Gold Parquet/CSV files enables Power BI VertiPaq fast in-memory compression without incurring cloud compute costs during dashboard interaction. | Minor latency introduced by periodic export cadence; acceptable for analytical reporting. |
+| **D8** | **Schema Drift Governance (Enforcement with Explicit Evolution)** | Silent dropped fields or unconstrained auto-evolution (`mergeSchema` on all ingestion). | Raw events enforce a strict schema at the Bronze boundary to trap breaking upstream API changes and quarantine malformed records. When non-breaking additive fields are introduced (e.g. `device_model` in Phase 2 demo), they are routed to Silver with `mergeSchema=true` after explicit schema evolution review, logging `SCHEMA_DRIFT` telemetry to `audit_pipeline_runs`. | Prevents unintended column explosion in Delta metadata while providing an auditable upgrade path for schema evolutions. |
 
 ---
 
@@ -219,7 +224,7 @@ erDiagram
 The most computationally complex transformation in the pipeline occurs during the execution of **`31_gold_fact` (CDF Enrichment & Point-in-Time Join)** and **`33_gold_marts` (60-Day Windowed Discovery & Propensity Scoring)**.
 
 ```
-== Physical Execution Plan: 60-Day Discovery Window & Propensity Scoring ==
+TODO-MEASURED: Physical Execution Plan (Databricks Query Profile / Physical Plan)
 AdaptiveSparkPlan isFinal=true
 +- == Final Plan ==
    *HashAggregate(keys=[user_id#101], functions=[sum(minutes_played#112), count(1), ...])
@@ -269,15 +274,15 @@ Empirical pipeline run durations recorded from `ops.pipeline_execution_logs` for
 | Gold ML Features | `ml_user_track_interactions`, etc. | 16.3 s |
 | Gold Analytical Marts | Marts (Peak, Propensity, Wrapped) | 22.4 s |
 | Serving & Optimize | `OPTIMIZE`, Stats, File Export | 15.1 s |
-| **Total Daily Active Compute** | **Full Pipeline Run** | **132.0 s (2.20 minutes)** |
+| **Total Daily Active Compute** | **Full Pipeline Run** | **TODO-MEASURED: 132.0 s (2.20 minutes)** |
 
 ### 5.2 Azure Databricks Pricing & Cost Formulation
 - **Compute Model:** Azure Databricks Serverless Jobs Compute (Standard Tier).
-- **Price per DBU:** \$0.15 per Databricks Unit (DBU) (US East region, October 2026).
+- **Price per DBU:** TODO-MEASURED: \$0.15 per Databricks Unit (DBU) (US East region, October 2026).
 - **DBU Consumption Rate:** Standard 2-node general compute consumes approximately 1.5 DBU per hour.
 - **Cluster Startup Overhead:** Serverless startup is $\approx 15 \text{ seconds}$. Total billed time per run $\approx 147 \text{ seconds}$ ($0.0408 \text{ hours}$).
 
-$$\text{Cost per Run} = 0.0408 \text{ hours} \times 1.5 \text{ DBU/hour} \times \$0.15/\text{DBU} = \$0.00918 \text{ per run}$$
+$$\text{Cost per Run} = 0.0408 \text{ hours} \times 1.5 \text{ DBU/hour} \times \$0.15/\text{DBU} = TODO-MEASURED: \$0.00918 \text{ per run}$$
 
 ### 5.3 Annual Extrapolation (Hourly Pipeline Cadence)
 Extrapolating from a daily run to an hourly production schedule ($24 \times 365 = 8,760 \text{ runs/year}$):
@@ -285,7 +290,7 @@ Extrapolating from a daily run to an hourly production schedule ($24 \times 365 
 1. **Active Compute Cost:**  
    $$8,760 \text{ runs} \times \$0.00918 \text{/run} = \mathbf{\$80.42 / \text{year}}$$
 2. **Storage & Time Travel Retention (Azure ADLS Gen2):**
-   - Active Delta Storage: $\approx 150 \text{ GB}$ (Parquet data + checkpoints).
+   - Active Delta Storage: $\approx \text{TODO-MEASURED: 150 GB}$ (Parquet data + checkpoints).
    - 7-Day Time Travel History: $\approx 50 \text{ GB}$ tombstoned Parquet files.
    - Storage Cost: $200 \text{ GB} \times \$0.0184/\text{GB/month} \times 12 = \mathbf{\$44.16 / \text{year}}$.
 3. **Power BI VertiPaq BI Refresh:**
@@ -310,13 +315,13 @@ Sample log output verifying end-to-end multi-layer execution tracking:
 +------------+------------------+------------------------------+------------+---------------+---------------+--------------+--------+
 |run_id      |layer             |target_table                  |rows_read   |rows_inserted  |rows_updated   |duration_sec  |status  |
 +------------+------------------+------------------------------+------------+---------------+---------------+--------------+--------+
-|run_01a82f  |LANDING_TO_BRONZE |bronze.events                 |12,450      |12,450         |0              |14.2          |SUCCESS |
-|run_01a82f  |BRONZE_TO_SILVER  |silver.events                 |12,450      |12,428         |22             |24.8          |SUCCESS |
-|run_01a82f  |SILVER_TO_GOLD    |gold.dim_user                 |50          |2              |48             |12.1          |SUCCESS |
-|run_01a82f  |SILVER_TO_GOLD    |gold.fact_listening           |12,428      |12,428         |0              |18.5          |SUCCESS |
-|run_01a82f  |SILVER_TO_GOLD    |gold.peak_usage_patterns      |12,428      |2,880          |0              |7.4           |SUCCESS |
-|run_01a82f  |SILVER_TO_GOLD    |subscription_propensity_segm  |12,428      |50             |0              |9.8           |SUCCESS |
-|run_01a82f  |SILVER_TO_GOLD    |gold.wrapped_user_year        |12,428      |50             |0              |8.2           |SUCCESS |
+|TODO-MEASURED: run_01a82f  |LANDING_TO_BRONZE |bronze.events                 |12,450      |12,450         |0              |14.2          |SUCCESS |
+|TODO-MEASURED: run_01a82f  |BRONZE_TO_SILVER  |silver.events                 |12,450      |12,428         |22             |24.8          |SUCCESS |
+|TODO-MEASURED: run_01a82f  |SILVER_TO_GOLD    |gold.dim_user                 |50          |2              |48             |12.1          |SUCCESS |
+|TODO-MEASURED: run_01a82f  |SILVER_TO_GOLD    |gold.fact_listening           |12,428      |12,428         |0              |18.5          |SUCCESS |
+|TODO-MEASURED: run_01a82f  |SILVER_TO_GOLD    |gold.peak_usage_patterns      |12,428      |2,880          |0              |7.4           |SUCCESS |
+|TODO-MEASURED: run_01a82f  |SILVER_TO_GOLD    |subscription_propensity_segm  |12,428      |50             |0              |9.8           |SUCCESS |
+|TODO-MEASURED: run_01a82f  |SILVER_TO_GOLD    |gold.wrapped_user_year        |12,428      |50             |0              |8.2           |SUCCESS |
 +------------+------------------+------------------------------+------------+---------------+---------------+--------------+--------+
 ```
 
@@ -335,9 +340,9 @@ Compaction metrics demonstrating small-file elimination on `gold.fact_listening`
 
 | Metric | Before `OPTIMIZE` | After `OPTIMIZE` (Liquid Clustering) | Change / Impact |
 |---|---|---|---|
-| **Total File Count** | 486 Parquet files | 12 Parquet files | **97.5% reduction** |
+| **Total File Count** | TODO-MEASURED: 486 Parquet files | TODO-MEASURED: 12 Parquet files | **97.5% reduction** |
 | **Average File Size** | 260 KB | 10.4 MB | Consolidated into optimal I/O chunks |
-| **Point Query Scan Time** | 2.84 seconds | 0.31 seconds | **9.1x faster query latency** |
+| **Point Query Scan Time** | TODO-MEASURED: 2.84 seconds | TODO-MEASURED: 0.31 seconds | **9.1x faster query latency** |
 
 ---
 
