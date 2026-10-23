@@ -783,14 +783,14 @@ The course's hands-on chapters use Microsoft Fabric. The concepts carry over one
 - [x] Verify `users.json` includes the `user_real_0N` pseudonyms — it does: personas are written to `dims/users.json` with every run
 - [x] Verify whether `events.json` is JSON Lines or a single JSON array — it's a single JSON array (all three producers), so the Bronze reader uses `multiLine=true`
 - [ ] Switch producers to JSON Lines (one event per line: splittable reads, and appends don't rewrite the file); then drop `multiLine`
-- [x] Notebooks renamed to the layout in [Orchestration](#orchestration--pipeline-run-order) (still placeholders)
-- [ ] GitHub repo populated with sanitized sample data + full scripts
-- [ ] `00_config` + `01_setup` (schemas, tables, comments, constraints, CDF)
-- [ ] Bronze ingest notebook + `ops.ingestion_log` + anomaly checks
-- [ ] Silver dims + events notebooks (metadata-driven DQ, quarantine, MERGE)
-- [ ] Gold G1: dims (SCD2 `dim_user`, inferred members) + `fact_listening` via CDF
-- [ ] Gold G2 ML tables + G3 business marts
-- [ ] `90_demos` with the 12 Phase 2 scenarios
-- [ ] Serving export + Power BI semantic model (Import mode)
-- [ ] BI dashboard built
-- [ ] Formal Phase 1 proposal document assembled and submitted
+- [x] Notebooks implemented for all layers (Bronze 10, Silver 20-21, Gold 30-33, Serving 40, Demos 90, run_pipeline)
+- [x] GitHub repo populated with sanitized sample data + full scripts
+- [x] `00_config` + `01_setup` (schemas, tables, comments, constraints, CDF, Liquid Clustering)
+- [x] Bronze ingest notebook + `ops.pipeline_execution_logs` + anomaly checks
+- [x] Silver dims + events notebooks (metadata-driven DQ, quarantine, MERGE)
+- [x] Gold G1: dims (SCD2 `dim_user`, inferred members) + `fact_listening` via CDF
+- [x] Gold G2 ML tables + G3 business marts + operational audit marts
+- [x] `90_demos` with the 12 Phase 2 scenarios + 7 Phase 3 Gold scenarios (G1-G7)
+- [x] Serving export + Power BI semantic model (Import mode) + Mixtape Wrapped storyboard integration
+- [x] BI dashboard specifications documented (5 pages, DAX measures)
+- [x] Gold Data Dictionary, test suite, and Phase 3 Engineering & FinOps report assembled
