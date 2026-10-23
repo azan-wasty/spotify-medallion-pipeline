@@ -4,6 +4,8 @@ All 33 logged steps succeeded across the 7 batches below (source: `workspace.ops
 evidence file `01_full_run_log.txt`). 3 pre-retry planning errors (peak_usage_patterns, user_activity_daily,
 skip_by_genre_artist) all succeeded on immediate rerun.
 
+![Pipeline Execution DAG](../figures/dag.png)
+
 ```mermaid
 flowchart TD
     L[/Landing volume<br/>output/raw + dims + validation/] --> B["10_bronze_ingest<br/>RAW_TO_BRONZE | 53.9 s"]

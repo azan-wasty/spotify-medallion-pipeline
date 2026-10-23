@@ -328,6 +328,72 @@ Raw Spotify exports are never committed and never enter the lakehouse. Real peop
 
 ---
 
+---
+
+## Evidence Pack & Run Telemetry
+
+A complete, empirical run of the lakehouse was captured on Databricks Serverless compute (AWS `us-east-2`, Photon, Spark 4.2). The complete evidence pack, telemetry dumps, and execution logs are organized in [`docs/report/evidence/`](docs/report/evidence/) with machine-readable metrics in [`docs/report/measured.json`](docs/report/measured.json).
+
+### Pipeline Execution DAG & Batch Map
+
+```mermaid
+flowchart TD
+    L[/Landing volume<br/>output/raw + dims + validation/] --> B["10_bronze_ingest<br/>RAW_TO_BRONZE | 53.9 s"]
+    B --> BR[(bronze.events 21.2 MB<br/>bronze.users / catalog / quarantine)]
+    BR --> S1["20_silver_dims<br/>BRONZE_TO_SILVER | 21.1 s"]
+    BR --> S2["21_silver_events<br/>BRONZE_TO_SILVER | 37.8 s"]
+    S1 --> SU[(silver.users<br/>silver.tracks 1.15 MB)]
+    S2 --> SE[(silver.events 36.9 MB<br/>+ events_quarantine 0.07 MB)]
+    S1 --> G1["30_gold_dims<br/>SILVER_TO_GOLD | 32.1 s"]
+    SE --> G2["31_gold_fact<br/>CDF-incremental MERGE | 41.5 s"]
+    SE --> G3["32_gold_ml<br/>SILVER_TO_GOLD | 12.7 s"]
+    G1 --> D[(gold.dim_* SCD2)]
+    G2 --> F[(gold.fact_listening 411,511 rows<br/>liquid cluster date_key, user_sk)]
+    D --> G4["33_gold_marts<br/>SILVER_TO_GOLD | 105.4 s"]
+    F --> G4
+    G3 --> G4
+    G4 --> M[(10 business marts + 3 audit tables)]
+```
+
+**Total Logged Duration:** 304.5 seconds across 33 logged steps (7 batches, 743,743 output rows).
+
+| # | Notebook | Layer | Batch ID | Duration | Key Rows & Operations |
+|---|---|---|---|---|---|
+| 1 | `10_bronze_ingest` | `RAW_TO_BRONZE` | `batch_083b09f0…` | 53.9 s | 4,431 event rows (4 backfill partitions dt=10-20..23; schema drift `ms_played_source` rescued); users + catalog `SKIPPED_UNCHANGED` |
+| 2 | `20_silver_dims` | `BRONZE_TO_SILVER` | `batch_61a9b475…` | 21.1 s | 50 users; 16,484 tracks conformed SCD1 |
+| 3 | `21_silver_events` | `BRONZE_TO_SILVER` | `batch_c255f890…` | 37.8 s | 36,748 read → 3,593 inserted / 32,781 updated; 1,847 quarantined (`INVALID_PLAYED_AT` future timestamps) |
+| 4 | `30_gold_dims` | `SILVER_TO_GOLD` | `batch_7e54c0ae…` | 32.1 s | `dim_date` 734, `dim_time` 24, `dim_device` 6, `dim_track` 16,493, `dim_user` 50 (SCD2 initialized) |
+| 5 | `31_gold_fact` | `SILVER_TO_GOLD` | `batch_03cfb211…` | 41.5 s | `fact_listening` bootstrap MERGE 411,511 rows via Delta Change Data Feed |
+| 6 | `32_gold_ml` | `SILVER_TO_GOLD` | `batch_3f4626b9…` | 12.7 s | 84,481 user-track interactions, 13,428 track features, 35,627 user sessions |
+| 7 | `33_gold_marts` | `SILVER_TO_GOLD` | `batch_3db2fa06…` | 105.4 s | `peak_usage` 4,919 · `propensity` 50 · `content` 23,988 · `wrapped` 100 · `activity` 33,118 · `cohort` 13 · `skip` 23,753 · audits 40/1/7 |
+
+### Evidence Files Index
+
+| File | Link | Description |
+|---|---|---|
+| DAG & Batch Map | [`00_pipeline_dag.md`](docs/report/evidence/00_pipeline_dag.md) | Full mermaid DAG and step-by-step telemetry breakdown |
+| Execution Log Dump | [`01_full_run_log.txt`](docs/report/evidence/01_full_run_log.txt) | Complete dump of `ops.pipeline_execution_logs` confirming every layer/mart logged `SUCCESS` |
+| Storage & OPTIMIZE | [`02_storage_describe_detail.txt`](docs/report/evidence/02_storage_describe_detail.txt) | `DESCRIBE DETAIL` storage across all 27 tables (88.1 MB total) + `OPTIMIZE` fact 12→1 files, query 0.791→0.715 s |
+| Delta History / Time Travel | [`03_delta_history_fact_listening.txt`](docs/report/evidence/03_delta_history_fact_listening.txt) | Transaction log commits: v0 `CREATE TABLE` → v1 `ADD CONSTRAINT` → v2 `MERGE` 411k rows → v3/v4 `OPTIMIZE` |
+| Propensity Ground Truth | [`04_propensity_match.txt`](docs/report/evidence/04_propensity_match.txt) | Mart vs answer key: 84.0% tier match (all 8 mismatches are near-threshold noise), 98.0% flag match, 1.000 premium match |
+| Quarantine Dump | [`05_quarantine.txt`](docs/report/evidence/05_quarantine.txt) | Silver DQ rejections: 1,847 `INVALID_PLAYED_AT` future-dated events safely quarantined; Bronze 0 |
+| SCD2 Status | [`06_scd2_status.txt`](docs/report/evidence/06_scd2_status.txt) | `dim_user` SCD2 implementation status and verification of single active version per user |
+| Schema Drift Telemetry | [`07_schema_drift.txt`](docs/report/evidence/07_schema_drift.txt) | Bronze schema evolution: auto-rescued additive `ms_played_source` column across all 4 backfill partitions |
+| AWS Pricing Data | [`08_pricing_aws.txt`](docs/report/evidence/08_pricing_aws.txt) | Databricks system billing records: `PREMIUM_ALL_PURPOSE_SERVERLESS_COMPUTE` at $0.75/DBU |
+| Evidence Readme | [`README.md`](docs/report/evidence/README.md) | Overview of evidence artifacts, run configuration, and pending items |
+| Propensity Physical Plan | [`explain_propensity_formatted.txt`](docs/report/evidence/explain_propensity_formatted.txt) | `EXPLAIN FORMATTED` plan showing 10 Photon broadcast joins, 48 shuffle exchanges, and AQE windowing |
+| Fact Merge Physical Plan | [`explain_fact_merge_formatted.txt`](docs/report/evidence/explain_fact_merge_formatted.txt) | `EXPLAIN FORMATTED` plan showing Delta Lake `MergeIntoCommandEdge` physical execution |
+| Screenshot Capture Guide | [`CAPTURE.md`](docs/report/evidence/CAPTURE.md) | Standard operating procedure and naming checklist for all Databricks and Power BI screenshots |
+
+### Pending Items (One-Liners)
+
+1. **Daily Incremental Run:** `python3 scripts/generate_data_v2.py incremental --date 2026-10-24` (upload `output/raw/dt=2026-10-24/` to landing raw/ and execute notebooks 10→33; note that day-24 plays remain quarantined by `INVALID_PLAYED_AT` until the wall clock passes them).
+2. **Idempotent Rerun:** Rerun pipeline steps without new landing data; Bronze skips files via SHA-256 checksums (`bronze.users` and `bronze.catalog` logged `SKIPPED_UNCHANGED`), and Silver/Gold MERGEs mutate 0 rows.
+3. **Automated Tests & Demos:** Run `tests/01_test_landing.ipynb`, `02_test_bronze_silver.ipynb`, and `03_test_gold.ipynb` directly in Databricks (avoiding nested `dbutils.notebook.run` timeouts), followed by `notebooks/90_demos.ipynb`.
+4. **SCD2 Second Delivery:** `output/dims/users_v2.json` (3 subscription flips: `user_real_03` Free→Premium, `user_synth_003` Free→Premium, `user_synth_007` Premium→Free) is staged in `output/dims/`; copy over `users.json`, run `10_bronze_ingest` → `20_silver_dims` → `30_gold_dims`, then query `DESCRIBE HISTORY gold.dim_user` to capture multi-version timeline.
+
+---
+
 ## Status
 
 **Phase 2** (due Oct 10, 2026):
@@ -341,8 +407,9 @@ Raw Spotify exports are never committed and never enter the lakehouse. Real peop
 - ✅ Gold Star Schema (`30_gold_dims`, `31_gold_fact`) — Kimball dimensional model, SCD Type 2 user dimension, inferred tracks, CDF incremental fact ingestion.
 - ✅ Gold ML Features (`32_gold_ml`) — interaction aggregates, track audio features, session features.
 - ✅ Gold Business & Observability Marts (`33_gold_marts`) — peak usage patterns, subscription propensity segments (with churn risk flag), content performance trends, Wrapped user summaries, user activity daily, cohort retention, skip rates, and pipeline/quality/freshness audit marts.
-- ✅ Lakehouse Optimizations (`40_serving_export`) — Liquid Clustering, `OPTIMIZE`, serving Parquet exports.
+- ✅ Lakehouse Optimizations (`40_serving_export`) — Liquid Clustering, `OPTIMIZE` (fact 12→1 files), serving Parquet exports.
+- ✅ Full Run Telemetry & Observability (`docs/report/evidence/`) — 33 steps, 304.5 s duration, 743k rows, measured FinOps & storage.
 - 🔄 Power BI / Tableau Dashboards — DAX measures specified in `dashboards/README.md`, report model build in progress.
-- 🔄 Evidence Capture & Final Report — Architecture & ER diagrams rendered, report skeleton complete, platform screenshot capture (`docs/report/evidence/CAPTURE.md`) in progress.
+- 🔄 Final Screenshot Capture — Platform screenshot capture (`docs/report/evidence/CAPTURE.md`) in progress.
 
 The full design checklist is at the end of [AGENTS.md](AGENTS.md).
