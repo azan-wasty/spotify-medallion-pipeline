@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mixtape Wrapped</title>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&display=swap" rel="stylesheet">
+<script src="gold_export/wrapped_bundle.js"></script>
 <style>
 :root{--paper:#e8e6df;--ink:#0e0e0e;--red:#ff3b1f;--yel:#ffe14a;--grn:#19e068;--bg:#d9d7d0;--pn:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1a1a;--pn:#262626}}
@@ -183,13 +184,49 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 </style>
 </head>
 <body>
-<div id="tb"><button id="pp" type="button" aria-pressed="false">&#10074;&#10074; Pause</button><button id="ld" type="button">Load my data</button></div>
+<div id="tb">
+  <span id="badge" title="Active Mixtape Persona & Year (Click to change)" style="font:700 13px system-ui,sans-serif;padding:7px 12px;border-radius:99px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);display:inline-flex;align-items:center;gap:6px;cursor:pointer">
+    <i style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--grn);animation:beat 1.2s infinite alternate"></i>
+    <span id="badge-text">user_real_01 · 2026</span>
+  </span>
+  <button id="pp" type="button" aria-pressed="false">&#10074;&#10074; Pause</button>
+  <button id="ld" type="button">Mixtape Vault</button>
+</div>
 <div id="pn">
-  <h2 style="margin:0;font-family:Anton,Impact,sans-serif;font-weight:400;font-size:30px">LOAD YOUR LISTENING</h2>
-  <p>Request <b>Extended streaming history</b> from Spotify (Account, Privacy). Select all the <code>Streaming_History_Audio_*.json</code> files you get. They are read in your browser and never uploaded.</p>
-  <label>Choose files<input id="fi" type="file" multiple accept=".json" hidden></label>
-  <button class="go" id="sm" type="button">Use sample data</button>
-  <button id="cl" type="button">Close</button>
+  <div style="display:flex;align-items:center;justify-content:space-between">
+    <h2 style="margin:0;font-family:Anton,Impact,sans-serif;font-weight:400;font-size:28px;letter-spacing:.02em">MIXTAPE VAULT</h2>
+    <button id="cl" type="button" style="padding:6px 14px!important;font-size:14px!important">✕ Close</button>
+  </div>
+  
+  <div id="vault" style="background:#e8e6df;color:#0e0e0e;padding:16px;border:3px solid #0e0e0e;border-radius:8px;display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <span class="mk" style="font-size:20px;color:#ff3b1f">LAKEHOUSE GOLD MIXTAPES</span>
+      <span style="font:700 11px system-ui,sans-serif;background:#0e0e0e;color:#ffe14a;padding:3px 8px;border-radius:4px;letter-spacing:0.5px">LIVE PIPELINE</span>
+    </div>
+    <p style="font-size:13px;margin:0;line-height:1.3;font-weight:600">Choose any listener persona and year from the Gold Medallion layer to run their personalized Wrapped experience:</p>
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:10px">
+      <div>
+        <label for="u-sel" style="display:block;font:700 11px system-ui,sans-serif;margin-bottom:3px;text-transform:uppercase">Listener Persona</label>
+        <select id="u-sel" style="width:100%;padding:9px;font:700 14px system-ui,sans-serif;border:2px solid #0e0e0e;border-radius:6px;background:#fff;color:#0e0e0e;box-sizing:border-box"></select>
+      </div>
+      <div>
+        <label for="y-sel" style="display:block;font:700 11px system-ui,sans-serif;margin-bottom:3px;text-transform:uppercase">Year</label>
+        <select id="y-sel" style="width:100%;padding:9px;font:700 14px system-ui,sans-serif;border:2px solid #0e0e0e;border-radius:6px;background:#fff;color:#0e0e0e;box-sizing:border-box"></select>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;margin-top:2px;flex-wrap:wrap">
+      <button id="btn-play-tape" class="go" type="button" style="background:var(--grn);font-weight:700;padding:10px 18px;border:2px solid #0e0e0e;border-radius:99px;cursor:pointer;display:flex;align-items:center;gap:6px"><span>&#9654;</span> PLAY THIS TAPE</button>
+      <span id="tape-info" style="font-size:12px;font-weight:700;opacity:.8"></span>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:10px;margin:2px 0"><hr style="flex:1;border:0;border-top:2px dashed rgba(0,0,0,0.2)"><span style="font-size:12px;font-weight:700;opacity:0.6">OR LOAD RAW EXPORTS</span><hr style="flex:1;border:0;border-top:2px dashed rgba(0,0,0,0.2)"></div>
+
+  <p style="font-size:13px;margin:0">Drop raw Spotify <code>Streaming_History_Audio_*.json</code> files to calculate client-side:</p>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <label>Choose files<input id="fi" type="file" multiple accept=".json" hidden></label>
+    <button class="go" id="sm" type="button">Use sample data</button>
+  </div>
   <p id="ms" role="status"></p>
 </div>
 <main id="stage" aria-live="polite">
@@ -268,7 +305,12 @@ function cass(fg,bg,lab){
   return '<svg viewBox="0 0 300 190" width="100%" style="max-width:300px;align-self:center" role="img" aria-label="Cassette tape"><rect x="4" y="4" width="292" height="182" rx="14" fill="'+fg+'"/><rect x="26" y="20" width="248" height="76" fill="'+bg+'" transform="rotate(-1 150 58)"/><text x="40" y="66" font-family="Permanent Marker,cursive" font-size="26" fill="'+fg+'">'+esc(lab)+'</text><path class="dd" pathLength="1" d="M40 80 q40 -10 80 0 t80 0" fill="none" stroke="#ff3b1f" stroke-width="4"/><rect x="70" y="110" width="160" height="56" rx="28" fill="'+bg+'"/><g class="reel"><circle cx="110" cy="138" r="20" fill="'+fg+'"/><path d="M110 120v36M92 138h36M97 125l26 26M123 125l-26 26" stroke="'+bg+'" stroke-width="3"/></g><g class="reel"><circle cx="190" cy="138" r="20" fill="'+fg+'"/><path d="M190 120v36M172 138h36M177 125l26 26M203 125l-26 26" stroke="'+bg+'" stroke-width="3"/></g></svg>';
 }
 function odo(n){return String(n.toLocaleString("en-US")).split("").map(function(c){return/\d/.test(c)?'<span class="dg"><b data-d="'+c+'">0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9</b></span>':'<span>'+c+'</span>'}).join("")}
-var REAL={"year":2026,"minutes":31685,"plays":9517,"nTracks":922,"nArtists":344,"days":249,"big":{"m":4,"d":2,"mins":548,"artist":"Arctic Monkeys","plays":148,"n":33},"rep":{"m":1,"d":5,"title":"Past Won't Leave My Bed","artist":"Joji","n":6},"cal":["1101111101101101111111011111111","1111110111111111111010111101---","1111101110101110000111111111111","111111111111111111022222222222-","2222222222222222222222222222222","222222222220101111001010011111-","1111101111111111111111111110110","1111111110101111101101111111111","111111111111111110110111111111-","111111111----------------------","-------------------------------","-------------------------------"],"streak":{"len":53,"m1":3,"d1":20,"m2":5,"d2":11},"act":249,"span":282,"skip":{"pct":43,"n":7262,"total":16779,"worst":[{"name":"Kanye West","pct":69,"n":124},{"name":"beabadoobee","pct":67,"n":115},{"name":"The Smiths","pct":63,"n":83}]},"artists":[{"name":"Arctic Monkeys","plays":1265,"mins":4276,"nt":44},{"name":"The Neighbourhood","plays":1141,"mins":4121,"nt":40},{"name":"Joji","plays":1028,"mins":2759,"nt":51},{"name":"Chase Atlantic","plays":791,"mins":2980,"nt":24},{"name":"Radiohead","plays":244,"mins":908,"nt":12}],"tracks":[{"title":"Consume (feat. Goon Des Garcons)","artist":"Chase Atlantic","plays":141,"mins":564},{"title":"The Jeweller's Hands","artist":"Arctic Monkeys","plays":87,"mins":546},{"title":"She's My Collar (feat. Kali Uchis)","artist":"Gorillaz","plays":140,"mins":525},{"title":"House Of Balloons / Glass Table Girls","artist":"The Weeknd","plays":91,"mins":495},{"title":"Secret Door","artist":"Arctic Monkeys","plays":104,"mins":439},{"title":"A Little Death","artist":"The Neighbourhood","plays":118,"mins":428},{"title":"american wedding (Hotel California)","artist":"dopuu","plays":94,"mins":426},{"title":"JANE DOE","artist":"Kenshi Yonezu","plays":105,"mins":404},{"title":"W.D.Y.W.F.M?","artist":"The Neighbourhood","plays":96,"mins":400},{"title":"LOVE YOU LESS","artist":"Joji","plays":126,"mins":395}],"monthly":[[68,111,125,202,231,97,96,85,217,33,0,0],[51,95,105,175,207,85,84,96,223,20,0,0],[76,233,187,121,98,90,92,63,62,6,0,0],[35,87,72,164,131,74,71,57,91,9,0,0],[27,48,54,42,19,21,22,5,6,0,0,0]],"hours":[439,307,187,102,29,22,37,103,284,238,385,532,725,1006,1000,724,697,393,379,312,343,412,435,426],"byArtist":[[{"title":"Secret Door","plays":104},{"title":"The Jeweller's Hands","plays":87},{"title":"Too Much To Ask","plays":75},{"title":"Teddy Picker","plays":69},{"title":"I Want It All","plays":67}],[{"title":"A Little Death","plays":118},{"title":"Fallen Star","plays":104},{"title":"W.D.Y.W.F.M?","plays":96},{"title":"OMG","plays":82},{"title":"Flawless","plays":82}],[{"title":"LOVE YOU LESS","plays":126},{"title":"SLOW DANCING IN THE DARK","plays":122},{"title":"Past Won't Leave My Bed","plays":119},{"title":"PIXELATED KISSES","plays":108},{"title":"Sojourn","plays":102}],[{"title":"Consume (feat. Goon Des Garcons)","plays":141},{"title":"Dancer in the Dark","plays":86},{"title":"HEAVEN AND BACK","plays":78},{"title":"Church","plays":60},{"title":"Swim","plays":58}],[{"title":"Jigsaw Falling Into Place","plays":69},{"title":"Karma Police","plays":65},{"title":"Just","plays":18},{"title":"All I Need","plays":17},{"title":"Weird Fishes / Arpeggi","plays":16}]],"genres":[{"name":"Rock","pct":34},{"name":"Indie / Alt","pct":26},{"name":"Pop","pct":18},{"name":"Hip hop","pct":12},{"name":"R&B","pct":3}]},D=REAL,cur=-1,timer=0,sx=50,sy=50,S=[];
+/* WRAPPED_DATA_START */
+var ACTIVE_USER = "user_real_01";
+var ACTIVE_YEAR = 2026;
+var REAL = {"year":2026,"minutes":32806,"plays":9826,"nTracks":926,"nArtists":344,"days":262,"big":{"m":4,"d":2,"mins":548,"artist":"Arctic Monkeys","plays":148,"n":33},"rep":{"m":1,"d":5,"title":"Past Won't Leave My Bed","artist":"Joji","n":6},"cal":["1101111101101101111111011111111","1111110111111111111010111101---","1111101110101110000111111111111","111111111111111111022222222222-","2222222222222222222222222222222","222222222220101111001010011111-","1111101111111111111111111110110","1111111110101111101101111111111","111111111111111110110110111111-","111111111111111101111111-------","-------------------------------","-------------------------------"],"streak":{"len":53,"m1":3,"d1":20,"m2":5,"d2":11},"act":262,"span":297,"skip":{"pct":43,"n":7264,"total":17090,"worst":[{"name":"Kanye West","pct":70,"n":123},{"name":"beabadoobee","pct":66,"n":116},{"name":"The Smiths","pct":63,"n":83}]},"artists":[{"name":"Arctic Monkeys","plays":1380,"mins":4686,"nt":48},{"name":"The Neighbourhood","plays":1201,"mins":4345,"nt":40},{"name":"Joji","plays":1052,"mins":2826,"nt":51},{"name":"Chase Atlantic","plays":826,"mins":3114,"nt":24},{"name":"Radiohead","plays":243,"mins":904,"nt":12}],"tracks":[{"title":"Consume (feat. Goon Des Garcons)","artist":"Chase Atlantic","plays":143,"mins":572},{"title":"The Jeweller's Hands","artist":"Arctic Monkeys","plays":91,"mins":565},{"title":"She's My Collar (feat. Kali Uchis)","artist":"Gorillaz","plays":145,"mins":539},{"title":"House Of Balloons / Glass Table Girls","artist":"The Weeknd","plays":90,"mins":488},{"title":"Secret Door","artist":"Arctic Monkeys","plays":110,"mins":461},{"title":"american wedding (Hotel California)","artist":"dopuu","plays":99,"mins":448},{"title":"A Little Death","artist":"The Neighbourhood","plays":122,"mins":439},{"title":"SLOW DANCING IN THE DARK","artist":"Joji","plays":129,"mins":411},{"title":"Fallen Star","artist":"The Neighbourhood","plays":111,"mins":409},{"title":"W.D.Y.W.F.M?","artist":"The Neighbourhood","plays":98,"mins":407}],"monthly":[[65,114,124,202,231,98,96,85,194,171,0,0],[49,97,103,171,212,86,83,97,199,104,0,0],[74,234,188,121,97,91,91,64,54,38,0,0],[34,88,70,163,133,75,70,58,86,49,0,0],[27,48,54,42,19,21,22,5,5,0,0,0]],"hours":[439,310,191,102,29,22,37,103,306,235,388,526,727,1049,1037,765,710,425,399,345,376,427,450,428],"byArtist":[[{"title":"Secret Door","plays":110},{"title":"The Jeweller's Hands","plays":91},{"title":"Too Much To Ask","plays":81},{"title":"Teddy Picker","plays":72},{"title":"I Want It All","plays":68}],[{"title":"A Little Death","plays":122},{"title":"Fallen Star","plays":111},{"title":"W.D.Y.W.F.M?","plays":98},{"title":"Flawless","plays":87},{"title":"Pretty Boy","plays":83}],[{"title":"SLOW DANCING IN THE DARK","plays":129},{"title":"LOVE YOU LESS","plays":127},{"title":"Past Won't Leave My Bed","plays":119},{"title":"PIXELATED KISSES","plays":113},{"title":"Sojourn","plays":104}],[{"title":"Consume (feat. Goon Des Garcons)","plays":143},{"title":"Dancer in the Dark","plays":88},{"title":"HEAVEN AND BACK","plays":81},{"title":"Swim","plays":62},{"title":"Church","plays":61}],[{"title":"Jigsaw Falling Into Place","plays":69},{"title":"Karma Police","plays":64},{"title":"Just","plays":18},{"title":"All I Need","plays":17},{"title":"Exit Music (For A Film)","plays":16}]],"genres":[{"name":"Rock","pct":35,"n":3421},{"name":"Indie / Alt","pct":25,"n":2488},{"name":"Pop","pct":18,"n":1753},{"name":"Hip hop","pct":12,"n":1181},{"name":"R&B","pct":3,"n":298}]};
+/* WRAPPED_DATA_END */
+var D = REAL,cur=-1,timer=0,sx=50,sy=50,S=[];
 function build(){
   var y=D.year,a=D.artists,t=D.tracks;
   var SH=document.getElementById("stage").clientHeight||700,st=Math.max(58,Math.min(84,Math.floor((SH-340)/Math.max(a.length,1))));
@@ -371,17 +413,37 @@ function frame(t){var dt=lt?Math.min(t-lt,100):0,u=document.getElementById("bars
   requestAnimationFrame(frame)}
 function show(k){
   k=Math.max(0,Math.min(S.length-1,k));if(k===cur)return;
-  clearTimeout(timer);var st=document.getElementById("stage"),old=st.querySelector(".sl"),s=S[k],el=document.createElement("div"),via=wipe,bars=document.getElementById("bars");wipe=0;
-  if(old)old.querySelectorAll("#qz,#qr,.ix").forEach(function(e){e.style.zIndex=0});
+  clearTimeout(timer);var st=document.getElementById("stage"),s=S[k],via=wipe,bars=document.getElementById("bars");wipe=0;
+  st.querySelectorAll("#qz,#qr,.opt").forEach(function(e){
+    e.style.display="none";
+    e.remove();
+  });
+  var oldSlides=Array.from(st.querySelectorAll(".sl"));
+  while(oldSlides.length>1){
+    oldSlides.shift().remove();
+  }
+  var el=document.createElement("div");
   el.className="sl";el.style.background=s.bg;el.style.color=s.fg;
   el.innerHTML=fxl(k,s.fg)+(CH[s.k]?'<div class="chap mk">'+CH[s.k]+'</div>':"")+s.h();
   st.insertBefore(el,bars);
   var first=cur<0;cur=k;arm(s.dur||0);bars.style.setProperty("--bf",s.fg);
   [].forEach.call(bars.children,function(e,j){e.firstChild.style.transform=j<k?"scaleX(1)":"scaleX(0)"});
   var go=function(){el.classList.add(s.cls);s.after&&s.after(el);hydrate(el);el.querySelectorAll("[data-cu]").forEach(function(e,i){cu(e,500+i*130)})};
-  if(first||!old||rm()){if(old)old.remove();go();return}
+  if(first||!oldSlides.length||rm()){
+    oldSlides.forEach(function(old){old.remove()});
+    go();
+    return;
+  }
   var an=el.animate({clipPath:via?["inset(0 100% 0 0)","inset(0 0 0 0)"]:["circle(0% at "+sx+"% "+sy+"%)","circle(150% at "+sx+"% "+sy+"%)"]},{duration:via?520:650,easing:"cubic-bezier(.7,0,.2,1)"});
-  go();an.onfinish=function(){old.remove()};
+  go();
+  var cleaned=false;
+  function cleanup(){
+    if(cleaned)return;
+    cleaned=true;
+    oldSlides.forEach(function(old){old.remove()});
+  }
+  an.onfinish=cleanup;
+  an.oncancel=cleanup;
 }
 function nav(d,e){if(e&&e.clientX!=null){var r=document.getElementById("stage").getBoundingClientRect();sx=(e.clientX-r.left)/r.width*100;sy=(e.clientY-r.top)/r.height*100}if(d>0&&cur>=S.length-1)show(0);else show(cur+d)}
 ["tl","tr"].forEach(function(id,n){var b=document.getElementById(id);
@@ -394,16 +456,112 @@ document.addEventListener("keydown",function(e){if(document.getElementById("pn")
 var x0=null;document.getElementById("stage").addEventListener("touchstart",function(e){x0=e.touches[0].clientX},{passive:true});
 document.getElementById("stage").addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>50){sx=dx<0?85:15;sy=50;show(cur+(dx<0?1:-1))}},{passive:true});
 var pn=document.getElementById("pn"),ms=document.getElementById("ms");
-function restart(d){D=d;cur=-1;var o=document.querySelector("#stage .sl");if(o)o.remove();build();show(0);pn.classList.remove("open")}
+function getParams(){
+  var p=new URLSearchParams(window.location.search),h=window.location.hash.replace(/^#/,"");
+  if(h){var hp=new URLSearchParams(h);if(hp.get("user"))p.set("user",hp.get("user"));if(hp.get("year"))p.set("year",hp.get("year"))}
+  return{user:p.get("user"),year:p.get("year")};
+}
+function updateBadge(){
+  var b=document.getElementById("badge-text");
+  if(b)b.textContent=(typeof ACTIVE_USER!=="undefined"?ACTIVE_USER:"user")+" · "+(typeof ACTIVE_YEAR!=="undefined"?ACTIVE_YEAR:(D&&D.year)||"2026");
+}
+function restart(d,u,y){
+  D=d;cur=-1;
+  if(u)ACTIVE_USER=u;
+  if(y)ACTIVE_YEAR=+y;
+  else if(d&&d.year)ACTIVE_YEAR=+d.year;
+  updateBadge();
+  var st=document.getElementById("stage");
+  if(st)st.querySelectorAll(".sl").forEach(function(s){s.remove()});
+  build();show(0);pn.classList.remove("open");
+}
+function loadUserYear(uid,yr){
+  if(window.WRAPPED_CATALOG&&window.WRAPPED_CATALOG[uid]&&window.WRAPPED_CATALOG[uid][yr]){
+    try{history.replaceState(null,"","#user="+uid+"&year="+yr)}catch(e){}
+    restart(window.WRAPPED_CATALOG[uid][yr],uid,yr);
+    return true;
+  }
+  return false;
+}
+function initVault(){
+  var uSel=document.getElementById("u-sel"),ySel=document.getElementById("y-sel"),info=document.getElementById("tape-info"),playBtn=document.getElementById("btn-play-tape");
+  if(!uSel||!ySel)return;
+  var users=window.WRAPPED_USERS||[];
+  if(!users.length&&window.WRAPPED_CATALOG){
+    users=Object.keys(window.WRAPPED_CATALOG).map(function(k){
+      return{user_id:k,is_real:k.indexOf("real")>-1,label:k,years:Object.keys(window.WRAPPED_CATALOG[k]).map(Number).sort()};
+    });
+  }
+  if(!users.length){
+    uSel.innerHTML='<option value="'+(typeof ACTIVE_USER!=="undefined"?ACTIVE_USER:"user_real_01")+'">'+(typeof ACTIVE_USER!=="undefined"?ACTIVE_USER:"user_real_01")+'</option>';
+    ySel.innerHTML='<option value="'+(typeof ACTIVE_YEAR!=="undefined"?ACTIVE_YEAR:2026)+'">'+(typeof ACTIVE_YEAR!=="undefined"?ACTIVE_YEAR:2026)+'</option>';
+    return;
+  }
+  var rGrp=document.createElement("optgroup"),sGrp=document.createElement("optgroup");
+  rGrp.label="Real Listeners (Extended History)";
+  sGrp.label="Synthetic Personas (Calibrated Clusters)";
+  users.forEach(function(u){
+    var opt=document.createElement("option");
+    opt.value=u.user_id;
+    opt.textContent=u.label||u.user_id;
+    if(typeof ACTIVE_USER!=="undefined"&&u.user_id===ACTIVE_USER)opt.selected=true;
+    (u.is_real?rGrp:sGrp).appendChild(opt);
+  });
+  uSel.innerHTML="";
+  if(rGrp.children.length)uSel.appendChild(rGrp);
+  if(sGrp.children.length)uSel.appendChild(sGrp);
+
+  function syncYears(){
+    var uid=uSel.value,uObj=users.find(function(x){return x.user_id===uid}),yrs=(uObj&&uObj.years)||[2026];
+    var curActiveYr=typeof ACTIVE_YEAR!=="undefined"?ACTIVE_YEAR:2026;
+    ySel.innerHTML=yrs.map(function(y){return '<option value="'+y+'" '+(y===curActiveYr?"selected":"")+'>'+y+'</option>'}).join("");
+    updateInfo();
+  }
+  function updateInfo(){
+    if(!info)return;
+    var uid=uSel.value,curYr=+ySel.value;
+    if(window.WRAPPED_CATALOG&&window.WRAPPED_CATALOG[uid]&&window.WRAPPED_CATALOG[uid][curYr]){
+      var p=window.WRAPPED_CATALOG[uid][curYr];
+      info.textContent=Number(p.minutes).toLocaleString("en-US")+" min · Top: "+((p.artists&&p.artists[0]&&p.artists[0].name)||"");
+    }else{
+      info.textContent="";
+    }
+  }
+  uSel.onchange=syncYears;
+  ySel.onchange=updateInfo;
+  syncYears();
+
+  if(playBtn){
+    playBtn.onclick=function(){
+      var uid=uSel.value,yr=+ySel.value;
+      if(!loadUserYear(uid,yr)){
+        alert("Could not load mixtape for "+uid+" ("+yr+").");
+      }
+    };
+  }
+}
+
+var badgeEl=document.getElementById("badge");
+if(badgeEl)badgeEl.onclick=function(){ms.textContent="";pn.classList.add("open")};
 document.getElementById("ld").onclick=function(){ms.textContent="";pn.classList.add("open")};
 document.getElementById("cl").onclick=function(){pn.classList.remove("open")};
-document.getElementById("sm").onclick=function(){restart(sample())};
+document.getElementById("sm").onclick=function(){restart(sample(),"Sample",2026)};
 document.getElementById("fi").onchange=function(e){
   var fs=[].slice.call(e.target.files);if(!fs.length)return;ms.textContent="Reading "+fs.length+" file(s)...";
   Promise.all(fs.map(function(f){return f.text().then(function(t){try{var j=JSON.parse(t);return Array.isArray(j)?j:[]}catch(x){return[]}})})).then(function(a){
     var d=fromHistory([].concat.apply([],a));
     if(!d||d.artists.length<2||d.tracks.length<2){ms.textContent="No usable plays found. Pick the Streaming_History_Audio files (JSON).";return}
-    restart(d)})};
+    restart(d,"Custom",d.year||2026)})};
+
+// Initial URL parameter check or default load
+var initParams=getParams();
+if(initParams.user&&initParams.year&&window.WRAPPED_CATALOG&&window.WRAPPED_CATALOG[initParams.user]&&window.WRAPPED_CATALOG[initParams.user][+initParams.year]){
+  ACTIVE_USER=initParams.user;
+  ACTIVE_YEAR=+initParams.year;
+  D=window.WRAPPED_CATALOG[ACTIVE_USER][ACTIVE_YEAR];
+}
+updateBadge();
+initVault();
 build();show(0);requestAnimationFrame(frame);
 </script>
 </body>
