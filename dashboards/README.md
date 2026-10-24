@@ -256,11 +256,14 @@ The storyboard HTML located in the project root (`Mixtape_Wrapped_storyboard.htm
 |---|---|---|
 | **Cassette Header** | `cass(fg, bg, label)` | `wrapped_user_year.user_id`, `year` |
 | **Minutes Odometer** | `odo(D.minutes)` | `wrapped_user_year.total_minutes` |
-| **Hours Radial Dial** | `24-hour radial SVG clock` | `wrapped_user_year.peak_hour`, `gold.dim_time` |
-| **Artist Bar Race** | `#rc month-by-month race` | `gold.content_performance_trends` |
-| **Tracklist Receipt** | `.card.ten ol li` | `wrapped_user_year.top_track_1..5`, `top_artist_1..5` |
-| **Genre Platter** | `vinyl SVG concentric rings` | `wrapped_user_year.top_genre_1..3` |
-| **Interactive Quiz** | `#qz "which song ate your time?"` | `wrapped_user_year.top_track_1` vs runners up |
-| **Calendar Streak** | `.cal streak matrix` | `fact_listening` consecutive daily activity |
+| **Hours Radial Dial** | `24-hour radial SVG clock` | `wrapped_user_year.hours` (24-array), `peak_hour` |
+| **Artist Bar Race** | `#rc month-by-month race` | `wrapped_user_year.top_artists`, `monthly_plays` |
+| **Tracklist Receipt** | `.card.ten ol li` | `wrapped_user_year.top_tracks` (top 10) |
+| **Genre Platter** | `vinyl SVG concentric rings` | `wrapped_user_year.top_genres` (name + pct) |
+| **Interactive Quiz** | `#qz "which song ate your time?"` | `wrapped_user_year.top_tracks` (top 4 by minutes) |
+| **Biggest Day** | `#big` slide | `wrapped_user_year.biggest_day` |
+| **Most Replayed** | `.rc2` replay callout | `wrapped_user_year.most_replayed` |
+| **Calendar Streak** | `.cal streak matrix` | `wrapped_user_year.calendar`, `longest_streak` |
+| **Skip Breakdown** | `skip.worst` list | `wrapped_user_year.skip_pct`, `skip_count`, `skip_worst_artists` |
 
 The interactive storyboard can be opened directly in any modern browser or hosted alongside the lakehouse export files for demo presentations.

@@ -346,23 +346,37 @@ Tracks month-over-month listening share and delta trends across genres and artis
 | `load_timestamp` | `TIMESTAMP` | Mart build timestamp. |
 
 ### 6.4 `gold.wrapped_user_year` (Consumer Wrapped Experience)
-Flattened one-row-per-user-per-year summary designed to power consumer Spotify Wrapped dashboards and the Mixtape storyboard visual.
+
+One row per user per year, shaped to drive the `Mixtape_Wrapped_storyboard.html`
+storyboard. Replaces the earlier flat `top_*` columns with nested `STRUCT`/`ARRAY`
+fields the storyboard consumes directly.
 
 | Column | Type | Description |
 |---|---|---|
 | `user_id` | `STRING` | Listener ID. |
 | `year` | `INT` | Wrapped calendar year (e.g., 2026). |
-| `total_minutes` | `DOUBLE` | Total minutes played in year. |
-| `total_plays` | `BIGINT` | Total tracks played. |
-| `distinct_tracks`| `INT` | Total unique tracks played. |
-| `distinct_artists`| `INT` | Total unique artists played. |
-| `active_days` | `INT` | Total days with at least one play event. |
-| `top_artist_1..5`| `STRING` | Ranked top 5 artists by total play count. |
-| `top_genre_1..3` | `STRING` | Ranked top 3 genres by total play count. |
-| `top_track_1..5` | `STRING` | Ranked top 5 track titles by listening minutes. |
-| `peak_hour` | `TINYINT` | Listener's most frequent local listening hour. |
-| `discovery_rate` | `DOUBLE` | Share of tracks newly discovered in the year. |
-| `overall_skip_rate`| `DOUBLE` | User's annual skip percentage. |
+| `total_minutes` | `DOUBLE` | Total listening minutes (all plays). |
+| `total_plays` | `BIGINT` | Non-skipped play count. |
+| `total_events` | `BIGINT` | All plays incl. skipped. |
+| `distinct_tracks` | `INT` | Distinct tracks played. |
+| `distinct_artists` | `INT` | Distinct artists played. |
+| `active_days` | `INT` | Days with at least one play. |
+| `span_days` | `INT` | Days between first and last play. |
+| `skip_pct` | `DOUBLE` | Share of plays skipped (%). |
+| `skip_count` | `BIGINT` | Number of skipped plays. |
+| `skip_worst_artists` | `ARRAY<STRUCT<name, pct, plays>>` | Top 3 artists by skip rate (≥80 plays). |
+| `biggest_day` | `STRUCT<month, day, minutes, artist, plays, artist_plays>` | Biggest listening day + top artist. |
+| `most_replayed` | `STRUCT<month, day, title, artist, times>` | Most-replayed track in one day. |
+| `longest_streak` | `STRUCT<length, start_month, start_day, end_month, end_day>` | Longest consecutive-day streak. |
+| `calendar` | `ARRAY<STRING>` | 12 strings × 31 chars (`1`=active, `2`=streak, `0`=off, `-`=N/A). |
+| `hours` | `ARRAY<INT>` | 24 hourly play counts (index 0-23). |
+| `top_artists` | `ARRAY<STRUCT<name, plays, minutes, distinct_tracks>>` | Top 5 artists by plays. |
+| `top_tracks` | `ARRAY<STRUCT<title, artist, plays, minutes>>` | Top 10 tracks by minutes. |
+| `top_genres` | `ARRAY<STRUCT<name, pct>>` | Top 5 genres by share. |
+| `by_artist_tracks` | `ARRAY<ARRAY<STRUCT<title, plays>>>` | Per top-5 artist: top tracks. |
+| `monthly_plays` | `ARRAY<ARRAY<INT>>` | Per top-5 artist: 12 monthly play counts. |
+| `peak_hour` | `INT` | Most common hour of day. |
+| `discovery_rate` | `DOUBLE` | 60-day discovery rate (from propensity mart). |
 | `load_timestamp` | `TIMESTAMP` | Mart build timestamp. |
 
 ---
