@@ -214407,5 +214407,44 @@
     "energy": 0.304,
     "valence": 0.247,
     "tempo_bpm": 146.2
+  },
+  {
+    "track_id": "spotify:track:3wWEo3XUr7mlzjVdUndGjY",
+    "track_name": "Worth It",
+    "artist": "Corbin",
+    "genre": "unclassified",
+    "release_year": null,
+    "duration_sec": 162,
+    "popularity": 30,
+    "danceability": 0.546,
+    "energy": 0.354,
+    "valence": 0.616,
+    "tempo_bpm": 99.1
+  },
+  {
+    "track_id": "spotify:track:2iyaHQlYrR8Eyr4wOmOT5D",
+    "track_name": "In Love With Myself",
+    "artist": "Kalman Chodakiewitz",
+    "genre": "unclassified",
+    "release_year": null,
+    "duration_sec": 173,
+    "popularity": 30,
+    "danceability": 0.939,
+    "energy": 0.4,
+    "valence": 0.752,
+    "tempo_bpm": 148.2
+  },
+  {
+    "track_id": "spotify:track:25KN5IFew2JifHoqx5Q7Z7",
+    "track_name": "High Forever - Marlon Hoffstadt Remix",
+    "artist": "Petite Meller",
+    "genre": "unclassified",
+    "release_year": null,
+    "duration_sec": 229,
+    "popularity": 30,
+    "danceability": 0.539,
+    "energy": 0.446,
+    "valence": 0.089,
+    "tempo_bpm": 74.1
   }
 ]

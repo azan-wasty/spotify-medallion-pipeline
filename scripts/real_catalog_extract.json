@@ -148435,5 +148435,32 @@
     "genre": "rock",
     "plays": 1,
     "max_ms": 182560
+  },
+  {
+    "track_id": "spotify:track:3wWEo3XUr7mlzjVdUndGjY",
+    "track_name": "Worth It",
+    "artist": "Corbin",
+    "album": "Cyberpunk: Edgerunners 2 (Original Series Soundtrack)",
+    "genre": "unclassified",
+    "plays": 1,
+    "max_ms": 161983
+  },
+  {
+    "track_id": "spotify:track:2iyaHQlYrR8Eyr4wOmOT5D",
+    "track_name": "In Love With Myself",
+    "artist": "Kalman Chodakiewitz",
+    "album": "Cyberpunk: Edgerunners 2 (Original Series Soundtrack)",
+    "genre": "unclassified",
+    "plays": 1,
+    "max_ms": 172972
+  },
+  {
+    "track_id": "spotify:track:25KN5IFew2JifHoqx5Q7Z7",
+    "track_name": "High Forever - Marlon Hoffstadt Remix",
+    "artist": "Petite Meller",
+    "album": "High Forever (Marlon Hoffstadt Remix) (from Cyberpunk: Edgerunners 2)",
+    "genre": "unclassified",
+    "plays": 1,
+    "max_ms": 229161
   }
 ]
