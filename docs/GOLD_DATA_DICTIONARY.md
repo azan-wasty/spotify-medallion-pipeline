@@ -430,6 +430,31 @@ Tracks high-water marks, freshness, and catalog coverage across every layer of t
 | `inferred_track_count` | `BIGINT` | *`gold.dim_track` only.* Count of `is_inferred = true` rows — tracks referenced by fact events but not yet in the catalog snapshot. NULL for other tables. |
 | `load_timestamp` | `TIMESTAMP` | Refresh timestamp. |
 
+### 7.4 `gold.audit_test_results`
+Captures automated test execution outcomes and integrity assertions across dimensions, facts, measures, and Wrapped business rules.
+
+| Column | Type | Description |
+|---|---|---|
+| `test` | `STRING` | Test identifier and assertion name (e.g. `T1.1 fact rows == silver rows`, `T2 no orphan user_sk`, `W1 wrapped minutes`). |
+| `result` | `STRING` | Outcome status: `PASS`, `FAIL`, or `INFO`. |
+| `detail` | `STRING` | Diagnostic details, compared row counts, delta metrics, or empty on standard pass. |
+| `load_timestamp` | `TIMESTAMP` | Verification execution timestamp. |
+
+### 7.5 `gold.audit_event_funnel`
+Tracks end-to-end event reconciliation and volume retention by user and year across each stage of the pipeline lifecycle.
+
+| Column | Type | Description |
+|---|---|---|
+| `user_id` | `STRING` | Pseudonymous user identifier. |
+| `yr` | `INT` | Calendar year (e.g. 2025, 2026). |
+| `bronze_events` | `BIGINT` | Total raw play records ingested into Bronze. |
+| `quarantined_INVALID_PLAYED_AT` | `BIGINT` | Count of records routed to Silver quarantine due to invalid or future timestamps. |
+| `silver_events` | `BIGINT` | Clean, conformed events successfully merged into Silver. |
+| `null_ms_played_dropped_from_wrapped` | `BIGINT` | Events excluded from time-duration Wrapped metrics due to null play durations. |
+| `skips_under_30s` | `BIGINT` | Track plays skipped before 30 seconds of playback. |
+| `qualified_plays` | `BIGINT` | Full, qualified listening plays retained in Gold reporting. |
+| `load_timestamp` | `TIMESTAMP` | Funnel calculation timestamp. |
+
 ---
 
 ## 8. New Analytical Marts

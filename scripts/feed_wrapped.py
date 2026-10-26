@@ -46,7 +46,7 @@ if hasattr(sys.stdout, "reconfigure"):
 # Paths
 REPO_ROOT = Path(__file__).resolve().parent.parent
 HTML_FILE = REPO_ROOT / "Mixtape_Wrapped_storyboard.html"
-GOLD_DIR = REPO_ROOT / "gold_export"
+GOLD_DIR = REPO_ROOT / "gold_export_2"
 PAYLOAD_CSV = GOLD_DIR / "wrapped_payload.csv"
 JSON_DIR = GOLD_DIR / "wrapped_json"
 BUNDLE_JS = GOLD_DIR / "wrapped_bundle.js"

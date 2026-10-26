@@ -10,10 +10,12 @@ dav data/
 dav_data/
 raw_exports/
 gold_export
+gold_export_2
 Streaming_History_Audio_*.json
 Streaming_History_Video_*.json
 ReadMeFirst_ExtendedStreamingHistory.pdf
 scripts/local_gold_build.py
+scripts/local_gold_build_2.py
 my_spotify_data.zip
 export_extended_history.py
 *.zip

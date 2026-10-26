@@ -7,7 +7,7 @@ This directory serves as the landing zone for raw listening event partitions.
 output/raw/
   dt=2026-09-16/
     events.json
-    _manifest.json (TODO: checksum, row counts, timestamp)
+    _manifest.json (checksum, row counts, and timestamp logged to ops.ingestion_log)
   dt=2026-09-17/
     events.json
   ...

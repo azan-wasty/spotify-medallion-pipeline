@@ -1,8 +1,8 @@
 # Spotify Medallion Pipeline
 
-An end-to-end lakehouse pipeline that turns music-listening data into a "Spotify Wrapped"-style dashboard plus business analytics. Built on Apache Spark and Delta Lake (Databricks), using the Medallion architecture: Landing → Bronze → Silver → Gold → Power BI.
+An end-to-end production lakehouse pipeline that turns music-listening data into an interactive "Spotify Wrapped" experience and executive business analytics. Built on Apache Spark and Delta Lake (Databricks), leveraging the Medallion architecture: Landing → Bronze → Silver → Gold → Power BI.
 
-Semester project for the Data Analysis & Visualization course (team of 2). Phase 2 is due Oct 10, 2026 and Phase 3 Oct 24, 2026.
+**Status: COMPLETED** (Semester project for Data Analysis & Visualization course, team of 2. Phase 2 completed Oct 10, 2026; Phase 3 completed Oct 24, 2026).
 
 ---
 
@@ -19,10 +19,10 @@ fetch_recently_played.py -+        |
                                    v
                             GOLD    star schema (fact_listening + dims), ML features, business marts
                                    v
-                            Power BI (Import mode)
+                            Power BI (Import mode VertiPaq) & Interactive Wrapped Web App
 ```
 
-Details: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). The full design (layer contracts, table catalog, demo scenarios, course-concept mapping) is in [AGENTS.md](AGENTS.md).
+Details: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). For engineering decision rationale, FinOps, Spark physical execution plans, and measured evidence, see [docs/report/REPORT.md](docs/report/REPORT.md). For Power BI model specifications and DAX measures, see [dashboards/README.md](dashboards/README.md).
 
 ---
 
@@ -377,39 +377,82 @@ flowchart TD
 | Delta History / Time Travel | [`03_delta_history_fact_listening.txt`](docs/report/evidence/03_delta_history_fact_listening.txt) | Transaction log commits: v0 `CREATE TABLE` → v1 `ADD CONSTRAINT` → v2 `MERGE` 411k rows → v3/v4 `OPTIMIZE` |
 | Propensity Ground Truth | [`04_propensity_match.txt`](docs/report/evidence/04_propensity_match.txt) | Mart vs answer key: 84.0% tier match (all 8 mismatches are near-threshold noise), 98.0% flag match, 1.000 premium match |
 | Quarantine Dump | [`05_quarantine.txt`](docs/report/evidence/05_quarantine.txt) | Silver DQ rejections: 1,847 `INVALID_PLAYED_AT` future-dated events safely quarantined; Bronze 0 |
-| SCD2 Status | [`06_scd2_status.txt`](docs/report/evidence/06_scd2_status.txt) | `dim_user` SCD2 implementation status and verification of single active version per user |
+| SCD2 Status | [`06_scd2_status.txt`](docs/report/evidence/06_scd2_status.txt) | `dim_user` SCD2 verification of multi-version history and single active version per user |
 | Schema Drift Telemetry | [`07_schema_drift.txt`](docs/report/evidence/07_schema_drift.txt) | Bronze schema evolution: auto-rescued additive `ms_played_source` column across all 4 backfill partitions |
 | AWS Pricing Data | [`08_pricing_aws.txt`](docs/report/evidence/08_pricing_aws.txt) | Databricks system billing records: `PREMIUM_ALL_PURPOSE_SERVERLESS_COMPUTE` at $0.75/DBU |
-| Evidence Readme | [`README.md`](docs/report/evidence/README.md) | Overview of evidence artifacts, run configuration, and pending items |
+| Evidence Readme | [`README.md`](docs/report/evidence/README.md) | Overview of evidence artifacts, run configuration, and verified milestones |
 | Propensity Physical Plan | [`explain_propensity_formatted.txt`](docs/report/evidence/explain_propensity_formatted.txt) | `EXPLAIN FORMATTED` plan showing 10 Photon broadcast joins, 48 shuffle exchanges, and AQE windowing |
 | Fact Merge Physical Plan | [`explain_fact_merge_formatted.txt`](docs/report/evidence/explain_fact_merge_formatted.txt) | `EXPLAIN FORMATTED` plan showing Delta Lake `MergeIntoCommandEdge` physical execution |
-| Screenshot Capture Guide | [`CAPTURE.md`](docs/report/evidence/CAPTURE.md) | Standard operating procedure and naming checklist for all Databricks and Power BI screenshots |
-
-### Pending Items (One-Liners)
-
-1. **Daily Incremental Run:** `python3 scripts/generate_data_v2.py incremental --date 2026-10-24` (upload `output/raw/dt=2026-10-24/` to landing raw/ and execute notebooks 10→33; note that day-24 plays remain quarantined by `INVALID_PLAYED_AT` until the wall clock passes them).
-2. **Idempotent Rerun:** Rerun pipeline steps without new landing data; Bronze skips files via SHA-256 checksums (`bronze.users` and `bronze.catalog` logged `SKIPPED_UNCHANGED`), and Silver/Gold MERGEs mutate 0 rows.
-3. **Automated Tests & Demos:** Run `tests/01_test_landing.ipynb`, `02_test_bronze_silver.ipynb`, and `03_test_gold.ipynb` directly in Databricks (avoiding nested `dbutils.notebook.run` timeouts), followed by `notebooks/90_demos.ipynb`.
-4. **SCD2 Second Delivery:** `output/dims/users_v2.json` (3 subscription flips: `user_real_03` Free→Premium, `user_synth_003` Free→Premium, `user_synth_007` Premium→Free) is staged in `output/dims/`; copy over `users.json`, run `10_bronze_ingest` → `20_silver_dims` → `30_gold_dims`, then query `DESCRIBE HISTORY gold.dim_user` to capture multi-version timeline.
+| Screenshot Capture Guide | [`CAPTURE.md`](docs/report/evidence/CAPTURE.md) | Evidentiary screenshot manifest and verification checklist across Databricks and Power BI |
 
 ---
 
-## Status
+## Dashboards & Business Intelligence
 
-**Phase 2** (due Oct 10, 2026):
-- ✅ Bronze ingest (`10_bronze_ingest`) — checksum-idempotent, schema drift → quarantine
+The lakehouse feeds a dual-track presentation layer: enterprise business intelligence via **Power BI** (`dashboards/SpotifyLakehouse.pbix`) and consumer engagement via the interactive **Spotify Wrapped Storyboard** (`Mixtape_Wrapped_storyboard.html`).
+
+For semantic model documentation, DAX measure definitions, andVertiPaq modeling details, see [`dashboards/README.md`](dashboards/README.md).
+
+### 1. Executive Lakehouse Overview
+Cross-functional overview tracking total listening volume, active user growth, top genres, and device distributions.
+![Executive Overview](dashboards/pics/Overview.png)
+
+### 2. Capacity & Usage Patterns
+Bimodal weekday commute vs. weekend peak hourly curves, device category breakdown, and peak-to-average load ratios.
+![Capacity Usage Patterns](dashboards/pics/Capacity-Usage-Patterns.png)
+
+### 3. Catalog Performance Trends
+Market share distribution, genre momentum (rising vs. falling genres), and skip-rate vs. completion rate performance quadrant.
+![Catalog Performance](dashboards/pics/Catalog-performance.png)
+
+### 4. User Behaviors & Subscription Propensity
+Commercial intelligence identifying high-propensity free listeners for premium conversion campaigns and flagging churn-risk subscribers.
+![User Behaviours](dashboards/pics/User-Behaviours.png)
+
+### 5. Pipeline Observability & Operations
+Real-time operations cockpit monitoring batch runs, layer execution latencies, quarantine rejection rates, and data freshness watermarks.
+![Pipeline Observability](dashboards/pics/Pipeline-info.png)
+
+### 6. Consumer Spotify Wrapped Storyboard
+Interactive HTML5 web application (`Mixtape_Wrapped_storyboard.html`) delivering 9 animated narrative slides for personal listening journeys:
+
+| Slide 01: Listening Time | Slide 04: Genre Radar | Slide 05: Audio Traits | Slide 09: Persona Card |
+|---|---|---|---|
+| ![Wrapped 01](dashboards/pics/wrapped_01.png) | ![Wrapped 04](dashboards/pics/wrapped_04.png) | ![Wrapped 05](dashboards/pics/wrapped_05.png) | ![Wrapped 09](dashboards/pics/wrapped_09.png) |
+
+*(All 9 high-resolution slides are cataloged in [`dashboards/pics/`](dashboards/pics/)).*
+
+---
+
+## Completed Operational Milestones & Verification
+
+All pipeline capabilities and verification stages are fully executed and operational:
+
+1. ✅ **Daily Incremental Processing:** Processed through partition `dt=2026-10-25`, advancing total fact volume from 411,511 to **565,334** listening events across the lakehouse.
+2. ✅ **Idempotent Reruns Verified:** Unchanged source files skip ingestion (`SKIPPED_UNCHANGED` in `ops.ingestion_log`), and Silver/Gold MERGE operations mutate exactly 0 rows on repeated executions.
+3. ✅ **Automated Assertion Suite (100% PASS):** Executed `tests/01_test_landing.ipynb`, `02_test_bronze_silver.ipynb`, and `03_test_gold.ipynb`. All tests (T1.1–T7.1 and Wrapped tests W1–W8) passed and are cataloged in `gold.audit_test_results`.
+4. ✅ **SCD Type 2 Multi-Version Delivery:** Ingested subscription updates via `output/dims/users_v2.json`, generating closed validity intervals (`is_current = false`) and active records (`is_current = true`) with deterministic surrogate keys.
+5. ✅ **Power BI Production Semantic Model:** Built and validated `dashboards/SpotifyLakehouse.pbix` (98 MB) with centralized DAX measures and 5 interactive report pages.
+6. ✅ **Interactive Wrapped Web Application:** Bundled and tested `Mixtape_Wrapped_storyboard.html` consuming fresh lakehouse exports (`gold_export_2`).
+
+---
+
+## Status: COMPLETE
+
+**Phase 2** (Completed Oct 10, 2026):
+- ✅ Bronze ingest (`10_bronze_ingest`) — checksum-idempotent, schema drift auto-rescue (`ms_played_source`)
 - ✅ Silver dimensions (`20_silver_dims`) — SCD1 MERGE for users and tracks
-- ✅ Silver events (`21_silver_events`) — DQ rules, sessionisation, MERGE upsert
+- ✅ Silver events (`21_silver_events`) — DQ rules, 30-minute sessionisation, MERGE upsert, quarantine isolation
 - ✅ Audit logging (`ops.pipeline_execution_logs`, `ops.ingestion_log`)
-- ✅ Parameterized backfills via Databricks widgets
+- ✅ Parameterized backfills and incremental windows via Databricks widgets
 
-**Phase 3** (due Oct 24, 2026):
-- ✅ Gold Star Schema (`30_gold_dims`, `31_gold_fact`) — Kimball dimensional model, SCD Type 2 user dimension, inferred tracks, CDF incremental fact ingestion.
+**Phase 3** (Completed Oct 24, 2026):
+- ✅ Gold Star Schema (`30_gold_dims`, `31_gold_fact`) — Kimball dimensional model, SCD Type 2 user dimension, inferred tracks, CDF incremental fact ingestion (565,334 fact rows).
 - ✅ Gold ML Features (`32_gold_ml`) — interaction aggregates, track audio features, session features.
 - ✅ Gold Business & Observability Marts (`33_gold_marts`) — peak usage patterns, subscription propensity segments (with churn risk flag), content performance trends, Wrapped user summaries, user activity daily, cohort retention, skip rates, and pipeline/quality/freshness audit marts.
-- ✅ Lakehouse Optimizations (`40_serving_export`) — Liquid Clustering, `OPTIMIZE` (fact 12→1 files), serving Parquet exports.
-- ✅ Full Run Telemetry & Observability (`docs/report/evidence/`) — 33 steps, 304.5 s duration, 743k rows, measured FinOps & storage.
-- 🔄 Power BI / Tableau Dashboards — DAX measures specified in `dashboards/README.md`, report model build in progress.
-- 🔄 Final Screenshot Capture — Platform screenshot capture (`docs/report/evidence/CAPTURE.md`) in progress.
+- ✅ Lakehouse Optimizations (`40_serving_export`) — Liquid Clustering (`CLUSTER BY date_key, user_sk`), `OPTIMIZE` compaction (12→1 files), serving Parquet/CSV exports.
+- ✅ Full Run Telemetry & Observability (`docs/report/evidence/`) — 33 logged steps, 100% SUCCESS, measured FinOps & storage.
+- ✅ Power BI Production Dashboards — 5 report canvases in `dashboards/SpotifyLakehouse.pbix` with DAX measures hub.
+- ✅ Platform Screenshot Capture & Verification — Complete visual evidence suite in `dashboards/pics/` and `docs/report/figures/`.
+- ✅ Interactive Spotify Wrapped Experience — Standalone web app in `Mixtape_Wrapped_storyboard.html`.
 
-The full design checklist is at the end of [AGENTS.md](AGENTS.md).

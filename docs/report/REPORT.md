@@ -203,6 +203,40 @@ Reconciliation between `gold.subscription_propensity_segments` and the planted `
 
 ---
 
-## Conclusion
+## 7. Business Intelligence & Power BI Dashboards
 
-The Spotify Medallion Lakehouse demonstrates a complete, robust, production-grade data platform. By pairing Delta Lake's ACID transactions and Change Data Feed with conformed Kimball modeling, Liquid Clustering, and rigorous data quality quarantines, the platform provides scalable analytics for executive decision-making and consumer delight.
+The curated Gold Layer directly powers the business intelligence and consumer application tier. The semantic model is deployed via `dashboards/SpotifyLakehouse.pbix` in Power BI VertiPaq Import mode, while personalized listening recaps are published through the standalone `Mixtape_Wrapped_storyboard.html` web application.
+
+### 7.1 Executive Lakehouse Overview
+Cross-functional analytics canvas summarizing cumulative listening duration, active listeners, top artist/genre market shares, and playback device distributions.
+![Lakehouse Overview](../../dashboards/pics/Overview.png)
+
+### 7.2 Capacity & Infrastructure Planning
+Hourly demand profiles contrasting weekday commute spikes against weekend evening curves, peak-to-average load multipliers, and device usage distribution over time for compute and infrastructure rightsizing.
+![Capacity Usage Patterns](../../dashboards/pics/Capacity-Usage-Patterns.png)
+
+### 7.3 Content Catalog Performance Trends
+Streaming velocity trends analyzing rising and falling genres, artist market share shifts, and track popularity vs. completion rate performance quadrants.
+![Catalog Performance](../../dashboards/pics/Catalog-performance.png)
+
+### 7.4 User Behavior & Subscription Propensity
+Commercial strategy canvas isolating high-propensity free listeners for targeted premium subscription campaigns, alongside early churn detection flags for inactive premium subscribers.
+![User Behaviours](../../dashboards/pics/User-Behaviours.png)
+
+### 7.5 Pipeline Observability & Operations Cockpit
+Centralized data engineering dashboard monitoring execution batch runtimes, step latencies across Bronze/Silver/Gold, automated quarantine rejection rates, and data freshness high-water marks.
+![Pipeline Observability](../../dashboards/pics/Pipeline-info.png)
+
+### 7.6 Consumer Spotify Wrapped Experience
+The lakehouse generates personalized listening storyboards delivered through `Mixtape_Wrapped_storyboard.html`. The interactive deck visualizes annual milestones, listening diversity, audio features, and persona badges:
+
+| Slide 01: Listening Minutes | Slide 04: Genre Radar | Slide 05: Audio Traits | Slide 09: Persona Card |
+|---|---|---|---|
+| ![Wrapped 01](../../dashboards/pics/wrapped_01.png) | ![Wrapped 04](../../dashboards/pics/wrapped_04.png) | ![Wrapped 05](../../dashboards/pics/wrapped_05.png) | ![Wrapped 09](../../dashboards/pics/wrapped_09.png) |
+
+---
+
+## 8. Conclusion
+
+The Spotify Medallion Lakehouse demonstrates a complete, robust, production-grade data platform. By pairing Delta Lake's ACID transactions and Change Data Feed with conformed Kimball modeling, Liquid Clustering, rigorous data quality quarantines, and high-performance Power BI dashboards, the platform provides scalable analytics for executive decision-making and consumer delight.
+

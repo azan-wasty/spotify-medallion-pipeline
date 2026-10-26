@@ -1,6 +1,6 @@
 # PII Handling
 
-How personal data is handled in this project. This is the single write-up; AGENTS.md ("PII Rules") has the rules contributors must follow.
+How personal data is handled in this project. This is the single canonical write-up of privacy rules, sanitization contracts, and GDPR/Right-to-be-Forgotten workflows.
 
 ## Where personal data exists
 

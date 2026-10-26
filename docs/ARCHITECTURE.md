@@ -1,6 +1,6 @@
 # Architecture
 
-This document describes **what the pipeline is and how its pieces fit together** — the data flow, the layers, the tables, and the orchestration. It is the middle layer between the one-paragraph overview in [`README.md`](../README.md) and the exhaustive design rationale in [`AGENTS.md`](../AGENTS.md). For the *why* behind each decision (surrogate-key strategy, SCD2 scope, CDF vs. recompute, PII deviation, FinOps), see the decision log in [`docs/report/REPORT.md`](report/REPORT.md); for the full column-level schemas, see [`docs/DATA_DICTIONARY.md`](DATA_DICTIONARY.md) (Landing/Bronze/Silver) and [`docs/GOLD_DATA_DICTIONARY.md`](GOLD_DATA_DICTIONARY.md) (Gold).
+This document describes **what the pipeline is and how its pieces fit together** — the data flow, the layers, the tables, and the orchestration. It is the middle layer between the high-level overview in [`README.md`](../README.md) and the technical decision log in [`docs/report/REPORT.md`](report/REPORT.md). For the full column-level schemas, see [`docs/DATA_DICTIONARY.md`](DATA_DICTIONARY.md) (Landing/Bronze/Silver) and [`docs/GOLD_DATA_DICTIONARY.md`](GOLD_DATA_DICTIONARY.md) (Gold); for BI specifications, see [`dashboards/README.md`](../dashboards/README.md).
 
 ---
 
@@ -132,6 +132,8 @@ Dimensions are keyed by deterministic surrogate keys (`xxhash64`), carry a `-1` 
 | `gold.audit_pipeline_runs` | Pipeline health and run durations |
 | `gold.audit_quality_summary` | Quarantine volumes and rates by rule |
 | `gold.audit_freshness` | High-water marks and catalog coverage per layer |
+| `gold.audit_test_results` | Automated assertion outcomes across dimensional model and business rules |
+| `gold.audit_event_funnel` | End-to-end event reconciliation from landing through Bronze, Silver, quarantine, and Wrapped |
 
 ### 4.5 Serving (Power BI)
 
@@ -173,7 +175,8 @@ Power BI reads the `gold` schema only, in **Import mode** (data copied into Vert
 
 ## 7. Where to go next
 
-- [`AGENTS.md`](../AGENTS.md) — the full layer contract, demo scenarios, and course-concept coverage.
+- [`README.md`](../README.md) — project overview, telemetry, quickstart, and completed pipeline status.
+- [`dashboards/README.md`](../dashboards/README.md) — Power BI semantic model, DAX measures, and dashboard walkthrough.
 - [`docs/DATA_DICTIONARY.md`](DATA_DICTIONARY.md) — Landing/Bronze/Silver column-level schema.
 - [`docs/GOLD_DATA_DICTIONARY.md`](GOLD_DATA_DICTIONARY.md) — Gold star schema, ML tables, and marts.
 - [`docs/PII_NOTES.md`](PII_NOTES.md) — field-by-field PII treatment and right-to-be-forgotten.
